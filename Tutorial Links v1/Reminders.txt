@@ -1,0 +1,3 @@
+We simply use the if else conditions according to the stored date in database
++
+JavaScript or Php to display it
