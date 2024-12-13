@@ -1,0 +1,382 @@
+/* Style for the navbar */
+/* Style for the navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #fc0505, #800000); /* Gradient from red to dark red */
+    padding: 24px 20px;     /* Spacing inside the navbar */
+    margin: 0;              /* Remove any default margins */
+    width: 100%;            /* Ensure it spans the full width of the screen */
+    position: fixed;        /* Keeps the navbar fixed at the top */
+    top: 0;                 /* Aligns it to the top */
+    left: 0;                /* Aligns it to the left */
+    box-sizing: border-box; /* Includes padding in width/height calculations */
+    z-index: 1000;          /* Ensures it stays above other elements */
+  }
+  
+  .icon {
+    width: auto;            /* Keep the original width */
+    height: 80px;           /* Set the height while maintaining aspect ratio */
+    object-fit: contain;    /* Ensures the whole image fits within the container */
+    border-radius: 0;       /* Remove the circular border */
+    position: absolute;     /* Position it relative to the top-left corner */
+    top: 10px;              /* Adjust the distance from the top */
+    left: 10px;             /* Adjust the distance from the left */
+    border: none;           /* Remove any border */
+    height: 70px;
+}
+
+  /* Remove default list styling and align the nav-links horizontally */
+.nav-pages {
+    flex: 1;                  /* Take up available space */
+  display: flex;
+  justify-content: center;  /* Center the nav-links */
+    list-style: none;
+    display: flex;
+    gap: 20px;              /* Space between the list items */
+    margin: 0;
+    padding: 0;
+    
+  }
+
+  /* Style for the individual navigation links */
+.nav-pages li a {
+    text-decoration: none;  /* Remove underline from the links */
+    color: white;           /* White text for links */
+    padding: 10px 15px;
+    font-size: 21px;  
+    transition: background-color 0.3s ease;
+  }
+
+  /* Change background color of links on hover */
+.nav-pages li a:hover {
+    background-color: #555; /* Darker background on hover */
+    border-radius: 5px;
+  }
+
+  /* Style for the Join Us button */
+.join-btn {
+    background-color: #FF6F61; /* Peach red color */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  /* Hover effect for Join Us button */
+  .join-btn:hover {
+    background-color: #ff8477; /* Slightly lighter on hover */
+  }
+
+  /* Style for the social media icons container */
+.social-media {
+    position: fixed;  /* Fixes the position relative to the viewport */
+    left: 0;          /* Align to the left edge */
+    top: 50%;         /* Center vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;        /* Space between icons */
+    padding: 10px;    /* Optional padding */
+  }
+  
+  /* Style for individual social media icons */
+  .social-media img {
+    width: 40px;      /* Size of the icons */
+    height: 40px;
+    border-radius: 50%; /* Optional: make icons circular */
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Hover effect for social media icons */
+  .social-media img:hover {
+    opacity: 0.8;     /* Slightly reduce opacity on hover */
+  }
+  
+
+  .footer-bar {
+    background: linear-gradient(90deg, #fc0505, #800000); /* Gradient from red to dark red */
+    color: white;             /* Footer text color */
+    padding: 8px;             /* Space inside the footer */
+    text-align: center;       /* Center-align text */
+    width: 100%;              /* Span the entire width of the screen */
+    position: relative;       /* Default position, so it follows content flow */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
+    margin-top: 20px;     
+}
+  
+  /* Style for the email link in the footer */
+  .email-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .email-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Style for the hero section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f7f7f7;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    width: 300px;          /* Adjust the size of the image */
+    height: 300px;
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Style for the About Us page */
+.about-us {
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.about-us h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    margin-bottom: 50px;
+}
+
+.team h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.team-member {
+    flex: 1 1 22%; /* Grow and shrink as needed, basis is 22% of the container */
+    text-align: center;
+    margin: 10px;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+   
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    font-size: 1em;
+}
+
+.history {
+    text-align: center;
+}
+
+.history h2 {
+   
+    margin-bottom: 20px;
+}
+
+.history-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style for the Services page */
+.services {
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.services h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.services p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.service {
+    margin-bottom: 40px;
+}
+
+.service img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.service h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 1.2em;
+}
+
+/* Style for the features section */
+.features {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.features h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.features p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.feature-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.feature-text {
+    max-width: 600px;
+    margin: auto;
+}
+
+.feature-text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.feature-text p {
+    font-size: 1.1em;
+}
+
+/* Style for the support section */
+.support {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.support h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.support p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Style for the contact form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-form button {
+    background-color: #FF6F61; /* Peach red color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #ff8477; /* Slightly lighter on hover */
+}
+
+/* Style for FAQs */
+.faqs {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faqs h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    font-size: 1.1em;
+}
+

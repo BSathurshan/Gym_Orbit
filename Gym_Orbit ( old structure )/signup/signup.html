@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Signup</title>
+    <link rel="stylesheet" href="signup.css">
+    
+</head>
+    <body>
+        <div class="signup-container">
+
+            <form id="signupForm" action="signup.php" method="POST" enctype="multipart/form-data">
+                
+                <!-- Member Type -->
+                <div class="">
+                    <h2>Who are you?</h2>
+
+                    <!-- User Choice -->
+                    <div class="member-choice">
+                        <input type="radio" name="memberType" id="user" value="user" hidden>
+                        <label for="user" onclick="redirectToPage('user')">
+                            <img src="./img/u.png" alt="User" class="choice-image">
+                        </label>
+                    </div>
+
+                    <!-- Owner Choice -->
+                    <div class="member-choice">
+                        <input type="radio" name="memberType" id="owner" value="owner" hidden>
+                        <label for="owner" onclick="redirectToPage('owner')">
+                            <img src="./img/o.png" alt="Gym Owner" class="choice-image">
+                        </label>
+                    </div>
+
+                
+                </div>
+
+            </form>
+
+        </div>
+
+        <script>
+            // JavaScript function to redirect based on selection
+            function redirectToPage(memberType) {
+                if (memberType === 'user') {
+                    window.location.href = 'signup - user.html'; // Redirect to the User form
+                } else if (memberType === 'owner') {
+                    window.location.href = 'signup - gym.html'; // Redirect to the Owner form
+                }
+            }
+        </script>
+    </body>
+</html>
