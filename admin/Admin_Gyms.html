@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyms Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #333;
+            color: #fff;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+        }
+        nav h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin: 15px 0;
+            padding: 10px 15px;
+            background: #444;
+            border-radius: 4px;
+            text-align: center;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        nav a:hover, nav a.active {
+            background: #555;
+        }
+        .main-content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+        h2{
+            text-align:center;
+        }
+        header {
+            color: black;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 200px;
+            right: 0;
+            z-index: 1000;
+        }
+        .content-wrapper {
+            margin-top: 80px; /* Adjust for fixed header */
+        }
+        .gyms-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>Menu</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Users Accounts</a>
+        <a href="#">Gyms</a>
+        <a href="#">Messages</a>
+        <a href="#">Settings</a>
+    </nav>
+    <div class="main-content">
+        <header>
+            <h1>Admin</h1>
+        </header>
+        <div class="content-wrapper">
+            <div class="gyms-section">
+                <h2>Gyms</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Owner</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>SuperFit Gym</td>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td>123-456-7890</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Powerhouse Gym</td>
+                            <td>Jane Smith</td>
+                            <td>jane@example.com</td>
+                            <td>987-654-3210</td>
+                        </tr>
+                        <!-- Add more gym rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

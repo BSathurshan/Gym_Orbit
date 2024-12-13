@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message to Gym Owner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #333;
+            color: #fff;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+        }
+
+        nav h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin: 15px 0;
+            padding: 10px 15px;
+            background: #444;
+            border-radius: 4px;
+            text-align: center;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: #555;
+        }
+
+        .main-content {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 200px;
+            right: 0;
+            color: black;
+            padding: 1rem;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-wrapper h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        button {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>Menu</h2>
+        <a href="#">Profile</a>
+        <a href="#">User Accounts</a>
+        <a href="#">Gyms</a>
+        <a href="#">Messages</a>
+        <a href="#">Setting</a>
+    </nav>
+
+
+    <div class="main-content">
+        <div class="content-wrapper">
+            <header>
+                <h1>Admin</h1>
+            </header>
+            <h1>Send Message to Gym Owner</h1>
+            <form>
+                <label for="owner">Select Gym Owner:</label>
+                <select id="owner" name="owner" required>
+                    <option value="" disabled selected>Select a gym owner</option>
+                    <option value="1">John Doe - SuperFit Gym</option>
+                    <option value="2">Jane Smith - Powerhouse Gym</option>
+                    <!-- Add more owners as needed -->
+                </select>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
