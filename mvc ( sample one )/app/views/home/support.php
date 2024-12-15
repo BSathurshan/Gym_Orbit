@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Page</title>
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/home/style.css">
+</head>
+<body>
+    <div class="main">
+        <div class = "navbar">
+            
+            <img src="<?= ROOT ?>/assets/images/home/GymOrbitLogo.png" class="icon">
+
+                <ul class="nav-pages">
+                        <li><a href="<?= ROOT ?>/home/index">Home</a></li>
+                        <li><a href="<?= ROOT ?>/home/features">Features</a></li>
+                        <li><a href="<?= ROOT ?>/home/services">Services</a></li>
+                        <li><a href="<?= ROOT ?>/home/about">About Us</a></li>
+                        <li><a href="<?= ROOT ?>/home/support">Support</a></li>
+                    </ul>
+                  
+            <a href="join.html" class="join-btn">Join Us</a>  
+        </div>
+         <!-- Support Section -->
+         <section class="support">
+            <h1>Support & Contact</h1>
+            <p>If you need assistance, we are here to help. Choose one of the options below to get the support you need.</p>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>Contact Us</h2>
+                <form action="submit_form.php" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <!-- FAQs -->
+            <div class="faqs">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h3>How do I reset my password?</h3>
+                    <p>To reset your password, go to the login page and click on "Forgot Password". Follow the instructions sent to your email to reset your password.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What are your gym hours?</h3>
+                    <p>We are open 24/7 for all members. You can access the gym at any time that suits you.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How can I cancel my membership?</h3>
+                    <p>To cancel your membership, please contact our support team via email or phone, and we will assist you with the cancellation process.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+     <!-- Footer section with email address -->
+     <footer class="footer-bar">
+        <p>Contact us at: <a href="mailto:gymorbit@gmail.com" class="email-link">gymorbit@email.com</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Page</title>
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/home/style.css">
+</head>
+<body>
+    <div class="main">
+        <div class = "navbar">
+            
+            <img src="<?= ROOT ?>/assets/images/home/GymOrbitLogo.png" class="icon">
+
+                <ul class="nav-pages">
+                <li><a href="<?= ROOT ?>/home/index">Home</a></li>
+                        <li><a href="<?= ROOT ?>/home/features">Features</a></li>
+                        <li><a href="<?= ROOT ?>/home/services">Services</a></li>
+                        <li><a href="<?= ROOT ?>/home/about">About Us</a></li>
+                        <li><a href="<?= ROOT ?>/home/support">Support</a></li>
+                    </ul>
+                  
+            <a href="join.html" class="join-btn">Join Us</a>  
+        </div>
+        <section class="features"></section>
+            <h1>Our Features</h1>
+            <p>Discover the unique features that make our gym stand out. We offer a variety of amenities and services to enhance your fitness journey.</p>
+            
+            <div class="feature-item">
+                <img src="<?= ROOT ?>/assets/images/home/feature1.jpg" alt="24/7 Access" class="feature-image">
+                <div class="feature-text">
+                    <h2>24/7 Access</h2>
+                    <p>Enjoy the flexibility of working out at any time that suits you. Our gym is open 24/7 for all members.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <img src="<?= ROOT ?>/assets/images/home/feature2.jpg" alt="State-of-the-Art Equipment" class="feature-image">
+                <div class="feature-text">
+                    <h2>State-of-the-Art Equipment</h2>
+                    <p>Our gym is equipped with the latest fitness technology to provide you with the best workout experience possible.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <img src="<?= ROOT ?>/assets/images/home/feature3.jpg" alt="Personal Training" class="feature-image">
+                <div class="feature-text">
+                    <h2>Personal Training</h2>
+                    <p>Get personalized fitness guidance from our certified trainers. Whether you’re looking to lose weight or build muscle, we’ve got you covered.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <img src="<?= ROOT ?>/assets/images/home/feature4.jpg" alt="Group Classes" class="feature-image">
+                <div class="feature-text">
+                    <h2>Group Classes</h2>
+                    <p>Join our group classes for a fun and social workout experience. We offer a variety of classes including yoga, spin, and high-intensity interval training.</p>
+                </div>
+            </div>
+
+        </section>
+        
+    </div>
+     <!-- Footer section with email address -->
+
+</body>
+</html>
