@@ -1,0 +1,23 @@
+1.download the mvc folder via GitHub
+
+	copy the folder and paste it inside xaamp>htdocs
+	make sure the folder name only contains 'mvc' and remove other letter by renaming it 
+
+2.download the instruction folder as well
+
+	this contains the .htaccess
+	https://drive.google.com/file/d/1RuJAF2ZMjutCKPfEq1ZVPX4kDz3QQejV/view?usp=drive_link
+
+2. port number deletion 
+
+	if u using the normal port ( 80 ) for Apache in xaamp server u need to delete the port number ':8080' in this following file
+
+	go to =
+	mvc>app>core>config.php
+
+	and replace using this=
+	define('ROOT', 'http://localhost/mvc/public');
+
+3. paste .htaccess file inside the 
+
+	mvc>public folder
