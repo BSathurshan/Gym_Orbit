@@ -1,0 +1,73 @@
+<?php
+                        $queryRequested = "SELECT * FROM connects_instructors WHERE user_name = ?";
+                        $queryRequested2 = "SELECT * FROM connects_gym WHERE username = ?";
+
+                        // Using prepared statements for both queries
+                        $stmt1 = $conn->prepare($queryRequested);
+                        $stmt1->bind_param("s", $username);
+                        $stmt1->execute();
+                        $resultRequested = $stmt1->get_result();
+
+                        $stmt2 = $conn->prepare($queryRequested2);
+                        $stmt2->bind_param("s", $username);
+                        $stmt2->execute();
+                        $resultRequested2 = $stmt2->get_result();
+
+                        // Display instructors
+                        if ($resultRequested->num_rows > 0) {
+                            while ($rowRequested = $resultRequested->fetch_assoc()) {
+                                echo "<table>";
+                                echo "<tr><td><input type='text' value='" . htmlspecialchars($rowRequested['trainer_name']) . "' readonly></td></tr>";
+                                echo "</table>";
+                                echo "<br>";
+                            }
+                        }
+
+                        // Display gym instructors
+                        if ($resultRequested2->num_rows > 0) {
+                            $gymUsernames = [];
+                            while ($row = $resultRequested2->fetch_assoc()) {
+                                $gymUsernames[] = $row['gym_username'];
+                            }
+
+                            if (!empty($gymUsernames)) {
+                                $placeholders = implode(',', array_fill(0, count($gymUsernames), '?'));
+                                $query2 = "SELECT * FROM instructors WHERE gym_username IN ($placeholders)";
+                                $stmt3 = $conn->prepare($query2);
+
+                                $types = str_repeat('s', count($gymUsernames));
+                                $stmt3->bind_param($types, ...$gymUsernames);
+
+                                $stmt3->execute();
+                                $result = $stmt3->get_result();
+
+                                while ($instructor = $result->fetch_assoc()) {
+                                    echo "<h5>" . htmlspecialchars($instructor['trainer_name']) . "</h5>";
+                                    echo "<img src='../instructor/profile/images/" . htmlspecialchars($instructor['file']) . "' width='200' title='" . htmlspecialchars($instructor['file']) . "'>";
+                                    echo "<h5>" . htmlspecialchars($instructor['age']) . "</h5>";
+                                    echo "<h5>" . htmlspecialchars($instructor['gender']) . "</h5>";
+                                    echo "<h5>" . htmlspecialchars($instructor['contact']) . "</h5>";
+                                    echo "<h5>" . htmlspecialchars($instructor['experience']) . "</h5>";
+                                    echo "<h5>" . htmlspecialchars($instructor['availiblity']) . "</h5>";
+                                    echo "<h5>" . htmlspecialchars($instructor['special']) . "</h5>";
+
+                                    echo "<button type='button' 
+                                    onclick='requestInstructor(   \"" . htmlspecialchars($username, ENT_QUOTES) . "\", 
+                                                                 \"" . htmlspecialchars($userDetails['name'], ENT_QUOTES) . "\", 
+                                                                \"" . htmlspecialchars($instructor['gym_username'], ENT_QUOTES) . "\", 
+                                                               \"" . htmlspecialchars($instructor['trainer_username'], ENT_QUOTES) . "\", 
+                                                               \"" . htmlspecialchars($instructor['trainer_name'], ENT_QUOTES) . "\")'>
+                                    Request
+                                  </button>";
+                            
+                                    echo "<hr>";
+                                }
+                                $stmt3->close();
+                            }
+                        } else {
+                            echo "<p>Nothing found!</p>";
+                        }
+
+                        $stmt1->close();
+                        $stmt2->close();
+                        ?>

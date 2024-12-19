@@ -1,0 +1,407 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #e1dfdf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: left; /* Added to align text left */
+    padding: 20px;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.member-choices {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    margin-top: 20px;
+}
+
+.member-choice {
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+}
+
+.member-choice input[type="radio"] {
+    position: absolute;
+    opacity: 0; /* Hide the radio button itself */
+    width: 100%; /* Make the input take the full width of the label */
+    height: 100%; /* Same for height */
+    top: 0;
+    left: 0;
+    cursor: pointer; /* Make sure the radio button is clickable */
+}
+
+.member-choice input[type="radio"]:checked + label .choice-image {
+    border-color: #4caf50;
+    box-shadow: 0 0 10px #4caf50;
+    transform: scale(1.1);
+}
+
+.choice-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Make the image look clickable */
+}
+
+.choice-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-color: #4caf50; /* Border color change on hover */
+}
+
+.choice-text {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.choice-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+}
+
+.choice-label:hover .choice-image {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-color: #4caf50;
+}
+
+
+.signup-container {
+    background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+    border-radius: 8px;
+    padding: 20px;
+    /* box-shadow: 0 4px 8px rgba(183, 20, 20, 0.5); */
+    width: 100%;
+    max-width: 400px;
+    text-align: left; /* Added to align text left */
+}
+
+label {
+    align-self: flex-start;
+    text-align: left;
+    width: 100%;
+}
+
+.form-slide {
+    align-items: center; /* Keep the existing center alignment */
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+h2{
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-slide {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 20px;
+    display: none; /* Initially hide all slides */
+}
+
+.form-slide.active {
+    display: flex;
+}
+
+
+.button-grp{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px -10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+  
+.next-btn {
+    width: 40%;
+    height: 50px;
+    border: 1px solid;
+    background: #0c8901;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+.prev-btn{
+    width: 40%;
+    height: 50px;
+    border: 1px solid;
+    background: #e32525;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+.next-btn:hover {
+    background: #1bb70d;
+    border-color: #418b00;
+    transition: .5s;
+}
+
+.prev-btn:hover {
+    background: #ec5454;
+    border-color: #e32525;
+    transition: .5s;
+}
+
+
+
+/* button { */
+    /* padding: 10px;
+    border: none;
+    background: #af534c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #45a049;
+} */
+
+.choice-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+   /* border: 2px solid #ffffff;
+    border-radius: 15px;*/
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    /* display: flex; Ensure the image is a block element */
+    cursor: pointer; /* Make the image look clickable */
+}
+
+
+.member-choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    margin-top: 20px;
+}
+.member-choice {
+    display: flex;
+    justify-content: center;
+    flex-direction: colomn;
+    margin: 20px;
+    position: relative;
+}
+
+.choice-text {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+.member-choice input[type="radio"] {
+    position: absolute;
+    opacity: 0; /* Hide the radio button itself */
+    width: 100%; /* Make the input take the full width of the label */
+    height: 100%; /* Same for height */
+    top: 0;
+    left: 0;
+    cursor: pointer; /* Make sure the radio button is clickable */
+}
+
+.member-choice input[type="radio"]:checked + label .choice-image {
+    border-color: #4caf50;
+    box-shadow: 0 0 10px #4caf50;
+    transform: scale(1.1);
+}
+
+.choice-image:hover {
+    transform: scale(1.1);
+  }
+
+
+  .goal-choices {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    margin-top: 20px;
+}
+
+.goal-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    background: rgba(255, 255, 255, 0.9); /* Subtle white background */
+}
+
+.goal-choice:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-color: #ff0000b7;
+}
+
+.goal-choice input {
+    display: none; /* Hide radio buttons */
+}
+
+.goal-choice input:checked + label {
+    color: #ff0000b7; /* Highlight selected label */
+    font-weight: bold;
+    border-color: #ff0000b7;
+}
+
+.goal-choice label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+}
+
+.choice-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.choice-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-color: #ff0000b7;
+}
+
+.goal-choice input[type="radio"]:checked + label .choice-image {
+    border-color: #ff0000b7;
+    box-shadow: 0 0 10px #ff0000b7;
+    transform: scale(1.1);
+}
+
+/* Styles for Achievement Choices */
+.achieve-choices{
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    
+}
+.achieve-choice {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    background: rgba(255, 255, 255, 0.9); /* Subtle white background */
+}
+
+.achieve-choice:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-color: #ff0000b7;
+}
+
+.achieve-choice input {
+    display: none; /* Hide radio buttons */
+}
+
+.achieve-choice input:checked + label {
+    color: #ff0000b7; /* Highlight selected text */
+    font-weight: bold;
+}
+
+.achieve-choice input:checked + label .choice-image {
+    border-color: #ff0000b7; /* Blue border for selected choice */
+    box-shadow: 0 0 10px #ff0000b7; /* Glow effect */
+    transform: scale(1.1); /* Slight enlargement */
+}
+
+/* Label and Image Styles */
+.achieve-choice label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.choice-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 30%; /* Circular images */
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.1); /* Default border */
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.choice-image:hover {
+    transform: scale(1.1); /* Enlarge image on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-color: #ff0000b7; /* Green border on hover */
+}
+
+
