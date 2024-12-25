@@ -63,7 +63,9 @@ form .field {
 }
 
 .forgotpass {
-  margin: -5px 0 20px 5px;
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
   color: #a6a6a6;
   cursor: pointer;
 }
@@ -124,4 +126,12 @@ input[type="submit"]:hover {
   border-bottom: 2px solid #adadad;
 }
 
-/* Remove label transitions and keep it static */
+.error-message {
+  color: rgb(0, 0, 0);
+  background-color: #ffe6e6;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid rgb(249, 249, 249);
+  border-radius: 5px;
+  text-align: center;
+}

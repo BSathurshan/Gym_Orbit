@@ -1,4 +1,4 @@
-const ROOT = "http://localhost/mvc/public";  // Define the ROOT directly
+const ROOT = "http://localhost:8080/mvc/public";  // Define the ROOT directly
 
 const images = [
   `${ROOT}/assets/images/login/image1.jpg`,

@@ -17,17 +17,6 @@
     <H1> LOGIN </H1>
     <FORM method="POST" action="<?= ROOT ?>/login/authenticate">
 
-              <div class="field">
-                    <select name="type" required>
-                      <option value="" disabled selected></option>
-                      <option value="user">User</option>
-                      <option value="owner">Owner</option>
-                      <option value="instructor">Instructor</option>
-                      <option value="admin">Admin</option>
-                    </select>
-                    <label>User Type </label>
-                  </div>
-
                 <div class="field">
                   
                   <input type="text" name="username" required>
@@ -42,25 +31,29 @@
                   
                 </div>
 
+                <?php if (!empty($errorMessage)): ?>
+                    <div class="error-message"><?= htmlspecialchars($errorMessage) ?></div>
+                <?php endif; ?>
                 
-                <div class="forgotpass" >
+            <input type="submit" name="send" value="Login" >
+
+       
+         
+            <div class="forgotpass" >
                   <a href="./Forgot/type.php">
                     Forgot Password ? 
-              </a>
-   </div>
-    
-   <input type="submit" name="send" value="Login" >
-   
-   <div class="signup_link">
+                  </a>
+                </div>
      
-      Not a member?       <a href="../signup/signup.html"> Signup </a>
-   
-   </div>
+            
+            <div class="signup_link">
+              
+                Not a member?       <a href="../signup/signup.html"> Signup </a>
+            
+            </div>
 
-
-
-</FORM>
-</div>
+          </FORM>
+        </div>
 
 
 <div id="image-preload-container">

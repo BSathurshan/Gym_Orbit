@@ -1,4 +1,4 @@
-const ROOT = "http://localhost/mvc/public"; 
+const ROOT = "http://localhost:8080/mvc/public"; 
 
 //function postEdit(name, file, gymUsername)
 function requestInstructor(username,name,gym_username,trainer_username,trainer_name) {

@@ -1,5 +1,5 @@
 <?php
-class Add_User
+class Add_Owner
 {
     use Model; 
     public function submit(
@@ -10,14 +10,15 @@ class Add_User
         $type,
         $file,
         $age,
-        $contact,
+        $gym_contact,
         $location,
-        $health,
         $gender,
-        $activeMode,
-        $goalChoice,
-        $achieveChoice
-    
+        $web,
+        $social,
+        $gym_name,
+        $owner_contact,
+        $start_year,
+        $experience
     )
     {
 
@@ -38,7 +39,7 @@ class Add_User
             $newImageName .= '.' . $imageExtension;
             $file_name =$newImageName;
 
-            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/mvc/public/assets/images/user/profile/images/";
+            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/mvc/public/assets/images/owner/profile/images/";
             $targetFile = $targetDir . $newImageName;
 
     
@@ -46,12 +47,29 @@ class Add_User
         }
 
             // Add to database
-            $sql = "INSERT INTO user (username,password, name, email, age, gender,contact,location,goals,active,health,file,achieve) VALUES
-                (?, ?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+            $sql = "INSERT INTO gym (
+                gym_username ,  gym_name, password, owner_name, email, age, gender,location, gym_contact,  owner_contact,
+                start_year, experience,web, social, file ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+    
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssssssssssss",  $username ,$password, $name ,$email,$age, $gender,$contact,
-                                                $location,$goalChoice,$activeMode,$health,$file_name,$achieveChoice);
+            $stmt->bind_param(
+                "sssssssssssssss",
+                $username,
+                $gym_name,
+                $password,
+                $name,
+                $email,
+                $age,
+                $gender,
+                $location,
+                $gym_contact,
+                $owner_contact,
+                $start_year,
+                $experience,
+                $web,
+                $social,
+                $file_name
+            );
             if($stmt->execute()){
                 return true;
             }else{

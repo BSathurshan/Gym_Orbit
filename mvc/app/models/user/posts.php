@@ -43,13 +43,13 @@ class Posts
          {
         
             $stmt->close();
-            $stmt2->close();
             return ['found'=>'no'];   
          }
 
         }
         else{
-            return ['alert'=> 'yes'];
+
+            return ['found'=> 'alert'];
         }
     
     }

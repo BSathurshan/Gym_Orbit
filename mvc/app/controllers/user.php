@@ -129,6 +129,7 @@ class User
 
             $model = $this->model('user', 'materials'); 
             $result = $model->get($username); 
+           
             
             if ($result['found']=='yes') {
     
@@ -139,9 +140,9 @@ class User
 
                 return ['found' => 'no'];
 
-            } else {
+            } elseif($result['found']=='alert') {
 
-                 return ['alert' => 'yes'];
+                 return ['found' => 'alert'];
             }
         } else {
    
@@ -189,9 +190,9 @@ class User
 
                 return ['found' => 'no'];
 
-            } else {
+            } elseif($result['found']=='alert') {
 
-                 return ['alert' => 'yes'];
+                 return ['found' => 'alert'];
             }
         } else {
    

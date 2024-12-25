@@ -17,7 +17,6 @@ class Login
             // Retrieve POST data
             $username = $_POST["username"];
             $password = $_POST["password"];
-            $type = $_POST["type"];
 
                 // Load the model
                 $model = $this->model('login', 'LoginModel');
@@ -28,19 +27,31 @@ class Login
                 }
 
                 // Call the model method to check login details
-                $result = $model->authenticateUser($username, $password, $type);
+                $result = $model->authenticateUser($username, $password);
+                $errorMessage = null;
 
-            if ($result) {
+            if ($result['found']=='yes'&&$result['ban']=='no') {
+
                 // Store user session
                 $_SESSION["username"] = $username;
-                $_SESSION["userDetails"] = $result;
+                $_SESSION["userDetails"] = $result['details'];
+                $type = $result['type'];
 
                 // Redirect based on user type
-                header("Location: " . ROOT . "/$type");
+                $this->view($type,$type);
                 exit();
-            } else {
-                echo "Invalid username or password";
+
+            }elseif($result['found']=='yes'&&$result['ban']=='yes') {
+
+                $errorMessage = "Client account has been banned.";
+    
+            }elseif($result['found']=='no'){
+
+                $errorMessage = "Invalid username or password.";
+
             }
+            
+            $this->view('login', 'login', ['errorMessage' => $errorMessage]);
         }
     }
 

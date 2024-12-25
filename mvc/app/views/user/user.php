@@ -251,7 +251,7 @@ else{
                         elseif($result3['found']=='no'){
                             echo "<p>There are no materials available </p>";
 
-                        }elseif($result3['alert']=='yes'){
+                        }elseif($result3['found']=='alert'){
                             echo "<p>Please join a gym to view materials  </p>";
 
                         }
@@ -333,7 +333,7 @@ else{
                 }elseif(isset($post['found'])&&$post['found']=='no'){
                     echo "<p>There are no posts  </p>";
 
-                }elseif(isset($post['alert'])&&$post['alert']=='yes'){
+                }elseif(isset($post['found'])&&$post['found']=='alert'){
                     echo "<p>Please join a gym to view posts  </p>";   
                 }
                 

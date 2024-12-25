@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/login_slide.css">
     <title>Signup</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/signup/login_slide.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/signup/signup.css">
+
     
 </head>
 
@@ -13,7 +14,7 @@
 
 <body>
     <div class="signup-container">
-        <form id="signupForm" action="signup.php" method="POST" enctype="multipart/form-data">
+        <form id="signupForm" action="<?= ROOT ?>/signup/addOwner" method="POST" enctype="multipart/form-data">
 
             <input type="hidden" name="type" id="type" value="owner" >
            
@@ -114,19 +115,19 @@
     </div>
     <div id="image-preload-container">
 
-        <img src="../public/img/image1.jpg" alt="preload-image">
-        <img src="../public/img/image2.jpg" alt="preload-image">
-        <img src="../public/img/image3.jpg" alt="preload-image">
-        <img src="../public/img/image4.jpg" alt="preload-image">
-        <img src="../public/img/image5.jpg" alt="preload-image">
+        <img src="<?= ROOT ?>/assets/images/signup/image1.jpg" alt="preload-image">
+        <img src="<?= ROOT ?>/assets/images/signup/image2.jpg" alt="preload-image">
+        <img src="<?= ROOT ?>/assets/images/signup/image3.jpg" alt="preload-image">
+        <img src="<?= ROOT ?>/assets/images/signup/image4.jpg" alt="preload-image">
+        <img src="<?= ROOT ?>/assets/images/signup/image5.jpg" alt="preload-image">
      
     </div>
      
     <div id="slideshow-container">
     <div class="slide"></div>
     </div>
-    <script src="./script.js"></script>
-    <script src="signup.js"></script>
+    <script src="<?= ROOT ?>/assets/js/signup/script.js"></script>
+    <script src="<?= ROOT ?>/assets/js/signup/signup.js"></script>
 
 </body>
 </html>

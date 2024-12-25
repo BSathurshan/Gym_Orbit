@@ -1,4 +1,4 @@
-const ROOT = "http://localhost/mvc/public"; 
+const ROOT = "http://localhost:8080/mvc/public"; 
 
 const images = [
   `${ROOT}/assets/images/signup/image1.jpg`,
