@@ -17,6 +17,7 @@
         <form id="signupForm" action="<?= ROOT ?>/signup/addOwner" method="POST" enctype="multipart/form-data">
 
             <input type="hidden" name="type" id="type" value="owner" >
+            <input type="hidden" name="access" id="access" value="normal" >
            
             <!-- Slide 1: Basic Info -->
             

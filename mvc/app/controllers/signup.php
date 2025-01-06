@@ -107,6 +107,7 @@ class Signup
 			$activeMode = $_POST["activeMode"];
 			$goalChoice = $_POST["goalChoice"];
 			$achieveChoice = $_POST["achieveChoice"];
+			$access= $_POST["access"];
 
 				$model = $this->model('signup', 'add_User');
                 if (!$model) {
@@ -126,11 +127,14 @@ class Signup
 					$gender,
 					$activeMode,
 					$goalChoice,
-					$achieveChoice
+					$achieveChoice,
+					$access
 				);
 				
 
-            if ($result) {
+			if($access=='normal'){
+           
+				if ($result) {
 
 				$this->view('login','login');
 
@@ -140,6 +144,18 @@ class Signup
                
 				echo "<script>alert('Failed to create the account , Try again !.');</script>";
             }
+		   }
+		   elseif($access=='admin'){
+
+			if ($result) {
+
+				echo "<script>alert('Account created successfully !.');</script>";
+    
+            } else {
+               
+				echo "<script>alert('Failed to create the account , Try again !.');</script>";
+            }
+		   }
         }
 
 	}

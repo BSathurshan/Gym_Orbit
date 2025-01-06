@@ -38,7 +38,8 @@ class Login
                 $type = $result['type'];
 
                 // Redirect based on user type
-                $this->view($type,$type);
+                header("Location: http://localhost:8080/mvc/public/{$type}/{$type}");
+               // $this->view($type,$type);
                 exit();
 
             }elseif($result['found']=='yes'&&$result['ban']=='yes') {

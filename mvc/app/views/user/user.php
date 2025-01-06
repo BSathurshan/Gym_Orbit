@@ -38,6 +38,7 @@ else{
 
 </head>
 <body>
+    
     <!-- Header Section -->
     <header class="header">
 
@@ -48,7 +49,8 @@ else{
                 <i class="fa-solid fa-right-from-bracket"></i>Logout
             </a>
         </nav>
-    </header> <!-- End of Header -->
+    </header> 
+    <!-- End of Header -->
 
     <!-- Container -->
     <div class="container">
