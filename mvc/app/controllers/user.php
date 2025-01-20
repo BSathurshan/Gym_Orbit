@@ -257,5 +257,31 @@ class User
         
     }
 
+    public function getSupport()
+    {
+
+        $issue = htmlspecialchars($_POST['issue']);
+        $message = htmlspecialchars($_POST['details']);
+        $username = htmlspecialchars($_POST['username']);
+        $role = 'user';
+        $email= $_POST['email']; 
+
+            $model = $this->model('support','support'); 
+            $result = $model->submit($issue,$message,$username,$role,$email); 
+            
+            if ($result['found']=='yes') {
+
+                $this->view('user', 'user');
+                echo "<script>alert('Supoort ticket has been submitted !');</script>";
+
+            }
+            elseif($result['found']=='no'){
+
+                $this->view('user', 'user');
+                echo "<script>alert('Error while getting support');</script>";
+
+            }
+        }
+
     
 }

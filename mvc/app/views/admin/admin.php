@@ -57,6 +57,14 @@ else{
     </header> 
     <!-- End of Header -->
 
+    <?php if (!empty($errorMessage)): ?>
+    <script>
+        alert('<?php echo addslashes($errorMessage); ?>');
+        $errorMessage = ""; 
+    </script>
+<?php endif; ?>
+                        
+
     <!-- Container -->
     <div class="container">
         <!-- Sidebar Menu -->
@@ -250,7 +258,7 @@ else{
                                 <div id="editMaterialFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">
                                 <h3>Edit Materials</h3>
-                                <form id="editForm" method="POST" action="../Owner/materials/edit.php" enctype="multipart/form-data">
+                                <form id="editForm" method="POST" action="<?= ROOT ?>/admin/editMaterial" enctype="multipart/form-data">
                                     <input type="hidden" name="gym_username" id="gym_Username">
                                     <input type="hidden" name="id" id="_id">
                                     <input type="hidden" name="old_file_name" id="old_FileName">
@@ -320,7 +328,7 @@ else{
                           <div id="editPostFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">
                                     <h3>Edit Post</h3>
-                                    <form id="editForm" method="POST" action="../Owner/posts/edit.php" enctype="multipart/form-data">
+                                    <form id="editForm" method="POST" action="<?= ROOT ?>/admin/editPost" enctype="multipart/form-data">
                                         <input type="hidden" name="gym_username" id="gymUsername">
                                         <input type="hidden" name="id" id="id">
                                         <input type="hidden" name="old_file_name" id="oldFilename">
@@ -363,7 +371,7 @@ else{
                             <div id="editUserFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">
                                     <h3>Edit User</h3>
-                                    <form id="editForm" method="POST" action="./users/edit.php" enctype="multipart/form-data">
+                                    <form id="editForm" method="POST" action="<?= ROOT ?>/admin/editUser" enctype="multipart/form-data">
                                         <input type="hidden" name="old_email" id="old_email">
                                         <input type="hidden" name="old_username" id="old_username">
 
@@ -465,6 +473,7 @@ else{
 
                                 <button type="submit">Submit</button>
                                 <button type="button" onclick="closeEditModal()">Cancel</button>
+
                             </form>
                          </div>
                        </div>   
@@ -493,7 +502,7 @@ else{
                  <div id="addOwnerFormModal" class="modal" style="display: none;">
                          <div class="modal-content">
                             <h3>Add Owner</h3>
-                            <form id="addForm" method="POST" action="../signup/signup.php" enctype="multipart/form-data">
+                            <form id="addForm" method="POST" action="<?= ROOT ?>/admin/addOwner" enctype="multipart/form-data">
                             
                             <input type="hidden" name="type" id="type" value="owner" >
                             <input type="hidden" name="access" id="" value="admin" >
@@ -537,14 +546,14 @@ else{
                                 </select>
 
                                 <label for="owner_contact">Gym Phone :</label>
-                                <input type="number" name="owner_contact" id="owner_contact" required>
+                                <input type="number" name="owner_contact" required>
 
                                 <label for="gym_contact">Your Phone *:</label>
-                                <input type="number" name="gym_contact" id="gym_contact" >
+                                <input type="number" name="gym_contact" >
 
                                 
                                 <label for="start_year">Start year :</label>
-                                <input type="date" name="start_year" id="start_year" required>
+                                <input type="date" name="start_year" required>
 
                                 <label for="age">Experience (Years):</label>
                                 <input type="text" name="experience"  required>
@@ -558,9 +567,9 @@ else{
             <div id="editOwnerFormModal" class="modal" style="display: none;">
                 <div class="modal-content">
                     <h3>Edit Owner</h3>
-                    <form id="editForm" method="POST" action="./gym/edit.php" enctype="multipart/form-data">
-                        <input type="hidden" name="old_email" id="old_email">
-                        <input type="hidden" name="old_username" id="old_username">
+                    <form id="editForm" method="POST" action="<?= ROOT ?>/admin/editOwner" enctype="multipart/form-data">
+                        <input type="hidden" name="old_email" id="old_gym_email">
+                        <input type="hidden" name="old_username" id="old_gym_username">
 
                         <label for="gym_username">Gym_username:</label>
                         <input type="text" name="gym_username" id="gym_username" required><br>
@@ -573,12 +582,8 @@ else{
                         <label for="owner_name">Owner_name:</label>
                         <input type="text" name="owner_name" id="owner_name" required><br>
 
-                        <label for="file">Gym Logo:</label><br>
-                        <input type="file" name="file" id="file"><br>
-                        <span id="fileName"></span><br><br>
-
                         <label for="email">Email :</label>
-                        <input type="text" name="email" id="email" required><br>
+                        <input type="text" name="email" id="gym_email" required><br>
 
                         <label for="age">Age :</label>
                         <input type="text" name="age" id="age" required><br>
@@ -590,10 +595,10 @@ else{
                         <input type="text" name="owner_contact" id="owner_contact" required><br>
 
                         <label for="location">Address:</label>
-                        <input type="text" name="location" id="location" required><br>
+                        <input type="text" name="location" id="gym_location" required><br>
 
                         <label for="gender">Gender:</label>
-                        <select name="gender" id="gender" required>
+                        <select name="gender" id="owner_gender" required>
                             <option value="" disabled selected>Select your gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -642,7 +647,7 @@ else{
                     <div id="addInstructorFormModal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <h3>Add Instructor</h3>
-                            <form id="addForm" method="POST" action="./instructors/add.php" enctype="multipart/form-data">
+                            <form id="addForm" method="POST" action="<?= ROOT ?>/admin/addInstructor" enctype="multipart/form-data">
                                 <input type="hidden" name="type" id="type" value="owner">
                                 <input type="hidden" name="access" id="" value="admin">
 
@@ -707,12 +712,13 @@ else{
                       <div id="editInstructorFormModal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <h3>Edit Instructor</h3>
-                            <form id="addForm" method="POST" action="./instructors/edit.php" enctype="multipart/form-data">
+                            <form id="addForm" method="POST" action="<?= ROOT ?>/admin/editInstructor" enctype="multipart/form-data">
 
                                 <input type="hidden" name="gym_username" id="Gym_Username" >
                                 <input type="hidden" name="old_trainer_username" id="old_trainer_username" >
                                 <input type="hidden" name="old_email" id="old_Email" >
                                 <input type="hidden" name="old_file" id="old_File" >
+                                <input type="hidden" name="access" id="" value="admin">
 
                                 <label for="">Trainer Username:</label>
                                 <input type="text" name="trainer_username" id="trainerUsername" required><br>
@@ -722,12 +728,6 @@ else{
 
                                 <label for="">Email:</label>
                                 <input type="email" name="email" id="_email" required><br>
-
-                                <label for="">Password:</label>
-                                <input type="password" name="_password" required ><br>
-
-                                <label for="">Profile picture:</label><br>
-                                <input type="file" name="file" id="_file"><br><br>
 
                                 <label for="">Age:</label>
                                 <input type="text" name="age" id="_age" required><br>
@@ -758,7 +758,6 @@ else{
                                 <label for="">Experience (Years):</label>
                                 <input type="text" name="experience" id="_experience" required><br>
 
-                                
                                 <label for="">Special:</label>
                                 <input type="text" name="special" id="Special" required><br>
 
@@ -793,7 +792,7 @@ else{
                         <div id="addAdminFormModal" class="modal" style="display: none;">
                             <div class="modal-content">
                                 <h3>Add Admin</h3>
-                                <form id="addForm" method="POST" action="./admins/add.php" enctype="multipart/form-data">
+                                <form id="addForm" method="POST" action="<?= ROOT ?>/admin/addAdmin" enctype="multipart/form-data">
                                     <input type="hidden" name="type" id="type" value="owner">
                                     <input type="hidden" name="access" id="" value="admin">
 

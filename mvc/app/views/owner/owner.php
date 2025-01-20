@@ -213,7 +213,7 @@ else{
                         \"{$rowRequested['id']}\")'> Edit </button>";
                         
                         echo "<button class='deleteBtn' onclick='postDelete(\"{$rowRequested['id']}\", 
-                        \"{$rowRequested['gym_username']}\",\"{$rowRequested['file']}\")'>Delete</button> </td>";
+                        \"{$rowRequested['gym_username']}\",\"{$rowRequested['file']}\", \"owner\")'>Delete</button> </td>";
 
                         
                         echo "</table>";
@@ -234,10 +234,11 @@ else{
                             <div id="editPostFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">
                                     <h3>Edit Post</h3>
-                                    <form id="editForm" method="POST" action="./posts/edit.php" enctype="multipart/form-data">
+                                    <form id="editForm" method="POST" action="<?= ROOT ?>/owner/editPost" enctype="multipart/form-data">
                                         <input type="hidden" name="gym_username" id="gymUsernameE">
                                         <input type="hidden" name="id" id="idE">
                                         <input type="hidden" name="old_file_name" id="oldFilenameE">
+                                        <input type="hidden" name="access" id="access" value="owner">
 
                                         <label for="title">Title:</label>
                                         <input type="text" name="title" id="editNewTitleE" required><br>
@@ -258,7 +259,7 @@ else{
                         <div id="addPostFormModal" class="modal" style="display: none;">
                          <div class="modal-content">
                             <h3>Add Post</h3>
-                            <form id="addForm" method="POST" action="./posts/add.php" enctype="multipart/form-data">
+                            <form id="addForm" method="POST" action="<?= ROOT ?>/owner/addPost" enctype="multipart/form-data">
                                 <input type="hidden" name="gym_username" id="gymUsername" value="<?= htmlspecialchars($username) ?>">
                                 <input type="hidden" name="gym_name" id="gymName" value="<?= htmlspecialchars($gym_name) ?>">
                             
@@ -315,7 +316,7 @@ else{
                             echo "<tr><td>Specialities<td><input type='text' value='{$rowRequested['special']}' readonly></td></td></tr>";
                             echo "</table>";
                             
-                            echo "<button class='deleteBtn' onclick='instructorDelete(\"{$rowRequested['trainer_username']}\",\"{$rowRequested['email']}\",\"{$rowRequested['file']}\")'>Delete</button>";
+                            echo "<button class='deleteBtn' onclick='instructorDelete(\"{$rowRequested['trainer_username']}\",\"{$rowRequested['email']}\",\"{$rowRequested['file']}\",\"owner\")'>Delete</button>";
 
                             echo "<button class='editBtn' onclick='instructorEdit
                             (\"{$rowRequested['trainer_username']}\",
@@ -347,9 +348,9 @@ else{
                     <div id="addInstructorFormModal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <h3>Add Instructor</h3>
-                            <form id="addForm" method="POST" action="./instructor/add.php" enctype="multipart/form-data">
+                            <form id="addForm" method="POST" action="<?= ROOT ?>/owner/addInstructor" enctype="multipart/form-data">
                                 <input type="hidden" name="type" id="type" value="owner">
-                                <input type="hidden" name="access" id="" value="admin">
+                                <input type="hidden" name="access" id="" value="owner">
 
                                 <input type="hidden" name="gym_username" id="gymUsername" value="<?= htmlspecialchars($username) ?>">
 
@@ -413,9 +414,9 @@ else{
                          <div id="editInstructorFormModal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <h3>Edit Instructor</h3>
-                            <form id="addForm" method="POST" action="./instructor/edit.php" enctype="multipart/form-data">
+                            <form id="addForm" method="POST" action="<?= ROOT ?>/owner/editInstructor" enctype="multipart/form-data">
                                 <input type="hidden" name="type" id="type" value="owner">
-                                <input type="hidden" name="access" id="" value="admin">
+                                <input type="hidden" name="access" id="" value="owner">
 
                                 <input type="hidden" name="gym_username" id="gymUsername" value="<?= htmlspecialchars($username) ?>">
                                 <input type="hidden" name="old_trainer_username" id="old_trainer_username" >
@@ -541,7 +542,7 @@ else{
                                     
                                     
                                     echo "<td><button class='editBtn' onclick='materialEdit(\"{$rowRequested['type']}\",\"{$rowRequested['title']}\",\"{$rowRequested['file']}\",\"{$rowRequested['details']}\",\"{$rowRequested['gym_username']}\",\"{$rowRequested['id']}\")'> Edit </button>";
-                                    echo "<button class='deleteBtn' onclick='materialDelete(\"{$rowRequested['id']}\", \"{$rowRequested['gym_username']}\",\"{$rowRequested['file']}\")'>Delete</button> </td>";
+                                    echo "<button class='deleteBtn' onclick='materialDelete(\"{$rowRequested['id']}\", \"{$rowRequested['gym_username']}\",\"{$rowRequested['file']}\",\"owner\")'>Delete</button> </td>";
 
                                     echo "<hr>";
 
@@ -563,10 +564,12 @@ else{
                                 <div id="editMaterialFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">
                                 <h3>Edit Materials</h3>
-                                <form id="editForm" method="POST" action="./materials/edit.php" enctype="multipart/form-data">
+                                <form id="editForm" method="POST" action="<?= ROOT ?>/owner/editMaterial" enctype="multipart/form-data">
                                     <input type="hidden" name="gym_username" id="gym_Username">
                                     <input type="hidden" name="id" id="_id">
                                     <input type="hidden" name="old_file_name" id="old_FileName">
+                                    <input type="hidden" name="access" id="access" value="owner">
+
 
                                     <label for="type">Type:</label>
                                     <select name="type" id="editType" required>
@@ -593,7 +596,7 @@ else{
                                     <div id="addMaterialFormModal" class="modal" style="display: none;">
                                         <div class="modal-content">
                                         <h3>Add Materials</h3>
-                                            <form id="addForm" method="POST" action="./materials/add.php" enctype="multipart/form-data">
+                                            <form id="addForm" method="POST" action="<?= ROOT ?>/owner/addMaterials" enctype="multipart/form-data">
                                             <input type="hidden" name="gym_username" id="gymUsername" value="<?= htmlspecialchars($username) ?>">
                                             <input type="hidden" name="gym_name" id="gymName" value="<?= htmlspecialchars($gym_name) ?>">
 
@@ -631,10 +634,12 @@ else{
                 <div id="SupportFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">
                                 <h3>Support</h3>
-                                <form id="editForm" method="POST" action="../support/support.php" enctype="multipart/form-data">
+                                <form id="editForm" method="POST" action="<?= ROOT ?>/owner/getSupport" enctype="multipart/form-data">
                                     <input type="hidden" name="username" id="USER_NAME">
                                     <input type="hidden" name="access" value="instructor">
 
+                                    <input type="email" id="email" name="email" value='<?php echo $email; ?>' required>
+                                    
 
                                     <label for="title">Issue:</label>
                                     <input type="text" name="issue" id="issue" required><br>
@@ -732,7 +737,7 @@ else{
                             <div id="editFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">
                                     <h3>Edit Machine</h3>
-                                    <form id="editForm" method="POST" action="./machines/edit.php" enctype="multipart/form-data">
+                                    <form id="editForm" method="POST" action="<?= ROOT ?>/owner/editMachine" enctype="multipart/form-data">
                                         <input type="hidden" name="gym_username" id="editGymUsername">
                                         <input type="hidden" name="old_name" id="editOldName">
                                         <input type="hidden" name="old_file" id="editOldfile">
@@ -754,7 +759,7 @@ else{
                         <div id="addFormModal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <h3>Add Machine</h3>
-                            <form id="addForm" method="POST" action="./machines/add.php" enctype="multipart/form-data">
+                            <form id="addForm" method="POST" action="<?= ROOT ?>/owner/addMachine" enctype="multipart/form-data">
                                 <input type="hidden" name="gym_username" id="gymUsername" value="<?= htmlspecialchars($username) ?>">
                             
                                 <label for="name">Machine Name:</label>
@@ -778,7 +783,7 @@ else{
 
                 <?php
                     $owner = new Owner(); 
-                    $members = $owner->get_members($username); 
+                    $members = $owner->get_members($gym_username); 
 
                     if (isset( $members['found'])&& $members['found']=='yes') {
                         while ($user = $members ['result']->fetch_assoc()) {

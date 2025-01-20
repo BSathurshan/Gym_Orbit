@@ -82,13 +82,14 @@ class instructor
                 $issue = htmlspecialchars($_POST['issue']);
                 $message = htmlspecialchars($_POST['details']);
                     
-                $model = $this->model('instructor', 'support');
+                $model = $this->model('support','support'); 
+          
 
                     if (!$model) {
                         die("Failed to load model.");
                     }
 
-                    $result = $model->get_Support($username,$email,$role,$issue,$message);
+                    $result = $model->submit($issue,$message,$username,$role); 
 
                     if ($result) {
 

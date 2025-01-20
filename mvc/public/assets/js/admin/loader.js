@@ -56,7 +56,7 @@ function postDelete(id, gymUsername, file,access) {
   
     if (confirm('Are you sure you want to delete this post?')) {
       
-        window.location.href = "../Owner/posts/delete.php?id=" + encodeURIComponent(id) + "&file=" + encodeURIComponent(file) + "&gym_username=" + encodeURIComponent(gymUsername)+ "&access=" + encodeURIComponent(access);
+         window.location.href =  ROOT + "/admin/deletePost?id=" + encodeURIComponent(id) + "&file=" + encodeURIComponent(file) + "&gym_username=" + encodeURIComponent(gymUsername)+ "&access=" + encodeURIComponent(access);
     }
 }
 
@@ -64,7 +64,7 @@ function userDelete(username, email,file) {
   
     if (confirm('Are you sure you want to delete this user?')) {
       
-        window.location.href = "./users/delete.php?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file);
+        window.location.href =  ROOT + "/admin/deleteUser?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file);
 
     }
 }
@@ -73,7 +73,7 @@ function userBan(username, email ,ban) {
   
     if (confirm('Are you sure you want to ban this user?')) {
       
-        window.location.href = "./users/ban.php?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) +"&state=" + encodeURIComponent(ban);
+        window.location.href =  ROOT + "/admin/banUser?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) +"&state=" + encodeURIComponent(ban);
 
     }
 }
@@ -83,7 +83,7 @@ function userUnBan(username, email, unBan) {
     if (confirm('Are you sure you want to unban this user?')) {
       
       
-        window.location.href = "./users/ban.php?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
+        window.location.href = ROOT + "/admin/unbanUser?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
 
     }
 }
@@ -205,7 +205,7 @@ function gymBan(username, email ,ban) {
   
     if (confirm('Are you sure you want to ban this user?')) {
       
-        window.location.href = "./gym/ban.php?gym_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) +"&state=" + encodeURIComponent(ban);
+        window.location.href = ROOT + "/admin/banGym?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) +"&state=" + encodeURIComponent(ban);
 
     }
 }
@@ -215,7 +215,7 @@ function gymUnBan(username, email, unBan) {
     if (confirm('Are you sure you want to unban this user?')) {
       
       
-        window.location.href = "./gym/ban.php?gym_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
+        window.location.href = ROOT + "/admin/unbanGym?gym_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
 
     }
 }
@@ -224,7 +224,7 @@ function trainerBan(username, email ,ban) {
   
     if (confirm('Are you sure you want to ban this user?')) {
       
-        window.location.href = "./instructors/ban.php?trainer_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) +"&state=" + encodeURIComponent(ban);
+        window.location.href = ROOT + "/admin/banInstructor?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) +"&state=" + encodeURIComponent(ban);
 
     }
 }
@@ -234,7 +234,7 @@ function trainerUnBan(username, email, unBan) {
     if (confirm('Are you sure you want to unban this user?')) {
       
       
-        window.location.href = "./instructors/ban.php?trainer_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
+        window.location.href = ROOT + "/admin/unbanInstructor?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
 
     }
 }
@@ -253,7 +253,7 @@ function ownerDelete(username, email,file) {
   
     if (confirm('Are you sure you want to delete this owner?')) {
       
-        window.location.href = "./gym/delete.php?gym_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file);
+        window.location.href =  ROOT + "/admin/deleteGym?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file);
 
     }
 }
@@ -263,11 +263,11 @@ function addInstructor() {
     document.getElementById('addInstructorFormModal').style.display = 'block';
 }
 
-function instructorDelete(username, email,file) {
+function instructorDelete(username, email,file,access) {
   
     if (confirm('Are you sure you want to delete the instructor?')) {
       
-        window.location.href = "./instructors/delete.php?trainer_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file);
+        window.location.href =  ROOT + "/admin/deleteInstructor?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file) + "&access=" + encodeURIComponent(access);
 
     }
 }
@@ -279,9 +279,9 @@ function addAdmin() {
 
 function adminDelete(username, email,file) {
   
-    if (confirm('Are you sure you want to delete the instructor?')) {
+    if (confirm('Are you sure you want to delete the admin?')) {
       
-        window.location.href = "./admins/delete.php?admin_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file);
+        window.location.href =  ROOT + "/admin/deleteAdmin?username="  + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file);
 
     }
 }
@@ -291,7 +291,7 @@ function adminBan(username, email ,ban) {
   
     if (confirm('Are you sure you want to ban this admin?')) {
       
-        window.location.href = "./admins/ban.php?admin_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) +"&state=" + encodeURIComponent(ban);
+        window.location.href = ROOT + "/admin/banAdmin?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) +"&state=" + encodeURIComponent(ban);
 
     }
 }
@@ -301,7 +301,7 @@ function adminUnBan(username, email, unBan) {
     if (confirm('Are you sure you want to unban this admin?')) {
       
       
-        window.location.href = "./admins/ban.php?admin_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
+        window.location.href = ROOT + "/admin/unbanAdmin?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
 
     }
 }
@@ -337,10 +337,10 @@ function editOwner(gymUsername, gymName, ownerName, email, age, gender, location
     document.getElementById('gym_username').value = gymUsername;
     document.getElementById('gym_name').value = gymName;
     document.getElementById('owner_name').value = ownerName;
-    document.getElementById('email').value = email;
+    document.getElementById('gym_email').value = email;
     document.getElementById('age').value = age;
-    document.getElementById('gender').value = gender;
-    document.getElementById('location').value = location;
+    document.getElementById('owner_gender').value = gender;
+    document.getElementById('gym_location').value = location;
     document.getElementById('gym_contact').value = gymContact;
     document.getElementById('owner_contact').value = ownerContact;
     document.getElementById('start_year').value = startYear;
@@ -349,8 +349,8 @@ function editOwner(gymUsername, gymName, ownerName, email, age, gender, location
     document.getElementById('social').value = social;
 
     // For the hidden inputs
-    document.getElementById('old_email').value = email;
-    document.getElementById('old_username').value = gymUsername;
+    document.getElementById('old_gym_email').value = email;
+    document.getElementById('old_gym_username').value = gymUsername;
 
 
 }

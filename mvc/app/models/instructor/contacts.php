@@ -42,7 +42,6 @@ class Contacts
                     else 
                     {
                         $stmt->close();
-                        $stmt2->close();
                         return false;
                     }
     }

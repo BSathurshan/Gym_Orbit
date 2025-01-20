@@ -7,7 +7,7 @@ if ($result->num_rows > 0) {
         echo "<h5>" . htmlspecialchars($instructor['trainer_username']) . "</h5>";
         echo "<h5>" . htmlspecialchars($instructor['email']) . "</h5>";
         echo "<p>" . htmlspecialchars($instructor['gym_username']) . "</p>";
-        echo "<button class='deleteBtn' onclick='instructorDelete(\"{$instructor['trainer_username']}\",\"{$instructor['email']}\",\"{$instructor['file']}\")'>Delete</button>";
+        echo "<button class='deleteBtn' onclick='instructorDelete(\"{$instructor['trainer_username']}\",\"{$instructor['email']}\",\"{$instructor['file']}\",\"admin\")'>Delete</button>";
         echo "<button class='editBtn' onclick='instructorEdit(\"{$instructor['gym_username']}\",
                                                                 \"{$instructor['trainer_username']}\",
                                                                 \"{$instructor['trainer_name']}\",

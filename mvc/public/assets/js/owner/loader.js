@@ -1,9 +1,10 @@
-// JavaScript for handling Delete
+const ROOT = "http://localhost:8080/mvc/public"; 
+
 function machineDelete(name, file, gymUsername) {
   
-    if (confirm('Are you sure you want to delete this machine?')) {
+    if (confirm('Are you sure you want to delete this machines?')) {
       
-        window.location.href = "./machines/delete.php?name=" + encodeURIComponent(name) + "&file=" + encodeURIComponent(file) + "&gym_username=" + encodeURIComponent(gymUsername);
+       window.location.href = ROOT + "/owner/deleteMachine?name=" + encodeURIComponent(name) + "&file=" + encodeURIComponent(file) + "&gym_username=" + encodeURIComponent(gymUsername);
     }
 }
 
@@ -56,11 +57,11 @@ function postAdd() {
 }
 
 // JavaScript for handling Delete
-function postDelete(id, gymUsername, file) {
+function postDelete(id, gymUsername, file, access) {
   
-    if (confirm('Are you sure you want to delete this machine?')) {
+    if (confirm('Are you sure you want to delete this post?')) {
       
-        window.location.href = "./posts/delete.php?id=" + encodeURIComponent(id) + "&file=" + encodeURIComponent(file) + "&gym_username=" + encodeURIComponent(gymUsername);
+        window.location.href = ROOT + "/owner/deletePost?id=" + encodeURIComponent(id) + "&file=" + encodeURIComponent(file) + "&gym_username=" + encodeURIComponent(gymUsername)+"&access=" + encodeURIComponent(access);
     }
 }
 
@@ -82,11 +83,11 @@ function materialEdit(type,title,oldFilename,details,gymUsername,id) {
 function materialAdd() {
     document.getElementById('addMaterialFormModal').style.display = 'block';
 }
-function materialDelete(id, gymUsername, file) {
+function materialDelete(id, gymUsername, file,access) {
   
-    if (confirm('Are you sure you want to delete this machine?')) {
+    if (confirm('Are you sure you want to delete this material?')) {
       
-        window.location.href = "./materials/delete.php?id=" + encodeURIComponent(id) + "&file=" + encodeURIComponent(file) + "&gym_username=" + encodeURIComponent(gymUsername);
+        window.location.href = ROOT +"/owner/deleteMaterial?id=" + encodeURIComponent(id) + "&file=" + encodeURIComponent(file) + "&gym_username=" + encodeURIComponent(gymUsername)  + "&access=" + encodeURIComponent(access);
     }
 }
 
@@ -95,11 +96,11 @@ function addInstructor() {
     document.getElementById('addInstructorFormModal').style.display = 'block';
 }
 
-function instructorDelete(username, email,file) {
+function instructorDelete(username, email,file,access) {
   
     if (confirm('Are you sure you want to delete the instructor?')) {
       
-        window.location.href = "./instructor/delete.php?trainer_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file);
+        window.location.href =ROOT +"/owner/deleteInstructor?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email)  + "&file=" + encodeURIComponent(file)+ "&access=" + encodeURIComponent(access);
 
     }
 }
@@ -108,7 +109,7 @@ function accept(gym_username,name,username, trainer_name,trainer_username,state)
   
     if (confirm('Are you sure you want to accept the request?')) {
       
-        window.location.href = "./instructor/accept_reject.php?trainer_username=" + encodeURIComponent(trainer_username) + "&trainer_name=" + encodeURIComponent(trainer_name)  + "&name=" + encodeURIComponent(name)  + "&username=" + encodeURIComponent(username)
+        window.location.href = ROOT +"/owner/processRequest?trainer_username=" + encodeURIComponent(trainer_username) + "&trainer_name=" + encodeURIComponent(trainer_name)  + "&name=" + encodeURIComponent(name)  + "&username=" + encodeURIComponent(username)
         + "&state=" + encodeURIComponent(state) + "&gym_username=" + encodeURIComponent(gym_username);
 
     }
@@ -118,7 +119,7 @@ function reject(gym_username,name,username, trainer_name,trainer_username,state)
   
     if (confirm('Are you sure you want to reject the request?')) {
       
-        window.location.href = "./instructor/accept_reject.php?trainer_username=" + encodeURIComponent(trainer_username) + "&trainer_name=" + encodeURIComponent(trainer_name)  + "&name=" + encodeURIComponent(name)  + "&username=" + encodeURIComponent(username)
+        window.location.href = ROOT +"/owner/processRequest?trainer_username=" + encodeURIComponent(trainer_username) + "&trainer_name=" + encodeURIComponent(trainer_name)  + "&name=" + encodeURIComponent(name)  + "&username=" + encodeURIComponent(username)
         + "&state=" + encodeURIComponent(state) + "&gym_username=" + encodeURIComponent(gym_username);
 
     }
@@ -151,7 +152,7 @@ function instructorEdit(trainer_username,trainer_name,email,age,gender,contact,e
   
         if (confirm('Are you sure you want to remove this user?')) {
           
-            window.location.href = "./member/remove.php?username=" + encodeURIComponent(username) + "&gym_username=" + encodeURIComponent(gym_username);
+            window.location.href = ROOT + "/owner/removeMember?username=" + encodeURIComponent(username) + "&gym_username=" + encodeURIComponent(gym_username);
     
         }
     }

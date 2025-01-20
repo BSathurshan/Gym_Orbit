@@ -149,8 +149,9 @@ class Signup
 
 			if ($result) {
 
-				echo "<script>alert('Account created successfully !.');</script>";
-    
+				$this->view('admin','admin');
+				echo "<script>alert('User Account created successfully !.');</script>";
+				
             } else {
                
 				echo "<script>alert('Failed to create the account , Try again !.');</script>";
@@ -164,6 +165,7 @@ class Signup
 	{
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
+			$access= $_POST["access"];
 			// Slide 1: Basic Information
 			$name = $_POST["owner_name"];
 			$email = $_POST["email"];
@@ -213,17 +215,157 @@ class Signup
 				$experience
 			);
 	
+			if($access=='normal'){
+           
+				if ($result) {
+
+				$this->view('login','login');
+
+				echo "<script>alert('Account created successfully , Login now !.');</script>";
+    
+            } else {
+               
+				echo "<script>alert('Failed to create the account , Try again !.');</script>";
+            }
+		   }
+		   elseif($access=='admin'){
+
 			if ($result) {
 
-				$this->view('login', 'login');
-				echo "<script>alert('Account created successfully, Login now!');</script>";
-			} else {
+				$this->view('admin','admin');
+				echo "<script>alert('Gym Account created successfully !.');</script>";
+				
+            } else {
+               
+				echo "<script>alert('Failed to create the account , Try again !.');</script>";
+            }
+		   }
+		}
+	}
 
-				echo "<script>alert('Failed to create the account, Try again!');</script>";
+	public function addInstructor()
+	{
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	
+			$access= $_POST["access"];
+			$gym_username = $_POST['gym_username'];
+			$trainer_username = $_POST['trainer_username'];
+			$trainer_name = $_POST['trainer_name'];
+			$email = $_POST['email'];
+			$age = $_POST['age'];
+
+			$password = $_POST['password'];
+			$gender = $_POST['gender'];
+			$location = $_POST['location'];
+			$social = $_POST['social'];
+
+			$contact = $_POST['contact'];
+			$availability = $_POST['availability'];
+			$qualify = $_POST['qualify'];
+			$experience = $_POST['experience'];
+			$special = $_POST['special'];
+
+			$file = $_FILES['file'];
+
+			$model = $this->model('signup', 'add_Instructor');
+			if (!$model) {
+				die("Failed to load model."); 
 			}
+	
+			$result = $model->submit(
+				$access,
+				$gym_username,
+				$trainer_username,
+				$trainer_name,
+				$email,
+				$age,
+				$password,
+				$gender,
+				$location,
+				$social,
+				$contact,
+				$availability,
+				$qualify,
+				$experience,
+				$special,
+				$file
+
+			);
+	
+			if($access=='owner'){
+           
+				if ($result) {
+
+				$this->view('owner','owner');
+
+				echo "<script>alert('Instructor Account created successfully , Login now !.');</script>";
+    
+            } else {
+               
+				echo "<script>alert('Failed to create the account , Try again !.');</script>";
+            }
+		   }
+		   elseif($access=='admin'){
+
+			if ($result) {
+
+				$this->view('admin','admin');
+				echo "<script>alert('Instructor Account created successfully !.');</script>";
+				
+            } else {
+               
+				echo "<script>alert('Failed to create the account , Try again !.');</script>";
+            }
+		   }
 		}
 	}
 	
+	public function addAdmin()
+	{
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+			$admin_username = $_POST['admin_username'];
+            $admin_name = $_POST['admin_name'];
+            $email = $_POST['email'];
+            $age = $_POST['age'];
+            $password = $_POST['password'];
+            $gender = $_POST['gender'];
+            $location = $_POST['location'];
+            $contact = $_POST['contact'];
+            $type = $_POST['type'] ; 
+            $file = $_FILES['file'];
+
+			$model = $this->model('signup', 'add_Admin');
+			if (!$model) {
+				die("Failed to load model."); 
+			}
+	
+			$result = $model->submit(
+				$admin_username,
+				$admin_name,
+				$email,
+				$age,
+				$password,
+				$gender,
+				$location,
+				$contact,
+				$type,
+				$file
+			);
+	
+			if ($result) {
+
+				$this->view('admin','admin');
+				echo "<script>alert('Admin Account created successfully !.');</script>";
+				
+            } else {
+               
+				$this->view('admin','admin');
+				echo "<script>alert('Failed to create the account , Try again !.');</script>";
+            }
+		   
+		}
+	}
 
 
 }

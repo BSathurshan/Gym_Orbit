@@ -43,5 +43,27 @@ class Members
         }
 
     }
+
+    public function remove($gym_username,$username)
+    {
+        $conn = $this->getConnection();  
+
+        $sql = " DELETE FROM connects_gym WHERE gym_username=? AND username=? ";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $gym_username ,$username); 
+
+
+         if($stmt->execute()){
+             $stmt->close();
+             return ['found'=>'yes'];   
+     
+         } else 
+         {
+            $stmt->close();
+            return ['found'=>'no'];   
+         }
+
+    
+    }
 }
 ?>
