@@ -76,3 +76,10 @@ function leaveGym(gym_username,username) {
 
     }
 }
+
+function createTicket(username) {
+  
+    document.getElementById('USER_NAME').value = username; 
+ 
+    document.getElementById('SupportFormModal').style.display = 'block';
+}

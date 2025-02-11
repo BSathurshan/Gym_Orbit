@@ -10,20 +10,20 @@ class User
 
     public function joinedGyms($username)
     {
-        $model = $this->model('user', 'display');
+        $model = $this->model('user', 'retrieveGyms');
 
         if (!$model) {
             die("Failed to load model.");
         }
         $result = $model->joined($username);
 
-        if ($result) {
+        if ($result['found']=='yes') {
 
-            return ['found' => 'yes' ,'result' => $result];
+            return ['found' => 'yes' ,'result' => $result['result']];
           
-        } else 
+        } elseif ($result['found']=='no')
         {
-            return ['message' => 'No gym connections found for this username.'];
+            return ['message' => 'Please join a gym !.'];
         }
     }
 
@@ -281,7 +281,65 @@ class User
                 echo "<script>alert('Error while getting support');</script>";
 
             }
-        }
+    }
+
+    public function gym()
+    {
+        $this->view('user','Gym');
+    }
+    public function profile()
+    {
+        $this->view('user','profile');
+    }
+    public function dashboard()
+    {
+        $this->view('user','dashboard');
+    }
+    public function instructor()
+    {
+        $this->view('user','instructor');
+    }
+    public function progress()
+    {
+        $this->view('user','progress');
+    }
+    public function meal()
+    {
+        $this->view('user','meal');
+    }
+    public function support()
+    {
+        $this->view('user','support');
+    }
+    public function reminders()
+    {
+        $this->view('user','reminders');
+    }
+    public function notices()
+    {
+        $this->view('user','notices');
+    }
+    public function payment()
+    {
+        $this->view('user','payment');
+    }
+    public function appoinments()
+    {
+        $this->view('user','appoinments');
+    }
+    public function workout()
+    {
+        $this->view('user','workout');
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+
 
     
 }

@@ -24,17 +24,6 @@ function machineAdd() {
     // Show the modal
     document.getElementById('addFormModal').style.display = 'block';
 }
-function closeEditModal() {
-    document.getElementById('editFormModal').style.display = 'none';
-    document.getElementById('addFormModal').style.display = 'none';
-    document.getElementById('editPostFormModal').style.display = 'none';
-    document.getElementById('addPostFormModal').style.display = 'none';
-    document.getElementById('editMaterialFormModal').style.display = 'none';
-    document.getElementById('addMaterialFormModal').style.display = 'none';
-    document.getElementById('addInstructorFormModal').style.display = 'none';
-    document.getElementById('editInstructorFormModal').style.display = 'none';
-    document.getElementById('SupportFormModal').style.display = 'none';
-}
 
 //function postEdit(name, file, gymUsername)
 function postEdit(title,oldFilename,details,gymUsername,id) {
@@ -73,10 +62,7 @@ function materialEdit(type,title,oldFilename,details,gymUsername,id) {
     document.getElementById('gym_Username').value = gymUsername;
     document.getElementById('_id').value = id; 
     document.getElementById('old_FileName').value = oldFilename; 
- 
-   
 
-    // Show the modal
     document.getElementById('editMaterialFormModal').style.display = 'block';
 }
 
@@ -162,4 +148,29 @@ function instructorEdit(trainer_username,trainer_name,email,age,gender,contact,e
         document.getElementById('USER_NAME').value = username; 
      
         document.getElementById('SupportFormModal').style.display = 'block';
+    }
+
+    function closeEditModal() {
+        document.getElementById('editFormModal').style.display = 'none';
+        document.getElementById('addFormModal').style.display = 'none';
+        document.getElementById('editPostFormModal').style.display = 'none';
+        document.getElementById('addPostFormModal').style.display = 'none';
+        document.getElementById('editMaterialFormModal').style.display = 'none';
+        document.getElementById('addMaterialFormModal').style.display = 'none';
+        document.getElementById('addInstructorFormModal').style.display = 'none';
+        document.getElementById('editInstructorFormModal').style.display = 'none';
+        document.getElementById('SupportFormModal').style.display = 'none';
+    
+        document.getElementById('editScheduleFormModal').style.display = 'none';
+    }
+
+    function editSchedule(trainer_username,trainer_name,email,username) {
+     
+        document.getElementById('TRAINER_username').value = trainer_username;
+        document.getElementById('GYM_username').value = username;
+        document.getElementById('Email').value = trainer_name;
+        document.getElementById('TRAINER_name').value = email;
+     
+
+        document.getElementById('editScheduleFormModal').style.display = 'block';
     }

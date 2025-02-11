@@ -42,12 +42,23 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/buttons.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/custom.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/edit.css">
+
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/1c1508aefb.js" crossorigin="anonymous"></script>
     <script src="<?= ROOT ?>/assets/js/owner/1.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/owner/loader.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/schedule.css">
+    <script src="<?= ROOT ?>/assets/js/owner/schedule.js" defer></script>
 </head>
 <body>
+
+<?php if (!empty($errorMessage)): ?>
+    <script>
+        alert('<?php echo addslashes($errorMessage); ?>');
+        $errorMessage = ""; 
+    </script>
+<?php endif; ?>
 
      <!-- Header Section -->
      <header class="header">
@@ -318,6 +329,9 @@ else{
                             
                             echo "<button class='deleteBtn' onclick='instructorDelete(\"{$rowRequested['trainer_username']}\",\"{$rowRequested['email']}\",\"{$rowRequested['file']}\",\"owner\")'>Delete</button>";
 
+                            echo "<button class='deleteBtn' onclick='editSchedule(\"{$rowRequested['trainer_username']}\",\"{$rowRequested['trainer_name']}\",\"{$rowRequested['email']}\",\"$username\")'>Schedule</button>";
+
+
                             echo "<button class='editBtn' onclick='instructorEdit
                             (\"{$rowRequested['trainer_username']}\",
                             \"{$rowRequested['trainer_name']}\",
@@ -476,9 +490,28 @@ else{
                             </form>
                         </div>
                     </div>
-                    
 
-                </div> <!-- End of Job Accepted Container -->
+                        <!-- Hidden Schedule Form (Modal) -->
+                        <div id="editScheduleFormModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <h3>Edit Schedule</h3>
+                            <form id="timeForm" action="<?= ROOT ?>/owner/editSchedule" method="POST">
+                            
+                            <input type="hidden" name="gym_username" id="GYM_username" >
+                            <input type="hidden" name="trainer_username" id="TRAINER_username" >
+                            <input type="hidden" name="email" id="Email">
+                            <input type="hidden" name="trainer_name" id="TRAINER_name" >
+                                
+                                <div id="daysContainer">
+                                    <!-- Days will be dynamically generated here -->
+                                </div>
+                                <button type="submit">Submit</button>
+                                <button type="button" onclick="closeEditModal()">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
             </div> 
 
             <div class="descriptor" value="4">

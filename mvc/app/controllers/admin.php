@@ -229,7 +229,7 @@ class Admin
         public function addInstructor()
         {
             
-            
+            $access=$_POST["access"];
             $model = $this->model('signup', 'check_Email');
             $result = $model->check($_POST["email"]);
             
@@ -244,12 +244,26 @@ class Admin
                     $call = $signup->addInstructor(); 
                    
                 }else{
+
                     $errorMessage = "Username already taken.";
-                    $this->view('admin', 'admin', ['errorMessage' => $errorMessage]);
+
+                    if($access=='admin'){
+                        $this->view('admin', 'admin', ['errorMessage' => $errorMessage]);
+                    }else{
+                        $this->view('owner', 'owner', ['errorMessage' => $errorMessage]);
+
+                    }
+                
                 }
             }else{
                 $errorMessage = "Email already taken.";
-                $this->view('admin', 'admin', ['errorMessage' => $errorMessage]);
+                
+                if($access=='admin'){
+                    $this->view('admin', 'admin', ['errorMessage' => $errorMessage]);
+                }else{
+                    $this->view('owner', 'owner', ['errorMessage' => $errorMessage]);
+
+                }
             }
             
         }

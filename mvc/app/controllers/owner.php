@@ -466,7 +466,36 @@ class Owner
         
                     }
                 }
+                
+            public function editSchedule()
+            {
+                $startTimes = $_POST['startTime'];
+                $endTimes = $_POST['endTime'];
     
+                $gym_username=$_POST['gym_username'];
+                $trainer_username=$_POST['trainer_username'];
+                $email=$_POST['email'];
+                $trainer_name=$_POST['trainer_name'];
     
+            
+                $model = $this->model('owner','instructorSchedule'); 
+                $result = $model->set($startTimes,$endTimes,$gym_username,$trainer_username); 
+                
+                if ($result['found']=='yes') {
+    
+                    $this->view('owner', 'owner');
+                    echo "<script>alert('$trainer_name's schedule has been updated !');</script>";
+    
+                }
+                elseif($result['found']=='no'){
+    
+                    $this->view('owner', 'owner');
+                    echo "<script>alert('Error while updating schedule');</script>";
+    
+                }
+
+            
+            }
+
 }
 ?>
