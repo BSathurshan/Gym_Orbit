@@ -303,10 +303,7 @@ class User
     {
         $this->view('user','progress');
     }
-    public function meal()
-    {
-        $this->view('user','meal');
-    }
+    
     public function support()
     {
         $this->view('user','support');
@@ -327,12 +324,99 @@ class User
     {
         $this->view('user','appoinments');
     }
+    public function mealplan()
+    {
+        $this->view('user','mealplan');
+    }
     public function workout()
     {
         $this->view('user','workout');
     }
+//     public function workout()
+// {
+//     $user = $_SESSION['username']; // Get the logged-in user's username
+
+//     // Handle form submission for adding a workout
+//     if (isset($_POST['submit'])) {
+//         $username = $_POST['username'];
+//         $title = $_POST['title']; // Get the title from the form
+//         $plan = $_POST['plan'];
+//         $day = $_POST['day']; // Get the day from the form
+
+//         $model = $this->model('user', 'workout'); // Load the workout model
+//         $model->addworkout($username, $title, $plan, $day); // Call the addworkout method with the title and day fields
+//     }
+
+//     // Fetch workout plans for the logged-in user
+//     $model = $this->model('user', 'workout');
+//     $result = $model->getworkout($user);
+
+//     if ($result) {
+//         // Pass the result to the view
+//         $this->view('user', 'workout', ['result' => $result]);
+//     }
+
+//     // Handle form submission for updating a workout
+//     if (isset($_POST['update'])) {
+//         $workout_id = $_POST['workout_id'];
+//         $title = $_POST['title']; // Get the title from the form
+//         $plan = $_POST['plan'];
+//         $day = $_POST['day']; // Get the day from the form
+
+//         $model = $this->model('user', 'workout');
+//         $model->updateworkout($workout_id, $title, $plan, $day); // Call the updateworkout method with the title and day fields
+//     }
+
+//     // Handle form submission for deleting a workout
+//     if (isset($_POST['delete'])) {
+//         $workout_id = $_POST['workout_id'];
+
+//         $model = $this->model('user', 'workout');
+//         $model->deleteworkout($workout_id);
+//     }
+// }
     
-    
+// public function mealplan()
+// {
+//     $user = $_SESSION['username']; // Get the logged-in user's username
+
+//     // Handle form submission for adding a meal plan
+//     if (isset($_POST['submit'])) {
+//         $username = $_POST['username'];
+//         $day = $_POST['day'];
+//         $meal = $_POST['meal'];
+
+//         $model = $this->model('user', 'MealPlan'); // Load the MealPlan model
+//         $model->addMealPlan($username, $day, $meal); // Call the addMealPlan method
+//     }
+
+//     // Fetch meal plans for the logged-in user
+//     $model = $this->model('user', 'MealPlan');
+//     $result = $model->getMealPlans($user);
+
+//     if ($result) {
+//         // Pass the result to the view
+//         $this->view('user', 'mealPlan', ['result' => $result]);
+//     }
+
+//     // Handle form submission for updating a meal plan
+//     if (isset($_POST['update'])) {
+//         $meal_id = $_POST['meal_id'];
+//         $day = $_POST['day'];
+//         $meal = $_POST['meal'];
+
+//         $model = $this->model('user', 'MealPlan');
+//         $model->updateMealPlan($meal_id, $day, $meal); // Call the updateMealPlan method
+//     }
+
+//     // Handle form submission for deleting a meal plan
+//     if (isset($_POST['delete'])) {
+//         $meal_id = $_POST['meal_id'];
+
+//         $model = $this->model('user', 'MealPlan');
+//         $model->deleteMealPlan($meal_id); // Call the deleteMealPlan method
+//     }
+// }
     
     
     

@@ -26,15 +26,15 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>User Dashboard</title>
-    <!-- <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/main.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/custom.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/edit.css">
-    
+     <!-- <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/main.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/custom.css"> 
+     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> -->
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/profile.css">
+<!--     
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/userDashboard.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/progressTracker.css">
     <script src="<?= ROOT ?>/assets/js/user/user_1.js" defer></script>
-    <script src="<?= ROOT ?>/assets/js/user/user_2.js" defer></script> -->
+    <script src="<?= ROOT ?>/assets/js/user/user_2.js" defer></script>  -->
 
     <style>
     

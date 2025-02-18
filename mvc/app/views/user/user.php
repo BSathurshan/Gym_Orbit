@@ -46,7 +46,7 @@ else{
         <li><a onclick="loadPage('gym')"><i class="fa-solid fa-dumbbell"></i> Gym</a></li>
         <li><a onclick="loadPage('instructor')"><i class="fa-solid fa-medal"></i> Instructors</a></li>
         <li><a onclick="loadPage('workout')"><i class="fa-solid fa-person-running"></i> Workout Plan</a></li>
-        <li><a onclick="loadPage('meal')"><i class="fa-solid fa-utensils"></i> Meal Plan</a></li>
+        <li><a onclick="loadPage('mealplan')"><i class="fa-solid fa-utensils"></i> Meal Plan</a></li>
         <li><a onclick="loadPage('progress')"><i class="fa-solid fa-chart-column"></i> Progress Tracker</a></li>
         <li><a onclick="loadPage('appoinments')"><i class="fa-solid fa-calendar-check"></i> Appointments</a></li>
         <li><a onclick="loadPage('reminders')"><i class="fa-solid fa-bell"></i> Reminders</a></li>
