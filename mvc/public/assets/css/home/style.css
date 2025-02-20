@@ -1,0 +1,724 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import 'variables.css';
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    align-content: center;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: var(--black);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo-container img {
+    width: auto;
+    height: 70px;
+}
+
+.icon {
+    height: 50px;
+    width: auto;
+}
+
+.nav-pages {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin-right: auto;
+}
+
+.nav-pages a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+}
+
+.nav-pages a:hover {
+    color: var(--primary-red);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.join-btn, 
+.login-btn {
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.login-btn {
+    background-color: var(--primary-red);
+}
+
+.join-btn:hover,
+.login-btn:hover {
+    background-color: #d60404;
+    transform: translateY(-2px);
+}
+
+.h2 {
+    text-align: center;
+    
+}
+
+
+
+/* Hero section */
+.hero {
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-red);
+}
+
+.hero-image {
+    max-width: 100%;
+    margin-top: 2rem;
+}
+
+/* Social media */
+.social-media {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-media img {
+    width: 30px;
+    transition: transform 0.3s;
+}
+
+.social-media img:hover {
+    transform: scale(1.2);
+}
+
+/* News/Features Grid */
+.news-section {
+    padding: 4rem 2rem;
+    background-color: var(--black);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-card {
+    background-color: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 1.5rem;
+    color: var(--white);
+}
+
+.news-content h3 {
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+}
+
+.read-more-btn {
+    display: inline-block;
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+/* Stats Section */
+.stats-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.stats-content {
+    padding: 4rem;
+}
+
+.stats-image {
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+}
+
+.stat-number {
+    font-size: 3rem;
+    color: var(--primary-red);
+    font-weight: bold;
+}
+
+/* Next Match Section */
+.next-match {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.match-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.team-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #222;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vs {
+    font-size: 2rem;
+    color: var(--primary-red);
+}
+
+/* Previous Matches */
+.previous-matches {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.match-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+.match-result span {
+    color: var(--primary-red);
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: var(--black);
+    padding: 4rem 2rem;
+    color: var(--white);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background-color: #111;
+    padding: 2rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--primary-red);
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    opacity: 0.3;
+}
+
+/* Join Section */
+.join-section {
+    background: linear-gradient(to right, var(--primary-red) 50%, var(--black) 50%);
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.join-content {
+    color: var(--white);
+    padding: 2rem;
+}
+
+.join-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-media {
+    position: fixed;  /* Fixes the position relative to the viewport */
+    right: 0;          /* Align to the left edge */
+    top: 50%;         /* Center vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;        /* Space between icons */
+    padding: 10px;    /* Optional padding */
+  }
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    background-color: var(rgb(231, 216, 216));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 1rem 2rem 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column h3 {
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--primary-red);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .join-section {
+        grid-template-columns: 1fr;
+        background: var(--primary-red);
+    }
+
+    .nav-pages {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeUp 0.6s ease forwards;
+} 
+
+
+/* Style for the features section */
+.features,
+.services {
+    padding: 0 10% 30px 10%;
+    text-align: center;
+    background-color: black; /* Dark background */
+    color: white; /* Light text */
+}
+
+.features h1,
+.services h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: red; /* Highlighted heading */
+}
+
+.features p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ccc; /* Muted white text for readability */
+}
+
+.feature-item,
+.services-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-bottom: 2px solid #444; /* Softer contrast for dark theme */
+    padding-bottom: 20px;
+}
+
+.feature-image
+ {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    border: 2px solid black; /* Border to pop against dark background */
+}
+
+.feature-text {
+    max-width: 600px;
+    margin: auto;
+}
+
+.feature-text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: red; /* Red text for emphasis */
+}
+
+.feature-text p {
+    font-size: 1.1em;
+    color: #ddd; /* Slightly brighter text for detail */
+}
+
+
+
+/* Style for the Services page (Dark Theme) */
+.services{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .services h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: red; 
+} */
+
+
+.services p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ccc; /* Muted white for readability */
+}
+
+.service {
+    margin-bottom: 40px;
+    text-align: left;
+    /* margin-right: 8%; */
+}
+.services-item{
+    width: 90%;
+}
+
+.service-image{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 2px solid white; /* Adds contrast to images */
+}
+
+.service h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: red; /* Emphasized text for subheadings */
+}
+
+.service p {
+    font-size: 1.2em;
+    color: #ddd; /* Slightly brighter for detail text */
+}
+
+
+/* Style for Support & Contact Section */
+.support {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px;
+    padding-top: 0;
+    background-color: black; /* Dark theme background */
+    color: white; /* White text for readability */
+    text-align: center; /* Center alignment for headings and text */
+}
+
+.support h1 {
+    font-size: 4em;
+    color: red; /* Highlight main heading */
+    margin-bottom: 20px;
+}
+
+.support p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ccc; /* Muted white for descriptive text */
+}
+
+/* Style for FAQs */
+.faqs {
+    text-align: left; /* Align FAQs to the left for better readability */
+    margin-top: 20px;
+}
+
+.faqs h2 {
+    font-size: 2em;
+    color: red; /* Matches section heading style */
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #444; /* Divider between FAQ items */
+    padding-bottom: 15px;
+}
+
+.faq-item h3 {
+    font-size: 1.5em;
+    color: white; /* Bright white for FAQ question */
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    font-size: 1.1em;
+    color: #ccc; /* Muted white for FAQ answer */
+    line-height: 1.6; /* Enhance readability */
+}
+
+/* Style for Contact Form (If Used in the Future) */
+.contact-form {
+    width: 60%;
+    text-align: left;
+    margin-top: 30px;
+    background-color: #111; /* Slightly lighter dark background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05); /* Subtle shadow */
+}
+
+.contact-form p {
+    color: #ccc; /* Muted white for labels */
+    font-size: 1.1em;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    background-color: #222; /* Dark input background */
+    color: white; /* White text for contrast */
+}
+
+.contact-form button {
+    background-color: red; /* Highlight action button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+.contact-form button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+.contact-mail{
+    color: white;
+    font-size: 1.1em;
+    text-align: right;
+}
+.contact-mail p{
+    margin-bottom: 10px;
+}
+
+/* Style for About Us Section */
+.about-us {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 10% 0 10%;
+    padding-top: 0px;
+    background-color: black; /* Dark background */
+    color: white; /* White text for readability */
+    text-align: center; /* Center-align main text */
+}
+
+.about-us h1 {
+    font-size: 4em;
+    color: red; /* Highlighted main heading */
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #ccc; /* Muted white for body text */
+    margin-bottom: 30px;
+}
+
+/* Team Section */
+.team {
+    display: flex;
+    flex-wrap: wrap; /* Adjusts layout for smaller screens */
+    justify-content: center;
+    gap: 20px; /* Spacing between team members */
+    margin-top: 30px;
+}
+
+.team-member {
+    background-color: #111; /* Slightly lighter background for cards */
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05); /* Subtle card shadow */
+    width: 200px; /* Fixed width for team member cards */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.team-member:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Enhanced shadow on hover */
+}
+
+.team-member img {
+    border-radius: 50%; /* Circular team member images */
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    object-fit: cover; /* Ensures image is cropped nicely */
+    border: 2px solid red; /* Red border for images */
+}
+
+.team-member h3 {
+    font-size: 1.2em;
+    color: red; /* Red for names */
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 1em;
+    color: #ccc; /* Muted white for roles */
+}
+
+/* History Section */
+.history {
+    margin-top: 40px;
+    text-align: left; /* Left-align history content */
+}
+
+.history h2 {
+    font-size: 2em;
+    color: red; /* Highlighted heading */
+    margin-bottom: 15px;
+}
+
+.history p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #ccc; /* Muted white for history text */
+}

@@ -1,0 +1,491 @@
+/* 
+
+* {
+    
+}
+ 
+
+*/
+
+body {
+
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff; 
+    font-size: 16px;
+    line-height: 1.6;
+    background-size: cover; 
+    background-position: center; /* Center the image */   
+}
+
+.header {
+    display: flex; /* Add flexbox for the header */
+    justify-content: flex-end; /* Align children to the right */
+    align-items: center; /* Center vertically */
+    position: relative;
+    padding: 10px; /* Simplify padding */
+    width: 100%;
+    z-index: 100;
+    color: #000000;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.5);  
+    transition: all 0.3s ease-in-out;
+}
+
+.header:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex; /* Ensure the navbar uses flexbox */
+    justify-content: flex-end; /* Align navbar items to the right */
+    width: 100%; /* Take up full width */
+}
+
+.navbar a {
+    color: #e6c2c2;
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 35px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s, transform 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #d32f2f;
+    transform: translateY(-3px);
+}
+
+
+/* Container Layout */
+.container {
+    
+    padding-left: 90px;
+  
+}
+
+/* Sidebar Styling */
+.sidemenu {
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+
+    position:absolute;
+    display:block;
+    height:fit-content;
+    border-radius:10px;
+    text-align: center;
+    left: 12px;;
+    top: 12;
+    background:rgba(115,115,115,0.27);
+    backdrop-filter: blur(5px);
+
+    height:165%;
+    min-height: 165%;
+    top: 0; 
+    left: 0;
+    
+}
+
+.sidemenu:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Hover effect for the sidebar */
+}
+
+.sidemenu .menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidemenu .menu ul li {
+    margin: 18px 0;
+    padding: 16px 25px;
+    font-size: 20px;
+    color: #000000;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidemenu .menu ul li i {
+    margin-right: 18px;
+    font-size: 22px;
+    color: #000000; /* Dark red icons */
+}
+
+.sidemenu .menu ul li:hover {
+    background: #ffffff; /* Light background on hover */
+  
+    transform: translateX(12px); /* Slide effect */
+}
+
+.activetab {
+    background-color: #ff5757;
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+}
+
+/* Main Content Area */
+.content {
+    color: rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+    background-color: #ff5757    ;
+}
+
+.content:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.content h1 {
+    font-size: 40px;
+    color: #ffffff; /* Dark red color */
+    text-align: center;
+    
+    font-weight: 700;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Form Styles */
+form {
+    padding: 20px 0;
+    text-align: justify;
+    justify-content:center;   
+    align-items: center;
+    align-content: center;
+
+
+}
+
+form table {
+    
+    justify-content:center;
+    align-items: center;
+    align-content: center;   
+}
+
+form table td {
+    justify-content:center;   
+    align-items: center;
+    align-content: center;
+    padding: 15px;
+    font-size: 18px;
+    color: #000000; /* Light text for forms */
+}
+
+form input {
+    
+    width:auto;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    border: none; 
+    outline: none; 
+    background: rgba(10, 20, 40, 0.1); 
+    backdrop-filter: blur(5px);
+}
+
+form input:focus {
+    border-color: #d32f2f; /* Lighter red border on focus */
+    outline: none;
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.4);
+}
+
+/* Button Styling */
+button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #000000, #001d60);
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #000000; /* Lighter red on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Edit and Save Buttons Container */
+.editsave {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+/* Descriptor Panel */
+.descriptor {
+    display: none;
+    padding: 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    color: #000000;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    background-color:rgb(215, 212, 212);
+}
+
+.active {
+    display: block;
+}
+
+/* Headings Styling */
+h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #000000;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
+
+/* Link Styling */
+a {
+    text-decoration: none;
+    color: #b71c1c;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #d32f2f; /* Lighter red color on hover */
+}
+
+/* Input Focus and Button Focus */
+button:focus, input:focus {
+    outline: none;
+    box-shadow: 0 0 12px rgba(0, 9, 176, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr; /* Single-column layout for smaller screens */
+    }
+
+    .header {
+        padding: 20px 5%;
+    }
+
+    .header .logo {
+        width: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 18px 4%;
+    }
+
+    .header .logo {
+        width: 120px;
+    }
+
+    .content h1 {
+        font-size: 32px;
+    }
+
+    .sidemenu {
+        padding: 25px;
+    }
+
+    .sidemenu .menu ul li {
+        font-size: 18px;
+    }
+}
+
+.sidemenu img{
+    margin:5px;
+    width:150px;
+    clip-path: circle();
+}
+
+.sidemenu img:hover{
+    transform: scale(1.3) translateY(-5px);
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+
+
+.menu ul li i{
+    padding-right:25px;
+}
+
+/*
+#profileForm input{
+
+    border:none;
+    text-decoration: none;
+    justify-content: left;
+}
+*/
+ 
+.table-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures rows wrap to the next line if there's not enough space */
+    gap: 50px; /* Adds space between rows */
+}
+
+.row {
+    display:inline-flex;
+    flex-direction: row; /* Aligns cells horizontally */
+    align-items: center; /* Centers items vertically */
+    justify-content: space-between; /* Adds space between cells */
+    border: 1px solid #ccc; /* Optional: Adds a border around each row */
+    border-radius: 5px;
+    padding: 8px;
+    width: calc(50% - 16px); /* Makes each row take 50% of the container width */
+    box-sizing: border-box; /* Includes padding in width calculation */
+    background-color: white;
+}
+
+.cell {
+    flex: 1; /* Makes each cell take equal space */
+    text-align: center;
+}
+
+.cell img {
+    max-width: 100%;
+    height: auto;
+}
+
+.row2 {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment of image and text */
+    align-items: flex-start; /* Aligns items at the top */
+    border: 1px solid #ccc; /* Optional border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 16px;
+    width: 100%; /* Full width row */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    background-color: white;
+    gap: 16px; /* Space between image and text */
+}
+
+.cell2 {
+    display: flex;
+    flex-direction: column; /* Stacks text vertically */
+    justify-content: flex-start; /* Aligns text at the top */
+    gap: 8px; /* Space between text lines */
+}
+
+.cell2 h5, .cell2 button {
+    margin: 0; /* Removes default margins */
+    text-align: left; /* Aligns text to the left */
+    flex-direction: column;
+}
+
+.cell2 img {
+    max-width: 200px; /* Set a max width for the image */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the image doesn't distort */
+    margin-right: 16px; /* Adds space between the image and the text */
+}
+
+.materials{
+
+    text-align: center;
+}
+
+.search-box {
+    text-align: right;
+    position: relative;
+}
+
+.search-box input {
+    width: 48%; /* Make the input take full width */
+    padding: 15px 20px; /* Add padding to make the box bigger */
+    font-size: 18px; /* Increase font size for better visibility */
+    height: 50px; /* Set a larger height */
+    border-radius: 10px; /* Rounded corners for better aesthetics */
+    border: 1px solid #ccc; /* Border color */
+    background-color: rgba(0, 0, 0, 0.1); /* Light background for the input */
+    color: #333; /* Text color */
+    outline: none; /* Remove default outline */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.search-box input::placeholder {
+    font-size: 16px; /* Optional: Make placeholder font size bigger */
+    color: rgba(0, 0, 0, 0.6); /* Placeholder text color */
+}
+
+
+.gym-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensure the gyms wrap to the next line if there is not enough space */
+    justify-content: space-between; /* Space out the gyms */
+    gap: 20px; /* Add space between the cards */
+}
+
+
+.gym-container img{
+
+    width: 150px;
+    height: 170px;
+}
+
+.images{
+
+    display: flex; /* Make it a flex container */
+    justify-content: center; /* Horizontally centers the image */
+    align-items: center; /* Vertically centers the image */
+
+}
+
+.gym-container h4{
+    text-align: center;
+}
+
+.gym-card {
+    width: calc(50% - 10px); /* Each gym card will take up 50% of the container minus gap space */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    border: 1px solid #ccc; /* Border around each gym card */
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for each card */
+}
+
+.post-card {
+
+   
+    text-align: center;
+    width: calc(50% - 10px); /* Each gym card will take up 50% of the container minus gap space */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    border: 1px solid #ccc; /* Border around each gym card */
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for each card */
+}
+
+.post-card h5{
+    text-align: center;
+}
+
+.post-card img{
+    width: 250px;
+    height: 260px;
+}
+
+@media (max-width: 768px) {
+    .gym-card {
+        width: 100%; /* On smaller screens, make the cards take full width */
+    }
+}
