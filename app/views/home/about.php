@@ -16,7 +16,7 @@
             
             <div class="team-member">
                 <img src="<?= ROOT ?>/assets/images/home/member.png" alt="Team Member 1">
-                <h3>Saneesha</h3>
+                <h3>Saneesha Tharindi</h3>
                 <p>Designer and developer</p>
             </div>
             <div class="team-member">
