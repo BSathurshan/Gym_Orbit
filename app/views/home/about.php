@@ -26,7 +26,7 @@
             </div>
             <div class="team-member">
                 <img src="<?= ROOT ?>/assets/images/home/member.png" alt="Team Member 3">
-                <h3>Teshini</h3>
+                <h3>Teshini 123</h3>
                 <p>Designer and developer</p>
             </div>
             <div class="team-member">
