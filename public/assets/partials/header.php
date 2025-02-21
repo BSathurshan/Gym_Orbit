@@ -6,7 +6,7 @@
     <title><?php echo $pageTitle ?? 'GYMORBIT'; ?></title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?= ROOT ?>/assets/images/home/favicon.png">
+    <link rel="icon" type="image/ico" href="<?= ROOT ?>/favicon.ico">
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/home/style.css">
