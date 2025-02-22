@@ -97,9 +97,10 @@ else{
 
                     <li class="tabs" value="4"><a><i class="bi bi-calendar2-check"></i>Schedule</a></li>
                     <li class="tabs" value="5"><a><i class="bi bi-book"></i>Report</a></li>
-                    <li class="tabs" value="6"><a><i class="bi bi-alarm"></i>Reminder</a></li>
+                    <li class="tabs" value="6"><a><i class="bi bi-alarm"></i>Reminders</a></li>
                     
                     <li class="tabs" value="8"><a><i class="bi bi-chat-heart"></i>Support</a></li>
+                    
                    
                     
                     
