@@ -1,0 +1,217 @@
+
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    background-color: #1e1e1e; /* Darker background */
+    color: #e0e0e0; /* Soft gray text for better readability */
+    display: flex;
+    /* Enables scrolling but hides scrollbar */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+/* Hide scrollbar visually but allow scrolling */
+body::-webkit-scrollbar {
+    width: 0px; 
+}
+
+/* Sidebar */
+.sidebar {
+    width: 239px;
+    height: 100vh;
+    background: rgba(26, 26, 26, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+    transition: width 0.3s ease;
+    
+    /* Enables scrolling but hides scrollbar */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Hide scrollbar visually but allow scrolling */
+.sidebar::-webkit-scrollbar {
+    width: 0px; /* Effectively hides the scrollbar */
+}
+
+
+
+.sidebar {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Sidebar Hover Effect - Expand */
+.sidebar:hover {
+    width: 250px;
+}
+
+/* Logo */
+.sidebar .logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto;
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+}
+
+/* Navigation Links */
+.nav-links {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.nav-links li {
+    list-style: none;
+
+    padding: 12px 14px;
+    margin: 6px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.nav-links ul {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Makes sure it takes up available space */
+    gap: 10px; /* Adjust the spacing */
+ }
+
+ .nav-links .grps:last-child {
+    margin-top: auto; /* Pushes the logout button to the bottom */
+ }
+
+.nav-links li a {
+    text-decoration: none;
+    color: #d1d1d1; /* Lighter text for better contrast */
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links li a i {
+    font-size: 18px;
+    margin-right: 12px;
+    color: #ff6b6b; /* Softer red accent */
+    transition: 0.3s;
+}
+
+/* Hover Effects */
+.nav-links li:hover {
+    background: linear-gradient(90deg, #ff6b6b, #ff4d4d); /* Softer gradient */
+    transform: translateX(4px);
+}
+
+.nav-links li:hover a {
+    color: #fff; /* White text on hover for readability */
+}
+
+.nav-links li:hover a i {
+    color: #fff; /* White icon on hover */
+}
+
+
+/* Hide Scroll Down Button */
+.scroll-down-btn {
+    display: none; /* Hide the scroll-down button */
+}
+
+
+/* Logout Button */
+.logout-btn {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    padding: 10px 14px; /* Reduced height */
+    border-radius: 10px;
+    background: linear-gradient(90deg, #ff4d4d, #e60000); /* Softer red gradient */
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(90deg, #ff6666, #ff3333); /* Softer hover gradient */
+    transform: scale(1.05);
+}
+
+/* Main Content */
+#content {
+    position: relative;
+    margin-left: 180px;
+    padding: 30px;
+    width: calc(100vw - 180px);
+    overflow-x: hidden;
+    transition: margin-left 0.3s ease;
+}
+
+/* Modernizing Sidebar */
+.sidebar {
+    background: rgba(30, 30, 30, 0.85); /* Darker background */
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3); /* Softer shadow */
+}
+
+.sidebar .logo {
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        overflow-y: auto; /* Allow scrolling for small screens */
+        padding: 10px;
+    }
+
+    .sidebar:hover {
+        width: 220px;
+    }
+
+    .sidebar .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nav-links li a {
+        font-size: 13px;
+    }
+
+    #content {
+        margin-left: 70px;
+        width: calc(100vw - 70px);
+    }
+}
+
+/*////////////////////////////////////////////////*/
+.sidebar img{
+    margin:5px;
+    width:150px;
+    clip-path: circle();
+}
+
+.sidebar img:hover{
+    transform: scale(1.3) translateY(-5px);
+    cursor: pointer;
+    transition: 0.7s;
+}
