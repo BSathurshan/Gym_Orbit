@@ -1,4 +1,14 @@
+<div class="in-content">
+
+<div class="header">
+<div>
+
+
 <h2>Posts</h2>
+
+</div>
+</div>
+
                 <hr>
                 <div class="jobreq">
 
@@ -94,4 +104,6 @@
                        </div>    
 
 
-                </div> 
+</div> 
+
+                    </div>

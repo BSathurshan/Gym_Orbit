@@ -1,4 +1,16 @@
-<h2>Materials</h2>
+<div class="in-content">
+
+    <div class="header">
+        <div>
+
+
+        <h2>Materials</h2>
+
+</div>
+
+</div>
+
+<div class="in-in-content">
                 <?php          
 
                     $owner = new Owner(); 
@@ -99,5 +111,8 @@
                                             <button type="button" onclick="closeEditModal()">Cancel</button>
                                             </form>
                                         </div>
-                                    </div>    
+                                    </div>   
+                                    
+                                    </div>
+                        </div>
 

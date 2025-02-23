@@ -1,8 +1,17 @@
-<h2>Instructors</h2>
-                <hr>
-                <div class="fav">
+<div class="in-content">
 
-                <button type="button" onclick="addInstructor()">Add</button>
+        <div class="header">
+        <div>
+
+        <h2>Instructors</h2>
+
+        </div>
+        </div>
+
+        <div class="in-in-content">
+                <!-- <div class="fav"> -->
+
+                <!-- <button type="button" onclick="addInstructor()">Add</button>  -->
 
 
                     <?php
@@ -215,3 +224,5 @@
                     </div>
 
                 </div>
+
+                        </div>
