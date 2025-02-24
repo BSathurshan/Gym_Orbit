@@ -82,6 +82,7 @@ else{
                         <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
                         
                         <li class="tabs" value="6"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
+                        <li class="tabs" value="8"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
                         <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Support</a></li>
 
 
@@ -162,6 +163,12 @@ else{
     <div class="descriptor" value="7">
     <?php
                 require 'support.php';
+    ?>
+    </div>
+
+    <div class="descriptor" value="8">
+    <?php
+                require 'materilas.php';
     ?>
     </div>
 
