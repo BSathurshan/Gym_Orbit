@@ -1,6 +1,13 @@
-<h2>Contacts</h2>
-                <hr>
-                <div class="fav">
+<div class="in-content">
+
+
+      <div class="header">
+        <div>
+        <h2>Contacts</h2>
+        </div>
+        </div>
+
+        <div class="in-in-content">
 
                 <?php 
                                  $instructor = new Instructor(); 
@@ -29,4 +36,6 @@
                 ?>
 
 
-                </div>
+</div>
+</div>
+

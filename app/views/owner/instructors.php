@@ -19,25 +19,35 @@
 
                     $owner = new Owner(); 
                     $instructor = $owner->get_instructors($username); 
+
+                    echo "<div class='instructor-table'>"; 
     
                     if (isset($instructor['found'])&&$instructor['found']=='yes') {
                         while ($rowRequested = $instructor['result']->fetch_assoc()) {
     
-                            echo "<table>";
-                            echo "<tr><td><img src='". ROOT . "/assets/images/instructor/profile/images/{$rowRequested['file']}' alt='Trainer Image' style='width:100px; height:auto;'></tr></td>";
-                            echo "<tr><td>Name<td><input type='text' value='{$rowRequested['trainer_name']}' readonly></td></td></tr>";
-                            echo "<tr><td>User Name<td><input type='text' value='{$rowRequested['trainer_username']}' readonly></td></td></tr>";
-                            echo "<tr><td>Email<td><input type='text' value='{$rowRequested['email']}' readonly></td></td></tr>";
-                            echo "<tr><td>Age<td><input type='text' value='{$rowRequested['age']}' readonly></td></td></tr>";
-                            echo "<tr><td>Gender<td><input type='text' value='{$rowRequested['gender']}' readonly></td></td></tr>";
-                            echo "<tr><td>Contact<td><input type='text' value='{$rowRequested['contact']}' readonly></td></td></tr>";
-                            echo "<tr><td>Experience<td><input type='text' value='{$rowRequested['experience']}' readonly></td></td></tr>";
-                            echo "<tr><td>Social<td><input type='text' value='{$rowRequested['social']}' readonly></td></td></tr>";
-                            echo "<tr><td>Address<td><input type='text' value='{$rowRequested['location']}' readonly></td></td></tr>";
-                            echo "<tr><td>Availibility<td><input type='text' value='{$rowRequested['availiblity']}' readonly></td></td></tr>";
-                            echo "<tr><td>Qualifications<td><input type='text' value='{$rowRequested['qualify']}' readonly></td></td></tr>";
-                            echo "<tr><td>Specialities<td><input type='text' value='{$rowRequested['special']}' readonly></td></td></tr>";
-                            echo "</table>";
+                    echo "<div class='row2'>"; 
+
+                    echo "<div class='cell2'>
+                    <div class='image'>
+                        <img src='" . ROOT . "/assets/images/instructor/profile/images/" . 
+                        htmlspecialchars($rowRequested['file'], ENT_QUOTES, 'UTF-8') . 
+                        "'>
+                    </div>
+                    </div>";   
+
+                    echo "<div class='cell2'><h5>Name: " . htmlspecialchars($rowRequested['trainer_name'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Username: " . htmlspecialchars($rowRequested['trainer_username'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Email: " . htmlspecialchars($rowRequested['email'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Age: " . htmlspecialchars($rowRequested['age'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Gender: " . htmlspecialchars($rowRequested['gender'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Contact: " . htmlspecialchars($rowRequested['contact'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Experience: " . htmlspecialchars($rowRequested['experience'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Social: " . htmlspecialchars($rowRequested['social'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Address: " . htmlspecialchars($rowRequested['location'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Availability: " . htmlspecialchars($rowRequested['availiblity'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Qualifications: " . htmlspecialchars($rowRequested['qualify'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    echo "<div class='cell2'><h5>Specialities: " . htmlspecialchars($rowRequested['special'], ENT_QUOTES, 'UTF-8') . "</h5></div>";
+                    
                             
                             echo "<button class='deleteBtn' onclick='instructorDelete(\"{$rowRequested['trainer_username']}\",\"{$rowRequested['email']}\",\"{$rowRequested['file']}\",\"owner\")'>Delete</button>";
 
@@ -60,13 +70,16 @@
                             \"{$rowRequested['file']}\")'>Edit</button>";
 
 
-                            echo "<br>";    
+                            echo "</div>";    
                         
                         }
                         }
                         elseif(isset($instructor['found'])&&$instructor['found']=='no')  {
                             echo "<p>nothing found , add someone !</p>";
                             }
+
+                            echo "</div>"; 
+
                     ?>
 
 
@@ -223,6 +236,5 @@
                         </div>
                     </div>
 
-                </div>
-
-                        </div>
+</div>
+</div>

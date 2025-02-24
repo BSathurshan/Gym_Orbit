@@ -4,10 +4,7 @@
         <div>
 
         <h2>My Income</h2>
-        <p>
-            <?php
-            echo date("l, F j, Y"); // Outputs: Wednesday, December 18, 2024
-            ?></p>
+
 
         </div>
         </div>

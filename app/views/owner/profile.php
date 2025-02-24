@@ -71,6 +71,8 @@
                 <div class="title">Password</div>
                 <div class="data"> <?php echo $password; ?> </div>
             </div>
+
+            <!-- 
             <div class="editsave">
                 <button class="save" type="submit">
                     <i class="fa-solid fa-floppy-disk"></i>Save
@@ -82,6 +84,8 @@
                 <i class="fa-solid fa-pen-to-square"></i>Edit
             </button>
         </div>
+            -->
+
     </div>
 </div>
 

@@ -6,14 +6,19 @@
 
 <h2>Posts</h2>
 
+
 </div>
 </div>
 
-                <hr>
-                <div class="jobreq">
+
+<div class="in-in-content">
 
 
                 <?php          
+
+                    echo "<button class='addBtn' onclick='postAdd()'> Add </button>";
+
+                    echo "<div class='posts-container'>";
 
                     $owner = new Owner(); 
                     $post = $owner->get_posts($username); 
@@ -22,11 +27,15 @@
                     
                     while ($rowRequested = $post['result']->fetch_assoc()) {
 
-                        echo "<table>";
-                        echo "<tr><td><input type='text' value='{$rowRequested["title"]}' readonly></td></tr>";
-                        echo "<img src='". ROOT . "/assets/images/posts/images/" . htmlspecialchars($rowRequested ["file"]) . "' width='200' title='" . htmlspecialchars($rowRequested ['file']) . "'>";
+                        echo "<div class='posts'>";
 
-                        echo "<tr><td><p>{$rowRequested['details']}</p></td></tr>";
+                        echo "<h5> <u>" . htmlspecialchars($rowRequested['title']) . "</u> </h5>";
+
+                        echo "<div class='postimage'>";
+                        echo "<img src='". ROOT . "/assets/images/posts/images/" . htmlspecialchars($rowRequested["file"]). "'>";
+                        echo "</div>";
+
+                        echo "<p>{$rowRequested['details']}</p>";
                         
 
                         // Add hidden input for the machine ID
@@ -40,10 +49,7 @@
                         echo "<button class='deleteBtn' onclick='postDelete(\"{$rowRequested['id']}\", 
                         \"{$rowRequested['gym_username']}\",\"{$rowRequested['file']}\", \"owner\")'>Delete</button> </td>";
 
-                        
-                        echo "</table>";
-                        echo "<br>";    
-                        
+                        echo "</div>";
 
                     }
                     }
@@ -51,7 +57,9 @@
                         echo "<p>No Posts found , add one!</p>";
                         }
                 
-                    echo "<button class='addBtn' onclick='postAdd()'> Add </button>";
+
+                    echo "</div>";
+
 
                     ?>   
 
@@ -104,6 +112,5 @@
                        </div>    
 
 
-</div> 
-
-                    </div>
+                       </div>
+                       </div>     
