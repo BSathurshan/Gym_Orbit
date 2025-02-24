@@ -1,5 +1,15 @@
-<h2>Support</h2>
-    <hr>
+<div class="in-content">
+
+        <div class="header">
+        <div>
+
+        <h2>Support</h2>
+
+        </div>
+        </div>
+        
+        <div class="in-in-content">
+
 
     <button class='editBtn' onclick="createTicket('<?php echo $trainer_username; ?>', '<?php echo $email; ?>')">Create Ticket</button>
     <!-- Hidden Edit Form (Modal) -->
@@ -21,5 +31,8 @@
                         <input type="submit" value="Send">
                         <button type="button" onclick="closeEditModal()">Cancel</button>
                     </form>
+                    </div>
+                    </div>
+
                     </div>
                     </div>

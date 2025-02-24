@@ -32,8 +32,6 @@ if (isset($requests['found']) && $requests['found'] == 'yes') {
                 <button class='deleteBtn' onclick='reject(\"{$username}\", \"{$rowRequested['name']}\", \"{$rowRequested['username']}\", \"{$rowRequested['trainer_name']}\", \"{$rowRequested['trainer_username']}\", \"reject\")'> Reject </button>
               </td></tr>";
 
-        echo "<hr>";
-
         echo "</table>";
         echo "<br>";    
 
