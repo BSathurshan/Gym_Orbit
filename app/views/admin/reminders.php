@@ -1,5 +1,15 @@
-<h2>Reminders</h2>
-                <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Reminders</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
                  <?php
     
                         $admin = new Admin(); 
@@ -21,3 +31,6 @@
                             echo "<p>No Reminders!</p>";
                         }
                     ?>
+
+                </div>
+        </div> 

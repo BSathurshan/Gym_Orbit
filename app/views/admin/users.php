@@ -1,5 +1,15 @@
-<h2>users</h2>
-        <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Users</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
 
             <div class="search-container">
                 <input type="text" id="searchQuery" name="search" placeholder="Search by name, username, or email">
@@ -40,6 +50,8 @@
                                     </form>
                                 </div>
                             </div>
+</div>
+</div>
 
 
 
