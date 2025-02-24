@@ -32,11 +32,11 @@ else{
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/main.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/i-custom.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/edit.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/custom.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/buttons.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/modals.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/tables.css">
+
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/1c1508aefb.js" crossorigin="anonymous"></script>
     <script src="<?= ROOT ?>/assets/js/admin/1.js" defer></script>
@@ -45,16 +45,16 @@ else{
 <body>
 
      <!-- Header Section -->
-     <header class="header">
+   <!--  <header class="header"> -->
 
     <i class="bi bi-house btn btn-primary"></i>
 
-    <nav class="navbar">
+   <!-- <nav class="navbar">
     <a href="<?= ROOT ?>/login/logout" class="logout-btn">
             <i class="fa-solid fa-right-from-bracket"></i>Logout
         </a>
     </nav>
-    </header> 
+    </header> -->
     <!-- End of Header -->
 
     <?php if (!empty($errorMessage)): ?>
@@ -66,16 +66,18 @@ else{
                         
 
     <!-- Container -->
-    <div class="container">
-        <!-- Sidebar Menu -->
-        <div class="m-lg-0" >
-        <div class="sidemenu">
+    <div class="main-container">
+
+        <div class="sidebar">
             <br>
-            <div class="container-fluid">
+
+            <header>
             <img src="<?= ROOT ?>/assets/images/admin/profile/images/<?php echo $img; ?>" alt="logo" class="logo">
-            <div class="menu">
+            </header>
+
+            <div class="nav-links">
                 <ul>
-                    
+                    <div class="grps">
                     <li class="tabs activetab" value="1"><a><i class="bi bi-person-circle"></i>Profile</a></li>
                     <li class="tabs" value="2"><a><i class="bi bi-chat-left-quote-fill"></i>Messages</a></li>        
                     <li class="tabs" value="3"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
@@ -85,22 +87,25 @@ else{
                     <li class="tabs" value="7"><a><i class="fas fa-users"></i>Users</a></li>
                     <li class="tabs" value="8"><a><i class="fas fa-users"></i>Owners</a></li>
                     <li class="tabs" value="9"><a><i class="fas fa-users"></i>Instructors</a></li>
+                    <li class="tabs" value="10"><a><i class="fas fa-users"></i>otherAdmins</a></li>
+                    
+                    </div>
 
-                    <?php
-                    if ($type == 'super') {
-                        echo '<li class="tabs" value="10"><a><i class="fas fa-users"></i>Admins</a></li>';
-                    }
-                    ?>
+                    <div class="grps">
+                                
+                                <li class="tabs" value=""> 
+                                        <a href="<?= ROOT ?>/login/logout" class="logout-btn">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                            </div>
 
                 </ul>
-            </div> <!-- End of Menu -->
             </div>
         </div> <!-- End of Sidebar Menu -->
-      </div>
 
-        <!-- Main Content -->      
-        <div class="content">                       
-            <h1>Welcome, <?php echo $admin_username; ?>!</h1>
+
 
             <!-- Profile Section -->
             <div class="descriptor active" value="1">
@@ -126,9 +131,10 @@ else{
 
             
             <div class="descriptor" value="4">
-                <h2>Schedule</h2>
-                <hr>
-                <div class="fav"></div> 
+            <?php
+                        require 'schedule.php';
+            ?> 
+            
             </div> 
 
 
@@ -177,7 +183,6 @@ else{
             ?> 
             </div>
 
-        </div>
-    </div> 
+    </div>
 </body>
 </html>

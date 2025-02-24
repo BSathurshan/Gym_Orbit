@@ -1,5 +1,15 @@
-<h2>Posts</h2>
-        <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Posts</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
 
         <?php          
 
@@ -34,6 +44,9 @@
                     echo "<p>No Posts found , add one!</p>";
                 }
                 ?>   
+
+</div>
+</div>  
                           <!-- Hidden Edit Form (Modal) -->
                           <div id="editPostFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">

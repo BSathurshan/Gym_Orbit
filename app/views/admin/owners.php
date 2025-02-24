@@ -1,5 +1,15 @@
-<h2>Owners</h2>
-                <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Owners</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
 
                 <div class="search-container">
                         <input type="text" id="searchQuery2" name="search" placeholder="Search by gym name, gym username, or email">
@@ -77,6 +87,8 @@
                             </form>
                          </div>
                        </div> 
+</div>
+</div>
                        
             <div id="editOwnerFormModal" class="modal" style="display: none;">
                 <div class="modal-content">
