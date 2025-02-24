@@ -1,34 +1,49 @@
-<h2>Requests</h2>            
-                <hr>
+<div class="in-content">
 
-                <?php          
-
-                    $owner = new Owner(); 
-                    $requests = $owner->get_requests($username); 
-
-                    if (isset( $requests['found'])&& $requests['found']=='yes') {
-                        while ($rowRequested = $requests ['result']->fetch_assoc()) {
-
-                                    echo "<table>";
-                                    echo "<tr><td><input type='text' value='{$rowRequested['name']}' readonly></td></tr>";
-                                    echo "<tr><td><input type='text' value='{$rowRequested['username']}' readonly></td></tr>";
-                                    echo "<tr><td><input type='text' value='{$rowRequested['trainer_name']}' readonly></td></tr>";
-                                    echo "<tr><td><input type='text' value='{$rowRequested['trainer_username']}' readonly></td></tr>";
+    <div class="header">
+        <div>
 
 
-                                    
-                                    echo "<td><button class='editBtn' onclick='accept(\"$username\",\"{$rowRequested['name']}\", \"{$rowRequested['username']}\", \"{$rowRequested['trainer_name']}\", \"{$rowRequested['trainer_username']}\",\"accept\")'> Accept </button>";
+        <h2>Requests</h2>
 
-                                    echo "<button class='deleteBtn' onclick='reject(\"$username\",\"{$rowRequested['name']}\", \"{$rowRequested['username']}\", \"{$rowRequested['trainer_name']}\", \"{$rowRequested['trainer_username']}\",\"reject\")'> Reject </button></td>";
+</div>
 
-                                    
-                                    echo "</table>";
-                                    echo "<br>";    
+</div>
 
-                                }
-                                }
-                                elseif (isset($requests['found'])&&$requests['found']=='no') {
-                                    echo "<p>No instructors were requested </p>";
-                                    }
+<div class="in-in-content">
 
-                    ?>   
+<?php          
+
+$owner = new Owner(); 
+$requests = $owner->get_requests($username); 
+
+if (isset($requests['found']) && $requests['found'] == 'yes') {
+    while ($rowRequested = $requests['result']->fetch_assoc()) {
+        
+        echo "<table>";
+        
+        echo "<tr><td><h6>{$rowRequested['name']}</h6></td></tr>";
+        echo "<tr><td><h6>{$rowRequested['username']}</h6></td></tr>";
+        echo "<tr><td><h6>{$rowRequested['trainer_name']}</h6></td></tr>";
+        echo "<tr><td><h6>{$rowRequested['trainer_username']}</h6></td></tr>";
+
+        echo "<tr><td>
+                <button class='editBtn' onclick='accept(\"{$username}\", \"{$rowRequested['name']}\", \"{$rowRequested['username']}\", \"{$rowRequested['trainer_name']}\", \"{$rowRequested['trainer_username']}\", \"accept\")'> Accept </button>
+                <button class='deleteBtn' onclick='reject(\"{$username}\", \"{$rowRequested['name']}\", \"{$rowRequested['username']}\", \"{$rowRequested['trainer_name']}\", \"{$rowRequested['trainer_username']}\", \"reject\")'> Reject </button>
+              </td></tr>";
+
+        echo "<hr>";
+
+        echo "</table>";
+        echo "<br>";    
+
+    }
+} elseif (isset($requests['found']) && $requests['found'] == 'no') {
+    echo "<p>No instructors were requested</p>";
+}
+
+?>
+
+
+</div>
+</div>
