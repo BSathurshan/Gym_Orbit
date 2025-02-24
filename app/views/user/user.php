@@ -75,10 +75,13 @@ else{
                             <div class="grps">
                                 <li class="tabs activetab" value="1"><a><i class="fa fa-home"></i>Home</a></li>
                                 <li class="tabs " value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
-                                <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gym</a></li>
-                                <li class="tabs" value="9"><a><i class="fas fa-search"></i>Search Gym</a></li>
+                                <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gyms</a></li>
+                                
                                 <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Instructors</a></li>
                                 <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
+                                <li class="tabs" value="10"><a><i class="bi bi-stack-overflow"></i>Materials</a></li> 
+                                <li class="tabs" value="11"><a><i class="bi bi-chat-left-heart-fill"></i>Posts</a></li>
+
                                 <li class="tabs" value="6"><a><i class="bi bi-gear-fill"></i>   progress Tracker</a></li>
                                 <li class="tabs" value="7"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
                                 <li class="tabs" value="8"><a><i class="bi bi-chat-heart-fill"></i>Support</a></li>
@@ -91,8 +94,8 @@ else{
                             
                             
                             <!-- <li class="tabs" value="10"><a><i class="bi bi-gear-fill"></i>Search Gyms</a></li> -->
-                            <!-- <li class="tabs" value="4"><a><i class="bi bi-stack-overflow"></i>Materials</a></li> -->
-                            <!-- <li class="tabs" value="11"><a><i class="bi bi-chat-left-heart-fill"></i>Posts</a></li>-->
+                            <!-- <li class="tabs" value="9"><a><i class="fas fa-search"></i>Search Gym</a></li>-->
+                            <!-- -->
                             <!-- <li class="tabs" value="6"><a><i class="bi bi-book-fill"></i>Reports</a></li> -->
                             <!-- <li class="tabs" value="7"><a><i class="bi bi-alarm-fill"></i>Reminders</a></li> -->
 
@@ -169,11 +172,20 @@ else{
             ?>
             </div> 
 
-            <div class="descriptor" value="9">
+
+            <div class="descriptor" value="11">
             <?php
-                         require 'searchGym.php';
+                        require 'posts.php';
             ?>
             </div> 
+
+
+            <div class="descriptor" value="10">
+            <?php
+                        require 'materials.php';
+            ?>
+            </div> 
+
 
            
  </div>       
