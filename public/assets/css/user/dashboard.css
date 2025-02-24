@@ -105,7 +105,7 @@ form#profileForm {
     
 }
 
-.table .row .data,.title {
+.table .row .title {
 
     margin-left: 50px;    
     width: 120px;
@@ -115,6 +115,22 @@ form#profileForm {
     background-color: #222; /* Dark background for input fields */
     color: #fff;
 }
+
+
+.table .row .data {
+    max-width: fit-content;
+    margin-left: 50px;   
+    flex-grow: 1; 
+
+    text-align: center;
+    min-width: 200px;
+    padding: 10px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 4px;
+    background-color: #222; /* Dark background for input fields */
+    color: #fff;
+}
+
 
 .table .row .data:read-only {
     background-color: #ff2e2e; /* Darker background for readonly fields */
