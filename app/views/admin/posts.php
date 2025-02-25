@@ -26,7 +26,6 @@
                     width='200' 
                     title='" . htmlspecialchars($post["file"]) . "'>";
                                     echo "<p>" . htmlspecialchars($post['details']) . "</p>";
-                    echo "<hr>";
                     
                         echo "<td><button class='editBtn' onclick='postEdit(\"{$post['title']}\",
                         \"{$post['file']}\",\"{$post['details']}\",\"{$post['gym_username']}\",
