@@ -36,6 +36,7 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/modals.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/tables.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/buttons.css">
 
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/1c1508aefb.js" crossorigin="anonymous"></script>
@@ -93,12 +94,10 @@ else{
 
                     <div class="grps">
                                 
-                                <li class="tabs" value=""> 
                                         <a href="<?= ROOT ?>/login/logout" class="logout-btn">
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         Logout
                                     </a>
-                                </li>
                             </div>
 
                 </ul>

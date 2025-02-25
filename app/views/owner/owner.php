@@ -52,7 +52,8 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/dashboard.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/modals.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/tables.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/tables.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/buttons.css"> 
 
 
     <script src="<?= ROOT ?>/assets/js/owner/1.js" defer></script>
@@ -113,12 +114,10 @@ else{
 
                     <div class="grps">
                                 
-                                <li class="tabs" value=""> 
                                         <a href="<?= ROOT ?>/login/logout" class="logout-btn">
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         Logout
                                     </a>
-                                </li>
                             </div>
 
                 </ul>

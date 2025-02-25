@@ -19,7 +19,7 @@
                 <!-- This is using userRenderer.php ( aduto load ) -->
         </div>
 
-                <button type="button" onclick="addUser()">Add</button>
+                <button type="button" class="add" onclick="addUser()">Add</button>
 
                             <!-- Hidden Edit Form (Modal) -->
                             <div id="editUserFormModal" class="modal" style="display: none;">
