@@ -1,5 +1,15 @@
-<h2>Materials</h2>
-                <hr>
+<div class="in-content">
+
+        <div class="header">
+        <div>
+
+        <h2>Materials</h2>
+
+        </div>
+        </div>
+
+<div class="in-in-content">
+                
                 <?php
 
                 $admin = new Admin(); 
@@ -28,6 +38,9 @@
                     echo "There are no Posts.";
                 }
                 ?>
+
+</div>
+</div> 
 
 
                                 <!-- Hidden Edit Form (Modal) -->

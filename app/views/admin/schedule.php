@@ -3,14 +3,14 @@
         <div class="header">
         <div>
 
-        <h2>Appoinments</h2>
+        <h2>Schedule</h2>
 
         </div>
         </div>
 
 <div class="in-in-content">
 
-<h3> Appoinments to be implemented </h3>
+<h3> Schedule to be implemented </h3>
 
 </div>
 </div>

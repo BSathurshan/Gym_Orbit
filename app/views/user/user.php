@@ -135,7 +135,7 @@ else{
             <div class="descriptor" value="3">
             <?php
                         require 'joinedGym.php';
-                       
+                        require 'searchGym.php';
 
             ?>
             </div>
