@@ -94,12 +94,10 @@ else{
 
                     <div class="grps">
                                 
-                                <li class="tabs" value=""> 
                                         <a href="<?= ROOT ?>/login/logout" class="logout-btn">
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         Logout
                                     </a>
-                                </li>
                             </div>
 
                 </ul>
