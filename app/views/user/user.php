@@ -135,7 +135,7 @@ else{
             <div class="descriptor" value="3">
             <?php
                         require 'joinedGym.php';
-                       
+                        require 'searchGym.php';
 
             ?>
             </div>
@@ -172,13 +172,13 @@ else{
             ?>
             </div> 
 
-<<<<<<< HEAD
+
             <div class="descriptor" value="9">
             <?php
                          require 'searchGym.php';
             ?>
             </div> 
-=======
+
             <div class="descriptor" value="11">
             <?php
                         require 'posts.php';
@@ -193,7 +193,6 @@ else{
             </div> 
 
 
->>>>>>> 122ac20f5592755bd08b61ee564d2c352e21494b
 
            
  </div>       

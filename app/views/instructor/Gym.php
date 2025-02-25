@@ -4,10 +4,6 @@
         <div>
 
         <h2>Gym</h2>
-        <p>
-            <?php
-            echo date("l, F j, Y"); // Outputs: Wednesday, December 18, 2024
-            ?></p>
 
         </div>
         </div>

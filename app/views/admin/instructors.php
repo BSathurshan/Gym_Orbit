@@ -1,5 +1,15 @@
-<h2>Instructors</h2>
-                <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Posts</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
 
                 <div class="search-container">
                         <input type="text" id="searchQuery3" name="search" placeholder="Search by instructor name, instructor username, or email">
@@ -75,6 +85,8 @@
                             </form>
                         </div>
                     </div>
+</div>
+</div>
 
                       <!-- Hidden Edit Form (Modal) -->
                       <div id="editInstructorFormModal" class="modal" style="display: none;">

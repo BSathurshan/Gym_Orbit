@@ -32,8 +32,6 @@ if (isset($members['found']) && $members['found'] == 'yes') {
                 <button class='removeBtn' onclick='removeMember(\"$gym_username\",\"{$user['username']}\")'>Remove</button>
               </td></tr>";
 
-        echo "<hr>";
-
         echo "</table>";
         echo "<br>";    
     }

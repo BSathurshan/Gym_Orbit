@@ -12,6 +12,7 @@ else{
 
     $gym_username=$userDetails["gym_username"]; 
     $profile_images=$userDetails["file"];
+    $profile_image=$userDetails["file"];
 
         $trainer_name = $userDetails["trainer_name"];
         $email = $userDetails["email"];
@@ -168,7 +169,7 @@ else{
 
     <div class="descriptor" value="8">
     <?php
-                require 'materilas.php';
+                require 'materials.php';
     ?>
     </div>
 
