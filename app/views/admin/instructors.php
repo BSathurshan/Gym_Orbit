@@ -3,7 +3,7 @@
 <div class="header">
         <div>
 
-        <h2>Posts</h2>
+        <h2>Instructors</h2>
 
 
         </div>
@@ -19,7 +19,7 @@
                         <!-- This is using instructorRenderer.php (auto load ) -->
                 </div>
 
-                <button type="button" onclick="addInstructor()">Add</button>
+                <button type="button" class="add" onclick="addInstructor()">Add</button>
 
                     <!-- Hidden Add Form (Modal) -->
                     <div id="addInstructorFormModal" class="modal" style="display: none;">

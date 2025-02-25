@@ -20,7 +20,7 @@
                     
                         
                         echo "<h4> <u>" . htmlspecialchars($materials['gym_name']) . "</u> </h5>";
-                        echo "<tr><td><input type='text' value='{$materials["type"]}' readonly></td></tr>";
+                        echo "<tr><td> <u>". htmlspecialchars($materials['type']) ." </td></tr>";
                         echo "<h5>" . htmlspecialchars($materials['title']) . "</h5>";
                         echo "<img src='" . ROOT . "/assets/images/materials/images/" . $materials["file"] . "' width='200' title='" . $materials['file'] . "'>";
                         echo "<p>" . htmlspecialchars($materials['details']) . "</p>";
@@ -28,7 +28,6 @@
                         echo "<td><button class='editBtn' onclick='materialEdit(\"{$materials['type']}\",\"{$materials['title']}\",\"{$materials['file']}\",\"{$materials['details']}\",\"{$materials['gym_username']}\",\"{$materials['id']}\")'> Edit </button>";
                         echo "<button class='deleteBtn' onclick='materialDelete(\"{$materials['id']}\", \"{$materials['gym_username']}\", \"{$materials['file']}\", \"admin\")'>Delete</button> </td>";
 
-                        echo "<hr>";
 
                        
                     }

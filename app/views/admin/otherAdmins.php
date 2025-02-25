@@ -19,7 +19,7 @@
         <!-- admin data will be displayed here -->
     </div>
 
-    <button type="button" onclick="addAdmin()">Add</button>
+    <button type="button" class="add" onclick="addAdmin()">Add</button>
 
     <!-- Hidden Add Form (Modal) -->
     <div id="addAdminFormModal" class="modal" style="display: none;">

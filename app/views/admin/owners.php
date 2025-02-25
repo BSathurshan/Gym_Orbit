@@ -19,7 +19,7 @@
                         <!-- This is using gymRendered.php ( auto load ) -->
                 </div>
 
-                <button type="button" onclick="addOwner()">Add</button>
+                <button type="button" class="add" onclick="addOwner()">Add</button>
 
 
                  <!-- Hidden Add Form (Modal) -->
