@@ -215,7 +215,7 @@ function gymUnBan(username, email, unBan) {
     if (confirm('Are you sure you want to unban this user?')) {
       
       
-        window.location.href = ROOT + "/admin/unbanGym?gym_username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
+        window.location.href = ROOT + "/admin/unbanGym?username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&state=" + encodeURIComponent(unBan);
 
     }
 }
