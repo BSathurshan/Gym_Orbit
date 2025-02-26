@@ -88,5 +88,22 @@ function createTicket(username) {
 function closeEditModal() {
 
     document.getElementById('SupportFormModal').style.display = 'none';
+    document.getElementById('editUserFormModal').style.display = 'none';
 
+
+}
+
+
+//function postEdit(name, file, gymUsername)
+function editProfile(name,contact,age,address) {
+
+    document.getElementById('name').value = name;
+    document.getElementById('contact').value = contact; 
+    document.getElementById('location').value = address;
+    document.getElementById('age').value = age;
+  //  document.getElementById('gender').value = gender;
+  // document.getElementById('goal').value = goal;
+
+    // Show the modal
+    document.getElementById('editUserFormModal').style.display = 'block';
 }
