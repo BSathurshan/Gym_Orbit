@@ -283,5 +283,34 @@ class User
             }
         }
 
+        public function editProfile()
+        { 
+            
+            $email = $_POST['email'];
+            $username = $_POST['username'];
+            $name = $_POST['name'];
+            $contact =(int) $_POST['contact'];
+            $location = $_POST['location'];
+            $age = $_POST['age'];
+            $gender = $_POST['gender'];
+            
+            $model = $this->model('user','editProfile'); 
+            $result = $model->edit($email ,$username ,$name, $contact, $location, $age,  $gender); 
+    
+            if ($result['found']=='yes') {
+    
+                echo "<script>alert('Your details has been Edited !');</script>";
+                $this->view('user', 'user');
+    
+            }
+        else {
+    
+            $this->view('user', 'user');
+            echo "<script>alert('Error while Editing the details');</script>";
+        }
+            
+            
+        }
+
     
 }

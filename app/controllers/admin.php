@@ -348,7 +348,7 @@ class Admin
             $email=$_GET["email"] ;
 
                 $model = $this->model('admin','ban'); 
-                $result = $model->instructorr($username,$email); 
+                $result = $model->instructor($username,$email); 
                 
                 if ($result['found']=='yes') {
     
@@ -435,7 +435,7 @@ class Admin
             $email=$_GET["email"] ;
 
                 $model = $this->model('admin','unban'); 
-                $result = $model->instructorr($username,$email); 
+                $result = $model->instructor($username,$email); 
                 
                 if ($result['found']=='yes') {
 

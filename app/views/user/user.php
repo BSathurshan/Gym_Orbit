@@ -15,6 +15,8 @@ else{
     $goals=$userDetails["goals"];
     $password=$userDetails["password"];
     $profile_image=$userDetails["file"];
+    $address=$userDetails["location"];
+
 
 }
 ?>

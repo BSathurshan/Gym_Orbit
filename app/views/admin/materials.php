@@ -20,7 +20,7 @@
                     
                         
                         echo "<h4> <u>" . htmlspecialchars($materials['gym_name']) . "</u> </h5>";
-                        echo "<tr><td> <u>". htmlspecialchars($materials['type']) ." </td></tr>";
+                        echo "<tr><td>". htmlspecialchars($materials['type']) ." </td></tr>";
                         echo "<h5>" . htmlspecialchars($materials['title']) . "</h5>";
                         echo "<img src='" . ROOT . "/assets/images/materials/images/" . $materials["file"] . "' width='200' title='" . $materials['file'] . "'>";
                         echo "<p>" . htmlspecialchars($materials['details']) . "</p>";
