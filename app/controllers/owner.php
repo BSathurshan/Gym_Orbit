@@ -523,5 +523,81 @@ class Owner
 
             
             }
+
+            public function updateAvailability() {
+
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start(); // Start session only if it's not already started
+                }
+            
+                if (!isset($_SESSION['username'])) {
+                    echo json_encode(["success" => false, "error" => "User not logged in"]);
+                    return;
+                }
+
+                // Get JSON data from the request body
+                $jsonData = file_get_contents("php://input");
+                $data = json_decode($jsonData, true);
+        
+               $username = $_SESSION['username'];
+
+                if (!isset($data['availability'])) {
+                    echo json_encode(["success" => false, "error" => "Invalid data"]);
+                    return;
+                }
+        
+                $model = $this->model('owner','calendar'); 
+                // Update the database and get the result
+                $result = $model->updateMachineAvailability($data['availability'],$username);
+        
+                if ($result) {
+                    echo json_encode(["success" => true, "message" => "Availability updated"]);
+                } else {
+                    echo json_encode(["success" => false, "error" => "Failed to update database"]);
+                }
+            }
+
+
+            public function updateTodayColor() {
+
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start(); // Start session only if it's not already started
+                }
+            
+                if (!isset($_SESSION['username'])) {
+                    echo json_encode(["success" => false, "error" => "User not logged in"]);
+                    return;
+                }
+
+                // Get JSON data from the request body
+                $jsonData = file_get_contents("php://input");
+                $data = json_decode($jsonData, true);
+        
+                if (!isset($data['date']) || !isset($data['color'])) {
+                    echo json_encode(["status" => "error", "message" => "Date or color data is missing."]);
+                    exit;
+                }
+                
+                // Extract date and color data
+                $selectedDate = $data['date'];
+                $selectedColor = $data['color'];
+               // $username = $_SESSION['username'];
+               $username='01';
+
+                if (!isset($data['date'])) {
+                    echo json_encode(["success" => false, "error" => "Date not setted"]);
+                    return;
+                }
+        
+                $model = $this->model('owner','calendar'); 
+                // Update the database and get the result
+                $result = $model->updateTodayColor($data['date'],$data['color'],$username);
+        
+                if ($result) {
+                    echo json_encode(["success" => true, "message" => "Color updated"]);
+                } else {
+                    echo json_encode(["success" => false, "error" => "Failed to update Color"]);
+                }
+            }
 }
 ?>
