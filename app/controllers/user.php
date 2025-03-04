@@ -301,4 +301,7 @@ class User
       echo "<script>alert('Error while Editing the details');</script>";
     }
   }
+
+
+  
 }
