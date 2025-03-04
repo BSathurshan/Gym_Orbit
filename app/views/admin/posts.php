@@ -1,5 +1,15 @@
-<h2>Posts</h2>
-        <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Posts</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
 
         <?php          
 
@@ -16,7 +26,6 @@
                     width='200' 
                     title='" . htmlspecialchars($post["file"]) . "'>";
                                     echo "<p>" . htmlspecialchars($post['details']) . "</p>";
-                    echo "<hr>";
                     
                         echo "<td><button class='editBtn' onclick='postEdit(\"{$post['title']}\",
                         \"{$post['file']}\",\"{$post['details']}\",\"{$post['gym_username']}\",
@@ -34,6 +43,9 @@
                     echo "<p>No Posts found , add one!</p>";
                 }
                 ?>   
+
+</div>
+</div>  
                           <!-- Hidden Edit Form (Modal) -->
                           <div id="editPostFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">

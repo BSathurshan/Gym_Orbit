@@ -15,6 +15,8 @@ else{
     $goals=$userDetails["goals"];
     $password=$userDetails["password"];
     $profile_image=$userDetails["file"];
+    $address=$userDetails["location"];
+
 
 }
 ?>
@@ -24,10 +26,6 @@ else{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- Favicon -->
-        <link rel="icon" type="image/ico" href="<?= ROOT ?>/favicon.ico">
-        
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://kit.fontawesome.com/1c1508aefb.js" crossorigin="anonymous"></script>
@@ -43,8 +41,8 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/dashboard.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/modals.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/tables.css"> 
-    
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/tables.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> 
 
 
 
@@ -107,13 +105,10 @@ else{
                             
                            
                             <div class="grps">
-                                
-                                <li class="tabs" value=""> 
                                         <a href="<?= ROOT ?>/login/logout" class="logout-btn">
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         Logout
                                     </a>
-                                </li>
                             </div>
 
                         </ul>
@@ -141,7 +136,6 @@ else{
             <?php
                         require 'joinedGym.php';
                         require 'searchGym.php';
-                       
 
             ?>
             </div>
@@ -175,6 +169,13 @@ else{
             <div class="descriptor" value="8">
             <?php
                         require 'support.php';
+            ?>
+            </div> 
+
+
+            <div class="descriptor" value="9">
+            <?php
+                         require 'searchGym.php';
             ?>
             </div> 
 

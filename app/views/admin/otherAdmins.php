@@ -1,5 +1,15 @@
-<h2>Admins</h2>
-    <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>OtherAdmins</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
 
     <div class="search-container">
         <input type="text" id="searchQuery4" name="search" placeholder="Search by admin name, admin username, or email">
@@ -9,7 +19,7 @@
         <!-- admin data will be displayed here -->
     </div>
 
-    <button type="button" onclick="addAdmin()">Add</button>
+    <button type="button" class="add" onclick="addAdmin()">Add</button>
 
     <!-- Hidden Add Form (Modal) -->
     <div id="addAdminFormModal" class="modal" style="display: none;">
@@ -62,3 +72,5 @@
             </form>
         </div>
     </div>
+</div>
+</div>

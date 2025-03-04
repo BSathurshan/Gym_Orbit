@@ -4,10 +4,7 @@
       <div class="header">
         <div>
         <h1>Welcome, <?php echo $username; ?>!</h1>       
-          <p>
-            <?php
-            echo date("l, F j, Y"); // Outputs: Wednesday, December 18, 2024
-            ?></p>
+
         </div>
       </div>
 
@@ -77,10 +74,16 @@
                                 <div class="data">  <?php echo $password; ?> </div>
                             </div>
 
+<<<<<<< HEAD
 </div>
 </div>                            
 
+=======
+                            </div>
+>>>>>>> 82bd82b0ee0b5f07e44d7f4d3c958f3e14f521a9
 
+</div>
+</div>
 
 
 

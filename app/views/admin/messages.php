@@ -1,6 +1,15 @@
-<h2>Messages</h2>
-                <hr>
-                <div class="jobreq">    
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Messages</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content"> 
                     
                     <?php
 
@@ -27,3 +36,5 @@
                         ?>
 
                 </div>
+
+                        </div>

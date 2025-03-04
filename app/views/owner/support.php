@@ -1,6 +1,14 @@
-<h2>Support</h2>
-                <hr>
+<div class="in-content">
 
+<div class="header">
+        <div>
+
+        <h2>Support</h2>
+
+
+        </div>
+        </div>
+<div class="in-in-content">
                 <button class='editBtn' onclick="createTicket('<?php echo $gym_username; ?>')">Create Ticket</button>
                 <!-- Hidden Edit Form (Modal) -->
                 <div id="SupportFormModal" class="modal" style="display: none;">
@@ -24,4 +32,10 @@
                                 </form>
                                 </div>
                                 </div>
+
+
+                                </div>
+                                </div>
+
+
 

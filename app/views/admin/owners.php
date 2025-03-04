@@ -1,5 +1,15 @@
-<h2>Owners</h2>
-                <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Owners</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
 
                 <div class="search-container">
                         <input type="text" id="searchQuery2" name="search" placeholder="Search by gym name, gym username, or email">
@@ -9,7 +19,7 @@
                         <!-- This is using gymRendered.php ( auto load ) -->
                 </div>
 
-                <button type="button" onclick="addOwner()">Add</button>
+                <button type="button" class="add" onclick="addOwner()">Add</button>
 
 
                  <!-- Hidden Add Form (Modal) -->
@@ -34,16 +44,16 @@
                                 <input type="email" name="email" id="" required><br>
 
                                 <label for="">Password:</label>
-                                <input type="password" name="password" required><br>
+                                <input type="password" name="" required><br>
 
                                 <label for="">Gym Logo:</label><br>
                                 <input type="file" name="file" id=""><br><br>
 
                                 <label for="">Website link:</label><br>
-                                <input type="url" name="web" id="name" >
+                                <input type="url" name="web" id="" >
 
                                 <label for="">Social links:</label><br>
-                                <input type="url" name="social" id="name" >
+                                <input type="url" name="social" id="" >
 
                                 <label for="">Age:</label>
                                 <input type="text" name="age" id="" required><br>
@@ -52,7 +62,7 @@
                                 <input type="text" name="location" id="" required><br>
 
                                 <label for="gender">Gender:</label>
-                                <select name="gender" id="gender" required>
+                                <select name="gender" id="" required>
                                     <option value="" disabled selected>Select your gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -77,6 +87,8 @@
                             </form>
                          </div>
                        </div> 
+</div>
+</div>
                        
             <div id="editOwnerFormModal" class="modal" style="display: none;">
                 <div class="modal-content">

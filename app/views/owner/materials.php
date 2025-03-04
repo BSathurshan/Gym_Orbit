@@ -1,4 +1,12 @@
-<h2>Materials</h2>
+<div class="in-content">
+
+    <div class="header">
+        <div>
+        <h2>Materials</h2>
+    </div>
+    </div>
+
+<div class="in-in-content">
                 <?php          
 
                     $owner = new Owner(); 
@@ -23,8 +31,6 @@
                                     
                                     echo "<td><button class='editBtn' onclick='materialEdit(\"{$rowRequested['type']}\",\"{$rowRequested['title']}\",\"{$rowRequested['file']}\",\"{$rowRequested['details']}\",\"{$rowRequested['gym_username']}\",\"{$rowRequested['id']}\")'> Edit </button>";
                                     echo "<button class='deleteBtn' onclick='materialDelete(\"{$rowRequested['id']}\", \"{$rowRequested['gym_username']}\",\"{$rowRequested['file']}\",\"owner\")'>Delete</button> </td>";
-
-                                    echo "<hr>";
 
                                     echo "</table>";
                                     echo "<br>";    
@@ -99,5 +105,8 @@
                                             <button type="button" onclick="closeEditModal()">Cancel</button>
                                             </form>
                                         </div>
-                                    </div>    
+                                    </div>   
+                                    
+                                    </div>
+                        </div>
 

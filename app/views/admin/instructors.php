@@ -1,5 +1,15 @@
-<h2>Instructors</h2>
-                <hr>
+<div class="in-content">
+
+<div class="header">
+        <div>
+
+        <h2>Instructors</h2>
+
+
+        </div>
+        </div>
+
+<div class="in-in-content">
 
                 <div class="search-container">
                         <input type="text" id="searchQuery3" name="search" placeholder="Search by instructor name, instructor username, or email">
@@ -9,7 +19,7 @@
                         <!-- This is using instructorRenderer.php (auto load ) -->
                 </div>
 
-                <button type="button" onclick="addInstructor()">Add</button>
+                <button type="button" class="add" onclick="addInstructor()">Add</button>
 
                     <!-- Hidden Add Form (Modal) -->
                     <div id="addInstructorFormModal" class="modal" style="display: none;">
@@ -41,7 +51,7 @@
                                 <input type="text" name="age" id="" required><br>
 
                                 <label for="gender">Gender:</label>
-                                <select name="gender" id="gender" required>
+                                <select name="gender" id="" required>
                                     <option value="" disabled selected>Select your gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -52,29 +62,31 @@
                                 <input type="text" name="location" id="" required><br>
 
                                 <label for="">Social:</label>
-                                <input type="url" name="social" id="social" required><br>
+                                <input type="url" name="social" id="" required><br>
 
                                 <label for="">Contact:</label>
-                                <input type="number" name="contact" id="contact" required><br>
+                                <input type="number" name="contact" id="" required><br>
 
                                 <label for="">Availability:</label>
-                                <input type="text" name="availability" id="availability" required><br>
+                                <input type="text" name="availability" id="" required><br>
 
                                 <label for="">Qualification:</label>
-                                <input type="text" name="qualify" id="qualify" required><br>
+                                <input type="text" name="qualify" id="" required><br>
 
                                 <label for="">Experience (Years):</label>
-                                <input type="text" name="experience" id="experience" required><br>
+                                <input type="text" name="experience" id="" required><br>
 
                                 
                                 <label for="">Special:</label>
-                                <input type="text" name="special" id="qualify" required><br>
+                                <input type="text" name="special" id="" required><br>
 
                                 <button type="submit">Submit</button>
                                 <button type="button" onclick="closeEditModal()">Cancel</button>
                             </form>
                         </div>
                     </div>
+</div>
+</div>
 
                       <!-- Hidden Edit Form (Modal) -->
                       <div id="editInstructorFormModal" class="modal" style="display: none;">

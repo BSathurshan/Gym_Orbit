@@ -55,6 +55,11 @@ window.addEventListener('DOMContentLoaded', function () {
     loadData(url, 'searchGymResults');
 });
 
+function payGym(gym_username, username, option) {
+    const redirectURL = ROOT + "/user/payGym?gym_username=" + gym_username + "&username=" + username + "&option=" + option
+    window.location.href = redirectURL;
+  }  
+
 function joinGym(gym_username,gym_name,username,name) {
   
     if (confirm('Are you sure you want to join ?')) {
@@ -88,5 +93,22 @@ function createTicket(username) {
 function closeEditModal() {
 
     document.getElementById('SupportFormModal').style.display = 'none';
+    document.getElementById('editUserFormModal').style.display = 'none';
 
+
+}
+
+
+//function postEdit(name, file, gymUsername)
+function editProfile(name,contact,age,address) {
+
+    document.getElementById('name').value = name;
+    document.getElementById('contact').value = contact; 
+    document.getElementById('location').value = address;
+    document.getElementById('age').value = age;
+  //  document.getElementById('gender').value = gender;
+  // document.getElementById('goal').value = goal;
+
+    // Show the modal
+    document.getElementById('editUserFormModal').style.display = 'block';
 }

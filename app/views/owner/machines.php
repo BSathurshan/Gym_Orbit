@@ -1,5 +1,15 @@
-<h2>Machines</h2>
-                <hr>
+<div class="in-content">
+
+    <div class="header">
+        <div>
+
+         <h2>Machines</h2>
+
+        </div>
+
+    </div>
+
+    <div class="in-in-content">
                         <?php        
                         
                             $owner = new Owner(); 
@@ -74,3 +84,6 @@
                             </form>
                         </div>
                     </div>    
+
+                            </div>
+                            </div>
