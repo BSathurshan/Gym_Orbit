@@ -47,7 +47,7 @@ else{
 
 
     <script src="<?= ROOT ?>/assets/js/user/user_1.js" defer></script>
-    <script src="<?= ROOT ?>/assets/js/user/user_2.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/user/user_2.js" defer></script> 
 
 </head>
 <body>
