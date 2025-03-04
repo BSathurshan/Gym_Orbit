@@ -55,6 +55,11 @@ window.addEventListener('DOMContentLoaded', function () {
     loadData(url, 'searchGymResults');
 });
 
+function payGym(gym_username, username, option) {
+    const redirectURL = ROOT + "/user/payGym?gym_username=" + gym_username + "&username=" + username + "&option=" + option
+    window.location.href = redirectURL;
+  }  
+
 function joinGym(gym_username,gym_name,username,name) {
   
     if (confirm('Are you sure you want to join ?')) {
