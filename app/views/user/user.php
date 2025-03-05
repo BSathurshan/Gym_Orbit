@@ -173,12 +173,6 @@ else{
             </div> 
 
 
-            <div class="descriptor" value="9">
-            <?php
-                         require 'searchGym.php';
-            ?>
-            </div> 
-
             <div class="descriptor" value="11">
             <?php
                         require 'posts.php';
