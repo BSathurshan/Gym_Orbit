@@ -54,10 +54,14 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/modals.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/buttons.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/calendar.css"> 
+
 
 
     <script src="<?= ROOT ?>/assets/js/owner/1.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/owner/loader.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/owner/calendar.js" defer></script>
+
 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/schedule.css">
     <script src="<?= ROOT ?>/assets/js/owner/schedule.js" defer></script>
