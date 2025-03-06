@@ -39,7 +39,7 @@
                                 <div class="data">  <?php echo $age; ?>  </div>
                             </div>
 
-                            <div class="row">
+                               <div class="row">
                                 <div class="title">    Gender     </div>
                                 <div class="data">  <?php echo $gender; ?>  </div>
                             </div>
@@ -71,10 +71,16 @@
 
                             <div class="row" style="display: none;">
                                 <div class="title">     Password            </div>
-                                <div class="data">  <?php echo $password; ?></div>
+                                <div class="data">  <?php echo $password; ?> </div>
                             </div>
 
+<<<<<<< HEAD
+</div>
+</div>                            
+
+=======
                             </div>
+>>>>>>> 82bd82b0ee0b5f07e44d7f4d3c958f3e14f521a9
 
 </div>
 </div>
