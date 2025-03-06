@@ -194,7 +194,7 @@
 .today {
 
     /* background-color: #ff4b77; */
-    background-color: var(--active-day-color);
+    background-color: var(--active-day-color, #ff4b77);
     color: white;
     font-weight: bold;
 }
