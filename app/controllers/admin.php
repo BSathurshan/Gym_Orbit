@@ -857,33 +857,33 @@ class Admin
 
     public function getNof_Users(){
         $model = $this->model('admin','nof');
-        $xyz = $model->nofUsers();
-        if($xyz['found']=='yes'){
-            return['found'=>'yes','result'=>$xyz['result']];
+        $nof = $model->nofUsers();
+        if($nof['found']=='yes'){
+            return['found'=>'yes','result'=>$nof['result']];
         }
-        elseif($xyz['found']=='no'){
+        elseif($nof['found']=='no'){
             return['found'=>'no'];
         }
     }
 
     public function getNof_Owners(){
         $model = $this->model('admin','nof');
-        $xyz = $model->nofOwners();
-        if($xyz['found']=='yes'){
-            return['found'=>'yes','result'=>$xyz['result']];
+        $nof = $model->nofOwners();
+        if($nof['found']=='yes'){
+            return['found'=>'yes','result'=>$nof['result']];
         }
-        elseif($xyz['found']=='no'){
+        elseif($nof['found']=='no'){
             return['found'=>'no'];
         }
     }
 
     public function getNof_Instructors(){
         $model = $this->model('admin','nof');
-        $xyz = $model->nofInstructors();
-        if($xyz['found']=='yes'){
-            return['found'=>'yes','result'=>$xyz['result']];
+        $nof = $model->nofInstructors();
+        if($nof['found']=='yes'){
+            return['found'=>'yes','result'=>$nof['result']];
         }
-        elseif($xyz['found']=='no'){
+        elseif($nof['found']=='no'){
             return['found'=>'no'];
         }
     }
