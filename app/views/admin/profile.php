@@ -3,11 +3,7 @@
     
       <div class="header">
         <div>
-        <h1>Welcome, <?php echo $username; ?>!</h1>       
-          <p>
-            <?php
-            echo date("l, F j, Y"); // Outputs: Wednesday, December 18, 2024
-            ?></p>
+       <h2>Admin Profile</h2>
         </div>
       </div>
 

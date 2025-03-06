@@ -14,7 +14,7 @@ class Login
 	{
 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Retrieve POST data
+            // Retrieve POST d4ata
             $username = $_POST["username"];
             $password = $_POST["password"];
 
