@@ -45,8 +45,7 @@ class Materials
                            
                         } else {
                                 $stmt->close();
-                                $stmt2->close();
-                                return false;
+                                return ['found' => 'alert'];
                         } 
     }
 }
