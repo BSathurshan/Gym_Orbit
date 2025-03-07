@@ -41,7 +41,7 @@
 .instructor-table {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 10px; /* Space between grid items */
     padding: 10px;
 }
@@ -227,6 +227,8 @@
     pointer-events: none;
     background-color: transparent;
 }
+
+
 
 
 

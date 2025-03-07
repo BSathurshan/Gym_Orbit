@@ -21,7 +21,7 @@ class User
 
       return ['found' => 'yes', 'result' => $result['result']];
     } elseif ($result['found'] == 'no') {
-      return ['message' => 'Please join a gym !.'];
+      return ['found' => 'no','message' => 'Please join a gym !.'];
     }
   }
 

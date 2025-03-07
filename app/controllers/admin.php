@@ -855,5 +855,38 @@ class Admin
 
     }
 
+    public function getNof_Users(){
+        $model = $this->model('admin','nof');
+        $nof = $model->nofUsers();
+        if($nof['found']=='yes'){
+            return['found'=>'yes','result'=>$nof['result']];
+        }
+        elseif($nof['found']=='no'){
+            return['found'=>'no'];
+        }
+    }
+
+    public function getNof_Owners(){
+        $model = $this->model('admin','nof');
+        $nof = $model->nofOwners();
+        if($nof['found']=='yes'){
+            return['found'=>'yes','result'=>$nof['result']];
+        }
+        elseif($nof['found']=='no'){
+            return['found'=>'no'];
+        }
+    }
+
+    public function getNof_Instructors(){
+        $model = $this->model('admin','nof');
+        $nof = $model->nofInstructors();
+        if($nof['found']=='yes'){
+            return['found'=>'yes','result'=>$nof['result']];
+        }
+        elseif($nof['found']=='no'){
+            return['found'=>'no'];
+        }
+    }
+
     
 }

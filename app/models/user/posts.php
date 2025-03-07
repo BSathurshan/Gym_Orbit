@@ -49,7 +49,7 @@ class Posts
 
         }
         else{
-            return ['alert'=> 'yes'];
+            return ['found'=> 'alert'];
         }
     
     }

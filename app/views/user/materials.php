@@ -8,7 +8,6 @@
 
         </div>
         </div>
-
 <div class="in-in-content">
 
         <?php                
