@@ -88,6 +88,8 @@ input[type="submit"] {
   font-weight: 700;
   cursor: pointer;
   outline: none;
+
+  margin-bottom: 15px;
 }
 
 input[type="submit"]:hover {
@@ -124,4 +126,18 @@ input[type="submit"]:hover {
   border-bottom: 2px solid #adadad;
 }
 
+.password_field{
+  display: flex;
+  align-items: center;
+}
+
+.password_field input{
+   width: 100%;
+}
+
+
+.password_field img{
+  cursor: pointer;
+  width: 35px;
+}
 /* Remove label transitions and keep it static */
