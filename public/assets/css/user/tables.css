@@ -41,14 +41,15 @@
 .instructor-table {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
     gap: 10px; /* Space between grid items */
     padding: 10px;
 }
 
 .instructor-table .row {
+
     display: flex;
-    flex-direction: column; /* Stack items vertically inside each grid item */
+    flex-direction: row;
     align-items: center;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
@@ -57,7 +58,23 @@
 }
 
 .instructor-table  .cell2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin: 5px 0;
+
+}
+
+.instructor-table  .cell2 .ratings{
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+
+.instructor-table  .cell2 .details{
+    padding-left: 10px;
+
+
 }
 
 .instructor-table .image {
