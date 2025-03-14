@@ -12,7 +12,6 @@
         <div class="table">
             <h2>Profile</h2>
                
-                <form id="profileForm" method="POST" action="./customize/update_profile.php">
                    
                             <div class="row">
                                 <div class="title">        Name               </div >
@@ -74,13 +73,7 @@
                                 <div class="data">  <?php echo $password; ?> </div>
                             </div>
 
-<<<<<<< HEAD
-</div>
-</div>                            
-
-=======
                             </div>
->>>>>>> 82bd82b0ee0b5f07e44d7f4d3c958f3e14f521a9
 
 </div>
 </div>

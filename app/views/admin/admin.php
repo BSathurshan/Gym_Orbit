@@ -33,8 +33,8 @@ else{
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/modals.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/buttons.css">
 

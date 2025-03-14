@@ -1,21 +1,4 @@
 
-/* General Styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Poppins', sans-serif; /* Modern font */
-    background-color: #1e1e1e; /* Darker background */
-    color: #e0e0e0; /* Soft gray text for better readability */
-    display: flex;
-    /* Enables scrolling but hides scrollbar */
-    overflow-y: auto;
-    overflow-x: hidden;
-
-}
 /* Hide scrollbar visually but allow scrolling */
 body::-webkit-scrollbar {
     width: 0px; 

@@ -10,6 +10,8 @@
     </div>
 
     <div class="in-in-content">
+
+                <div class=".materials-container">
                         <?php        
                         
                             $owner = new Owner(); 
@@ -42,7 +44,8 @@
                         
                             echo "<button class='addBtn' onclick='machineAdd()'> Add </button>";
 
-                        ?>   
+                        ?>  
+                    </div> 
 
                         <!-- Hidden Edit Form (Modal) -->
                             <div id="editFormModal" class="modal" style="display: none;">
