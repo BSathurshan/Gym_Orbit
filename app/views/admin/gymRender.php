@@ -5,6 +5,7 @@ if ($result->num_rows > 0) {
         $ban = $owner['ban'];
         echo "<table>";
         echo "<h4><u>" . htmlspecialchars($owner['gym_name']) . "</u></h4>";
+        echo "<img src='" . ROOT . "/assets/images/Owner/profile/images/" . htmlspecialchars($owner["file"]) . "' width='150' '>";
         echo "<h5>" . htmlspecialchars($owner['gym_username']) . "</h5>";
         echo "<h5>" . htmlspecialchars($owner['owner_name']) . "</h5>";
         echo "<p>" . htmlspecialchars($owner['email']) . "</p>";

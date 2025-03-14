@@ -11,7 +11,6 @@
         <div class="table">
 
             <h2>Profile</h2>
-                <form id="profileForm" method="POST" action="./customize/update_profile.php">
 
                         <div class="row">
                             <div class="title">Name</div>
@@ -78,7 +77,6 @@
         </button>
     </div> 
 -->
-                       </form>
 
           </div>
 

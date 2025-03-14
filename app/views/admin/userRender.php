@@ -4,6 +4,7 @@ if ($result->num_rows > 0) {
         $ban = $user['ban'];
         echo "<table>";
         echo "<h4><u>" . htmlspecialchars($user['name']) . "</u></h4>";
+        echo "<img src='" . ROOT . "/assets/images/User/profile/images/" . htmlspecialchars($user["file"]) . "' width='150' '>";
         echo "<h5>" . htmlspecialchars($user['username']) . "</h5>";
         echo "<p>" . htmlspecialchars($user['email']) . "</p>";
         echo "<button class='deleteBtn' onclick='userDelete(\"{$user['username']}\",\"{$user['email']}\",\"{$user['file']}\")'>Delete</button>";

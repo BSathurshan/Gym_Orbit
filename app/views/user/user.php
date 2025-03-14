@@ -38,8 +38,8 @@ else{
     
     -->
     
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/dashboard.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/modals.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> 
@@ -173,13 +173,6 @@ else{
             <div class="descriptor" value="8">
             <?php
                         require 'support.php';
-            ?>
-            </div> 
-
-
-            <div class="descriptor" value="9">
-            <?php
-                         require 'searchGym.php';
             ?>
             </div> 
 

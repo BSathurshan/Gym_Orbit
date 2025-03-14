@@ -24,13 +24,15 @@
                         echo "<h4> <u>" . htmlspecialchars($materials['gym_name']) . "</u> </h5>";
 
                         echo "<h5>" . htmlspecialchars($materials['title']) . "</h5>";
-                        echo "<p>" . htmlspecialchars($materials['details']) . "</p>";
+
 
                      echo "<div class='matimage'>
                         <img src='" . ROOT . "/assets/images/materials/images/" . 
                         htmlspecialchars($materials['file'], ENT_QUOTES, 'UTF-8') . "'>
                       </div>";
    
+                      echo "<p>" . htmlspecialchars($materials['details']) . "</p>";
+                      
                       echo "</div>";
 
                         

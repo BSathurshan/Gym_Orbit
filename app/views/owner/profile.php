@@ -14,7 +14,6 @@
       <div class="in-in-content">
     <div class="table">
         <h2>Profile</h2>
-        <form id="profileForm" method="POST" action="./customize/update_profile.php">
             <div class="row">
                 <div class="title">Owner Name</div>
                 <div class="data"> <?php echo $owner_name; ?> </div>
