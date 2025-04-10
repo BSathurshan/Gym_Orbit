@@ -524,6 +524,8 @@ class Owner
             
             }
 
+/*calendar*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             public function updateAvailability() {
 
                 if (session_status() == PHP_SESSION_NONE) {
@@ -598,6 +600,98 @@ class Owner
                 } else {
                     echo json_encode(["success" => false, "error" => "Failed to update Color"]);
                 }
+            }
+
+            public function getSavedColors() {
+                    if (session_status() == PHP_SESSION_NONE) {
+                        session_start(); // Start session only if it's not already started
+                    }
+                
+                    if (!isset($_SESSION['username'])) {
+                        header('Content-Type: application/json');
+                        echo json_encode(["success" => false, "error" => "User not logged in"]);
+                        return;
+                    }
+                
+                    $username = $_SESSION['username'];
+                    $model = $this->model('owner', 'calendar');
+                
+                    // Get the result from the model and output it
+                    $colors = $model->getSavedColors($username);
+                
+                    header('Content-Type: application/json');
+                    echo json_encode($colors);
+            }
+
+
+            public function saveNote() {
+                        if (session_status() == PHP_SESSION_NONE) {
+                            session_start();
+                        }
+                        if (!isset($_SESSION['username'])) {
+                            header('Content-Type: application/json');
+                            echo json_encode(["success" => false, "error" => "User not logged in"]);
+                            return;
+                        }
+                    
+                        $jsonData = file_get_contents("php://input");
+                        $data = json_decode($jsonData, true);
+                        if (!isset($data['id']) || !isset($data['content']) || !isset($data['date'])) {
+                            header('Content-Type: application/json');
+                            echo json_encode(["success" => false, "error" => "Missing note data"]);
+                            return;
+                        }
+                    
+                        $username = $_SESSION['username'];
+                        $model = $this->model('owner', 'calendar');
+                        $result = $model->saveNote($data['id'], $data['content'], $data['date'], $username);
+                    
+                        header('Content-Type: application/json');
+                        echo json_encode($result ? ["success" => true] : ["success" => false, "error" => "Failed to save note"]);
+            }
+            
+            public function deleteNote() {
+                        if (session_status() == PHP_SESSION_NONE) {
+                            session_start();
+                        }
+                        if (!isset($_SESSION['username'])) {
+                            header('Content-Type: application/json');
+                            echo json_encode(["success" => false, "error" => "User not logged in"]);
+                            return;
+                        }
+                    
+                        $jsonData = file_get_contents("php://input");
+                        $data = json_decode($jsonData, true);
+                        if (!isset($data['id'])) {
+                            header('Content-Type: application/json');
+                            echo json_encode(["success" => false, "error" => "Missing note ID"]);
+                            return;
+                        }
+                    
+                        $username = $_SESSION['username'];
+                        $model = $this->model('owner', 'calendar');
+                        $result = $model->deleteNote($data['id'], $username);
+                    
+                        header('Content-Type: application/json');
+                        echo json_encode($result ? ["success" => true] : ["success" => false, "error" => "Failed to delete note"]);
+            }
+            
+            public function getNotes() {
+                        if (session_status() == PHP_SESSION_NONE) {
+                            session_start();
+                        }
+                        if (!isset($_SESSION['username'])) {
+                            header('Content-Type: application/json');
+                            echo json_encode(["success" => false, "error" => "User not logged in"]);
+                            return;
+                        }
+                    
+                        $username = $_SESSION['username'];
+                        $model = $this->model('owner', 'calendar');
+                        $notes = $model->getNotes($username);
+                    
+                        header('Content-Type: application/json');
+                        echo json_encode($notes);
             }
 }
 ?>

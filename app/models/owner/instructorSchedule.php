@@ -33,7 +33,7 @@ class InstructorSchedule
                 }
 
                 // Check if the instructor already exists in the database
-                $query = "SELECT * FROM instructor_schedule WHERE 	trainer_username = ?";
+                $query = "SELECT * FROM instructor_time WHERE 	trainer_username = ?";
                 $stmt = $conn->prepare($query);
                 $stmt->bind_param("s", $trainer_username);
                 $stmt->execute();
@@ -42,7 +42,7 @@ class InstructorSchedule
                 if ($result->num_rows > 0) {
                     // Update existing row
                     $updateQuery = "
-                        UPDATE instructor_schedule
+                        UPDATE instructor_time
                         SET Monday = ?, Tuesday = ?, Wednesday = ?, Thursday = ?, Friday = ?, Saturday = ?, Sunday = ?
                         WHERE trainer_username = ?
                     ";
@@ -78,7 +78,7 @@ class InstructorSchedule
                 else {
                     // Insert new row
                     $insertQuery = "
-                        INSERT INTO instructor_schedule (trainer_username,	gym_username , Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
+                        INSERT INTO instructor_time (trainer_username,	gym_username , Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
                         VALUES (? , ?, ?, ?, ?, ?, ?, ?, ?)
                     ";
                     $stmt = $conn->prepare($insertQuery);
