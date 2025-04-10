@@ -1,83 +1,118 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    /////////// Configuration and State ///////////
     // Configuration
     const maxDaysFromToday = 30;
-    
+    const GYM_USERNAME = '01'; // Hardcoded gym username
+
     // DOM elements
     const elements = {
         calendarDays: document.getElementById('calendar-days'),
         monthYear: document.getElementById('month-year'),
         prevMonthBtn: document.getElementById('prev-month'),
         nextMonthBtn: document.getElementById('next-month'),
-        closeModal: document.querySelector('.close'),
-        eventModal: document.getElementById('event-modal'),
-        addEventBtn: document.getElementById('add-event-btn'),
-        eventForm: document.getElementById('event-form'),
-        eventsList: document.getElementById('events-list'),
-        notesArea: document.getElementById('notes-area'),
-        saveNotesBtn: document.getElementById('save-notes-btn'),
-        notesList: document.getElementById('notes-list')
+        notesList: document.getElementById('notes-list'),
+        machineAvailability: document.getElementById('machine-availibility') // Assuming this exists in HTML
     };
-    
+
     // State
     const state = {
-        currentDate: new Date(),
         selectedDate: null,
-        events: {},
-        notes: []
+        colors: {},
+        notes: [],
+        availability: {}
     };
-    
-    // Initialize
-    init();
-    
+
+    // Single source of Sri Lanka time
+    let currentSriLankaDate = null;
+    /////////// End Configuration and State ///////////
+
+    /////////// Time and Initialization ///////////
+    function getSriLankaTime() {
+        const now = new Date();
+        const sriLankaOffset = 5.5 * 60 * 60 * 1000; // 5.5 hours in milliseconds
+        const utcTime = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
+        const sriLankaDate = new Date(utcTime + sriLankaOffset);
+        return sriLankaDate;
+    }
+
     function init() {
-        // Load saved data
-        loadFromLocalStorage();
-        
-        // Set up calendar
-        const today = new Date();
-        state.currentMonth = today.getMonth();
-        state.currentYear = today.getFullYear();
-        
-        // Generate calendar and display notes
+        currentSriLankaDate = getSriLankaTime();
+        state.currentMonth = currentSriLankaDate.getMonth();
+        state.currentYear = currentSriLankaDate.getFullYear();
+
+        // Initial load
+        refreshData();
         generateCalendar(state.currentMonth, state.currentYear);
-        displayNotes();
-        
-        // Set up event listeners
         setupEventListeners();
+
+        // Auto-refresh every 5 seconds
+        setInterval(refreshData, 5000);
     }
+    /////////// End Time and Initialization ///////////
+
+    /////////// Calendar Functions ///////////
+    function generateCalendar(month, year) {
+        elements.calendarDays.innerHTML = '';
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+        elements.monthYear.textContent = `${monthNames[month]} ${year}`;
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const prevMonthDays = new Date(year, month, 0).getDate();
+        const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+
+        const today = new Date(currentSriLankaDate);
+        today.setUTCHours(0, 0, 0, 0);
+        today.setTime(today.getTime() + (5.5 * 60 * 60 * 1000));
+
+        const maxDate = new Date(currentSriLankaDate);
+        maxDate.setUTCHours(0, 0, 0, 0);
+        maxDate.setTime(maxDate.getTime() + (5.5 * 60 * 60 * 1000) + (maxDaysFromToday * 24 * 60 * 60 * 1000));
+
+        for (let i = 0; i < totalCells; i++) {
+            const dayCell = document.createElement('div');
+            dayCell.classList.add('day');
     
-    function setupEventListeners() {
-        // Navigation
-        elements.prevMonthBtn.addEventListener('click', () => changeMonth(-1));
-        elements.nextMonthBtn.addEventListener('click', () => changeMonth(1));
-        
-        // Modal
-        elements.closeModal.addEventListener('click', () => elements.eventModal.style.display = 'none');
-        window.addEventListener('click', (event) => {
-            if (event.target === elements.eventModal) {
-                elements.eventModal.style.display = 'none';
-            }
-        });
-        
-        // Add event
-        elements.addEventBtn.addEventListener('click', () => {
-            if (state.selectedDate) {
-                elements.eventModal.style.display = 'block';
+            if (i < firstDay) {
+                dayCell.textContent = prevMonthDays - firstDay + i + 1;
+                dayCell.classList.add('other-month', 'disabled');
+            } else if (i < firstDay + daysInMonth) {
+                const date = i - firstDay + 1;
+                dayCell.textContent = date;
+    
+                const cellDate = new Date(Date.UTC(year, month, date));
+                cellDate.setUTCHours(0, 0, 0, 0);
+                cellDate.setTime(cellDate.getTime() + (5.5 * 60 * 60 * 1000));
+                const dateKey = cellDate.toISOString().split('T')[0];
+                dayCell.dataset.date = dateKey;
+    
+                if (cellDate.getTime() === today.getTime()) {
+                    dayCell.classList.add('today');
+                }
+                if (cellDate < today || cellDate > maxDate) {
+                    dayCell.classList.add('disabled');
+                } else {
+                    dayCell.addEventListener('click', () => selectDate(cellDate));
+                }
+                if (state.selectedDate && cellDate.getTime() === state.selectedDate.getTime()) {
+                    dayCell.classList.add('selected');
+                }
+                if (state.colors[dateKey]) {
+                    dayCell.style.backgroundColor = state.colors[dateKey];
+                }
             } else {
-                alert('Please select a date first');
+                dayCell.textContent = i - firstDay - daysInMonth + 1;
+                dayCell.classList.add('other-month', 'disabled');
             }
-        });
-        
-        // Event form
-        elements.eventForm.addEventListener('submit', addEvent);
-        
-        // Save notes
-        elements.saveNotesBtn.addEventListener('click', saveNote);
-    }
     
+            elements.calendarDays.appendChild(dayCell);
+        }
+    }
+
     function changeMonth(step) {
         state.currentMonth += step;
-        
         if (state.currentMonth > 11) {
             state.currentMonth = 0;
             state.currentYear++;
@@ -85,208 +120,171 @@ document.addEventListener('DOMContentLoaded', function() {
             state.currentMonth = 11;
             state.currentYear--;
         }
-        
         generateCalendar(state.currentMonth, state.currentYear);
     }
-    
-    function addEvent(e) {
-        e.preventDefault();
-        
-        const title = document.getElementById('event-title').value;
-        const time = document.getElementById('event-time').value;
-        const dateKey = state.selectedDate.toDateString();
-        
-        // Initialize array if needed
-        state.events[dateKey] = state.events[dateKey] || [];
-        
-        // Add event
-        state.events[dateKey].push({ title, time });
-        
-        // Save and update
-        saveToLocalStorage();
-        displayEvents(state.selectedDate);
-        
-        // Reset form and close modal
-        elements.eventForm.reset();
-        elements.eventModal.style.display = 'none';
+
+    function selectDate(date) {
+        state.selectedDate = date;
+        document.querySelectorAll('.day').forEach(cell => cell.classList.remove('selected'));
+        const selectedCell = document.querySelector(`[data-date="${date.toISOString().split('T')[0]}"]`);
+        if (selectedCell) selectedCell.classList.add('selected');
     }
-    
-    function saveNote() {
-        const content = elements.notesArea.value.trim();
-        
-        if (content) {
-            // Create note object
-            const note = {
-                id: Date.now(),
-                content,
-                date: new Date().toLocaleString()
-            };
-            
-            // Add to beginning of array
-            state.notes.unshift(note);
-            
-            // Clear textarea
-            elements.notesArea.value = '';
-            
-            // Save and update
-            saveToLocalStorage();
-            displayNotes();
-        }
+    /////////// End Calendar Functions ///////////
+
+    /////////// Event Functions ///////////
+    function setupEventListeners() {
+        elements.prevMonthBtn.addEventListener('click', () => changeMonth(-1));
+        elements.nextMonthBtn.addEventListener('click', () => changeMonth(1));
     }
-    
-    function generateCalendar(month, year) {
-        // Clear previous days
-        elements.calendarDays.innerHTML = '';
-        
-        // Update header
-        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
-                           'July', 'August', 'September', 'October', 'November', 'December'];
-        elements.monthYear.textContent = `${monthNames[month]} ${year}`;
-        
-        // Get calendar data
-        const firstDay = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const prevMonthDays = new Date(year, month, 0).getDate();
-        const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
-        
-        // Reference dates
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        
-        const maxDate = new Date();
-        maxDate.setDate(maxDate.getDate() + maxDaysFromToday);
-        maxDate.setHours(0, 0, 0, 0);
-        
-        // Generate cells
-        for (let i = 0; i < totalCells; i++) {
-            const dayCell = document.createElement('div');
-            dayCell.classList.add('day');
-            
-            if (i < firstDay) {
-                // Previous month
-                dayCell.textContent = prevMonthDays - firstDay + i + 1;
-                dayCell.classList.add('other-month', 'disabled');
-            } 
-            else if (i < firstDay + daysInMonth) {
-                // Current month
-                const date = i - firstDay + 1;
-                dayCell.textContent = date;
-                
-                const cellDate = new Date(year, month, date);
-                cellDate.setHours(0, 0, 0, 0);
-                
-                // Apply classes and event listeners
-                if (cellDate.getTime() === today.getTime()) {
-                    dayCell.classList.add('today');
-                }
-                
-                if (cellDate < today) {
-                    dayCell.classList.add('disabled');
-                } 
-                else if (cellDate > maxDate) {
-                    dayCell.classList.add('disabled');
-                } 
-                else {
-                    dayCell.addEventListener('click', () => selectDate(cellDate));
-                }
-                
-                if (state.selectedDate && cellDate.getTime() === state.selectedDate.getTime()) {
-                    dayCell.classList.add('selected');
-                }
-            } 
-            else {
-                // Next month
-                dayCell.textContent = i - firstDay - daysInMonth + 1;
-                dayCell.classList.add('other-month', 'disabled');
-            }
-            
-            elements.calendarDays.appendChild(dayCell);
-        }
-    }
-    
-    function displayEvents(date) {
-        const dateKey = date.toDateString();
-        const dateEvents = state.events[dateKey] || [];
-        
-        elements.eventsList.innerHTML = '<h3>Events</h3>';
-        
-        if (dateEvents.length === 0) {
-            elements.eventsList.innerHTML += '<p>No events for this date</p>';
-            return;
-        }
-        
-        // Sort by time
-        dateEvents.sort((a, b) => a.time.localeCompare(b.time));
-        
-        // Create event elements
-        dateEvents.forEach(event => {
-            const eventElement = document.createElement('div');
-            eventElement.className = 'event-item';
-            eventElement.innerHTML = `
-                <span class="event-time">${formatTime(event.time)}</span>
-                <span class="event-title">${event.title}</span>
-            `;
-            elements.eventsList.appendChild(eventElement);
-        });
-    }
-    
+    /////////// End Event Functions ///////////
+
+    /////////// Notes Functions ///////////
     function displayNotes() {
         elements.notesList.innerHTML = '';
-        
         if (state.notes.length === 0) {
             elements.notesList.innerHTML = '<p>No saved notes yet</p>';
             return;
         }
-        
-        // Create note elements
+
         state.notes.forEach(note => {
             const noteElement = document.createElement('div');
             noteElement.className = 'note-item';
             noteElement.innerHTML = `
                 <div class="note-date">${note.date}</div>
                 <div class="note-content">${note.content}</div>
-                <button class="delete-note" data-id="${note.id}">×</button>
             `;
             elements.notesList.appendChild(noteElement);
         });
-        
-        // Add delete handlers
-        document.querySelectorAll('.delete-note').forEach(button => {
-            button.addEventListener('click', function() {
-                deleteNote(parseInt(this.dataset.id));
-            });
+    }
+    /////////// End Notes Functions ///////////
+
+    /////////// Storage and Database Functions ///////////
+    function fetchSavedColors() {
+        return fetch(`${ROOT}/user/getSavedColors?gym_username=${GYM_USERNAME}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            state.colors = data || {};
+            console.log("Loaded colors:", state.colors);
+            generateCalendar(state.currentMonth, state.currentYear); // Refresh calendar with colors
+        })
+        .catch(error => {
+            console.error("Error fetching colors:", error);
+            state.colors = {};
         });
     }
-    
-    function deleteNote(id) {
-        state.notes = state.notes.filter(note => note.id !== id);
-        saveToLocalStorage();
-        displayNotes();
+
+    function fetchNotesFromDatabase() {
+        return fetch(`${ROOT}/user/getNotes?gym_username=${GYM_USERNAME}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            state.notes = data || [];
+            console.log("Loaded notes:", state.notes);
+            displayNotes();
+        })
+        .catch(error => {
+            console.error("Error fetching notes:", error);
+            state.notes = [];
+            displayNotes();
+        });
     }
+
+    function fetchAvailabilityFromDatabase() {
+        return fetch(`${ROOT}/user/getAvailability?gym_username=${GYM_USERNAME}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Fetch failed with status: ${response.status}');
+            return response.json();
+        })
+        .then(data => {
+            let machines = data || [];
+            console.log("Loaded availability:", machines);
+            if (elements.machineAvailability) {
+                // Clear the container
+                elements.machineAvailability.innerHTML = '';
     
-    function selectDate(date) {
-        state.selectedDate = date;
-        generateCalendar(state.currentMonth, state.currentYear);
-        displayEvents(date);
-    }
+                // Mimic the PHP structure: if (isset($machines['found']) && $machines['found'] == 'yes')
+                if (machines.length > 0) {
+                    machines.forEach(machine => {
+                        // Create the row
+                        let row = document.createElement('div');
+                        row.className = 'machine-row';
+                        row.setAttribute('data-name', machine.name);
     
-    function formatTime(time) {
-        const [hours, minutes] = time.split(':');
-        const period = hours >= 12 ? 'PM' : 'AM';
-        const formattedHours = hours % 12 || 12;
-        return `${formattedHours}:${minutes} ${period}`;
-    }
+                        // Set the name (label)
+                        let labelDiv = document.createElement('div');
+                        let label = document.createElement('label');
+                        label.className = 'label';
+                        label.textContent = machine.name + ':';
+                        labelDiv.appendChild(label);
     
-    function saveToLocalStorage() {
-        localStorage.setItem('calendarEvents', JSON.stringify(state.events));
-        localStorage.setItem('calendarNotes', JSON.stringify(state.notes));
-    }
+                        // Set the image and availability
+                        let contentDiv = document.createElement('div');
+                        let img = document.createElement('img');
+                        img.src = `${ROOT}/assets/images/machines/${machine.file}`;
+                        img.width = 150;
+                        img.title = machine.file;
+                        let availableSpan = document.createElement('span');
+                        availableSpan.className = 'available';
+                        availableSpan.textContent = machine.available;
+                        contentDiv.appendChild(img);
+                        contentDiv.appendChild(availableSpan);
     
-    function loadFromLocalStorage() {
-        const savedEvents = localStorage.getItem('calendarEvents');
-        const savedNotes = localStorage.getItem('calendarNotes');
-        
-        if (savedEvents) state.events = JSON.parse(savedEvents);
-        if (savedNotes) state.notes = JSON.parse(savedNotes);
+                        // Add to row
+                        row.appendChild(labelDiv);
+                        row.appendChild(contentDiv);
+    
+                        // Add row to container
+                        elements.machineAvailability.appendChild(row);
+                    });
+                } else {
+                    // Mimic the PHP else: echo "<p>No Machines found</p>";
+                    elements.machineAvailability.innerHTML = '<p>No Machines found</p>';
+                }
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching availability:", error);
+            if (elements.machineAvailability) {
+                elements.machineAvailability.innerHTML = '<p>Error loading machines</p>';
+            }
+        });
     }
-}); 
+    // function displayAvailability() {
+    //     if (!elements.machineAvailability) return;
+    //     elements.machineAvailability.innerHTML = '';
+    //     if (Object.keys(state.availability).length === 0) {
+    //         elements.machineAvailability.innerHTML = '<p>No availability data</p>';
+    //         return;
+    //     }
+
+    //     for (const [machine, value] of Object.entries(state.availability)) {
+    //         const div = document.createElement('div');
+    //         div.textContent = `${machine}: ${value}`;
+    //         elements.machineAvailability.appendChild(div);
+    //     }
+    // }
+
+    function refreshData() {
+        fetchSavedColors();
+        fetchNotesFromDatabase();
+        fetchAvailabilityFromDatabase();
+    }
+    /////////// End Storage and Database Functions ///////////
+
+    // Start it up
+    init();
+});

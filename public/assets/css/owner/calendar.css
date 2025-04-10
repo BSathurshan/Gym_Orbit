@@ -175,6 +175,7 @@
     padding: 20px;
 }
 
+/*
 .day {
     height: 50px;
     display: flex;
@@ -186,6 +187,20 @@
     transition: all 0.3s ease;
     position: relative;
 }
+*/
+
+.day {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    background-color: transparent; /* Default, overridden by inline style if saved */
+}
 
 .day:hover:not(.disabled) {
     background-color: rgba(255, 255, 255, 0.1);
@@ -193,8 +208,7 @@
 
 .today {
 
-    /* background-color: #ff4b77; */
-    background-color: var(--active-day-color, #ff4b77);
+    /* background-color: #ff4b77;  background-color: var(--active-day-color, #ff4b77);  */
     color: white;
     font-weight: bold;
 }
@@ -206,7 +220,7 @@
 }
 
 .selected {
-    background-color: #4e54c8;
+    background-color: #94e4f4;
     color: white;
 }
 
