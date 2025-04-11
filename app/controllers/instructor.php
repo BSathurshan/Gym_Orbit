@@ -5,6 +5,7 @@ class instructor
 
     public function index()
     {
+
         $this->view('instructor', 'instructor');
     }
 
@@ -65,6 +66,21 @@ class instructor
         } else 
         {
             return ['found' => 'no' , 'message' => 'No materials found !.'];
+
+        }
+    }
+    public function showClients($instructor_id) {
+        $model = $this->model('instructor', 'membership');
+        $result = $model->getAcceptedClients($instructor_id);
+
+        
+        if ($result) {
+
+            return  ['found'=>'yes','result'=>$result];
+          
+        } else 
+        {
+            return ['found' => 'no' , 'message' => 'No accepted Users Yet!'];
 
         }
     }

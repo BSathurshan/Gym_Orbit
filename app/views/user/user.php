@@ -159,7 +159,7 @@ else{
             <div class="descriptor" value="6">
             <?php
                        // require 'progressTracker.php';
-                        require 'MealPlan.php';
+                       require 'workoutPlan.php'; //require 'MealPlan.php';
 
             ?>
             </div> 

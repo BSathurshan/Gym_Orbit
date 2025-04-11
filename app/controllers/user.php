@@ -302,6 +302,58 @@ class User
     }
   }
 
+  public function get_workouts($username) {
+    $DB = new Database();
+    
+    $query = "SELECT * FROM workout_schedule WHERE username = ? ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), id";
+    $result = $DB->read($query, [$username]);
+    
+    if($result) {
+        $workouts = [];
+        foreach($result as $row) {
+            $workouts[$row->day][] = $row;
+        }
+        return ['found' => 'yes', 'workouts' => $workouts];
+    }
+    
+    return ['found' => 'no'];
+}
 
-  
+public function save_workout($data) {
+    $DB = new Database();
+    
+    // First delete existing workouts for this user
+    $query = "DELETE FROM workout_schedule WHERE username = ?";
+    $DB->write($query, [$data['username']]);
+    
+    // Insert new workouts
+    $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    $success = true;
+    
+    foreach ($days as $day) {
+        for ($i = 1; $i <= 5; $i++) {
+            $workoutKey = $day . '_workout' . $i;
+            $setsKey = $day . '_sets' . $i;
+            $repsKey = $day . '_reps' . $i;
+            
+            if (!empty($data[$workoutKey])) {
+                $query = "INSERT INTO workout_schedule (username, day, exercise, sets, reps) VALUES (?, ?, ?, ?, ?)";
+                $result = $DB->write($query, [
+                    $data['username'],
+                    $day,
+                    $data[$workoutKey],
+                    $data[$setsKey] ?? 0,
+                    $data[$repsKey] ?? 0
+                ]);
+                
+                if (!$result) {
+                    $success = false;
+                }
+            }
+        }
+    }
+    
+    return $success;
+
+}
 }

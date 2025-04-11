@@ -1,245 +1,93 @@
 <div class="in-content">
-
-        <div class="header">
-                <div>
-
-                <h2>Workout Schedule</h2>
-                </div>
+    <div class="header">
+        <div>
+            <h2>Workout Schedule</h2>
         </div>
+    </div>
+    
+    <div class="in-in-content">
+        <?php
+        // Load existing workout data if available
+        $user = new User();
+        $workoutData = $user->get_workouts($username);
+        $workouts = isset($workoutData['found']) && $workoutData['found'] == 'yes' ? $workoutData['workouts'] : [];
         
-        <div class="in-in-content">
+        // Process form submission
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Add username to the data
+            $_POST['username'] = $username;
+            
+            if ($user->save_workout($_POST)) {
+                echo '<div class="success-message">Workout plan saved successfully!</div>';
+                // Refresh the data
+                $workoutData = $user->get_workouts($username);
+                $workouts = isset($workoutData['found']) && $workoutData['found'] == 'yes' ? $workoutData['workouts'] : [];
+            } else {
+                echo '<div class="error-message">Failed to save workout plan. Please try again.</div>';
+            }
+        }
+        ?>
 
-                <form action = "workoutPlan.php" method = "post">
-                    <table>
+        <form action="" method="post" class="workout-form">
+            <div class="workout-controls">
+                <input type="submit" value="Save Plan" class="save-btn">
+                <input type="reset" value="Reset" class="reset-btn">
+            </div>
+            
+            <div class="workout-table-container">
+                <table class="workout-table">
+                    <thead>
                         <tr>
                             <th>Day</th>
                             <th>Exercise</th>
                             <th>Sets</th>
                             <th>Reps</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                        
+                        foreach ($days as $day) {
+                            $dayWorkouts = $workouts[$day] ?? [];
+                            $rowCount = max(count($dayWorkouts), 5);
                             
-                        </tr>
-                        <tr>
-                            <td rowspan="5">Monday</td>
-                            <td><input type="text" name="workout1" ></td>
-                            <td><input type="number" name="sets1" ></td>
-                            <td><input type="number" name="reps1" ></td>
-                            
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout2" ></td>
-                            <td><input type="number" name="sets2" ></td>
-                            <td><input type="number" name="reps2" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout3" ></td>
-                            <td><input type="number" name="sets3" ></td>
-                            <td><input type="number" name="reps3" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout4" ></td>
-                            <td><input type="number" name="sets4" ></td>
-                            <td><input type="number" name="reps4" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout5" ></td>
-                            <td><input type="number" name="sets5" ></td>
-                            <td><input type="number" name="reps5" ></td>
-                        </tr>
-
-                        <tr>
-                            <td rowspan="5">Tuesday</td>
-                            <td><input type="text" name="workout1" ></td>
-                            <td><input type="number" name="sets1" ></td>
-                            <td><input type="number" name="reps1" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout2" ></td>
-                            <td><input type="number" name="sets2" ></td>
-                            <td><input type="number" name="reps2" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout3" ></td>
-                            <td><input type="number" name="sets3" ></td>
-                            <td><input type="number" name="reps3" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout4" ></td>
-                            <td><input type="number" name="sets4" ></td>
-                            <td><input type="number" name="reps4" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout5" ></td>
-                            <td><input type="number" name="sets5" ></td>
-                            <td><input type="number" name="reps5" ></td>
-                        </tr>
-
-                        <tr>
-                            <td rowspan="5">Wednesday</td>
-                            <td><input type="text" name="workout1" ></td>
-                            <td><input type="number" name="sets1" ></td>
-                            <td><input type="number" name="reps1" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout2" ></td>
-                            <td><input type="number" name="sets2" ></td>
-                            <td><input type="number" name="reps2" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout3" ></td>
-                            <td><input type="number" name="sets3" ></td>
-                            <td><input type="number" name="reps3" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout4" ></td>
-                            <td><input type="number" name="sets4" ></td>
-                            <td><input type="number" name="reps4" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout5" ></td>
-                            <td><input type="number" name="sets5" ></td>
-                            <td><input type="number" name="reps5" ></td>
-                        </tr>
-
-                        <tr>
-                            <td rowspan="5">Thursday</td>
-                            <td><input type="text" name="workout1" ></td>
-                            <td><input type="number" name="sets1" ></td>
-                            <td><input type="number" name="reps1" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout2" ></td>
-                            <td><input type="number" name="sets2" ></td>
-                            <td><input type="number" name="reps2" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout3" ></td>
-                            <td><input type="number" name="sets3" ></td>
-                            <td><input type="number" name="reps3" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout4" ></td>
-                            <td><input type="number" name="sets4" ></td>
-                            <td><input type="number" name="reps4" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout5" ></td>
-                            <td><input type="number" name="sets5" ></td>
-                            <td><input type="number" name="reps5" ></td>
-                        </tr>
-
-                        <tr>
-                            <td rowspan="5">Friday</td>
-                            <td><input type="text" name="workout1" ></td>
-                            <td><input type="number" name="sets1" ></td>
-                            <td><input type="number" name="reps1" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout2" ></td>
-                            <td><input type="number" name="sets2" ></td>
-                            <td><input type="number" name="reps2" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout3" ></td>
-                            <td><input type="number" name="sets3" ></td>
-                            <td><input type="number" name="reps3" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout4" ></td>
-                            <td><input type="number" name="sets4" ></td>
-                            <td><input type="number" name="reps4" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout5" ></td>
-                            <td><input type="number" name="sets5" ></td>
-                            <td><input type="number" name="reps5" ></td>
-                        </tr>
-
-                        <tr>
-                            <td rowspan="5">Saturday</td>
-                            <td><input type="text" name="workout1" ></td>
-                            <td><input type="number" name="sets1" ></td>
-                            <td><input type="number" name="reps1" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout2" ></td>
-                            <td><input type="number" name="sets2" ></td>
-                            <td><input type="number" name="reps2" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout3" ></td>
-                            <td><input type="number" name="sets3" ></td>
-                            <td><input type="number" name="reps3" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout4" ></td>
-                            <td><input type="number" name="sets4" ></td>
-                            <td><input type="number" name="reps4" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout5" ></td>
-                            <td><input type="number" name="sets5" ></td>
-                            <td><input type="number" name="reps5" ></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="5">Sunday</td>
-                            <td><input type="text" name="workout1" ></td>
-                            <td><input type="number" name="sets1" ></td>
-                            <td><input type="number" name="reps1" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout2" ></td>
-                            <td><input type="number" name="sets2" ></td>
-                            <td><input type="number" name="reps2" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout3" ></td>
-                            <td><input type="number" name="sets3" ></td>
-                            <td><input type="number" name="reps3" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout4" ></td>
-                            <td><input type="number" name="sets4" ></td>
-                            <td><input type="number" name="reps4" ></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><input type="text" name="workout5" ></td>
-                            <td><input type="number" name="sets5" ></td>
-                            <td><input type="number" name="reps5" ></td>
-                        </tr>
-                    </table>
-                    <input type="submit" value="Save">
-                    <input type="reset" value="Reset">
-                    </form>
-
-                
-        </div>
+                            for ($i = 0; $i < $rowCount; $i++) {
+                                $workout = $dayWorkouts[$i] ?? null;
+                                
+                                echo '<tr>';
+                                
+                                // Only show the day name in the first row for each day
+                                if ($i === 0) {
+                                    echo '<td rowspan="5" class="day-cell">' . $day . '</td>';
+                                }
+                                
+                                $j = $i + 1; // For input naming
+                                
+                                echo '<td><input type="text" name="' . $day . '_workout' . $j . '" value="' . 
+                                    (isset($workout->exercise) ? htmlspecialchars($workout->exercise) : '') . 
+                                    '" placeholder="Exercise ' . $j . '"></td>';
+                                    
+                                echo '<td><input type="number" name="' . $day . '_sets' . $j . '" value="' . 
+                                    (isset($workout->sets) ? htmlspecialchars($workout->sets) : '') . 
+                                    '" min="0" placeholder="Sets"></td>';
+                                    
+                                echo '<td><input type="number" name="' . $day . '_reps' . $j . '" value="' . 
+                                    (isset($workout->reps) ? htmlspecialchars($workout->reps) : '') . 
+                                    '" min="0" placeholder="Reps"></td>';
+                                
+                                echo '</tr>';
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="workout-controls">
+                <input type="submit" value="Save Plan" class="save-btn">
+                <input type="reset" value="Reset" class="reset-btn">
+            </div>
+        </form>
     </div>
-      
+</div>

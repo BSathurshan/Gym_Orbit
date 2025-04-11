@@ -1,66 +1,38 @@
 <?php
-class Nof{
+class Nof {
     use Model;
 
-    public function nofUsers(){
+    public function getMembershipReport() {
         $conn = $this->getConnection();
-
-        $sql="SELECT COUNT(*) AS user_count FROM user";
+        $sql = "SELECT COUNT(*) AS active_members 
+                FROM user 
+                WHERE ban = 'no' AND active IN ('full', 'part')";
         $stmt = $conn->prepare($sql);
-
-        if($stmt->execute() ){
+    
+        if ($stmt->execute()) {
             $result = $stmt->get_result();
-            $number=$result->fetch_assoc();
-            $nofUsers=$number['user_count'];
-
-            $stmt->close();
-            return['found'=>'yes', 'result'=>$nofUsers];
-        }else
-        {
-            $stmt->close();
-            return['found'=>'no'];
+            $data = $result->fetch_assoc();
+            return ['found' => 'yes', 'result' => $data];
+        } else {
+            return ['found' => 'no'];
         }
     }
 
-    public function nofOwners(){
+    public function getInstructorCount() {
         $conn = $this->getConnection();
-
-        $sql="SELECT COUNT(*) AS user_count FROM gym";
+        $sql = "SELECT COUNT(*) AS instructor_count 
+                FROM instructors";  // Replace with your actual table if different
         $stmt = $conn->prepare($sql);
-
-        if($stmt->execute() ){
+    
+        if ($stmt->execute()) {
             $result = $stmt->get_result();
-            $number=$result->fetch_assoc();
-            $nofOwners=$number['user_count'];
-
-            $stmt->close();
-            return['found'=>'yes', 'result'=>$nofOwners];
-        }else
-        {
-            $stmt->close();
-            return['found'=>'no'];
+            $data = $result->fetch_assoc();
+            return ['found' => 'yes', 'result' => $data];
+        } else {
+            return ['found' => 'no'];
         }
     }
-
-    public function nofInstructors(){
-        $conn = $this->getConnection();
-
-        $sql="SELECT COUNT(*) AS user_count FROM instructors";
-        $stmt = $conn->prepare($sql);
-
-        if($stmt->execute() ){
-            $result = $stmt->get_result();
-            $number=$result->fetch_assoc();
-            $nofInstructors=$number['user_count'];
-
-            $stmt->close();
-            return['found'=>'yes', 'result'=>$nofInstructors];
-        }else
-        {
-            $stmt->close();
-            return['found'=>'no'];
-        }
-    }
+    
     
 }
 ?>

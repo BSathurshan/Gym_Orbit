@@ -29,6 +29,39 @@
 
 ?>
 
+<?php 
+    $admin = new Admin();
+    $recentUsers = $admin->getRecent_Users();
+    $pendingGyms = $admin->getPending_Gyms();
+?>
+
+<h3>Recent Users</h3>
+<ul>
+<?php 
+    if($recentUsers['found'] == 'yes'){
+        foreach($recentUsers['result'] as $user){
+            echo "<li>" . htmlspecialchars($user['username']) . " - " . $user['created_at'] . "</li>";
+        }
+    } else {
+        echo "<li>No recent users found.</li>";
+    }
+?>
+</ul>
+
+<h3>Pending Gym Approvals</h3>
+<ul>
+<?php 
+    if($pendingGyms['found'] == 'yes'){
+        foreach($pendingGyms['result'] as $gym){
+            echo "<li>" . htmlspecialchars($gym['gym_name']) . " - Owner: " . $gym['owner_name'] . "</li>";
+        }
+    } else {
+        echo "<li>No pending gyms.</li>";
+    }
+?>
+</ul>
+
+
 <div class="cards">
     <div class = "card">
 

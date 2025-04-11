@@ -599,5 +599,31 @@ class Owner
                     echo json_encode(["success" => false, "error" => "Failed to update Color"]);
                 }
             }
+
+            public function reports() {
+                $nofModel = $this->model('Nof');
+            
+                // Assuming you store the logged-in gym's username in session
+                $gymUsername = $_SESSION['gym_username'] ?? null;
+            
+                if ($gymUsername === null) {
+                    $this->view('owner', 'reports', [
+                        'membershipReport' => ['found' => 'no']
+                    ]);
+                    return;
+                }
+            
+                $membershipReport = $nofModel->getMembershipReport($gymUsername);
+            
+                $this->view('owner', 'reports', [
+                    'membershipReport' => $membershipReport
+                ]);
+            }
+            
+            
+            
+            
+            
+            
 }
 ?>
