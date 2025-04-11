@@ -14,7 +14,7 @@
     <div class='table-container'>
       <?php if ($gymDetails['found'] == 'yes'): ?>
         <?php while ($rowRequested = $gymDetails['result']->fetch_assoc()): ?>
-          <div class='row' style='display: flex; align-items: center; gap: 1rem; padding: 1rem; border-bottom: 1px solid #ccc;'>
+          <div class='row' style='display: flex; align-items: center; gap: 1rem; padding: 1rem;'>
             <div class='cell' style='flex: 1; min-width: 150px;'>
               <img src='<?= ROOT ?>/assets/images/owner/profile/images/<?= htmlspecialchars($rowRequested['file']) ?>' alt='Gym Image' style='width: 150px; height: 150px; object-fit: cover;'>
             </div>

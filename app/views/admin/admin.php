@@ -32,9 +32,9 @@ else{
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/modals.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/buttons.css">
 
@@ -79,16 +79,17 @@ else{
             <div class="nav-links">
                 <ul>
                     <div class="grps">
-                    <li class="tabs activetab" value="1"><a><i class="bi bi-person-circle"></i>Profile</a></li>
-                    <li class="tabs" value="2"><a><i class="bi bi-chat-left-quote-fill"></i>Messages</a></li>        
-                    <li class="tabs" value="3"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
-                    <li class="tabs" value="4"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
-                    <li class="tabs" value="5"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
-                    <li class="tabs" value="6"><a><i class="bi bi-chat-heart-fill"></i>Posts</a></li>
-                    <li class="tabs" value="7"><a><i class="fas fa-users"></i>Users</a></li>
-                    <li class="tabs" value="8"><a><i class="fas fa-users"></i>Owners</a></li>
-                    <li class="tabs" value="9"><a><i class="fas fa-users"></i>Instructors</a></li>
-                    <li class="tabs" value="10"><a><i class="fas fa-users"></i>otherAdmins</a></li>
+                    <li class="tabs activetab" value="1"><a><i class="fa fa-home"></i>Home</a></li>
+                    <li class="tabs" value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
+                    <li class="tabs" value="3"><a><i class="bi bi-chat-left-quote-fill"></i>Messages</a></li>        
+                    <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
+                    <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
+                    <li class="tabs" value="6"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
+                    <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Posts</a></li>
+                    <li class="tabs" value="8"><a><i class="fas fa-users"></i>Users</a></li>
+                    <li class="tabs" value="9"><a><i class="fas fa-users"></i>Owners</a></li>
+                    <li class="tabs" value="10"><a><i class="fas fa-users"></i>Instructors</a></li>
+                    <li class="tabs" value="11"><a><i class="fas fa-users"></i>otherAdmins</a></li>
                    
                     </div>
 
@@ -109,19 +110,25 @@ else{
             <!-- Profile Section -->
             <div class="descriptor active" value="1">
             <?php
+                        require 'home.php';
+            ?> 
+            </div> 
+
+            <div class="descriptor" value="2">
+            <?php
                         require 'profile.php';
             ?> 
             </div> 
 
 
-            <div class="descriptor" value="2">
+            <div class="descriptor" value="3">
             <?php
                         require 'messages.php';
             ?> 
             </div> 
 
 
-            <div class="descriptor" value="3">
+            <div class="descriptor" value="4">
             <?php
                         require 'reminders.php';
             ?> 
@@ -129,7 +136,7 @@ else{
             </div> 
 
             
-            <div class="descriptor" value="4">
+            <div class="descriptor" value="5">
             <?php
                         require 'schedule.php';
             ?> 
@@ -137,7 +144,7 @@ else{
             </div> 
 
 
-            <div class="descriptor" value="5">
+            <div class="descriptor" value="6">
             <?php
                         require 'materials.php';
             ?> 
@@ -145,7 +152,7 @@ else{
 
             </div> 
 
-            <div class="descriptor" value="6">
+            <div class="descriptor" value="7">
             <?php
                         require 'posts.php';
             ?> 
@@ -154,14 +161,14 @@ else{
             </div> 
 
             
-            <div class="descriptor" value="7">
+            <div class="descriptor" value="8">
             <?php
                         require 'users.php';
             ?> 
             </div>
 
 
-            <div class="descriptor" value="8">
+            <div class="descriptor" value="9">
             <?php
                         require 'owners.php';
             ?> 
@@ -169,14 +176,14 @@ else{
 
 
             
-            <div class="descriptor" value="9">
+            <div class="descriptor" value="10">
             <?php
                         require 'instructors.php';
             ?> 
             </div>
 
 
-            <div class="descriptor" value="10">
+            <div class="descriptor" value="11">
             <?php
                 require 'otherAdmins.php';
             ?> 

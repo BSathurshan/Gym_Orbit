@@ -3,11 +3,7 @@
     
       <div class="header">
         <div>
-        <h1>Welcome, <?php echo $username; ?>!</h1>       
-          <p>
-            <?php
-            echo date("l, F j, Y"); // Outputs: Wednesday, December 18, 2024
-            ?></p>
+       <h2>Admin Profile</h2>
         </div>
       </div>
 
@@ -15,7 +11,6 @@
         <div class="table">
 
             <h2>Profile</h2>
-                <form id="profileForm" method="POST" action="./customize/update_profile.php">
 
                         <div class="row">
                             <div class="title">Name</div>
@@ -82,7 +77,6 @@
         </button>
     </div> 
 -->
-                       </form>
 
           </div>
 

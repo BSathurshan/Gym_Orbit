@@ -1,7 +1,7 @@
 .gym-table {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 10px; /* Space between grid items */
     padding: 10px;
 }
@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column; /* Stack items vertically inside each grid item */
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 251, 251, 0.84);
     border-radius: 5px;
     padding: 10px;
     text-align: center;
@@ -41,14 +41,15 @@
 .instructor-table {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
     gap: 10px; /* Space between grid items */
     padding: 10px;
 }
 
 .instructor-table .row {
+
     display: flex;
-    flex-direction: column; /* Stack items vertically inside each grid item */
+    flex-direction: row;
     align-items: center;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
@@ -57,7 +58,23 @@
 }
 
 .instructor-table  .cell2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin: 5px 0;
+
+}
+
+.instructor-table  .cell2 .ratings{
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+
+.instructor-table  .cell2 .details{
+    padding-left: 10px;
+
+
 }
 
 .instructor-table .image {
@@ -81,7 +98,7 @@
 
 .materials-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(4, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
@@ -96,8 +113,8 @@
 }
 
 .matimage {
-    width: 350px;
-    height: 300px;
+    width: 190px;
+    height: 150px;
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
@@ -117,7 +134,7 @@
 
 .posts-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
@@ -132,19 +149,21 @@
 }
 
 .postimage {
-    width: 350px;
-    height: 300px;
+    border-radius: 25px;
+    width: 250px;
+    height: 230px;
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    box-sizing: border-box; /* Ensures the border is included in the total width and height */
 }
 
 .postimage img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image fits well */
+    object-fit: cover; /* 'cover' ensures the image is contained and may be cropped */
 }
 
 
@@ -204,15 +223,16 @@
     border: 2px solid #555;
     border-radius: 8px;
     outline: none;
-    background-color: #1e1e1e;
+    background-color: #dde5f0;
     color: #e0e0e0;
     transition: all 0.3s ease-in-out;
 }
 
 /* On focus, change border and background */
 .search-box input:focus {
+    color: #000000;
     border-color: #ff2e2e;
-    background-color: #2a2a2a;
+    background-color: #f9f9f9;
 }
 
 /* Fixed: Search icon positioning */
@@ -223,10 +243,12 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px;
-    color: #888;
+    color: #000;
     pointer-events: none;
     background-color: transparent;
 }
+
+
 
 
 

@@ -1,12 +1,10 @@
 
-        <div class="header">
+                <div class="header">
                 <div>
+                <h2>Search Gyms</h2>
+                </div>
+                </div>
 
-        <h2>Search Gyms</h2>
-
-
-        </div>
-        </div>
                 <div class="in-in-content">
 
                         <div class="search-box">

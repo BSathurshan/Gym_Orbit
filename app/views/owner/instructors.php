@@ -11,7 +11,7 @@
         <div class="in-in-content">
                 <!-- <div class="fav"> -->
 
-                <!-- <button type="button" onclick="addInstructor()">Add</button>  -->
+               <button type="button" onclick="addInstructor()">Add</button>  
 
 
                     <?php

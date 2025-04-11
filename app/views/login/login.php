@@ -26,9 +26,11 @@
                 </div>
 
                 <div class="field"> 
-                  
-                  <input type="password" name="password" required>
-                  <label> Password </label>
+                <label> Password </label>
+                  <div class="password_field">
+                    <input type="password" name="password" id="password" required>
+                    <img src="<?= ROOT ?>/assets/images/login/eye.png" id="eyeIcon">
+                  </div>
                   
                 </div>
 
@@ -40,11 +42,11 @@
 
        
          
-            <div class="forgotpass" >
+              <div class="forgotpass" >
                   <a href="./Forgot/type.php">
                     Forgot Password ? 
                   </a>
-                </div>
+              </div>
      
             
             <div class="signup_link">
@@ -75,6 +77,8 @@
 
     <!-- External JS -->
     <script src="<?= ROOT ?>/assets/js/login/script.js"></script>
+    <script src="<?= ROOT ?>/assets/js/login/password.js"></script>
+
 
 </body>
 </html>

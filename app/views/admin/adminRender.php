@@ -4,6 +4,7 @@ if ($result->num_rows > 0) {
         $ban = $admin['ban'];
         echo "<table>";
         echo "<h4><u>" . htmlspecialchars($admin['admin_name']) . "</u></h4>";
+        echo "<img src='" . ROOT . "/assets/images/Admin/profile/images/" . htmlspecialchars($admin["file"]) . "' width='150' '>";
         echo "<h5>" . htmlspecialchars($admin['admin_username']) . "</h5>";
         echo "<h5>" . htmlspecialchars($admin['email']) . "</h5>";
         echo "<p>" . htmlspecialchars($admin['admin_username']) . "</p>";

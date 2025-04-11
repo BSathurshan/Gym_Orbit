@@ -1,7 +1,7 @@
 .gym-table {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 10px; /* Space between grid items */
     padding: 10px;
 }
@@ -41,7 +41,7 @@
 .instructor-table {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 10px; /* Space between grid items */
     padding: 10px;
 }
@@ -81,7 +81,7 @@
 
 .materials-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
@@ -96,8 +96,9 @@
 }
 
 .matimage {
-    width: 350px;
-    height: 300px;
+    border-radius: 30px;
+    width: 250px;
+    height: 200px;
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
@@ -117,7 +118,7 @@
 
 .posts-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
@@ -160,7 +161,7 @@ text-align: end;
 
 .searchGym-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;

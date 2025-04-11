@@ -16,31 +16,31 @@
                         ?>
 
         <div class="app-container">
-                        <div class="calendar-container">
-                                <div class="calendar-header">
-                                        <button id="prev-month">&lt;</button>
-                                        <h2 id="month-year">Month Year</h2>
-                                        <button id="next-month">&gt;</button>
+                                <div class="calendar-container">
+                                        <div class="calendar-header">
+                                                <button id="prev-month">&lt;</button>
+                                                <h2 id="month-year">Month Year</h2>
+                                                <button id="next-month">&gt;</button>
+                                        </div>
+                                        <div class="weekdays">
+                                                <div>Sun</div>
+                                                <div>Mon</div>
+                                                <div>Tue</div>
+                                                <div>Wed</div>
+                                                <div>Thu</div>
+                                                <div>Fri</div>
+                                                <div>Sat</div>
+                                        </div>
+                                        <div class="days" id="calendar-days">
+                                                <!-- Days will be filled by JavaScript -->
+                                        </div>
+                                        
+                                        <div class="events-list" id="events-list">
+                                                <!-- Events will be filled by JavaScript -->
+                                        </div>
+                                
+                                        <button class="add-event-btn" id="add-event-btn">ADD EVENT</button>
                                 </div>
-                                <div class="weekdays">
-                                        <div>Sun</div>
-                                        <div>Mon</div>
-                                        <div>Tue</div>
-                                        <div>Wed</div>
-                                        <div>Thu</div>
-                                        <div>Fri</div>
-                                        <div>Sat</div>
-                                </div>
-                        <div class="days" id="calendar-days">
-                                <!-- Days will be filled by JavaScript -->
-                        </div>
-                        
-                        <div class="events-list" id="events-list">
-                                <!-- Events will be filled by JavaScript -->
-                        </div>
-                        
-                        <button class="add-event-btn" id="add-event-btn">ADD EVENT</button>
-             </div>
         
              
                         <div class="machine-container">
@@ -91,10 +91,12 @@
                                         <div id="notes-list">
                                         <!-- Notes will be filled by JavaScript -->
                                         </div>
-                        </div>
+                                </div>
                         </div>
 
-                </div>                 
+                </div><!-- app container -->
+        </div><!-- in in container -->
+</div> <!-- in container -->                             
 
                                         <!-- Modal for adding events -->
                                         <div id="event-modal" class="calendar-modal">
@@ -116,5 +118,3 @@
                                         </div>
 
 
-</div>
-</div>

@@ -4,6 +4,7 @@ if ($result->num_rows > 0) {
         $ban = $instructor['ban'];
         echo "<table>";
         echo "<h4><u>" . htmlspecialchars($instructor['trainer_name']) . "</u></h4>";
+        echo "<img src='" . ROOT . "/assets/images/Instructor/profile/images/" . htmlspecialchars($instructor["file"]) . "' width='150' '>";
         echo "<h5>" . htmlspecialchars($instructor['trainer_username']) . "</h5>";
         echo "<h5>" . htmlspecialchars($instructor['email']) . "</h5>";
         echo "<p>" . htmlspecialchars($instructor['gym_username']) . "</p>";

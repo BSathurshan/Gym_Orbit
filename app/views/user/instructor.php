@@ -29,31 +29,42 @@
             if ($instructorDetails2['found'] == 'yes') {
                 while ($instructor = $instructorDetails2['result']->fetch_assoc()) {
                     echo "<div class='row2'>"; 
-                    echo "<div class='cell2'>
-                    <div class='image'>
-                        <img src='" . ROOT . "/assets/images/instructor/profile/images/" . 
-                        htmlspecialchars($instructor['file'], ENT_QUOTES, 'UTF-8') . 
-                        "'>
-                    </div>
-                  </div>";            
-                    echo "<div class='cell2'><h5>" . htmlspecialchars($instructor['trainer_name']) . "</h5></div>";
-                    echo "<div class='cell2'><h5>" . htmlspecialchars($instructor['age']) . "</h5></div>";
-                    echo "<div class='cell2'><h5>" . htmlspecialchars($instructor['gender']) . "</h5></div>";
-                    echo "<div class='cell2'><h5>" . htmlspecialchars($instructor['contact']) . "</h5></div>";
-                    echo "<div class='cell2'><h5>" . htmlspecialchars($instructor['experience']) . "</h5></div>";
-                    echo "<div class='cell2'><h5>" . htmlspecialchars($instructor['availiblity']) . "</h5></div>";
-                    echo "<div class='cell2'><h5>" . htmlspecialchars($instructor['special']) . "</h5></div>";
-                    echo "<div class='cell2'>
-                        <button type='button' 
-                        onclick='requestInstructor(   \"" . htmlspecialchars($username, ENT_QUOTES) . "\", 
-                                                    \"" . htmlspecialchars($userDetails['name'], ENT_QUOTES) . "\", 
-                                                    \"" . htmlspecialchars($instructor['gym_username'], ENT_QUOTES) . "\", 
-                                                    \"" . htmlspecialchars($instructor['trainer_username'], ENT_QUOTES) . "\", 
-                                                    \"" . htmlspecialchars($instructor['trainer_name'], ENT_QUOTES) . "\")'>
-                        Request
-                        </button>
-                    </div>";
-                    echo "</div>"; 
+                            echo "<div class='cell2'>
+                                    <div class='image'>
+                                        <img src='" . ROOT . "/assets/images/instructor/profile/images/" . 
+                                        htmlspecialchars($instructor['file'], ENT_QUOTES, 'UTF-8') . 
+                                        "'>
+                                    </div>
+                                    <div class='details'>
+                                        <div class='cell2'><h5>" . htmlspecialchars($instructor['trainer_name']) . "</h5></div>
+                                        <div class='cell2'><h5>" . htmlspecialchars($instructor['gender']) . "</h5></div>
+                                        <div class='cell2'><h5>" . htmlspecialchars($instructor['contact']) . "</h5></div>
+                                        <div class='cell2'><h5>" . htmlspecialchars($instructor['email']) . "</h5></div>
+                                        
+                                    </div>
+                            </div>";
+
+
+                        echo "<div class='cell2'>
+                    
+                                    <div class='ratings'>
+                                                <h5>ratings</h5>
+                                    </div>
+
+                                    <div>
+                                        <button type='button' 
+                                        onclick='requestInstructor(   \"" . htmlspecialchars($username, ENT_QUOTES) . "\", 
+                                                                    \"" . htmlspecialchars($userDetails['name'], ENT_QUOTES) . "\", 
+                                                                    \"" . htmlspecialchars($instructor['gym_username'], ENT_QUOTES) . "\", 
+                                                                    \"" . htmlspecialchars($instructor['trainer_username'], ENT_QUOTES) . "\", 
+                                                                    \"" . htmlspecialchars($instructor['trainer_name'], ENT_QUOTES) . "\")'>
+                                        Request
+                                        </button>
+                                    </div>
+                                                
+                        </div>";
+
+                 echo "</div>"; 
                 }
             } else {
                 echo "<p>" . $instructorDetails2['message'] . "!</p>";
@@ -64,3 +75,4 @@
     ?>
 </div>
 </div>
+

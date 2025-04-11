@@ -38,9 +38,9 @@ else{
     
     -->
     
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/dashboard.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/modals.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/calendar.css"> 
@@ -158,7 +158,9 @@ else{
 
             <div class="descriptor" value="6">
             <?php
-                        require 'progressTracker.php';
+                       // require 'progressTracker.php';
+                        require 'MealPlan.php';
+
             ?>
             </div> 
 
@@ -173,7 +175,6 @@ else{
                         require 'support.php';
             ?>
             </div> 
-
 
             <div class="descriptor" value="11">
             <?php
