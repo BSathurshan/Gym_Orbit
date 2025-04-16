@@ -356,4 +356,32 @@ public function save_workout($data) {
     return $success;
 
 }
+/*calendar*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  public function getSavedColors() {
+    $gym_username = $_GET['gym_username'] ?? '01'; // Default to '01'
+    $model = $this->model('user', 'calendar');
+    $colors = $model->getSavedColors($gym_username);
+    header('Content-Type: application/json');
+    echo json_encode($colors);
+}
+
+public function getNotes() {
+    $gym_username = $_GET['gym_username'] ?? '01';
+    $model = $this->model('user', 'calendar');
+    $notes = $model->getNotes($gym_username);
+    header('Content-Type: application/json');
+    echo json_encode($notes);
+}
+
+public function getAvailability() {
+    $gym_username = $_GET['gym_username'] ?? '01';
+    $model = $this->model('user', 'calendar');
+    $availability = $model->getAvailability($gym_username);
+    header('Content-Type: application/json');
+    echo json_encode($availability);
+}
+
+
+  
 }

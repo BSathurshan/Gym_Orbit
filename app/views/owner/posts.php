@@ -61,7 +61,10 @@
                     echo "</div>";
 
 
-                    ?>   
+                    ?> 
+ 
+ </div>
+</div>                          
 
                             <!-- Hidden Edit Form (Modal) -->
                             <div id="editPostFormModal" class="modal" style="display: none;">
@@ -111,6 +114,3 @@
                          </div>
                        </div>    
 
-
-                       </div>
-                       </div>     

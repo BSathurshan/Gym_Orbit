@@ -79,6 +79,8 @@
     max-height: 200px;
     overflow-y: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #ceddfc;
+    color: #000000;
 }
 
 .saved-notes h3 {
@@ -174,6 +176,7 @@
     padding: 20px;
 }
 
+/*
 .day {
     height: 50px;
     display: flex;
@@ -185,16 +188,32 @@
     transition: all 0.3s ease;
     position: relative;
 }
+*/
+
+.day {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    background-color: transparent; /* Default, overridden by inline style if saved */
+}
 
 .day:hover:not(.disabled) {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 .today {
-    background-color: #ff4b77;
+
+    /* background-color: #ff4b77;  background-color: var(--active-day-color, #ff4b77);  */
     color: white;
     font-weight: bold;
 }
+
 
 .disabled {
     color: #4a4f7c;
@@ -202,7 +221,7 @@
 }
 
 .selected {
-    background-color: #4e54c8;
+    background-color: #94e4f4;
     color: white;
 }
 
@@ -257,8 +276,8 @@
     background-color: #ff3366;
 }
 
-/* Modal styles */
-.modal {
+/* Calendar Modal styles */
+.calendar-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -269,7 +288,7 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modal-content {
+.calendar-modal-content {
     background-color: #1a1f4d;
     margin: 15% auto;
     padding: 25px;
@@ -339,3 +358,97 @@
         margin-top: 10px;
     }
 } 
+
+/*//////////////////////////////////////////////*/
+
+.machine-container {
+    width: 400px;
+    background-color: #1a1f4d;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}
+
+.machine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1a1f4d;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.machine-header h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.machine-header button {
+    padding: 8px 15px;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.machine-header button:hover {
+    background-color: #3a3f99;
+}
+
+.machine-notes {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #000000;
+}
+
+.machine-notes h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #8e94c4;
+}
+
+.machine-item {
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+.machine-date {
+    font-size: 0.7rem;
+    color: #8e94c4;
+    margin-bottom: 5px;
+}
+
+.machine-content {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+
+/*//////////////////////////////////////////*/
+.indicators {
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;  /* Ensures equal space between buttons */
+    align-items: center;
+    width: 100%;  /* Ensures the container takes up the full width */
+}
+
+.color-button {
+    flex: 1;  /* Makes each button take equal space */
+    height: 30px;
+    border-radius: 21px;
+    
+}
