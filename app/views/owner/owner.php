@@ -65,6 +65,8 @@ else{
 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/schedule.css">
     <script src="<?= ROOT ?>/assets/js/owner/schedule.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/owner/instructor-schedule.js" defer></script>
+
 </head>
 <body>
 
