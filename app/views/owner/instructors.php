@@ -150,7 +150,7 @@
 
 
                        <!-- Hidden Edit Form (Modal) -->
-                         <div id="editInstructorFormModal" class="modal" style="display: none;">
+                        <div id="editInstructorFormModal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <h3>Edit Instructor</h3>
                             <form id="addForm" method="POST" action="<?= ROOT ?>/owner/editInstructor" enctype="multipart/form-data">
@@ -213,9 +213,11 @@
                                 <button type="submit">Submit</button>
                                 <button type="button" onclick="closeEditModal()">Cancel</button>
                             </form>
+                          </div>
                         </div>
-                    </div>
 
+    </div>
+</div>
                         <!-- Hidden Schedule Form (Modal) -->
                         <div id="instructorScheduleFormModal" class="modal" style="display: none;">
                         <div class="modal-content">
@@ -227,14 +229,14 @@
                             <input type="hidden" name="email" id="Email">
                             <input type="hidden" name="trainer_name" id="TRAINER_name" >
                                 
-                                <div id="daysContainer2">
+                                <div id="instructor-day-schedule-form">
                                     <!-- Days will be dynamically generated here -->
                                 </div>
+                              <!-- This holds the schedule as a JSON string -->
+                                <input type="hidden" name="instructor-schedule-data" id="instructor-schedule-json">
+
                                 <button type="submit">Submit</button>
                                 <button type="button" onclick="closeEditModal()">Cancel</button>
                             </form>
                         </div>
                     </div>
-
-</div>
-</div>
