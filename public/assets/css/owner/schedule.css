@@ -1,4 +1,4 @@
-.day-container {
+/* .day-container {
     margin-bottom: 15px;
 }
 
@@ -26,4 +26,277 @@
 
 .time-row button:hover {
     background-color: #f0f0f0;
+} */
+
+
+/* .day-box { margin-bottom: 10px; position: relative; }
+.time-picker { 
+    color: black;
+  display: none;
+  position: absolute;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 10;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.time-picker label { display: block; margin-bottom: 5px; }
+.time-picker button { margin-right: 5px; } */
+
+
+/* Container of the whole form */
+#day-schedule-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f8fa;
+    border-radius: 12px;
+  }
+  
+  /* Each day box */
+  .day-box {
+    flex: 1 1 200px;
+    background: rgb(207, 228, 240);
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s;
+  }
+  
+  .day-box:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  /* Day label */
+  .day-label {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* Time picker (hidden by default) */
+  .time-picker {
+    display: none;
+    margin-top: 12px;
+    background: #e7f5f4;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+  }
+  
+  /* Individual time slot */
+  .time-picker label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: #444;
+    cursor: pointer;
+  }
+  
+  .time-picker input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+  }
+  
+  /* Buttons */
+  .time-picker button {
+    margin-right: 8px;
+    margin-top: 10px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .time-picker button[type="button"]:first-of-type {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .time-picker button[type="button"]:first-of-type:hover {
+    background-color: #45a049;
+  }
+  
+  .time-picker button[type="button"]:last-of-type {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .time-picker button[type="button"]:last-of-type:hover {
+    background-color: #e53935;
+  }
+  
+  /* Checkbox for days */
+  .day-box input[type="checkbox"] {
+    transform: scale(1.3);
+    vertical-align: middle;
+  }
+  
+  .day-box {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .day-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    background-color: #c8f1ff;
+    cursor: pointer;
+  }
+
+  /* Create stagger effect */
+  .day-box:nth-child(1) { animation-delay: 0.1s; }
+  .day-box:nth-child(2) { animation-delay: 0.2s; }
+  .day-box:nth-child(3) { animation-delay: 0.3s; }
+  .day-box:nth-child(4) { animation-delay: 0.4s; }
+  .day-box:nth-child(5) { animation-delay: 0.5s; }
+  .day-box:nth-child(6) { animation-delay: 0.6s; }
+  .day-box:nth-child(7) { animation-delay: 0.7s; }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+  /* Container of the whole form */
+#instructor-day-schedule-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f8fa;
+  border-radius: 12px;
+}
+
+/* Each instructor day box */
+.instructor-day-box {
+  flex: 1 1 200px;
+  background: rgb(207, 228, 240);
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s;
+}
+
+.instructor-day-box:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Instructor day label */
+.instructor-day-label {
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Instructor time picker (hidden by default) */
+.instructor-time-picker {
+  display: none;
+  margin-top: 12px;
+  background: #e7f5f4;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px dashed #ccc;
+}
+
+/* Individual instructor time slot */
+.instructor-time-picker label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #444;
+  cursor: pointer;
+}
+
+.instructor-time-picker input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.1);
+}
+
+/* Instructor buttons */
+.instructor-time-picker button {
+  margin-right: 8px;
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.instructor-time-picker button[type="button"]:first-of-type {
+  background-color: #4caf50;
+  color: white;
+}
+
+.instructor-time-picker button[type="button"]:first-of-type:hover {
+  background-color: #45a049;
+}
+
+.instructor-time-picker button[type="button"]:last-of-type {
+  background-color: #f44336;
+  color: white;
+}
+
+.instructor-time-picker button[type="button"]:last-of-type:hover {
+  background-color: #e53935;
+}
+
+/* Checkbox for instructor days */
+.instructor-day-box input[type="checkbox"] {
+  transform: scale(1.3);
+  vertical-align: middle;
+}
+
+.instructor-day-box {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instructor-day-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  background-color: #c8f1ff;
+  cursor: pointer;
+}
+
+/* Create stagger effect */
+.instructor-day-box:nth-child(1) { animation-delay: 0.1s; }
+.instructor-day-box:nth-child(2) { animation-delay: 0.2s; }
+.instructor-day-box:nth-child(3) { animation-delay: 0.3s; }
+.instructor-day-box:nth-child(4) { animation-delay: 0.4s; }
+.instructor-day-box:nth-child(5) { animation-delay: 0.5s; }
+.instructor-day-box:nth-child(6) { animation-delay: 0.6s; }
+.instructor-day-box:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
