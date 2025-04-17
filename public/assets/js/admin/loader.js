@@ -372,3 +372,8 @@ function replyMessage(username, issue, message, time, email = "") {
     const modal = document.getElementById('replyMessageFormModal');
     modal.style.display = 'flex'; // Make sure this matches your modal CSS
 }
+
+function closeReplyMessageModal() {
+    document.getElementById('replyMessageFormModal').style.display = 'none';
+}
+

@@ -60,7 +60,7 @@
                         <input type="text" name="message" id="editMessage" required><br><br>
 
                         <button type="submit">Send</button>
-                        <button type="button" onclick="closeEditModal()">Cancel</button>
+                        <button type="button" onclick="closeReplyMessageModal()">Cancel</button>
                     </form>
                 </div>
             </div>

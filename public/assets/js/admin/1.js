@@ -38,20 +38,4 @@ function editable() {
     });
 }
 
-function messageDelete(username, issue, message, time) {
-    const url = `deleteMessage?username=${encodeURIComponent(username)}&issue=${encodeURIComponent(issue)}&message=${encodeURIComponent(message)}&time=${encodeURIComponent(time)}`;
-    if (confirm("Are you sure you want to delete this message?")) {
-        window.location.href = url;
-    }
-}
 
-
-function replyMessage(username, issue, message, time, email = "") {
-    document.getElementById('gymUsername').value = username;
-    document.getElementById('editIssue').value = issue;
-    document.getElementById('editMessage').value = "Re: " + message;
-    document.getElementById('gymEmail').value = email;
-
-    const modal = document.getElementById('replyMessageFormModal');
-    modal.style.display = 'flex'; // Make sure this matches your modal CSS
-}
