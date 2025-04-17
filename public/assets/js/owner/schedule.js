@@ -1,72 +1,109 @@
-// Function to dynamically set the days container
-function setupScheduleContainer(containerId) {
-  const daysContainer = document.getElementById(containerId);
+const scheduleData = {};
+const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+const timeSlots = [
+  "08:00-09:00",
+  "09:00-10:00",
+  "10:00-11:00",
+  "11:00-12:00",
+  "13:00-14:00",
+  "14:00-15:00"
+ 
+];
 
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  
-  days.forEach(day => {
-    // Create a container for each day
-    const dayContainer = document.createElement("div");
-    dayContainer.classList.add("day-container");
+const container = document.getElementById('day-schedule-form');
 
-    // Add the day label
-    const dayLabel = document.createElement("span");
-    dayLabel.textContent = day;
-    dayLabel.classList.add("day-label");
+daysOfWeek.forEach(day => {
+  const box = document.createElement('div');
+  box.className = 'day-box'; 
+  box.dataset.day = day;
 
-    // Wrapper for the time slots
-    const timeWrapper = document.createElement("div");
-    timeWrapper.classList.add("time-wrapper");
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.id = day;
+  checkbox.disabled = true;
 
-    // Add the first time row
-    addTimeRow(timeWrapper, day);
+  const label = document.createElement('span');
+  label.className = 'day-label';
+  label.textContent = day.charAt(0).toUpperCase() + day.slice(1);
 
-    // Append to the day container
-    dayContainer.appendChild(dayLabel);
-    dayContainer.appendChild(timeWrapper);
+  const picker = document.createElement('div');
+  picker.className = 'time-picker';
+  picker.id = 'picker-' + day;
 
-    // Append to the main days container
-    daysContainer.appendChild(dayContainer);
+  // Add time slots
+  timeSlots.forEach(slot => {
+    const timeLabel = document.createElement('label');
+    const timeCheckbox = document.createElement('input');
+    timeCheckbox.type = 'checkbox';
+    timeCheckbox.value = slot;
+    timeLabel.appendChild(timeCheckbox);
+    timeLabel.append(" " + slot);
+    picker.appendChild(timeLabel);
   });
-}
 
-// Function to add a time row
-function addTimeRow(wrapper, day) {
-const timeRow = document.createElement("div");
-timeRow.classList.add("time-row");
+  // Add Save and Cancel buttons
+  const saveBtn = document.createElement('button');
+  saveBtn.type = 'button';
+  saveBtn.textContent = 'Save';
+  saveBtn.onclick = () => saveTime(day);
 
-// Start time input
-const startTime = document.createElement("input");
-startTime.type = "time";
-startTime.name = `startTime[${day}][]`; // Grouped by day
+  const cancelBtn = document.createElement('button');
+  cancelBtn.type = 'button';
+  cancelBtn.textContent = 'Cancel';
+  cancelBtn.onclick = () => cancelTime(day);
 
-// End time input
-const endTime = document.createElement("input");
-endTime.type = "time";
-endTime.name = `endTime[${day}][]`; // Grouped by day
+  picker.appendChild(saveBtn);
+  picker.appendChild(cancelBtn);
 
-// Add (+) button
-const addButton = document.createElement("button");
-addButton.type = "button";
-addButton.textContent = "+";
-addButton.addEventListener("click", () => addTimeRow(wrapper, day));
+  box.appendChild(checkbox);
+  box.appendChild(document.createTextNode(' '));
+  box.appendChild(label);
+  box.appendChild(picker);
 
-// Remove (-) button
-const removeButton = document.createElement("button");
-removeButton.type = "button";
-removeButton.textContent = "-";
-removeButton.addEventListener("click", () => {
-  if (wrapper.children.length > 1) {
-    wrapper.removeChild(timeRow);
+  container.appendChild(box);
+});
+
+// Make picker show when day label is clicked
+document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('day-label')) {
+    const dayId = e.target.textContent.trim().toLowerCase();
+    document.querySelectorAll('.time-picker').forEach(p => p.style.display = 'none');
+    document.getElementById('picker-' + dayId).style.display = 'block';
   }
 });
 
-// Append inputs and buttons to the row
-timeRow.appendChild(startTime);
-timeRow.appendChild(endTime);
-timeRow.appendChild(addButton);
-timeRow.appendChild(removeButton);
+function saveTime(dayId) {
+  const picker = document.getElementById('picker-' + dayId);
+  const selected = picker.querySelectorAll('input[type="checkbox"]:checked');
+  
+  if (selected.length > 0) {
+    const times = Array.from(selected).map(cb => cb.value);
+    scheduleData[dayId] = times;
+    document.getElementById(dayId).checked = true;
+  } else {
+    delete scheduleData[dayId];
+    document.getElementById(dayId).checked = false;
+  }
 
-// Append the row to the wrapper
-wrapper.appendChild(timeRow);
+  picker.style.display = 'none';
+  updateHiddenInput();
 }
+
+function cancelTime(dayId) {
+  const picker = document.getElementById('picker-' + dayId);
+  
+  picker.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+  
+  delete scheduleData[dayId];
+  document.getElementById(dayId).checked = false;
+
+  picker.style.display = 'none';
+  updateHiddenInput();
+}
+
+function updateHiddenInput() {
+  document.getElementById('schedule-json').value = JSON.stringify(scheduleData);
+  console.log('Saved Schedule:', scheduleData);
+}
+
+

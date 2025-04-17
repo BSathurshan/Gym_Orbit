@@ -469,17 +469,25 @@ class Owner
                 
             public function editInstructorSchedule()
             {
-                $startTimes = $_POST['startTime'];
-                $endTimes = $_POST['endTime'];
-    
-                $gym_username=$_POST['gym_username'];
+
+                
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start(); // Start session only if it's not already started
+                }
+            
+                if (!isset($_SESSION['username'])) {
+                    echo json_encode(["success" => false, "error" => "User not logged in"]);
+                    return;
+                }
+                $gym_username = $_SESSION['username'];
                 $trainer_username=$_POST['trainer_username'];
                 $email=$_POST['email'];
                 $trainer_name=$_POST['trainer_name'];
-    
-            
+                $instructorScheduleJson = $_POST['instructor-schedule-data'];
+                $instructorScheduleArray = json_decode($instructorScheduleJson, true);
+
                 $model = $this->model('owner','instructorSchedule'); 
-                $result = $model->set($startTimes,$endTimes,$gym_username,$trainer_username); 
+                $result = $model->set($gym_username,$trainer_username,$instructorScheduleArray); 
                 
                 if ($result['found']=='yes') {
     
@@ -500,13 +508,22 @@ class Owner
 
             public function editGymSchedule()
             {
-                $startTimes = $_POST['startTime'];
-                $endTimes = $_POST['endTime'];
     
-                $gym_username=$_POST['gym_username'];
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start(); // Start session only if it's not already started
+                }
+            
+                if (!isset($_SESSION['username'])) {
+                    echo json_encode(["success" => false, "error" => "User not logged in"]);
+                    return;
+                }
+                $gym_username = $_SESSION['username'];
+
+                $scheduleJson = $_POST['schedule_data'];
+                $scheduleArray = json_decode($scheduleJson, true);
     
                 $model = $this->model('owner','gymSchedule'); 
-                $result = $model->set($startTimes,$endTimes,$gym_username); 
+                $result = $model->set($gym_username,$scheduleArray); 
                 
                 if ($result['found']=='yes') {
     
