@@ -85,7 +85,53 @@
         </div>
             -->
 
+            <div class="editsave">
+                <button class="save" type="submit" onclick='editGymSchedule()'>
+                    <i class="fa-solid fa-calendar-days"> Schedule </i>
+                </button>
+            </div>
+
     </div>
 </div>
 
 </div>
+
+
+                        <!-- Hidden Schedule Form (Modal) -->
+                        <!-- <div id="gymScheduleFormModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <h3>Edit Schedule</h3>
+                       
+                            
+                            <input type="hidden" name="gym_username" id="GYM_username" >            
+                                <div id="daysContainer1"> -->
+                                    <!-- Days will be dynamically generated here -->
+                                <!-- </div>
+                                <button type="submit">Submit</button>
+                                <button type="button" onclick="closeEditModal()">Cancel</button>
+                        
+                        </div>
+                    </div> -->
+
+                    
+
+
+                    <!-- Hidden Schedule Form (Modal) -->
+                    <div id="gymScheduleFormModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <h3>Edit Schedule</h3>
+                            <form id="timeForm" action="<?= ROOT ?>/owner/editGymSchedule" method="POST">
+                            
+                            <input type="hidden" name="gym_username" id="GYM_username" >            
+                            <div id="day-schedule-form">
+                                <!-- ...your day inputs and time pickers... -->
+                            </div>
+
+                            <!-- This holds the schedule as a JSON string -->
+                            <input type="hidden" name="schedule_data" id="schedule-json">
+
+                                <button type="submit">Submit</button>
+                                <button type="button" onclick="closeEditModal()">Cancel</button>
+                            </form>
+                        </div>
+                    </div>

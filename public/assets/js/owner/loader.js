@@ -173,7 +173,7 @@ function instructorEdit(trainer_username,trainer_name,email,age,gender,contact,e
         document.getElementById('TRAINER_name').value = email;
     
         // Dynamically set the container and show the modal
-        setupScheduleContainer("daysContainer2");  // Pass the container ID dynamically
+        //setupScheduleContainer("daysContainer2");  // Pass the container ID dynamically
         document.getElementById('instructorScheduleFormModal').style.display = 'block';
     }
     
@@ -182,7 +182,7 @@ function instructorEdit(trainer_username,trainer_name,email,age,gender,contact,e
         document.getElementById('GYM_username').value = username;
     
         // Dynamically set the container and show the modal
-        setupScheduleContainer("daysContainer1");  // Pass the container ID dynamically
+      //  setupScheduleContainer("daysContainer1");  // Pass the container ID dynamically
         document.getElementById('gymScheduleFormModal').style.display = 'block';
     }
     
