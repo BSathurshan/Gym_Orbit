@@ -651,6 +651,27 @@ class Admin
 
     }
 
+    public function deleteMessage()
+    {
+        $username = $_GET['username'];
+        $issue = $_GET['issue'];
+        $message = $_GET['message'];
+        $time = $_GET['time']; // Fix here
+    
+        $model = $this->model('admin', 'delete'); 
+        $result = $model->message($username, $issue, $message, $time); 
+    
+        $access = $_SESSION['access'] ?? 'admin'; // Optional access handling
+    
+        if ($result['found'] == 'yes') {
+            $this->view($access, $access);
+            echo "<script>alert('The message has been Deleted!');</script>";
+        } else {
+            $this->view($access, $access);
+            echo "<script>alert('Error while Deleting');</script>";
+        }
+    }
+
 
 
     public function editUser()
@@ -885,6 +906,27 @@ class Admin
         }
         elseif($nof['found']=='no'){
             return['found'=>'no'];
+        }
+    }
+
+    public function replyMessage()
+    {
+        $issue = htmlspecialchars($_POST['issue']);
+        $message = htmlspecialchars($_POST['message']);
+        $username = htmlspecialchars($_POST['username']);
+        $email = htmlspecialchars($_POST['email']);
+        $role = 'admin';
+    
+        // Load model from admin/messages.php
+        $model = $this->model('admin', 'messages'); // <--- correct reference
+        $result = $model->reply($issue, $message, $username, $role, $email);
+    
+        $this->view('admin', 'admin');
+    
+        if ($result['found'] == 'yes') {
+            echo "<script>alert('Support reply has been submitted!');</script>";
+        } else {
+            echo "<script>alert('Error while sending reply');</script>";
         }
     }
 
