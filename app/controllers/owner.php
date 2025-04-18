@@ -619,6 +619,31 @@ class Owner
                 }
             }
 
+            public function reports() {
+                $nofModel = $this->model('Nof');
+            
+                // Assuming you store the logged-in gym's username in session
+                $gymUsername = $_SESSION['gym_username'] ?? null;
+            
+                if ($gymUsername === null) {
+                    $this->view('owner', 'reports', [
+                        'membershipReport' => ['found' => 'no']
+                    ]);
+                    return;
+                }
+            
+                $membershipReport = $nofModel->getMembershipReport($gymUsername);
+            
+                $this->view('owner', 'reports', [
+                    'membershipReport' => $membershipReport
+                ]);
+            }
+            
+            
+            
+            
+            
+            
             public function getSavedColors() {
                     if (session_status() == PHP_SESSION_NONE) {
                         session_start(); // Start session only if it's not already started
