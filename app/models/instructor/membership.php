@@ -5,7 +5,7 @@ class membership {
     public function getAcceptedClients($instructor_id) {
         $conn = $this->getConnection();  
         $sql = "SELECT username 
-                  FROM instructors_client_history 
+                  FROM instructor_request 
                   WHERE trainer_username = ? ";
                   
         $stmt = $conn->prepare($sql);

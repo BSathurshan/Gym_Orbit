@@ -7,83 +7,49 @@
     
     <div class="in-in-content">
         <?php
-        // Load existing workout data if available
+        // Load workout data
         $user = new User();
         $workoutData = $user->get_workouts($username);
         $workouts = isset($workoutData['found']) && $workoutData['found'] == 'yes' ? $workoutData['workouts'] : [];
-        
-        // Process form submission
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Add username to the data
-            $_POST['username'] = $username;
-            
-            if ($user->save_workout($_POST)) {
-                echo '<div class="success-message">Workout plan saved successfully!</div>';
-                // Refresh the data
-                $workoutData = $user->get_workouts($username);
-                $workouts = isset($workoutData['found']) && $workoutData['found'] == 'yes' ? $workoutData['workouts'] : [];
-            } else {
-                echo '<div class="error-message">Failed to save workout plan. Please try again.</div>';
-            }
-        }
         ?>
 
-        <form action="" method="post" class="workout-form">
+        <!-- Display success/error messages -->
+        <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+            <div class="success-message">Workout plan saved successfully!</div>
+        <?php elseif (isset($_GET['success']) && $_GET['success'] == 0): ?>
+            <div class="error-message">Failed to save workout plan. Please try again.</div>
+        <?php endif; ?>
+
+        <form action="<?= ROOT ?>/user/save_workout/<?= $username ?>" method="post" class="workout-form">
             <div class="workout-controls">
                 <input type="submit" value="Save Plan" class="save-btn">
                 <input type="reset" value="Reset" class="reset-btn">
             </div>
             
             <div class="workout-table-container">
-                <table class="workout-table">
-                    <thead>
-                        <tr>
-                            <th>Day</th>
-                            <th>Exercise</th>
-                            <th>Sets</th>
-                            <th>Reps</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-                        
-                        foreach ($days as $day) {
-                            $dayWorkouts = $workouts[$day] ?? [];
-                            $rowCount = max(count($dayWorkouts), 5);
-                            
-                            for ($i = 0; $i < $rowCount; $i++) {
-                                $workout = $dayWorkouts[$i] ?? null;
-                                
-                                echo '<tr>';
-                                
-                                // Only show the day name in the first row for each day
-                                if ($i === 0) {
-                                    echo '<td rowspan="5" class="day-cell">' . $day . '</td>';
-                                }
-                                
-                                $j = $i + 1; // For input naming
-                                
-                                echo '<td><input type="text" name="' . $day . '_workout' . $j . '" value="' . 
-                                    (isset($workout->exercise) ? htmlspecialchars($workout->exercise) : '') . 
-                                    '" placeholder="Exercise ' . $j . '"></td>';
+                <?php $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; ?>
+                <?php foreach ($days as $day): ?>
+                    <div class="day-block">
+                        <h4><?= $day ?></h4>
+                        <div id="container-<?= $day ?>">
+                            <?php
+                            $dayWorkouts = $workouts[$day] ?? [[]]; // Always show at least one row
+                            foreach ($dayWorkouts as $i => $workout):
+                            ?>
+                                <div class="exercise-row">
+                                    <input type="text" name="exercises[<?= $day ?>][]" value="<?= htmlspecialchars($workout->exercise ?? '') ?>" placeholder="Exercise">
                                     
-                                echo '<td><input type="number" name="' . $day . '_sets' . $j . '" value="' . 
-                                    (isset($workout->sets) ? htmlspecialchars($workout->sets) : '') . 
-                                    '" min="0" placeholder="Sets"></td>';
-                                    
-                                echo '<td><input type="number" name="' . $day . '_reps' . $j . '" value="' . 
-                                    (isset($workout->reps) ? htmlspecialchars($workout->reps) : '') . 
-                                    '" min="0" placeholder="Reps"></td>';
-                                
-                                echo '</tr>';
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                                    <input type="number" name="reps[<?= $day ?>][]" value="<?= htmlspecialchars($workout->reps ?? '') ?>" min="0" placeholder="Reps">
+                                    <input type="number" name="sets[<?= $day ?>][]" value="<?= htmlspecialchars($workout->sets ?? '') ?>" min="0" placeholder="Sets">
+                                    <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <button type="button" onclick="addExerciseRow('<?= $day ?>')">Add Exercise</button>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            
+
             <div class="workout-controls">
                 <input type="submit" value="Save Plan" class="save-btn">
                 <input type="reset" value="Reset" class="reset-btn">
@@ -91,3 +57,19 @@
         </form>
     </div>
 </div>
+
+<!-- JavaScript to add rows -->
+<script>
+function addExerciseRow(day) {
+    const container = document.getElementById('container-' + day);
+    const row = document.createElement('div');
+    row.className = 'exercise-row';
+    row.innerHTML = `
+        <input type="text" name="exercises[${day}][]" placeholder="Exercise">
+        <input type="number" name="sets[${day}][]" min="0" placeholder="Sets">
+        <input type="number" name="reps[${day}][]" min="0" placeholder="Reps">
+        <button type="button" onclick="this.parentElement.remove()">Remove</button>
+    `;
+    container.appendChild(row);
+}
+</script>

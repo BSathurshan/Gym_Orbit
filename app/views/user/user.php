@@ -158,8 +158,8 @@ else{
 
             <div class="descriptor" value="6">
             <?php
-                       // require 'progressTracker.php';
-                       require 'workoutPlan.php'; //require 'MealPlan.php';
+                       // require 'progressTracker.php';  
+                       require 'workoutview.php'; //require 'MealPlan.php';
 
             ?>
             </div> 

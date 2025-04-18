@@ -24,7 +24,7 @@
                     ?>
                         <div class="users">
                             <!-- Wrap the username in a link to the page where schedule can be assigned -->
-                            <h4><a href="assign_schedule.php?username=<?= urlencode($result['username']) ?>"><u><?= htmlspecialchars($result['username']) ?></u></a></h4>
+                            <h4><a href="<?=ROOT?>/user/workoutPlan/<?= urlencode($result['username']) ?>"><u><?= htmlspecialchars($result['username']) ?></u></a></h4>
                         </div>
                     <?php
                     endforeach;
