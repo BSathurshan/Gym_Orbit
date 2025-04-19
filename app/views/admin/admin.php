@@ -110,7 +110,7 @@ else{
             <!-- Profile Section -->
             <div class="descriptor active" value="1">
             <?php
-                        //require 'home.php';
+                      //  require 'home.php';
             ?> 
             </div> 
 

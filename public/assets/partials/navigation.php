@@ -8,11 +8,11 @@
     
     <ul class="nav-pages">
 
-        <li><a href="<?= ROOT ?>/home/index">Home</a></li>
-        <li><a href="<?= ROOT ?>/home/features">Features</a></li>
-        <li><a href="<?= ROOT ?>/home/services">Services</a></li>
-        <li><a href="<?= ROOT ?>/home/about">About Us</a></li>
-        <li><a href="<?= ROOT ?>/home/support">Support</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#support">Support</a></li>
         
     </ul>
 
@@ -23,3 +23,6 @@
             <a href="<?= ROOT ?>/signup/signup" class="join-btn">Join Us</a>  
         
 </div>
+
+
+
