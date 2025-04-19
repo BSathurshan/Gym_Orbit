@@ -57,5 +57,56 @@ class Calendar
     }
     
 
+    public function getGymTimes($gym_username) {
+        $conn = $this->getConnection();
+        $query = "SELECT monday, tuesday, wednesday, thursday, friday, saturday, sunday FROM gym_time WHERE gym_username = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $gym_username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc() ?: [];
+    }
+    
+    public function getInstructorTimes($gym_username) {
+        $conn = $this->getConnection();
+        $query = "SELECT trainer_username, trainer_name, age, gender, file, monday, tuesday, wednesday, thursday, friday, saturday, sunday 
+                  FROM instructor_time 
+                  WHERE gym_username = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $gym_username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $instructors = [];
+        while ($row = $result->fetch_assoc()) {
+            $instructors[] = [
+                'trainer_username' => $row['trainer_username'],
+                'trainer_name' => $row['trainer_name'],
+                'age' => $row['age'],
+                'gender' => $row['gender'],
+                'file' => $row['file'],
+                'times' => [
+                    'monday' => $row['monday'],
+                    'tuesday' => $row['tuesday'],
+                    'wednesday' => $row['wednesday'],
+                    'thursday' => $row['thursday'],
+                    'friday' => $row['friday'],
+                    'saturday' => $row['saturday'],
+                    'sunday' => $row['sunday']
+                ]
+            ];
+        }
+        return $instructors;
+    }
+
+
+    public function saveBooking($username, $gym_username, $trainer_username, $date, $time) {
+        $conn = $this->getConnection();
+        $query = "INSERT INTO bookings (username, gym_username, trainer_username, date, time) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("sssss", $username, $gym_username, $trainer_username, $date, $time);
+        return $stmt->execute();
+    }
+    
  }
 ?>
