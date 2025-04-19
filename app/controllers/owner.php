@@ -600,8 +600,8 @@ class Owner
                 // Extract date and color data
                 $selectedDate = $data['date'];
                 $selectedColor = $data['color'];
-               // $username = $_SESSION['username'];
-               $username='01';
+                $username = $_SESSION['username'];
+
 
                 if (!isset($data['date'])) {
                     echo json_encode(["success" => false, "error" => "Date not setted"]);
@@ -620,9 +620,9 @@ class Owner
             }
 
             public function reports() {
-                $nofModel = $this->model('Nof');
+                $model = $this->model('owner','Nof'); 
+                $nofModel = $this->$model('Nof');
             
-                // Assuming you store the logged-in gym's username in session
                 $gymUsername = $_SESSION['gym_username'] ?? null;
             
                 if ($gymUsername === null) {
