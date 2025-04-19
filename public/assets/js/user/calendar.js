@@ -12,7 +12,23 @@ document.addEventListener('DOMContentLoaded', function() {
         prevMonthBtn: document.getElementById('prev-month'),
         nextMonthBtn: document.getElementById('next-month'),
         notesList: document.getElementById('notes-list'),
-        machineAvailability: document.getElementById('machine-availibility') // Assuming this exists in HTML
+        machineAvailability: document.getElementById('machine-availibility'),
+        bookingModal: document.getElementById('booking-modal'),
+        bookingModalClose: document.getElementById('booking-modal-close'),
+        bookingDate: document.getElementById('booking-date'),
+        bookingDateRepeat: document.getElementById('booking-date-repeat'),
+        bookingYes: document.getElementById('booking-yes'),
+        bookingNo: document.getElementById('booking-no'),
+        bookingStep1: document.getElementById('booking-step-1'),
+        bookingStep2: document.getElementById('booking-step-2'),
+        bookingStep3: document.getElementById('booking-step-3'),
+        bookingTimeSlots: document.getElementById('booking-time-slots'),
+        instructorYes: document.getElementById('instructor-yes'),
+        instructorNo: document.getElementById('instructor-no'),
+        instructorAvailability: document.getElementById('instructor-availability'),
+        instructorList: document.getElementById('instructor-list'),
+        confirmBooking: document.getElementById('confirm-booking'),
+        cancelBooking: document.getElementById('cancel-booking')
     };
 
     // State
@@ -20,7 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedDate: null,
         colors: {},
         notes: [],
-        availability: {}
+        availability: {},
+        gymTimes: null,
+        instructorTimes: null,
+        selectedTimeSlot: null // Store the selected time slot
     };
 
     // Single source of Sri Lanka time
@@ -128,6 +147,38 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.day').forEach(cell => cell.classList.remove('selected'));
         const selectedCell = document.querySelector(`[data-date="${date.toISOString().split('T')[0]}"]`);
         if (selectedCell) selectedCell.classList.add('selected');
+    
+        // Get the weekday in lowercase (e.g., "monday")
+        const weekdayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        const weekday = weekdayNames[date.getDay()];
+    
+        // Show the modal with the selected date
+        const dateString = date.toISOString().split('T')[0];
+        elements.bookingDate.textContent = dateString;
+        elements.bookingDateRepeat.textContent = dateString;
+        elements.bookingModal.style.display = 'block';
+        elements.bookingStep1.style.display = 'block';
+        elements.bookingStep2.style.display = 'none';
+        elements.bookingStep3.style.display = 'none';
+    
+        // Fetch gym times and populate the time slots as clickable divs
+        fetchGymTimes().then(() => {
+            const timeSlotsContainer = elements.bookingTimeSlots;
+            timeSlotsContainer.innerHTML = '';
+            const times = state.gymTimes[weekday] || '';
+            if (times) {
+                const timeSlots = times.split(','); // Split "08:00-09:00,09:00-10:00"
+                timeSlots.forEach(slot => {
+                    const slotDiv = document.createElement('div');
+                    slotDiv.className = 'time-slot';
+                    slotDiv.textContent = slot;
+                    slotDiv.dataset.time = slot;
+                    timeSlotsContainer.appendChild(slotDiv);
+                });
+            } else {
+                timeSlotsContainer.innerHTML = '<p>No available times for this day.</p>';
+            }
+        });
     }
     /////////// End Calendar Functions ///////////
 
@@ -135,6 +186,156 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupEventListeners() {
         elements.prevMonthBtn.addEventListener('click', () => changeMonth(-1));
         elements.nextMonthBtn.addEventListener('click', () => changeMonth(1));
+    
+        // Modal close button
+        elements.bookingModalClose.addEventListener('click', () => {
+            elements.bookingModal.style.display = 'none';
+            state.selectedInstructor = null; // Reset on close
+        });
+    
+        // Click outside modal to close
+        window.addEventListener('click', (event) => {
+            if (event.target === elements.bookingModal) {
+                elements.bookingModal.style.display = 'none';
+                state.selectedInstructor = null; // Reset on close
+            }
+        });
+    
+        // Booking Yes/No buttons
+        elements.bookingYes.addEventListener('click', () => {
+            elements.bookingStep1.style.display = 'none';
+            elements.bookingStep2.style.display = 'block';
+        });
+    
+        elements.bookingNo.addEventListener('click', () => {
+            elements.bookingModal.style.display = 'none';
+            state.selectedInstructor = null; // Reset on close
+        });
+    
+        // Handle time slot selection
+        elements.bookingTimeSlots.addEventListener('click', (event) => {
+            const slot = event.target.closest('.time-slot');
+            if (slot) {
+                document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                slot.classList.add('selected');
+                state.selectedTimeSlot = slot.dataset.time;
+            }
+        });
+    
+        // Instructor Yes/No buttons
+        elements.instructorYes.addEventListener('click', () => {
+            if (!state.selectedTimeSlot) {
+                alert("Please select a time slot first!");
+                return;
+            }
+    
+            // Get the weekday again
+            const weekdayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            const weekday = weekdayNames[state.selectedDate.getDay()];
+    
+            // Fetch instructor times and show details
+            fetchInstructorTimes().then(() => {
+                const availableInstructors = state.instructorTimes.filter(instructor => {
+                    const instructorTimes = instructor.times[weekday] || '';
+                    const availableTimes = instructorTimes ? instructorTimes.split(',') : [];
+                    return availableTimes.includes(state.selectedTimeSlot);
+                });
+    
+                elements.bookingStep2.style.display = 'none';
+                elements.bookingStep3.style.display = 'block';
+                elements.instructorAvailability.textContent = availableInstructors.length > 0
+                    ? `Available instructors for ${state.selectedTimeSlot} on ${elements.bookingDate.textContent}:`
+                    : `No instructors available for ${state.selectedTimeSlot} on ${elements.bookingDate.textContent}.`;
+    
+                // Display instructor details
+                elements.instructorList.innerHTML = '';
+                if (availableInstructors.length > 0) {
+                    availableInstructors.forEach(instructor => {
+                        const instructorCard = document.createElement('div');
+                        instructorCard.className = 'instructor-card';
+                        instructorCard.dataset.trainerUsername = instructor.trainer_username; // Store trainer_username
+                        instructorCard.innerHTML = `
+                            <img src="${ROOT}/assets/images/instructor/profile/images/${instructor.file}" alt="${instructor.trainer_name}">
+                            <div class="instructor-details">
+                                <p><strong>${instructor.trainer_name}</strong></p>
+                                <p>Age: ${instructor.age}</p>
+                                <p>Gender: ${instructor.gender}</p>
+                            </div>
+                        `;
+                        elements.instructorList.appendChild(instructorCard);
+                    });
+    
+                    // Add click event to instructor cards
+                    elements.instructorList.querySelectorAll('.instructor-card').forEach(card => {
+                        card.addEventListener('click', () => {
+                            // Remove .selected from all cards
+                            elements.instructorList.querySelectorAll('.instructor-card').forEach(c => c.classList.remove('selected'));
+                            // Add .selected to the clicked card
+                            card.classList.add('selected');
+                            // Store the selected instructor
+                            state.selectedInstructor = card.dataset.trainerUsername;
+                        });
+                    });
+                }
+            });
+        });
+    
+        elements.instructorNo.addEventListener('click', () => {
+            if (!state.selectedTimeSlot) {
+                alert("Please select a time slot first!");
+                return;
+            }
+    
+            elements.bookingStep2.style.display = 'none';
+            elements.bookingStep3.style.display = 'block';
+            elements.instructorAvailability.textContent = `Booking confirmed for ${state.selectedTimeSlot} on ${elements.bookingDate.textContent} without an instructor.`;
+            elements.instructorList.innerHTML = '';
+            state.selectedInstructor = null; // Reset instructor selection
+        });
+    
+        // Confirm/Cancel buttons
+        elements.confirmBooking.addEventListener('click', () => {
+            // If instructors are available but none selected, prompt user
+            const hasInstructors = elements.instructorAvailability.textContent.includes("Available instructors");
+            if (hasInstructors && !state.selectedInstructor) {
+                alert("Please select an instructor before confirming the booking!");
+                return;
+            }
+    
+            // Prepare booking data (removed username)
+            const bookingData = {
+                gym_username: GYM_USERNAME, // Hardcoded as '01'
+                trainer_username: state.selectedInstructor || null, // Selected instructor or null if none
+                date: elements.bookingDate.textContent, // Selected date
+                time: state.selectedTimeSlot // Selected time slot
+            };
+    
+            // Send booking data to the server
+            fetch(`${ROOT}/user/saveBooking`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(bookingData)
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to save booking');
+                return response.json();
+            })
+            .then(data => {
+                console.log("Booking saved:", data);
+                alert("Booking confirmed successfully!");
+                elements.bookingModal.style.display = 'none';
+                state.selectedInstructor = null; // Reset on confirm
+            })
+            .catch(error => {
+                console.error("Error saving booking:", error);
+                alert("Failed to save booking. Please try again.");
+            });
+        });
+    
+        elements.cancelBooking.addEventListener('click', () => {
+            elements.bookingModal.style.display = 'none';
+            state.selectedInstructor = null; // Reset on cancel
+        });
     }
     /////////// End Event Functions ///////////
 
@@ -284,7 +485,43 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchAvailabilityFromDatabase();
     }
     /////////// End Storage and Database Functions ///////////
-
+    function fetchGymTimes() {
+        return fetch(`${ROOT}/user/getGymTimes?gym_username=${GYM_USERNAME}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            state.gymTimes = data || {};
+            console.log("Loaded gym times:", state.gymTimes);
+        })
+        .catch(error => {
+            console.error("Error fetching gym times:", error);
+            state.gymTimes = {};
+        });
+    }
+    
+    function fetchInstructorTimes() {
+        return fetch(`${ROOT}/user/getInstructorTimes?gym_username=${GYM_USERNAME}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            state.instructorTimes = data || [];
+            console.log("Loaded instructor times:", state.instructorTimes);
+        })
+        .catch(error => {
+            console.error("Error fetching instructor times:", error);
+            state.instructorTimes = [];
+        });
+    }
     // Start it up
     init();
 });

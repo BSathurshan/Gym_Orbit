@@ -489,6 +489,26 @@ button:focus, input:focus {
         width: 100%; /* On smaller screens, make the cards take full width */
     }
 }
+.users {
+    font-size: 40px;
+    color: #ffffff; /* Dark red color */
+    text-align: center;
+    
+    font-weight: 700;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.user-container {
+    font-size: 40px;
+    color: #ffffff; /* Dark red color */
+    text-align: center;
+    
+    font-weight: 700;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
 
 

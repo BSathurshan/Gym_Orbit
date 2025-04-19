@@ -930,5 +930,27 @@ class Admin
         }
     }
 
+    public function getRecent_Users(){
+        $model = $this->model('admin','nof');
+        $users = $model->recentUsers();
+        return $users;
+    }
+    
+    public function getPending_Gyms(){
+        $model = $this->model('admin','nof');
+        $pending = $model->pendingGyms();
+        return $pending;
+    }
+
+    public function getGenderDistribution($gym_username) {
+        $model = $this->model('admin', 'nof');
+        $genderData = $model->getGenderDistribution($gym_username); // Fetch gender distribution data for the given gym
+    
+        return $genderData;
+    }
+    
+    
+    
+
     
 }
