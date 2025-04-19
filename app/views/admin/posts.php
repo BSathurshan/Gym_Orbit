@@ -14,27 +14,27 @@
         <?php          
 
             $admin = new Admin(); 
-            $posts = $admin->get_posts(); 
+            $posts = $admin->get_posts();
+            
+            echo "<div class='posts-container'>";
 
             if (isset($posts['found'])&&$posts['found']=='yes') {
                 while ($post = $posts['result']->fetch_assoc()) {
-
+                    echo "<div class='posts'>";
                     echo "<table>";
                     echo "<h4> <u>" . htmlspecialchars($post['gym_name']) . "</u> </h5>";
                     echo "<h5>" . htmlspecialchars($post['title']) . "</h5>";
-                    echo "<img src='" . htmlspecialchars(ROOT . "/assets/images/posts/images/" . $post["file"]) . "' 
-                    width='200' 
-                    title='" . htmlspecialchars($post["file"]) . "'>";
-                                    echo "<p>" . htmlspecialchars($post['details']) . "</p>";
                     
-                        echo "<td><button class='editBtn' onclick='postEdit(\"{$post['title']}\",
-                        \"{$post['file']}\",\"{$post['details']}\",\"{$post['gym_username']}\",
-                        \"{$post['id']}\")'> Edit </button>";
-                    
-                        echo "<button class='deleteBtn' onclick='postDelete(\"{$post['id']}\",\"{$post['gym_username']}\",\"{$post['file']}\", \"admin\")'>Delete</button> </td>";
-                    
+                    echo "<div class='postimage'>";
+                    echo "<img src='" . htmlspecialchars(ROOT . "/assets/images/posts/images/" . $post["file"]) . "' width='200' title='" . htmlspecialchars($post["file"]) . "'>";
+                    echo "</div>";
+
+                    echo "<p>" . htmlspecialchars($post['details']) . "</p>";
+                    echo "<td><button class='editBtn' onclick='postEdit(\"{$post['title']}\",\"{$post['file']}\",\"{$post['details']}\",\"{$post['gym_username']}\", \"{$post['id']}\")'> Edit </button>";
+                    echo "<button class='deleteBtn' onclick='postDelete(\"{$post['id']}\",\"{$post['gym_username']}\",\"{$post['file']}\", \"admin\")'>Delete</button> </td>";
                     echo "</table>";
-                    echo "<br>";    
+                    echo "<br>"; 
+                    echo "</div>";   
                     
                 }
                 }
@@ -42,10 +42,12 @@
                 {
                     echo "<p>No Posts found , add one!</p>";
                 }
+
+                echo "</div>";
                 ?>   
 
 </div>
-</div>  
+</div>   
                           <!-- Hidden Edit Form (Modal) -->
                           <div id="editPostFormModal" class="modal" style="display: none;">
                                 <div class="modal-content">
