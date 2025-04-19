@@ -159,6 +159,67 @@ class User
       echo "<script>alert('Missing username (get_materials).');</script>";
     }
   }
+  public function get_workouts($username) {
+    $model = $this->model('user', 'instructor');
+    $result = $model->workout_details($username);
+    
+    if($result) {
+        $workouts = [];
+        foreach($result as $row) {
+            $workouts[$row['day']][] = $row;
+        }
+        return ['found' => 'yes', 'workouts' => $workouts];
+    }
+    
+    return ['found' => 'no'];
+}
+public function save_workout($username) {
+  $model = $this->model('user', 'instructor');
+  $delete = $model->workout_delete($username);
+
+  $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  $success = true;
+
+  foreach ($days as $day) {
+      // Fetch arrays of exercises, sets, and reps for each day
+      $exercises = $_POST['exercises'][$day] ?? [];
+      $sets = $_POST['sets'][$day] ?? [];
+      $reps = $_POST['reps'][$day] ?? [];
+
+      // Iterate through each exercise for that day
+      for ($i = 0; $i < count($exercises); $i++) {
+          $exercise = trim($exercises[$i]);
+          $set = trim($sets[$i] ?? '');
+          $rep = trim($reps[$i] ?? '');
+
+          // Skip empty entries (safety check)
+          if ($exercise === '' || $set === '' || $rep === '') {
+              continue;
+          }
+
+          // Debug output
+          // echo "Saving for $day: $exercise - $set sets x $rep reps<br>";
+          
+          $result = $model->workout_save($username, $day, $exercise, $set, $rep);
+
+          if (!$result) {
+              $success = false;
+          }
+      }
+  }
+
+  // Redirect or message
+  if ($success) {
+      $_SESSION['message'] = 'Workout plan saved successfully!';
+  } else {
+      $_SESSION['message'] = 'Failed to save some workouts. Please try again.';
+  }
+
+  header("Location: " . ROOT . "/instructor/workout_schedule/{$username}");
+  exit();
+}
+
+
 
 
   public function get_reminders($username)
@@ -253,6 +314,25 @@ class User
     }
     include_once PATH . 'render.php';
   }
+  public function request_workoutplan($username)
+  {
+    if (!empty($username)) {
+
+      $model = $this->model('user', 'instructor');
+      $result = $model->workout_details($username);
+
+      if ($result) {
+        return ['found' => 'yes', 'result' => $result];
+        
+      } else {
+
+        return ['found' => 'no', 'message' => 'Please join a gym to request instructors'];
+      }
+    } else {
+
+      echo "<script>alert('Missing username (request_Instructor).');</script>";
+    }
+  }
 
   public function getSupport()
   {
@@ -302,6 +382,8 @@ class User
     }
   }
 
+ 
+
 /*calendar*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   public function getSavedColors() {
@@ -327,7 +409,54 @@ public function getAvailability() {
     header('Content-Type: application/json');
     echo json_encode($availability);
 }
+public function workoutplan($username) {
 
+  $workouts = $this->get_workouts($username);
+  $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
+}
 
+public function getGymTimes() {
+  $gym_username = $_GET['gym_username'] ?? '01';
+  $model = $this->model('user', 'calendar');
+  $times = $model->getGymTimes($gym_username);
+  header('Content-Type: application/json');
+  echo json_encode($times);
+}
+
+public function getInstructorTimes() {
+  $gym_username = $_GET['gym_username'] ?? '01';
+  $model = $this->model('user', 'calendar');
+  $times = $model->getInstructorTimes($gym_username);
+  header('Content-Type: application/json');
+  echo json_encode($times);
+}
+
+public function saveBooking() {
+  $data = json_decode(file_get_contents("php://input"), true);
+  
+  // Fetch username from session
+  $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+  $gym_username = $data['gym_username'] ?? '01';
+  $trainer_username = $data['trainer_username'] ?? null;
+  $date = $data['date'] ?? '';
+  $time = $data['time'] ?? '';
+
+  if (empty($username) || empty($gym_username) || empty($date) || empty($time)) {
+      http_response_code(400);
+      echo json_encode(['error' => 'Missing required fields']);
+      return;
+  }
+
+  $model = $this->model('user', 'calendar');
+  $result = $model->saveBooking($username, $gym_username, $trainer_username, $date, $time);
+
+  header('Content-Type: application/json');
+  if ($result) {
+      echo json_encode(['success' => true]);
+  } else {
+      http_response_code(500);
+      echo json_encode(['error' => 'Failed to save booking']);
+  }
+}
   
 }

@@ -102,6 +102,53 @@ class Instructor
             return false;
         }
     }
+    public function workout_details($username)
+    {
+        $conn = $this->getConnection();  
+        
+       
+        $queryRequested = "SELECT * FROM workout_schedule WHERE username = ? ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), id";
+
+        $stmt1 = $conn->prepare($queryRequested);
+        $stmt1->bind_param("s", $username);
+        $stmt1->execute();
+        $resultRequested = $stmt1->get_result();
+
+
+        if ($resultRequested->num_rows > 0) {
+            return $resultRequested;
+        }else{
+            return false;
+        }
+
+
+        $stmt1->close();
+
+    }
+    public function workout_delete($username)
+    {
+        $conn = $this->getConnection();  
+        
+       
+        $queryRequested = "DELETE FROM workout_schedule WHERE username = ?";
+
+        $stmt1 = $conn->prepare($queryRequested);
+        $stmt1->bind_param("s", $username);
+        return $stmt1->execute();
+
+    }
+
+    public function workout_save($username, $day, $exercise, $sets, $reps)
+    {
+        $conn = $this->getConnection();  
+        $queryRequested = ("INSERT INTO workout_schedule (username, day, exercise, sets, reps) 
+        VALUES (?, ?, ?, ?, ?)");
+        $stmt1 = $conn->prepare($queryRequested);
+            $stmt1->bind_param("sssss", $username, $day, $exercise, $sets, $reps);
+
+        return $stmt1->execute();
+
+    }
 
 }
 ?>
