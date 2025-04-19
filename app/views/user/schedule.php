@@ -47,3 +47,32 @@
         </div>
     </div>
 </div>
+
+<div id="booking-modal" class="booking-modal">
+    <div class="booking-modal-content">
+        <span class="booking-modal-close" id="booking-modal-close">×</span>
+        <h3>Book a Schedule</h3>
+        <div id="booking-step-1">
+            <p>Do you want to book a schedule for <span id="booking-date"></span>?</p>
+            <button id="booking-yes">Yes</button>
+            <button id="booking-no">No</button>
+        </div>
+        <div id="booking-step-2" style="display: none;">
+            <p>Select a time slot for <span id="booking-date-repeat"></span>:</p>
+            <div id="booking-time-slots" class="time-slots">
+                <!-- JavaScript will fill this with clickable divs -->
+            </div>
+            <p>Do you need an instructor?</p>
+            <button id="instructor-yes">Yes</button>
+            <button id="instructor-no">No</button>
+        </div>
+        <div id="booking-step-3" style="display: none;">
+            <p id="instructor-availability"></p>
+            <div id="instructor-list" class="instructor-list">
+                <!-- JavaScript will fill this with instructor details -->
+            </div>
+            <button id="confirm-booking">Confirm Booking</button>
+            <button id="cancel-booking">Cancel</button>
+        </div>
+    </div>
+</div>

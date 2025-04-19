@@ -1,0 +1,122 @@
+.booking-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.booking-modal-content {
+    color: black;
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.booking-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.booking-modal-close:hover,
+.booking-modal-close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.time-slot {
+    padding: 10px 15px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.time-slot:hover {
+    background-color: #d0d0d0;
+}
+
+.time-slot.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.instructor-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.instructor-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.instructor-details {
+    flex: 1;
+}
+
+.instructor-details p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.instructor-card {
+    display: flex;
+    color: #000;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 250px;
+    cursor: pointer; /* Make it clickable */
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.instructor-card:hover {
+    background-color: #f0f0f0;
+    border: 2px solid #4CAF50; /* Green border */
+    
+}
+
+.instructor-card.selected {
+    background-color: #e6f7e6; /* Light green background for selected */
+    border: 2px solid #4CAF50; /* Green border */
+}
