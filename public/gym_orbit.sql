@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2025 at 02:21 AM
+-- Generation Time: Apr 19, 2025 at 05:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,7 +53,7 @@ CREATE TABLE `admin` (
   `age` int(11) NOT NULL,
   `gender` enum('male','female','prefer not to say') NOT NULL,
   `location` text NOT NULL,
-  `contact` int(11) NOT NULL,
+  `contact` varchar(13) NOT NULL,
   `file` varchar(255) DEFAULT NULL,
   `ban` enum('yes','no') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -63,9 +63,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`type`, `admin_username`, `password`, `admin_name`, `email`, `age`, `gender`, `location`, `contact`, `file`, `ban`) VALUES
-('super', '3', '141', 'Loki', 'loki@@', 21, 'male', 'jasdgsajd', 5466, '', 'no'),
-('super', 'admin', 'admin', 'admin', 'sathu@gmail.com', 31, 'male', 'Wellawatte,Colombo', 2147483647, '674d5b6602aa7.jpg', NULL),
-('normal', 'jj', 'jj', 'jj', 'brusleepatimaraja@gmail.com', 21, 'male', 'Chicago', 777777777, '674c2a812e99c.png', 'no');
+('super', '3', '141', 'Loki', 'loki@@', 21, 'male', 'jasdgsajd', '+94712345678', '', 'no'),
+('super', 'admin', 'admin', 'admin', 'sathu@gmail.com', 31, 'male', 'Wellawatte,Colombo', '2147483647', '674d5b6602aa7.jpg', NULL),
+('normal', 'jj', 'jj', 'jj', 'brusleepatimaraja@gmail.com', 21, 'male', 'Chicago', '777777777', '674c2a812e99c.png', 'no');
 
 -- --------------------------------------------------------
 
@@ -181,8 +181,8 @@ CREATE TABLE `gym` (
   `age` int(11) NOT NULL,
   `gender` enum('male','female','prefer not to say') NOT NULL,
   `location` text NOT NULL,
-  `gym_contact` int(11) NOT NULL,
-  `owner_contact` int(11) NOT NULL,
+  `gym_contact` varchar(13) NOT NULL,
+  `owner_contact` varchar(13) NOT NULL,
   `start_year` date NOT NULL,
   `joined` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `experience` int(11) NOT NULL,
@@ -197,9 +197,10 @@ CREATE TABLE `gym` (
 --
 
 INSERT INTO `gym` (`gym_username`, `gym_name`, `password`, `owner_name`, `email`, `age`, `gender`, `location`, `gym_contact`, `owner_contact`, `start_year`, `joined`, `experience`, `web`, `social`, `ban`, `file`) VALUES
-('01', 'meme', '141', 'assa', 'abc@', 21, 'male', 'dasdasd', 14440, 44454, '2024-11-01', '2025-04-11 16:29:32', 45, 'asdsa', 'sad', 'no', '677cb115669eb.png'),
-('fitlifejohn', 'FitLife Gym', 'fitlifejohn', 'John Smith', 'ohn.smith@gmail.com', 35, 'male', 'Wellawattee,Colombo -06', 2147483647, 2147483647, '2024-07-11', '2024-12-02 05:19:27', 12, 'https://www.goldsgym.com/', '', NULL, '674d435f238b3.jpg'),
-('ironsarah', 'Iron Paradise Gym', 'ironsarah', 'Sarah Johnson', 'sarah.johnson@gmail.com', 56, 'male', 'Orr\'sHill,Trincomalee', 740077777, 2147483647, '2021-06-12', '2024-12-02 05:23:35', 23, 'https://www.equinox.com/', '', NULL, '674d445758234.jpg');
+('01', 'meme', '141', 'assa', 'abc@', 21, 'male', 'dasdasd', '14440', '+94712345679', '2024-11-01', '2025-04-19 03:09:10', 45, 'asdsa', 'sad', 'no', '677cb115669eb.png'),
+('asdasd123', 'sdasdasd', 'dasdasd', 'John Smith', 'farmer@gmail.com', 66, 'male', 'Chicago', '+94712345676', '+94712345672', '2025-04-18', '2025-04-19 03:55:22', 20, 'https://dribbble.com/tags/gym-website', 'https://dribbble.com/tags/gym-website', NULL, NULL),
+('fitlifejohn', 'FitLife Gym', 'fitlifejohn', 'John Smith', 'ohn.smith@gmail.com', 35, 'male', 'Wellawattee,Colombo -06', '2147483647', '2147483647', '2024-07-11', '2024-12-02 05:19:27', 12, 'https://www.goldsgym.com/', '', NULL, '674d435f238b3.jpg'),
+('ironsarah', 'Iron Paradise Gym', 'ironsarah', 'Sarah Johnson', 'sarah.johnson@gmail.com', 56, 'male', 'Orr\'sHill,Trincomalee', '740077777', '2147483647', '2021-06-12', '2024-12-02 05:23:35', 23, 'https://www.equinox.com/', '', NULL, '674d445758234.jpg');
 
 -- --------------------------------------------------------
 
@@ -283,7 +284,7 @@ CREATE TABLE `instructors` (
   `trainer_name` varchar(50) NOT NULL,
   `age` int(11) NOT NULL,
   `gender` enum('male','female','prefer not to say') NOT NULL,
-  `contact` int(11) DEFAULT NULL,
+  `contact` varchar(13) DEFAULT NULL,
   `social` text NOT NULL,
   `experience` int(11) NOT NULL,
   `location` text NOT NULL,
@@ -299,10 +300,10 @@ CREATE TABLE `instructors` (
 --
 
 INSERT INTO `instructors` (`gym_username`, `trainer_username`, `email`, `password`, `trainer_name`, `age`, `gender`, `contact`, `social`, `experience`, `location`, `availiblity`, `qualify`, `special`, `file`, `ban`) VALUES
-('01', 'ggmicha', 'mic@gmail.com', 'mic141', 'mic', 22, 'male', 777777777, 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '67f66dfeebffd.png', NULL),
-('ironsarah', 'sarahbbbb', 'sarah.bennett@gmail.com', '123', 'Sarah Bennett', 32, 'male', 2147483647, 'https://sociallinks.io/', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '674d46d404b94.jpg', NULL),
-('01', 'sarahbbbbdds', 'lokiajsd22@gmail.com', '141', 'Sarah Bennett', 22, 'male', 777777777, 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 24, 'sadasd', 'weekends', 'ss', 'athlete1', NULL, NULL),
-('01', 'ss', 'lokiajsd@gmail.com', '141', 'uuu', 24, 'male', 777777777, 'https://dribbble.com/tags/gym-website', 0, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete1', '6795cf02ceae6.jpg', NULL);
+('01', 'ggmicha', 'mic@gmail.com', 'mic141', 'mic', 22, 'male', '+94712345673', 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '67f66dfeebffd.png', NULL),
+('ironsarah', 'sarahbbbb', 'sarah.bennett@gmail.com', '123', 'Sarah Bennett', 32, 'male', '2147483647', 'https://sociallinks.io/', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '674d46d404b94.jpg', NULL),
+('01', 'sarahbbbbdds', 'lokiajsd22@gmail.com', '141', 'Sarah Bennett', 22, 'male', '777777777', 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 24, 'sadasd', 'weekends', 'ss', 'athlete1', NULL, NULL),
+('01', 'ss', 'lokiajsd@gmail.com', '141', 'uuu', 24, 'male', '777777777', 'https://dribbble.com/tags/gym-website', 0, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete1', '6795cf02ceae6.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -527,7 +528,7 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `age` int(11) NOT NULL,
   `gender` enum('male','female','prefer not to say') DEFAULT NULL,
-  `contact` int(11) NOT NULL,
+  `contact` varchar(13) NOT NULL,
   `location` text DEFAULT NULL,
   `goals` text DEFAULT NULL,
   `active` enum('full','part','temporary','not sure') DEFAULT NULL,
@@ -542,11 +543,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `name`, `email`, `age`, `gender`, `contact`, `location`, `goals`, `active`, `health`, `ban`, `file`, `achieve`) VALUES
-('123', '123', 'loki', 'wolverine@gmail.com', 21, 'male', 772571457, 'sadasddas', 'Strength', 'full', 'yes', 'no', 'hq720.jpg', NULL),
-('alexmo123 ', 'alex123', 'Alex Morgan', 'alex.morgan@gmail.com', 35, 'male', 777777777, 'Wellawatte,Colombo', 'Strength', 'full', 'no', NULL, '674d406b2d0f8.jpg', NULL),
-('davejohnson89', 'david123', 'David Johnson', 'david.johnson@gmail.com', 45, 'male', 2147483647, 'Orr\'s Hill,Trincomalee', 'Physic', 'full', 'no', NULL, '674d41311fda6.jpg', NULL),
-('emmat92', 'emmat92', 'Emma Thompson', 'emma.thompson@gmail.com', 32, 'male', 1234567890, 'Wellawatte,Colombo', 'Endurance', 'part', '', 'no', '674d41cd6133e.jpg', NULL),
-('te', '141', 'asd', 'check@gmail.com', 24, 'male', 777777777, 'sadasd', 'strength', 'full', 'no', 'no', '67827d7756557.webp', 'build muscle');
+('123', '123', 'loki', 'wolverine@gmail.com', 21, 'male', '+94712345671', 'sadasddas', 'Strength', 'full', 'yes', 'no', 'hq720.jpg', NULL),
+('davejohnson89', 'david123', 'David Johnson', 'david.johnson@gmail.com', 45, 'male', '2147483647', 'Orr\'s Hill,Trincomalee', 'Physic', 'full', 'no', NULL, '674d41311fda6.jpg', NULL),
+('emmat92', 'emmat92', 'Emma Thompson', 'emma.thompson@gmail.com', 32, 'male', '1234567890', 'Wellawatte,Colombo', 'Endurance', 'part', '', 'no', '674d41cd6133e.jpg', NULL),
+('te', '141', 'asd', 'check@gmail.com', 24, 'male', '777777777', 'sadasd', 'strength', 'full', 'no', 'no', '67827d7756557.webp', 'build muscle');
 
 -- --------------------------------------------------------
 

@@ -7,59 +7,41 @@ class Check_Email
         // Get the database connection from the Model trait
         $conn = $this->getConnection();
 
-        // Fetch user by email
-        $sql = "SELECT * FROM user WHERE email = ?";
+        // Use a single UNION query to check all tables
+        $sql = "
+            SELECT 'user' AS source FROM user WHERE email = ?
+            UNION
+            SELECT 'gym' AS source FROM gym WHERE email = ?
+            UNION
+            SELECT 'instructors' AS source FROM instructors WHERE email = ?
+            UNION
+            SELECT 'admin' AS source FROM admin WHERE email = ?
+        ";
+
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
+        if (!$stmt) {
+            throw new Exception('Failed to prepare statement: ' . $conn->error);
+        }
+
+        // Bind the email parameter to all four placeholders
+        $stmt->bind_param("ssss", $email, $email, $email, $email);
+        
+        if (!$stmt->execute()) {
+            $stmt->close();
+            throw new Exception('Failed to execute statement: ' . $stmt->error);
+        }
+
         $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
 
-        if ($result->num_rows > 0) {
-            return ['found' => 'user']; // Email found in the user table
-                } 
-                
-                else {
-                    // Check if email exists in gym table
-                    $sql2 = "SELECT * FROM gym WHERE email = ?";
-                    $stmt2 = $conn->prepare($sql2);
-                    $stmt2->bind_param("s", $email);
-                    $stmt2->execute();
-                    $result2 = $stmt2->get_result();
+        $stmt->close();
 
-                    if ($result2->num_rows > 0) {
-                        return ['found' => 'owner']; // Email found in gym table
-                                } 
-                                
-                                else {
-                    
-                                    $sql3 = "SELECT * FROM instructors WHERE email = ?";
-                                    $stmt3 = $conn->prepare($sql3);
-                                    $stmt3->bind_param("s", $email);
-                                    $stmt3->execute();
-                                    $result3 = $stmt3->get_result();
+        // Return result
+        if ($row) {
+            return ['found' => $row['source'], 'available' => false];
+        }
 
-                                    if ($result3->num_rows > 0) {
-                                        return ['found' => 'instructor']; // Email found in instructors table
-                                                } 
-                                                
-                                                else {
-      
-                                                    $sql4 = "SELECT * FROM admin WHERE email = ?";
-                                                    $stmt4 = $conn->prepare($sql4);
-                                                    $stmt4->bind_param("s", $email);
-                                                    $stmt4->execute();
-                                                    $result4 = $stmt4->get_result();
-
-                                                    if ($result4->num_rows > 0) {
-                                                        return ['found' => 'admin']; // Email found in admin table
-                                                            } 
-                                                            
-                                                            else {
-                                                                return ['found' => 'no']; // Email not found in any table
-                                                            }
-                                                }
-                                }
-                }
+        return ['found' => 'no', 'available' => true];
     }
 }
 
