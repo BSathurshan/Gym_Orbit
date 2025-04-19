@@ -1,21 +1,20 @@
 <?php
-class Check_Username
+class Check_Contact
 {
-    use Model; 
-    public function check($username)
+    use Model;
+
+    public function check($contact)
     {
-        // Get the database connection from the Model trait
         $conn = $this->getConnection();
 
-        // Use a single UNION query to check all tables
         $sql = "
-            SELECT 'user' AS source FROM user WHERE username = ?
+            SELECT 'user' AS source FROM user WHERE contact = ?
             UNION
-            SELECT 'gym' AS source FROM gym WHERE gym_username = ?
+            SELECT 'gym' AS source FROM gym WHERE owner_contact = ? OR gym_contact = ?
             UNION
-            SELECT 'instructors' AS source FROM instructors WHERE trainer_username = ?
+            SELECT 'instructors' AS source FROM instructors WHERE contact = ?
             UNION
-            SELECT 'admin' AS source FROM admin WHERE admin_username = ?
+            SELECT 'admin' AS source FROM admin WHERE contact = ?
         ";
 
         $stmt = $conn->prepare($sql);
@@ -23,8 +22,7 @@ class Check_Username
             throw new Exception('Failed to prepare statement: ' . $conn->error);
         }
 
-        // Bind the username parameter to all four placeholders
-        $stmt->bind_param("ssss", $username, $username, $username, $username);
+        $stmt->bind_param("sssss", $contact, $contact, $contact, $contact, $contact);
         
         if (!$stmt->execute()) {
             $stmt->close();
@@ -36,7 +34,6 @@ class Check_Username
 
         $stmt->close();
 
-        // Return result
         if ($row) {
             return ['found' => $row['source'], 'available' => false];
         }
@@ -44,4 +41,4 @@ class Check_Username
         return ['found' => 'no', 'available' => true];
     }
 }
-
+?>
