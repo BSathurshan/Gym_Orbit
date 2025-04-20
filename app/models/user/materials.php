@@ -23,7 +23,7 @@ class Materials
                         // Fetch for each result
                         if (!empty($gymUsernames)) {
                             $placeholders = implode(',', array_fill(0, count($gymUsernames), '?'));
-                            $query2 = "SELECT * FROM materials WHERE gym_username IN ($placeholders)";
+                            $query2 = "SELECT * FROM materials WHERE gym_username IN ($placeholders) ORDER BY createdAt DESC ";
                             $stmt2 = $conn->prepare($query2);
         
                             $types = str_repeat('s', count($gymUsernames));

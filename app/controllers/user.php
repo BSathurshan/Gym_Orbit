@@ -480,5 +480,80 @@ public function workoutplan($username) {
   }
 
 
+// controllers/WorkoutController.php
+
+
+  // Meal Plan Methods
+
+
+
+
+public function getGymTimes() {
+  $gym_username = $_GET['gym_username'] ?? '01';
+  $model = $this->model('user', 'calendar');
+  $times = $model->getGymTimes($gym_username);
+  header('Content-Type: application/json');
+  echo json_encode($times);
+}
+
+public function getInstructorTimes() {
+  $gym_username = $_GET['gym_username'] ?? '01';
+  $model = $this->model('user', 'calendar');
+  $times = $model->getInstructorTimes($gym_username);
+  header('Content-Type: application/json');
+  echo json_encode($times);
+}
+
+public function saveBooking() {
+  $data = json_decode(file_get_contents("php://input"), true);
+  
+  // Fetch username from session
+  $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+  $gym_username = $data['gym_username'] ?? '01';
+  $trainer_username = $data['trainer_username'] ?? null;
+  $date = $data['date'] ?? '';
+  $time = $data['time'] ?? '';
+
+  if (empty($username) || empty($gym_username) || empty($date) || empty($time)) {
+      http_response_code(400);
+      echo json_encode(['error' => 'Missing required fields']);
+      return;
+  }
+
+  $model = $this->model('user', 'calendar');
+  $result = $model->saveBooking($username, $gym_username, $trainer_username, $date, $time);
+
+  header('Content-Type: application/json');
+  if ($result) {
+      echo json_encode(['success' => true]);
+  } else {
+      http_response_code(500);
+      echo json_encode(['error' => 'Failed to save booking']);
+  }
+}
+
+public function getAppointments()
+{
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+  }
+  $username=$_SESSION['username'];
+  $model = $this->model('user', 'Appointments');
+  $result = $model->get($username);
+
+  if ($result['found'] == 'yes') {
+
+    return ['found' => 'yes', 'result' => $result['result']];
+
+  } elseif ($result['found'] == 'no') {
+
+    return ['found' => 'no'];
+  }
+}
   
 }

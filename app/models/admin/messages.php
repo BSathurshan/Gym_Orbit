@@ -25,5 +25,28 @@ class Messages
 
     
     }
+
+    public function reply($issue, $message, $username, $role, $email)
+    {
+        $conn = $this->getConnection();
+        $time = date('Y-m-d H:i:s');
+
+        $sql = "INSERT INTO reply (username, email, role, issue, message, time) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            return ['found' => 'no', 'error' => $conn->error];
+        }
+
+        $stmt->bind_param("ssssss", $username, $email, $role, $issue, $message, $time);
+
+        if ($stmt->execute()) {
+            $stmt->close();
+            return ['found' => 'yes'];
+        } else {
+            $stmt->close();
+            return ['found' => 'no'];
+        }
+    }
  }
 ?>

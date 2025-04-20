@@ -177,5 +177,22 @@ class Delete
     
     }
 
+    public function message($username, $issue, $message, $time)
+    {
+        $conn = $this->getConnection();  
+    
+        $sql = "DELETE FROM support WHERE username = ? AND issue = ? AND message = ? AND time = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $username, $issue, $message, $time); 
+    
+        if ($stmt->execute()) {
+            $stmt->close();
+            return ['found' => 'yes'];   
+        } else {
+            $stmt->close();
+            return ['found' => 'no'];   
+        }
+    }
+
  }
 ?>

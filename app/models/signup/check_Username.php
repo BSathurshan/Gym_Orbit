@@ -2,82 +2,46 @@
 class Check_Username
 {
     use Model; 
-    public function check( $username)
+    public function check($username)
     {
-
         // Get the database connection from the Model trait
         $conn = $this->getConnection();
 
-            // Fetch connected gyms
-            $sql = "SELECT * FROM user WHERE username = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s",$username);
-            $stmt->execute();
-            $result = $stmt->get_result();
+        // Use a single UNION query to check all tables
+        $sql = "
+            SELECT 'user' AS source FROM user WHERE username = ?
+            UNION
+            SELECT 'gym' AS source FROM gym WHERE gym_username = ?
+            UNION
+            SELECT 'instructors' AS source FROM instructors WHERE trainer_username = ?
+            UNION
+            SELECT 'admin' AS source FROM admin WHERE admin_username = ?
+        ";
 
-            if($result->num_rows >0)
-            {
-                return ['found'=>'user'];
-            }
-                else
-                {
-                    $sql2 = "SELECT * FROM gym WHERE gym_username = ? ";
-                    $stmt2 = $conn->prepare($sql2);
-                    $stmt2->bind_param("s",$username);
-                    $stmt2->execute();
-                    $result = $stmt2->get_result();
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception('Failed to prepare statement: ' . $conn->error);
+        }
 
-                    if($result->num_rows >0)
-                    {
-                        return ['found'=>'owner'];
-                    }
+        // Bind the username parameter to all four placeholders
+        $stmt->bind_param("ssss", $username, $username, $username, $username);
+        
+        if (!$stmt->execute()) {
+            $stmt->close();
+            throw new Exception('Failed to execute statement: ' . $stmt->error);
+        }
 
-                        else{
-                            $sql3 = "SELECT * FROM instructors WHERE trainer_username = ?";
-                            $stmt3 = $conn->prepare($sql3);
-                            $stmt3->bind_param("s",$username);
-                            $stmt3->execute();
-                            $result = $stmt3->get_result();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
 
-                            if($result->num_rows >0)
-                            {
-                                return ['found'=>'instructor'];
-                            }
-                                    else{
+        $stmt->close();
 
-                                        $sql4 = "SELECT * FROM admin WHERE  admin_username = ?";
-                                        $stmt4 = $conn->prepare($sql4);
-                                        $stmt4->bind_param("s",$username);
-                                        $stmt4->execute();
-                                        $result = $stmt4->get_result();
+        // Return result
+        if ($row) {
+            return ['found' => $row['source'], 'available' => false];
+        }
 
-                                        if($result->num_rows >0)
-                                        {
-                                            return ['found'=>'admin'];
-                                        }
-                                               
-                                        
-                                            else{
-                                                    return ['found'=>'no'];
-                                                }
-
-                                    }
-
-                        }
-                }
-
-
-           
-
-
-          
-
-
-           
-    
-
-
-       
+        return ['found' => 'no', 'available' => true];
     }
 }
 

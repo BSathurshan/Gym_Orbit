@@ -112,3 +112,58 @@ function editProfile(name,contact,age,address) {
     // Show the modal
     document.getElementById('editUserFormModal').style.display = 'block';
 }
+
+
+
+let isVisible = false;
+
+function toggleNotifications() {
+    const box = document.getElementById("notification-box");
+
+    if (isVisible) {
+        box.style.display = "none";
+        isVisible = false;
+    } else {
+        fetchNotifications();
+        box.style.display = "block";
+        isVisible = true;
+    }
+}
+
+function fetchNotifications() {
+    fetch('user/get_notification', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        const box = document.getElementById("notification-box");
+        box.innerHTML = "";
+
+        if (data.found === 'yes') {
+            data.result.forEach(item => {
+                const div = document.createElement("div");
+                div.style.padding = "8px";
+                div.style.marginBottom = "10px";
+                div.style.borderBottom = "1px solid #eee";
+                div.style.background = "#111";
+                div.style.color = "#fff";
+                div.style.borderRadius = "5px";
+
+                div.innerHTML = `
+                    <em>Issue: ${item.issue}</em><br>
+                    ${item.message}<br>
+                    <small>${item.time}</small>
+                `;
+
+                box.appendChild(div);
+            });
+        } else {
+            box.innerHTML = "<p style='color:white;'>No notifications found.</p>";
+        }
+    })
+    .catch(err => {
+        console.error("Error fetching notifications:", err);
+        document.getElementById("notification-box").innerHTML = "<p style='color:white;'>Error loading notifications.</p>";
+    });
+}
+
