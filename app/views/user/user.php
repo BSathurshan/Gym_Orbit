@@ -38,19 +38,13 @@ else{
     
     -->
     
-
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/calendar.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/bookings.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/home.css">
-
-    <!-- <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workout.css">  -->
-
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/tables.css">
-
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/calendar.css"> 
+    
 
 
     <script src="<?= ROOT ?>/assets/js/user/user_1.js" defer></script>
@@ -166,7 +160,7 @@ else{
             <div class="descriptor" value="6">
             <?php
                        // require 'progressTracker.php';  
-                      // require 'workoutview.php'; //require 'MealPlan.php';
+                       require 'workoutview.php'; //require 'MealPlan.php';
 
             ?>
             </div> 

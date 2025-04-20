@@ -1,10 +1,10 @@
-body {
+/* body {
     font-family: 'Segoe UI', sans-serif;
     font-size: 20px;
     background-color: #f0f2f5;
     margin: 0;
     padding: 0;
-}
+} */
 
 .wp_back-container {
     padding: 20px;
@@ -12,7 +12,7 @@ body {
 
 .wp_back-btn {
     background-color: #555;
-    color: #fff;
+    color: #d3f5f8;
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
@@ -74,7 +74,7 @@ body {
 .wp_day-block {
     margin: 20px auto;
     padding: 20px;
-    background-color: #fdfdfd;
+    background-color: #fbeee8;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     width: 100%;

@@ -9,7 +9,7 @@
     <div class="in-in-content">
 
         <div class="wv-progress-container">
-            <div class="wv-progress-title">Your Workout Progress</div>
+            <div class="wv-progress-title">Workout Progress</div>
             <div class="wv-progress-bar-bg">
                 <div class="wv-progress-bar-fill" id="progress-bar"></div>
                 <div class="wv-progress-label" id="progress-text">0%</div>
