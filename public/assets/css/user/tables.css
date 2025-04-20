@@ -10,8 +10,12 @@
     display: flex;
     flex-direction: column; /* Stack items vertically inside each grid item */
     align-items: center;
-    background: rgba(255, 251, 251, 0.84);
-    border-radius: 5px;
+    /* background: rgba(255, 251, 251, 0.84); */
+    /* background-color: rgba(247, 248, 249, 0.50); */
+
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+    border-radius: 15px;
     padding: 10px;
     text-align: center;
 }
@@ -56,8 +60,17 @@
     padding: 10px;
     text-align: center;
 }
+.instructor-table .row2{
+
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+    padding: 21px;
+
+}
+
 
 .instructor-table  .cell2 {
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -72,8 +85,7 @@
 }
 
 .instructor-table  .cell2 .details{
-    padding-left: 10px;
-
+    padding-left: 21px;
 
 }
 
@@ -91,12 +103,14 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    
 }
 
 
 /* //////////////////////////////////////////////////////// */
 
 .materials-container {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
@@ -105,11 +119,27 @@
 }
 
 .materials {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 25px;
+
+}
+.materials h4{
+    color: #fff0f0;
+
+}
+.materials h5{
+    color: #aaa;
+
+}
+.materials p{
+    color: #aaa;
+
 }
 
 .matimage {
@@ -138,20 +168,25 @@
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
+    
 }
 
 .posts {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
 }
 
 .postimage {
     border-radius: 25px;
-    width: 250px;
-    height: 230px;
+
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
@@ -160,10 +195,26 @@
     box-sizing: border-box; /* Ensures the border is included in the total width and height */
 }
 
-.postimage img {
-    width: 100%;
-    height: 100%;
+.posts img {
+    max-width:200px ;
+    max-height: 170px;
+
+    min-width: 200px;
+    min-height: 170px;
     object-fit: cover; /* 'cover' ensures the image is contained and may be cropped */
+}
+
+.posts h4{
+    color: #fff0f0;
+
+}
+.posts h5{
+    color: #aaa;
+
+}
+.posts p{
+    color: #aaa;
+
 }
 
 
@@ -179,8 +230,11 @@
 }
 
 .gym-container {
-    
-    padding-top: 30px;
+    border-radius: 15px;
+    /* background-color: rgba(247, 248, 249, 0.50); */
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+    padding: 10px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -190,8 +244,8 @@
 
 .gym-container .image {
     border-radius: 30%;
-    width: 210px;
-    height: 210px;
+    width: 150px;
+    height: 150px;
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
@@ -253,4 +307,28 @@
 
 
 
-/* //////////////////////////////////////////////////////// */
+/* payments //////////////////////////////////////////////////////// */
+.payment-cell-3{
+    padding: 21px;
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+
+}
+
+.payment-cell-3 h4{
+    color: #aaa;
+}
+
+.payment-cell-3-1{
+    font-weight: bolder;
+
+}
+
+.payment-cell-2{
+    color: #fffefe;
+
+}
+
+.payment-row{
+    width: 100% ;
+}

@@ -18,16 +18,23 @@ body {
     padding: 0;
     font-family: 'Poppins', sans-serif; /* Modern font */
     color: #fff; /* White text */
+    
 }
 /*////////////////////////////////////////////////*/
 
 .main-container{
     
     min-height: 100vh;
-     background-color: #fff; 
+    background-color: #444;
+
+     /* background-color: #fff;  */
     /*background: linear-gradient(135deg,var(--primary),var(--secondary));*/
     display: flex;
     justify-content: space-around;
+    /*background: linear-gradient(to bottom, #1a2a1a, #0a1a0a); Dark base with subtle green tint*/
+    /* background: linear-gradient(to bottom, #1a2a23,#1f2523, #163a18 ); */
+
+    background: linear-gradient(to bottom, rgba(26, 42, 26,0.9) , rgba(10, 26, 10,1) );
 }
 /* Descriptor Panel */
 .descriptor {
@@ -64,9 +71,25 @@ body {
     width: 85%;
     padding: 20px;
     border-radius: 8px;
-    color: #222;
+    color: #aaa;
+    /* background-color: #dde5f0;     */
+    background-color: #444;
 
-    background-color: #dde5f0;
+
+}
+
+.in-in-content .table{
+    color: #aaa;
+}
+.in-in-content .table h2{
+    color: #ffffff;
+}
+
+.in-in-content .table .row .title{
+    color: #ffffff;
+}
+.in-in-content .table .row .data{
+    color: #ffffff;
 
 }
 
@@ -80,24 +103,32 @@ body {
     justify-content: space-between;
     align-items: center;
      /* Dark header   background-color: #333;*/
-    background-color: #dde5f0;
+    /* background-color: #dde5f0; */
+    background-color: #444;
+
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    color: #000000;
+    /* color: #000000; */
+    /* color: #dbd4d4; */
+
 }
 
 .header h1 {
     margin: 0;
     font-size: 24px;
-    color: #000000; /* White text for header */
+    /* color: #000000; White text for header */
+    color: #ffffff;
+
 }
 
 .header p {
     margin: 0;
     font-size: 14px;
-    color: #000000; /* Lighter gray for subtext */
+    /* color: #000000; Lighter gray for subtext */
+    color: #aaa;
+
 }
 
 /* Profile Table */
@@ -140,18 +171,19 @@ form#profileForm {
     margin-left: 50px;   
     flex-grow: 1; 
 
-    text-align: center;
+    text-align:left;
     min-width: 200px;
     padding: 10px;
-    border: 1px solid #444; /* Dark border */
+    /* border: 1px solid #444; Dark border */
     border-radius: 4px;
     background-color: #222; /* Dark background for input fields */
-    color: #fff;
+    color: #000000;
 }
 
 
 .table .row .data:read-only {
-    background-color: #ff2e2e; /* Darker background for readonly fields */
+    /*background-color: #ff2e2e; Darker background for readonly fields */
+    background-color:transparent;
     cursor: not-allowed;
 }
 
