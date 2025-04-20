@@ -93,6 +93,24 @@ public function updateWorkoutProgress($username, $day, $exercise, $completed) {
     return $stmt->execute();
 }
 
+public function updateDoneStatus($id, $done) {
+    try {
+        $query = "UPDATE workout_schedule SET done = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bind_param("ii", $done, $id); // 'i' = integer for both
+        $success = $stmt->execute();
+        $stmt->close();
+
+        return $success;
+    } catch (Exception $e) {
+        echo "DB error: " . $e->getMessage();
+        return false;
+    }
+}
+
+
+
 public function addMealPlan($user, $instructor, $meal_plan_name) {
     $stmt = $this->conn->prepare("INSERT INTO meal_plan (user_username, instructor_username, meal_plan_name) VALUES (?, ?, ?)");
     $stmt->execute([$user, $instructor, $meal_plan_name]);
