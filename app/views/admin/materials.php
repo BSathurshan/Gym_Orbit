@@ -15,20 +15,26 @@
                 $admin = new Admin(); 
                 $material = $admin->get_materials($username); 
 
+                echo "<div class='materials-container'>";
+
                 if (isset($material['found'])&&$material['found']=='yes') {
                     while ($materials = $material['result']->fetch_assoc()) {
                     
-                        
+                        echo "<div class='materials'>";
                         echo "<h4> <u>" . htmlspecialchars($materials['gym_name']) . "</u> </h5>";
                         echo "<tr><td>". htmlspecialchars($materials['type']) ." </td></tr>";
                         echo "<h5>" . htmlspecialchars($materials['title']) . "</h5>";
-                        echo "<img src='" . ROOT . "/assets/images/materials/images/" . $materials["file"] . "' width='200' title='" . $materials['file'] . "'>";
-                        echo "<p>" . htmlspecialchars($materials['details']) . "</p>";
 
+                        echo "<div class='matimage'>
+                           <img src='" . ROOT . "/assets/images/materials/images/" . $materials["file"] . "' width='200' title='" . $materials['file'] . "'>
+                        </div>"; 
+                        echo "<p>" . htmlspecialchars($materials['details']) . "</p>";
+                               
+                
                         echo "<td><button class='editBtn' onclick='materialEdit(\"{$materials['type']}\",\"{$materials['title']}\",\"{$materials['file']}\",\"{$materials['details']}\",\"{$materials['gym_username']}\",\"{$materials['id']}\")'> Edit </button>";
                         echo "<button class='deleteBtn' onclick='materialDelete(\"{$materials['id']}\", \"{$materials['gym_username']}\", \"{$materials['file']}\", \"admin\")'>Delete</button> </td>";
 
-
+                        echo "</div>";
                        
                     }
                 } 
@@ -36,6 +42,8 @@
                 {
                     echo "There are no Posts.";
                 }
+
+                echo "</div>";
                 ?>
 
 </div>

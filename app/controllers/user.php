@@ -382,6 +382,32 @@ public function save_workout($username) {
     }
   }
 
+  public function get_notification()
+{
+    session_start();
+
+    if (!isset($_SESSION['username'])) {
+        echo json_encode(['found' => 'no', 'error' => 'Not logged in']);
+        return;
+    }
+
+    $username = $_SESSION['username'];
+
+    $model = $this->model('user', 'notification');
+    $result = $model->get($username);
+
+    if ($result && $result->num_rows > 0) {
+        $notifications = [];
+        while ($row = $result->fetch_assoc()) {
+            $notifications[] = $row;
+        }
+
+        echo json_encode(['found' => 'yes', 'result' => $notifications]);
+    } else {
+        echo json_encode(['found' => 'no']);
+    }
+}
+
  
 
 /*calendar*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -131,7 +131,7 @@ function toggleNotifications() {
 }
 
 function fetchNotifications() {
-    fetch('user/get_notification', {
+    fetch('${ROOT}/user/get_notification', {
         method: 'POST'
     })
     .then(response => response.json())
