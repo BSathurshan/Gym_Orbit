@@ -3,7 +3,7 @@
     
       <div class="header">
         <div>
-        <h1>Welcome, <?php echo $username; ?>!</h1>       
+        <h2>Welcome, <?php echo $username; ?>!</h2>       
           <p>
             <?php
             echo date("l, F j, Y"); // Outputs: Wednesday, December 18, 2024

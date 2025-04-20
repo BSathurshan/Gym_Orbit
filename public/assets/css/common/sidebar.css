@@ -83,7 +83,10 @@ body::-webkit-scrollbar {
 
 .nav-links li a {
     text-decoration: none;
-    color: #d1d1d1; /* Lighter text for better contrast */
+    /*  color: #d1d1d1; Lighter text for better contrast */
+    /* color: #000000; */
+    color: #aaa;
+
     font-size: 18px;
     display: flex;
     align-items: center;
@@ -94,7 +97,10 @@ body::-webkit-scrollbar {
 .nav-links li a i {
     font-size: 18px;
     margin-right: 12px;
-    color: #ffffff; /* Softer red accent */
+     /* color: #ffffff; Softer red accent */
+    /* color: #000000; */
+    color: #ffffff;
+
     transition: 0.3s;
 }
 
@@ -122,13 +128,14 @@ body::-webkit-scrollbar {
 /* Logout Button */
 .logout-btn {
     text-decoration: none;
-    color: #fff;
+    color: #000000;
     text-align: center;
     font-weight: bold;
     display: block;
     padding: 10px 14px; /* Reduced height */
     border-radius: 10px;
-    background: linear-gradient(170deg, #ffffff, #585858); /* Softer red gradient */
+    background: linear-gradient(170deg, #ffffff, #ebf7f6); 
+    /* background: linear-gradient(170deg, #ffffff, #585858); Softer red gradient */
     transition: 0.3s;
 }
 
@@ -149,7 +156,10 @@ body::-webkit-scrollbar {
 
 /* Modernizing Sidebar */
 .sidebar {
-    background: rgba(0, 0, 0, 0.85); /* Darker background */
+     /*background: rgba(0, 0, 0, 0.85); Darker background */
+    /* background-color: #dde5f0; */
+
+    background-color: #444;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3); /* Softer shadow */
 }
 
