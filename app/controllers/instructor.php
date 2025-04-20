@@ -127,24 +127,24 @@ class instructor
       }
     
     }
-    public function assign_schedule($username) {
-        $workouts = $this->get_workouts($username);
-        $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
-    }
-    public function get_workouts($username) {
+    // public function assign_schedule($username) {
+    //     $workouts = $this->get_workouts($username);
+    //     $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
+    // }
+    // public function get_workouts($username) {
         
-        $query = "SELECT * FROM workout_schedule WHERE username = ? ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), id";
-        $result = $this->read($query, [$username]); // ✅ Use trait method
+    //     $query = "SELECT * FROM workout_schedule WHERE username = ? ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), id";
+    //     $result = $this->read($query, [$username]); // ✅ Use trait method
         
-        if($result) {
-            $workouts = [];
-            foreach($result as $row) {
-                $workouts[$row->day][] = $row;
-            }
-            return ['found' => 'yes', 'workouts' => $workouts];
-        }
-        return ['found' => 'no'];
-    }
+    //     if($result) {
+    //         $workouts = [];
+    //         foreach($result as $row) {
+    //             $workouts[$row->day][] = $row;
+    //         }
+    //         return ['found' => 'yes', 'workouts' => $workouts];
+    //     }
+    //     return ['found' => 'no'];
+    // }
     
     
     

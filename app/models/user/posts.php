@@ -25,7 +25,7 @@ class Posts
          // Fetch posts if connected to gyms
          if (!empty($gymUsernames)) {
              $placeholders = implode(',', array_fill(0, count($gymUsernames), '?'));
-             $query2 = "SELECT * FROM posts WHERE gym_username IN ($placeholders)";
+             $query2 = "SELECT * FROM posts WHERE gym_username IN ($placeholders) ORDER BY createdAt DESC";
              $stmt2 = $conn->prepare($query2);
 
              $types = str_repeat('s', count($gymUsernames));
@@ -43,7 +43,6 @@ class Posts
          {
         
             $stmt->close();
-            $stmt2->close();
             return ['found'=>'no'];   
          }
 

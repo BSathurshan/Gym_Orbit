@@ -1,0 +1,192 @@
+/* New wrapper for the entire content layout */
+.home-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Reduced gap for tighter spacing */
+    width: 100%;
+    max-width: 1200px; /* Match your design */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Row containers for posts+stats and materials+appointments */
+.posts-stats-row,
+.materials-appointments-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 15px; /* Reduced gap */
+    width: 100%;
+}
+
+/* Left column for posts and materials */
+.home-posts,
+.home-materials {
+    flex: 0 0 70%; /* 70% of the width */
+    display: flex;
+    flex-direction: row; /* Display inner content in a row */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    gap: 10px; /* Smaller gap between items */
+    min-height: 150px; /* Reduced to match image */
+    background: #fff; /* Unified card background */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Make posts and materials heights consistent */
+.home-posts {
+    min-height: 150px; /* Match image */
+}
+
+.home-materials {
+    min-height: 150px;
+}
+
+/* Right column for stats and appointments */
+.home-stats,
+.home-appointments {
+    flex: 0 0 30%; /* 30% of the width */
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Tighter gap */
+    min-height: 150px;
+}
+
+/* Stats as a small box, aligned with posts */
+.home-stats {
+    min-height: 150px;
+    background: #fff; /* Match image */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Appointments below stats, aligned with materials */
+.home-appointments {
+    min-height: 150px;
+    background: #fff; /* Match image */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Individual post styling */
+.posts {
+    flex: 1 1 calc(50% - 10px); /* Equal width for 2 posts, accounting for gap */
+    padding: 5px;
+    box-sizing: border-box;
+    min-width: 150px;
+}
+
+/* Individual material styling */
+.materials {
+    flex: 1 1 calc(50% - 10px);
+    padding: 5px;
+    box-sizing: border-box;
+    min-width: 150px;
+}
+
+/* Individual appointment styling */
+.appointments {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 5px; /* Reduced padding */
+    box-shadow: none; /* Remove shadow to match image */
+}
+
+/* Image containers */
+.postimage,
+.matimage {
+    max-width: 100%;
+    height: auto;
+    margin: 5px 0;
+}
+
+.postimage img,
+.matimage img {
+    width: 100%;
+    height: auto;
+    max-height: 100px; /* Smaller to match image */
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Typography */
+.posts h4,
+.materials h4,
+.appointments h4,
+.home-stats h4 {
+    margin: 0 0 5px;
+    font-size: 0.95em; /* Adjusted to match image */
+    color: #333;
+}
+
+.posts h5,
+.materials h5,
+.appointments h5 {
+    margin: 0 0 5px;
+    font-size: 0.85em;
+    color: #555;
+}
+
+.posts p,
+.materials p,
+.appointments p {
+    margin: 0;
+    font-size: 0.8em;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Stats specific styling */
+.home-stats h4 {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+/* Messages for empty states */
+.home-posts p,
+.home-materials p,
+.home-appointments p {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    width: 100%;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .posts-stats-row,
+    .materials-appointments-row {
+        flex-direction: column;
+    }
+
+    .home-posts,
+    .home-materials,
+    .home-stats,
+    .home-appointments {
+        flex: 0 0 100%;
+    }
+
+    .home-posts,
+    .home-materials,
+    .home-appointments {
+        min-height: 150px;
+    }
+
+    .home-stats {
+        min-height: 150px;
+    }
+
+    .posts,
+    .materials {
+        flex: 0 0 100%;
+    }
+}

@@ -1,0 +1,149 @@
+commmon
+    create account
+    login
+    logout
+    edit profile ( need to do )
+*****************************************************************
+user can
+
+    searchGym
+    joinGym
+    joinedGyms
+    leaveGym
+    payGym
+
+    instructor_Check
+    request_Instructor
+    sendRequest
+
+    get_posts
+    get_materials
+    get_reminders/messages
+
+
+    get_workouts ( need to be work )
+    workoutplan  ( need to be work )
+    save_workout ( need to be work ) 
+
+    getAppointments
+    getSupport
+
+    calendar functions
+        getSavedColors
+        getNotes
+        getAvailability(machines)
+
+        getGymTimes
+        getInstructorTimes
+        saveBooking
+**********************************************************************
+owner can
+    
+    get_reminders
+    get_requests
+    
+    get_members
+    removeMember
+
+    get_posts
+    addPost
+    deletePost
+
+    get_materials
+    addMaterials
+    deleteMaterial
+
+    get_machines
+    addMachine
+    deleteMachine
+    editMachine
+
+    get_instructors
+    addInstructor
+    deleteInstructor
+    editInstructor
+
+    processRequest ( deprecated )
+
+    getSupport
+
+    reports ( need to be work )
+
+    editInstructorSchedule
+    editGymSchedule
+
+    calendar functions
+        updateAvailability
+        updateTodayColor
+        getSavedColors
+        saveNote
+        deleteNote
+        getNotes
+***************************************************
+admin can
+
+    get_messages
+    deleteMessage
+    replyMessage
+
+    get_reminders
+    
+    get_materials
+    deleteMaterial
+    editMaterial
+    
+    get_posts
+    deletePost
+    editPost
+    
+    searchUsers
+    searchGyms
+    searchInstructors
+    searchAdmins
+    
+    addUser
+    addOwner
+    addInstructor
+    addAdmin
+
+    banUser
+    banGym
+    banInstructor
+    banAdmin
+    unbanUser
+    unbanGym
+    unbanInstructor
+    unbanAdmin
+
+    deleteUser
+    deleteGym
+    deleteInstructor
+    deleteAdmin
+
+    editUser
+    editOwner
+    editInstructor
+
+    analysis part
+         getNof_Users
+         getNof_Owners
+         getNof_Instructors
+
+         getRecent_Users
+         getPending_Gyms
+         getGenderDistribution
+********************************************************
+instructor can ( we need to add more )
+
+    getContacts
+    getReminders
+    getMaterials
+    showClients
+    getSupport
+    assign_schedule ( error )
+    get_workouts ( error )
+
+
+
+
+        

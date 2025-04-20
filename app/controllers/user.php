@@ -458,5 +458,29 @@ public function saveBooking() {
       echo json_encode(['error' => 'Failed to save booking']);
   }
 }
+
+public function getAppointments()
+{
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+  }
+  $username=$_SESSION['username'];
+  $model = $this->model('user', 'Appointments');
+  $result = $model->get($username);
+
+  if ($result['found'] == 'yes') {
+
+    return ['found' => 'yes', 'result' => $result['result']];
+
+  } elseif ($result['found'] == 'no') {
+
+    return ['found' => 'no'];
+  }
+}
   
 }
