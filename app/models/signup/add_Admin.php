@@ -17,7 +17,9 @@ class Add_Admin
     {
 
         $file = $_FILES['file'];
-        $file_name=NULL; 
+       // $file_name=NULL; 
+       $file_name='default.jpg'; 
+
 
         
         // Get the database connection from the Model trait
