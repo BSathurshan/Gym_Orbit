@@ -44,7 +44,7 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/bookings.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/home.css">
 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workout.css"> 
+    <!-- <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workout.css">  -->
 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css"> 
