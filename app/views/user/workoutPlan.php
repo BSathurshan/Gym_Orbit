@@ -1,7 +1,14 @@
 <div class="in-content">
+<div class="header">
+        <div>
+        <h1>Member <?php echo $username; ?>!</h1>       
+         
+            
+        </div>
+      </div>
     <div class="header">
         <div>
-            <h2>Workout Schedule</h2>
+            <h2>Add Workout Plan</h2>
         </div>
     </div>
     
@@ -73,3 +80,42 @@ function addExerciseRow(day) {
     container.appendChild(row);
 }
 </script>
+
+<hr>
+<h2>Add Meal Plan</h2>
+<form action="index.php?controller=MealPlan&action=addMealPlan" method="POST">
+    <input type="hidden" name="user" value="<?php echo htmlspecialchars($_GET['user']); ?>">
+    
+    <label>Meal Plan Name:</label><br>
+    <input type="text" name="meal_plan_name" required><br><br>
+
+    <div id="nutrition-section">
+        <div class="nutrition-entry">
+            <input type="text" name="nutrition_name[]" placeholder="Nutrition (e.g., Protein)" required>
+            <input type="text" name="amount[]" placeholder="Amount (e.g., 70g)" required>
+            <button type="button" onclick="removeNutrition(this)">Remove</button>
+        </div>
+    </div>
+
+    <button type="button" onclick="addNutrition()">+ Add Nutrition</button><br><br>
+    <input type="submit" value="Add Meal Plan">
+</form>
+
+<script>
+function addNutrition() {
+    const section = document.getElementById('nutrition-section');
+    const entry = document.createElement('div');
+    entry.classList.add('nutrition-entry');
+    entry.innerHTML = `
+        <input type="text" name="nutrition_name[]" placeholder="Nutrition" required>
+        <input type="text" name="amount[]" placeholder="Amount" required>
+        <button type="button" onclick="removeNutrition(this)">Remove</button>
+    `;
+    section.appendChild(entry);
+}
+
+function removeNutrition(btn) {
+    btn.parentElement.remove();
+}
+</script>
+
