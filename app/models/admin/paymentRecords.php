@@ -8,7 +8,7 @@ class PaymentRecords
         $conn = $this->getConnection();
 
         // Calculate the date 5 months ago
-        $startDate = new DateTime('-5 months');
+        $startDate = new DateTime('-12 months');
         $endDate = new DateTime();
         $endDate->setTime(23, 59, 59); // Include the end of the current day
 
