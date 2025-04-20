@@ -7,6 +7,7 @@
     max-width: 1200px; /* Match your design */
     margin: 0 auto;
     box-sizing: border-box;
+    
 }
 
 /* Row containers for posts+stats and materials+appointments */
@@ -28,7 +29,7 @@
     flex-wrap: wrap; /* Allow wrapping if needed */
     gap: 10px; /* Smaller gap between items */
     min-height: 150px; /* Reduced to match image */
-    background: #fff; /* Unified card background */
+    background: #dde5f0; /* Unified card background */
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 10px;
@@ -48,6 +49,7 @@
 /* Right column for stats and appointments */
 .home-stats,
 .home-appointments {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 0 0 30%; /* 30% of the width */
     display: flex;
     flex-direction: column;
@@ -58,7 +60,7 @@
 /* Stats as a small box, aligned with posts */
 .home-stats {
     min-height: 150px;
-    background: #fff; /* Match image */
+    background: #dde5f0; /* Match image */
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 10px;
@@ -68,7 +70,7 @@
 /* Appointments below stats, aligned with materials */
 .home-appointments {
     min-height: 150px;
-    background: #fff; /* Match image */
+    background: #dde5f0; /* Unified card background */
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 10px;
@@ -93,7 +95,7 @@
 
 /* Individual appointment styling */
 .appointments {
-    background: #fff;
+    background: #dde5f0;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 5px; /* Reduced padding */
@@ -189,4 +191,430 @@
     .materials {
         flex: 0 0 100%;
     }
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Banner */
+.header-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.banner-text {
+    flex: 1;
+}
+
+.banner-text h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.banner-text button {
+    background-color: #00ff00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.banner-image {
+    flex: 1;
+    text-align: right;
+}
+
+.banner-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+/* User Info */
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.info-box {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+    margin: 0 5px;
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    margin: 0 5px;
+    position: relative;
+}
+
+.stat-box h3 {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.stat-box p {
+    font-size: 1.2em;
+}
+
+
+
+/* Circular Progress for Calories, Sleep, Water */
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.progress-box {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.progress-circle {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.circle-bg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #444;
+}
+
+.circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#00ff00 0% var(--progress), #444 var(--progress) 100%);
+    clip-path: circle(50% at 50% 50%);
+}
+
+.circle-inner {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+}
+
+.progress-details {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+/* Featured Courses */
+.featured-courses, .services {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.section-title h2 {
+    font-size: 1.5em;
+}
+
+.section-title a {
+    color: #00ff00;
+    text-decoration: none;
+}
+
+.course-grid, .service-grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-card, .service-card {
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 10px;
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+
+}
+
+.course-card img, .service-card img {
+    padding-top: 15px ;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 250px;
+    min-width: 250px;
+    max-height: 230px;
+    min-height: 230px;
+}
+
+.course-card button {
+    background-color: #00ff00;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Today's Plan */
+.today-plan {
+    margin-bottom: 20px;
+}
+
+.plan-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.plan-card {
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plan-card img {
+    width: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.plan-details {
+    flex: 1;
+}
+
+.progress-bar {
+    background-color: #444;
+    height: 5px;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.progress-bar div {
+    background-color: #00ff00;
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* ////////////////////////////////////////////////////////////////////////Header Banner */
+/* Header Banner */
+/* Header Banner */
+.header-banner {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    background-size: cover; /* Ensure the image covers the entire container */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-position: 120px center ; /* Shift the image to the right */
+}
+
+/* Header Banner Text and Button */
+.banner-text {
+    color: #dde5f0;
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+    top: 20px;
+    width: 50%; /* Take half the container width to match the design */
+}
+
+.banner-text h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.banner-text button {
+    color: #2a2a2a;
+    background-color: #00ff00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* Remove banner-image since we're using background-image */
+.banner-image {
+    display: none;
+}
+
+
+/* Stats Section Boxes */
+.stat-box {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+
+}
+
+/* Calorie Progress Section Boxes */
+.progress-box {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+
+}
+
+/* Featured Courses Cards */
+.course-card {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+
+}
+
+/* Services Cards */
+.service-card {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+
+}
+
+/* Today's Plan Cards */
+.plan-card {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+
+}
+
+.info-box {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+
+}
+
+
+/* Stat Icon Container */
+.stat-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Stat Icon Image */
+.stat-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the icon fits without distortion */
+}
+
+/* Pulse Line for Heart Rate */
+.pulse-line {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.pulse-line svg {
+    display: block;
+}
+
+/* Adjust Stat Box for Better Spacing */
+.stat-box {
+    background-color: rgba(42, 42, 42, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    margin: 0 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Progress Circle (already in your CSS, but included for reference) */
+.progress-circle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.circle-bg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #444;
+}
+
+.circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#00ff00 0% var(--progress), #444 var(--progress) 100%);
+    clip-path: circle(50% at 50% 50%);
+}
+
+.circle-inner {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    text-align: center;
+    line-height: 1.2;
 }
