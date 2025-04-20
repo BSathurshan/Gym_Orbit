@@ -415,5 +415,70 @@ public function workoutplan($username) {
   $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
 }
 
+// controllers/WorkoutController.php
+
+
+  // Meal Plan Methods
+
+  public function get_mealplans($username)
+  {
+    if (!empty($username)) {
+      $model = $this->model('user', 'mealplan');
+      $result = $model->get($username);
+
+      if ($result['found'] == 'yes') {
+        return ['found' => 'yes', 'result' => $result['result']];
+      } elseif ($result['found'] == 'no') {
+        return ['found' => 'no'];
+      } elseif ($result['found'] == 'alert') {
+        return ['found' => 'alert'];
+      }
+    } else {
+      echo "<script>alert('Missing username (get_mealplans).');</script>";
+    }
+  }
+
+  public function save_mealplan($username)
+  {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $model = $this->model('user', 'mealplan');
+
+      $meals = $_POST['meals'] ?? [];
+      $success = true;
+
+      foreach ($meals as $meal) {
+        $meal_name = trim($meal['meal_name'] ?? '');
+        $time = trim($meal['time'] ?? '');
+        $description = trim($meal['description'] ?? '');
+
+        if ($meal_name === '' || $time === '' || $description === '') {
+          continue;
+        }
+
+        $result = $model->save($username, $meal_name, $time, $description);
+
+        if (!$result) {
+          $success = false;
+        }
+      }
+
+      if ($success) {
+        $_SESSION['message'] = 'Meal plan saved successfully!';
+      } else {
+        $_SESSION['message'] = 'Failed to save some meals. Please try again.';
+      }
+
+      header("Location: " . ROOT . "/user/mealplan/{$username}");
+      exit();
+    }
+  }
+
+  public function mealplan($username)
+  {
+    $meals = $this->get_mealplans($username);
+    $this->view('user', 'mealPlan', ['username' => $username, 'meals' => $meals]);
+  }
+
+
   
 }

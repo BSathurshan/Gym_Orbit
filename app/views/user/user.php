@@ -44,6 +44,7 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/calendar.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workout.css"> 
 
 
     <script src="<?= ROOT ?>/assets/js/user/user_1.js" defer></script>
