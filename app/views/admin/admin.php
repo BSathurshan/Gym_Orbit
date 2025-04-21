@@ -50,7 +50,7 @@ else{
      <!-- Header Section -->
    <!--  <header class="header"> -->
 
-    <i class="bi bi-house btn btn-primary"></i>
+    <!-- <i class="bi bi-house btn btn-primary"></i> -->
 
    <!-- <nav class="navbar">
     <a href="<?= ROOT ?>/login/logout" class="logout-btn">

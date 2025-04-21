@@ -53,19 +53,19 @@
                                 <div class="modal-content">
                                     <h3>Edit Post</h3>
                                     <form id="editForm" method="POST" action="<?= ROOT ?>/admin/editPost" enctype="multipart/form-data">
-                                        <input type="hidden" name="gym_username" id="gymUsername">
-                                        <input type="hidden" name="id" id="id">
-                                        <input type="hidden" name="old_file_name" id="oldFilename">
-                                        <input type="hidden" name="access" id="access" value="admin">
+                                        <input type="hidden" name="gym_username" id="post_gymUsername">
+                                        <input type="hidden" name="id" id="post_id">
+                                        <input type="hidden" name="old_file_name" id="post_oldFilename">
+                                        <input type="hidden" name="access" id="post_access" value="admin">
 
                                         <label for="title">Title:</label>
-                                        <input type="text" name="title" id="editNewTitle" required><br>
+                                        <input type="text" name="title" id="post_editNewTitle" required><br>
 
                                         <label for="file">Upload File:</label>
-                                        <input type="file" name="file" id="editFile"><br>
+                                        <input type="file" name="file" id="post_editFile"><br>
 
                                         <label for="details">Details:</label>
-                                        <textarea name="details" id="editNewDetails" rows="4" cols="50" required></textarea><br>
+                                        <textarea name="details" id="post_editNewDetails" rows="4" cols="50" required></textarea><br>
 
                                         <input type="submit" value="Save">
                                         <button type="button" onclick="closeEditModal()">Cancel</button>

@@ -63,11 +63,12 @@
 
 .chart-container-left,
 .chart-container-right {
-    background-color: #e9ecef;
+    background-color: #8d8f8f;
     padding: 20px;
     border-radius: 6px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     text-align: center;
+    color: #333;
 }
 
 .chart-container-left {

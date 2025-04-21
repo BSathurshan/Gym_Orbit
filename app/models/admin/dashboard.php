@@ -11,10 +11,25 @@ class Dashboard
                     (SELECT COUNT(*) FROM gym) AS owner_count,
                     (SELECT COUNT(*) FROM instructors) AS instructor_count,
                     (SELECT COUNT(*) FROM user) AS user_count,
-                    SUM(CASE WHEN gender = 'male' THEN 1 ELSE 0 END) AS male_user_count,
-                    SUM(CASE WHEN gender = 'female' THEN 1 ELSE 0 END) AS female_user_count,
-                    (SELECT SUM(amount) FROM user_payments) AS total_revenue
-                FROM user
+                    (SELECT SUM(amount) FROM user_payments) AS total_revenue,
+                    (SELECT COUNT(*) FROM (
+                        SELECT gender FROM admin
+                        UNION ALL
+                        SELECT gender FROM instructors
+                        UNION ALL
+                        SELECT gender FROM gym
+                        UNION ALL
+                        SELECT gender FROM user
+                    ) AS all_genders WHERE gender = 'male') AS male_user_count,
+                    (SELECT COUNT(*) FROM (
+                        SELECT gender FROM admin
+                        UNION ALL
+                        SELECT gender FROM instructors
+                        UNION ALL
+                        SELECT gender FROM gym
+                        UNION ALL
+                        SELECT gender FROM user
+                    ) AS all_genders WHERE gender = 'female') AS female_user_count
                 LIMIT 1";
 
         $stmt = $conn->prepare($sql);
