@@ -15,7 +15,7 @@
                 <input type="text" id="searchQuery" name="search" placeholder="Search by name, username, or email">
             </div>
 
-        <div id="userResults">
+        <div id="userResults" class="userResults-container">
                 <!-- This is using userRenderer.php ( aduto load ) -->
         </div>
 

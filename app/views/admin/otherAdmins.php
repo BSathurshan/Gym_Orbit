@@ -15,7 +15,7 @@
         <input type="text" id="searchQuery4" name="search" placeholder="Search by admin name, admin username, or email">
     </div>
 
-    <div id="adminResults">
+    <div id="adminResults" class="adminResults-container">
         <!-- admin data will be displayed here -->
     </div>
 

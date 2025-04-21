@@ -15,7 +15,7 @@
                         <input type="text" id="searchQuery3" name="search" placeholder="Search by instructor name, instructor username, or email">
                     </div>
 
-                    <div id="instructorResults">
+                    <div id="instructorResults" class="instructorResults-container">
                         <!-- This is using instructorRenderer.php (auto load ) -->
                 </div>
 

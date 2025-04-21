@@ -288,3 +288,36 @@ input[type="submit"] {
 
 
 /* //////////////////////////////////////////////////////// */
+
+.userResults-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 50px; /* Space between items */
+    justify-content: center;
+    align-items: start;
+
+}
+
+.adminResults-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 50px; /* Space between items */
+    justify-content: center;
+    align-items: start;
+}
+
+.instructorResults-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 50px; /* Space between items */
+    justify-content: center;
+    align-items: start;
+}
+
+.ownerResults-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 50px; /* Space between items */
+    justify-content: center;
+    align-items: start;
+}
