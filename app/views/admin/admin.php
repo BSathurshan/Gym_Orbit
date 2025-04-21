@@ -37,9 +37,11 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/modals.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/buttons.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/adminDashboard.css">
 
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/1c1508aefb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="<?= ROOT ?>/assets/js/admin/1.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/admin/loader.js" defer></script>
 </head>
@@ -48,7 +50,7 @@ else{
      <!-- Header Section -->
    <!--  <header class="header"> -->
 
-    <i class="bi bi-house btn btn-primary"></i>
+    <!-- <i class="bi bi-house btn btn-primary"></i> -->
 
    <!-- <nav class="navbar">
     <a href="<?= ROOT ?>/login/logout" class="logout-btn">
@@ -110,7 +112,8 @@ else{
             <!-- Profile Section -->
             <div class="descriptor active" value="1">
             <?php
-                       require 'home.php';
+                      require 'adminDashboard.php';
+                    //    require 'home.php';
             ?> 
             </div> 
 

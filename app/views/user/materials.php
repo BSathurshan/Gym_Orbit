@@ -26,10 +26,11 @@
                         echo "<h5>" . htmlspecialchars($materials['title']) . "</h5>";
 
 
-                     echo "<div class='matimage'>
-                        <img src='" . ROOT . "/assets/images/materials/images/" . 
-                        htmlspecialchars($materials['file'], ENT_QUOTES, 'UTF-8') . "'>
-                      </div>";
+                        echo "<div class='matimage'>";
+                        echo "<img src='" . ROOT . "/assets/images/materials/images/" . 
+                             htmlspecialchars($materials['file'], ENT_QUOTES, 'UTF-8') . "' 
+                             class='zoomable' alt='Material Image'>";
+                        echo "</div>";
    
                       echo "<p>" . htmlspecialchars($materials['details']) . "</p>";
                       
@@ -51,3 +52,7 @@
         ?>
     </div>
     </div>    
+
+    <div id="image-overlay" onclick="this.style.display='none'">
+    <img src="" alt="Zoomed Material">
+    </div>

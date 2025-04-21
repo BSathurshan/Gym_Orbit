@@ -1,0 +1,111 @@
+.dashboard-content {
+    margin-left: 0 !important;
+    width: 90% !important;
+}
+
+.dashboard-boxes {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow boxes to wrap on smaller screens */
+}
+
+.dashboard-box {
+    color: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    flex: 1 1 200px; /* Minimum width for each box */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-box i {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.dashboard-box h4 {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.dashboard-box p {
+    font-size: .8em;
+}
+
+/* Theme colors for the boxes */
+.dashboard-box.primary {
+    background-color: #007bff; /* Blue */
+}
+
+.dashboard-box.success {
+    background-color: #28a745; /* Green */
+}
+
+.dashboard-box.info {
+    background-color: #17a2b8; /* Cyan */
+}
+
+.dashboard-box.warning {
+    background-color: #ffc107; /* Yellow */
+    color: #333; /* Dark text for better contrast */
+}
+
+.bottom-charts {
+    display: flex;
+    gap: 20px;
+}
+
+.chart-container-left,
+.chart-container-right {
+    background-color: #8d8f8f;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    color: #333;
+}
+
+.chart-container-left {
+    flex: 1;
+}
+
+.chart-container-right {
+    flex: 2;
+}
+
+.chart-container-left h3, .chart-container-right h3 {
+    margin-top: 0;
+    color: #343a40;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#genderChart,
+#paymentsChart {
+    width: 100%;
+    /* Adjust as needed */
+    height: auto;
+    margin: 0 auto;
+}
+
+#genderChart {
+    max-width: 300px;
+}
+
+@media (max-width: 768px) {
+
+    .dashboard-boxes,
+    .bottom-charts {
+        flex-direction: column;
+    }
+
+    .chart-container {
+        max-width: 100%;
+    }
+}

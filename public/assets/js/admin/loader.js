@@ -40,11 +40,11 @@ function materialDelete(id, gymUsername, file,access) {
 
 function postEdit(title,oldFilename,details,gymUsername,id) {
 
-    document.getElementById('editNewTitle').value = title;
-    document.getElementById('editNewDetails').value = details;
-    document.getElementById('gymUsername').value = gymUsername; 
-    document.getElementById('id').value = id; 
-    document.getElementById('oldFilename').value = oldFilename; 
+    document.getElementById('post_editNewTitle').value = title;
+    document.getElementById('post_editNewDetails').value = details;
+    document.getElementById('post_gymUsername').value = gymUsername; 
+    document.getElementById('post_id').value = id; 
+    document.getElementById('post_oldFilename').value = oldFilename; 
  
    
 

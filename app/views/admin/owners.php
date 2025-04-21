@@ -15,7 +15,7 @@
                         <input type="text" id="searchQuery2" name="search" placeholder="Search by gym name, gym username, or email">
                     </div>
 
-                    <div id="ownerResults">
+                    <div id="ownerResults" class="ownerResults-container">
                         <!-- This is using gymRendered.php ( auto load ) -->
                 </div>
 

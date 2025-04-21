@@ -9,6 +9,33 @@ class Admin
         $this->view('admin', 'admin');
     }
 
+    public function get_dashboard_data()
+    {
+        $model = $this->model('admin', 'dashboard');
+        $result = $model->get();
+
+        if ($result['found'] == 'yes') {
+
+            return ['found' => 'yes', 'result' => $result['result']];
+        } elseif ($result['found'] == 'no') {
+
+            return ['found' => 'no'];
+        }
+    }
+
+    public function get_payment_records(){
+        $model = $this->model('admin', 'paymentRecords');
+        $result = $model->get();
+
+        if ($result['found'] == 'yes') {
+
+            return ['found' => 'yes', 'result' => $result['result']];
+        } elseif ($result['found'] == 'no') {
+
+            return ['found' => 'no'];
+        }
+    }
+
     public function get_messages()
     {
 

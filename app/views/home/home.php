@@ -6,8 +6,6 @@ include_once PATH . 'header.php';
 include_once PATH . 'navigation.php';
 ?>
 
-<!-- Optional Smooth Scroll -->
-<!-- <style> html { scroll-behavior: smooth; } </style> -->
 
 <!-- HOME SECTION -->
 <section id="home" class="hero">
