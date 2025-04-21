@@ -13,10 +13,14 @@
             if ($clients['found'] == 'yes'): // Check if clients were found
                 foreach ($clients['result'] as $result): // Loop through each client in the result array
                 ?>
-                    <div class="users">
-                        <!-- Wrap the username in a link to the page where schedule can be assigned -->
-                        <h4><a href="<?=ROOT?>/user/workoutPlan/<?= urlencode($result['username']) ?>"><u><?= htmlspecialchars($result['username']) ?></u></a></h4>
-                    </div>
+                   <div class="users">
+    <h3 style="color: white;">
+        <a href="<?=ROOT?>/user/workoutPlan/<?= urlencode($result['username']) ?>" style="color: white; text-decoration: underline;">
+            <?= htmlspecialchars($result['username']) ?>
+        </a>
+    </h3>
+</div>
+
                 <?php
                 endforeach;
             else:

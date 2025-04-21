@@ -13,13 +13,10 @@
 
 <div class="wp_in-content">
     <div class="wp_header">
-        <h1>Member <?= htmlspecialchars($username); ?></h1>
+        <h1>Workout Plan for  <?= htmlspecialchars($username); ?></h1>
     </div>
 
-    <div class="wp_header">
-        <h2>Add Workout Plan</h2>
-    </div>
-
+   
     <div class="wp_in-in-content">
         <?php if (isset($_GET['success'])): ?>
             <div class="<?= $_GET['success'] == 1 ? 'wp_success-message' : 'wp_error-message' ?>">

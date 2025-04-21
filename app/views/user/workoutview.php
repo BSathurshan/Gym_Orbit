@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="in-in-content">
+    <div class="wv-in-in-content">
 
         <div class="wv-progress-container">
             <div class="wv-progress-title">Workout Progress</div>
@@ -37,23 +37,23 @@
                     <div class="wv-day-section">
                         <h3><?= htmlspecialchars($day) ?></h3>
 
-                        <table>
+                        <table class="wv-table">
                             <thead>
                                 <tr>
-                                    <th>Exercise</th>
-                                    <th>Reps</th>
-                                    <th>Sets</th>
-                                    <th>Done</th>
+                                    <th class="wv-th">Exercise</th>
+                                    <th class="wv-th">Reps</th>
+                                    <th class="wv-th">Sets</th>
+                                    <th class="wv-th">Done</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($exercises as $item): ?>
-                                    <tr>
-                                        <td data-label="Exercise"><?= htmlspecialchars($item['exercise']) ?></td>
-                                        <td data-label="Reps"><?= htmlspecialchars($item['sets']) ?></td>
-                                        <td data-label="Sets"><?= htmlspecialchars($item['reps']) ?></td>
-                                        <td data-label="Done">
-                                            <input 
+                                    <tr class="wv-tr">
+                                        <td class="wv-td" data-label="Exercise"><?= htmlspecialchars($item['exercise']) ?></td>
+                                        <td class="wv-td" data-label="Reps"><?= htmlspecialchars($item['sets']) ?></td>
+                                        <td class="wv-td" data-label="Sets"><?= htmlspecialchars($item['reps']) ?></td>
+                                        <td class="wv-td" data-label="Done">
+                                            <input class="wv-input"
                                                 type="checkbox" 
                                                 name="done_<?= $item['id'] ?>" 
                                                 data-id="<?= $item['id'] ?>" 

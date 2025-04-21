@@ -1,10 +1,10 @@
-/* body {
+body {
     font-family: 'Segoe UI', sans-serif;
     font-size: 20px;
-    background-color: #f0f2f5;
+    background-color: #010e03;
     margin: 0;
     padding: 0;
-} */
+}
 
 .wp_back-container {
     padding: 20px;
@@ -33,12 +33,12 @@
 
 .wp_header h1 {
     font-size: 32px;
-    color: #1a202c;
+    color: #ffffff;
 }
 
 .wp_header h2 {
     font-size: 26px;
-    color: #2d3748;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
@@ -74,7 +74,7 @@
 .wp_day-block {
     margin: 20px auto;
     padding: 20px;
-    background-color: #fbeee8;
+    background-color: #c3bebb;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -152,7 +152,7 @@
 
 .wp_meal-title {
     text-align: center;
-    color: #2d3748;
+    color: #ffffff;
     margin-top: 40px;
     font-size: 24px; /* Increased font size for title */
 }

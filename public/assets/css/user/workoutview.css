@@ -114,6 +114,7 @@
 
 .wv-td {
     background-color: #ffffff;
+    color: #2c3e50;
 }
 
 .wv-input[type="checkbox"] {
@@ -122,8 +123,12 @@
 }
 
 .wv-tr:nth-child(even) .wv-td {
-    background-color: #f8f9fa;
+    background-color: #f2f4f7;
 }
+.wv-tr:nth-child(odd) .wv-td {
+    background-color: #ffffff;
+}
+
 
 @media (max-width: 768px) {
     .wv-in-in-content {
