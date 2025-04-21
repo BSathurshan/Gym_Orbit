@@ -109,7 +109,6 @@ else{
                             <!-- <li class="tabs" value="7"><a><i class="bi bi-alarm-fill"></i>Reminders</a></li> -->
 
                             
-                           
                             <div class="grps">
                                         <a href="<?= ROOT ?>/login/logout" class="logout-btn">
                                         <i class="fa-solid fa-right-from-bracket"></i>
