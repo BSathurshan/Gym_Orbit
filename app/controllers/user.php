@@ -441,6 +441,27 @@ public function workoutplan($username) {
   $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
 }
 
+public function updateDone() {
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $id = $_POST['id'] ?? null;
+      $done = $_POST['done'] ?? null;
+
+      if ($id !== null && $done !== null) {
+          $model = $this->model('user','workoutModel');
+          $result= $model->updateDoneStatus($id, $done);
+          echo "OK";
+      } else {
+          echo "Invalid input";
+      }
+  } else {
+      echo "Invalid method";
+  }
+}
+
+
+
+
+
 // controllers/WorkoutController.php
 
 
