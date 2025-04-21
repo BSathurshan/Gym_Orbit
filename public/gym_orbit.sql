@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2025 at 05:33 AM
+-- Generation Time: Apr 21, 2025 at 12:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -144,7 +144,8 @@ INSERT INTO `connects_gym` (`username`, `gym_username`, `user_Name`, `gym_Name`)
 ('123', 'fitlifejohn', 'loki', 'FitLife Gym'),
 ('123', 'ironsarah', 'loki', 'Iron Paradise Gym'),
 ('alexmo123', 'fitlifejohn', 'Alex Morgan', 'FitLife Gym'),
-('alexmo123', 'ironsarah', 'Alex Morgan', 'Iron Paradise Gym');
+('alexmo123', 'ironsarah', 'Alex Morgan', 'Iron Paradise Gym'),
+('Saneesha', '01', '', 'meme');
 
 -- --------------------------------------------------------
 
@@ -165,6 +166,7 @@ CREATE TABLE `connects_instructors` (
 --
 
 INSERT INTO `connects_instructors` (`gym_username`, `trainer_username`, `user_name`, `name`, `trainer_name`) VALUES
+('01', 'ggmicha', 'Saneesha', 'Saneesha Thrindi', 'mic'),
 ('01', 'sarahbbbb', 'alexmo123 ', 'loki', '0');
 
 -- --------------------------------------------------------
@@ -363,6 +365,8 @@ CREATE TABLE `instructor_request` (
 --
 
 INSERT INTO `instructor_request` (`gym_username`, `trainer_username`, `trainer_name`, `username`, `name`, `time`) VALUES
+('01', 'ggmicha', 'mic', 'Saneesha', 'Saneesha Tharindi', '2025-04-21 09:51:49'),
+('01', 'sarahbbbbdds', 'Sarah Bennett', 'Saneesha', 'Saneesha Tharindi', '2025-04-21 10:13:08'),
 ('ironsarah', 'sarahbbbb', 'Sarah Bennett', '123', 'loki', '2024-12-16 13:21:51');
 
 -- --------------------------------------------------------
@@ -554,6 +558,7 @@ INSERT INTO `user` (`username`, `password`, `name`, `email`, `age`, `gender`, `c
 ('123', '123', 'loki', 'wolverine@gmail.com', 21, 'male', '+94712345671', 'sadasddas', 'Strength', 'full', 'yes', 'no', 'hq720.jpg', NULL),
 ('davejohnson89', 'david123', 'David Johnson', 'david.johnson@gmail.com', 45, 'male', '2147483647', 'Orr\'s Hill,Trincomalee', 'Physic', 'full', 'no', NULL, '674d41311fda6.jpg', NULL),
 ('emmat92', 'emmat92', 'Emma Thompson', 'emma.thompson@gmail.com', 32, 'male', '1234567890', 'Wellawatte,Colombo', 'Endurance', 'part', '', 'no', '674d41cd6133e.jpg', NULL),
+('saneesha', 'saneesha', 'Saneesha Tharindi', 'saneeshatharindi@gmail.com', 23, 'female', '+94740950638', '541/1A', 'Strength', 'full', '', NULL, '680603c602e59.jpg', 'Build Muscle'),
 ('te', '141', 'asd', 'check@gmail.com', 24, 'male', '777777777', 'sadasd', 'strength', 'full', 'no', 'no', '67827d7756557.webp', 'build muscle'),
 ('us1234', 'user1234', 'HomeLander', 'farmers@gmail.com', 22, 'male', '+94712345677', 'Chicago', 'Strength', 'full', 'no', NULL, 'default.jpg', 'Build Muscle');
 
@@ -585,7 +590,9 @@ INSERT INTO `user_payments` (`payment_id`, `username`, `gym_username`, `package`
 (55, '123', 'fitlifejohn', '1_MONTH', 8000, '2025-03-04 11:25:16'),
 (56, '123', '01', '1_MONTH', 8000, '2025-03-04 11:25:25'),
 (57, '123', '01', '1_MONTH', 8000, '2025-03-04 11:29:36'),
-(58, '123', '01', '1_MONTH', 8000, '2025-04-20 06:24:51');
+(58, '123', '01', '1_MONTH', 8000, '2025-04-20 06:24:51'),
+(59, 'Saneesha', '01', '1_MONTH', 8000, '2025-04-21 14:15:07'),
+(60, 'Saneesha', '01', '3_MONTHS', 22000, '2025-04-21 14:18:21');
 
 -- --------------------------------------------------------
 
@@ -599,6 +606,57 @@ CREATE TABLE `user_reminders` (
   `message` text NOT NULL,
   `time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_reminders`
+--
+
+INSERT INTO `user_reminders` (`id`, `username`, `message`, `time`) VALUES
+('6806006b6d6ab', 'Saneesha', 'Your instructor [ mic (ggmicha) ] request has been accepted by the gym.', '2025-04-21 13:53:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `workout_progress`
+--
+
+CREATE TABLE `workout_progress` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `day` varchar(10) NOT NULL,
+  `exercise` varchar(255) NOT NULL,
+  `completed` tinyint(1) DEFAULT 0,
+  `date_added` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `workout_schedule`
+--
+
+CREATE TABLE `workout_schedule` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `day` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') NOT NULL,
+  `exercise` varchar(255) NOT NULL,
+  `sets` int(11) DEFAULT 0,
+  `reps` int(11) DEFAULT 0,
+  `done` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `workout_schedule`
+--
+
+INSERT INTO `workout_schedule` (`id`, `username`, `day`, `exercise`, `sets`, `reps`, `done`) VALUES
+(74, 'Saneesha', 'Monday', 'squats', 12, 4, 0),
+(75, 'Saneesha', 'Monday', 'push', 12, 3, 0),
+(76, 'Saneesha', 'Monday', 'throw', 12, 3, 0),
+(77, 'Saneesha', 'Tuesday', 'run', 30, 12, 0),
+(78, 'Saneesha', 'Wednesday', 'fast', 23, 4, 0),
+(79, 'Saneesha', 'Friday', 'pull', 12, 3, 0),
+(80, 'Saneesha', 'Friday', 'push', 12, 4, 0);
 
 --
 -- Indexes for dumped tables
@@ -743,6 +801,19 @@ ALTER TABLE `user_reminders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `workout_progress`
+--
+ALTER TABLE `workout_progress`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `workout_schedule`
+--
+ALTER TABLE `workout_schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -756,7 +827,29 @@ ALTER TABLE `calendar_event_master`
 -- AUTO_INCREMENT for table `user_payments`
 --
 ALTER TABLE `user_payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `workout_progress`
+--
+ALTER TABLE `workout_progress`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `workout_schedule`
+--
+ALTER TABLE `workout_schedule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `workout_progress`
+--
+ALTER TABLE `workout_progress`
+  ADD CONSTRAINT `workout_progress_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`);
 
 DELIMITER $$
 --

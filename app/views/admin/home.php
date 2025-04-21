@@ -1,5 +1,6 @@
 
-    <div class="in-content">
+<link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/dashboard.css">
+<div class="in-content">
 
     <div class="header">
         <div>
@@ -13,6 +14,7 @@
 
     <div class="in-in-content">
         <h2>Admin Dashboard</h2>
+    
 
         <?php 
             $admin = new Admin();

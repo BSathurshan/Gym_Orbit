@@ -72,7 +72,7 @@ include_once PATH . 'navigation.php';
     <p>Discover the unique features that make our gym stand out. We offer a variety of amenities and services to enhance your fitness journey.</p>
 
     <div class="feature-item">
-        <img src="<?= ROOT ?>/assets/images/home/24_7Access.jpg" alt="24/7 Access" class="feature-image">
+        <img src="<?= ROOT ?>/assets/images/home/24_7Access.png" alt="24/7 Access" class="feature-image">
         <div class="feature-text">
             <h2>24/7 Access</h2>
             <p>Enjoy the flexibility of working out at any time that suits you. Our gym is open 24/7 for all members.</p>
@@ -88,7 +88,7 @@ include_once PATH . 'navigation.php';
     </div>
 
     <div class="feature-item">
-        <img src="<?= ROOT ?>/assets/images/home/trackProgress.jpg" alt="Track Progress" class="feature-image">
+        <img src="<?= ROOT ?>/assets/images/home/trackProgress.png" alt="Track Progress" class="feature-image">
         <div class="feature-text">
             <h2>Track Progress</h2>
             <p>Track your progress with our progress tracking tools. Our tools are 80% accurate and trustable.</p>
