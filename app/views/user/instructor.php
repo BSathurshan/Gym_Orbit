@@ -13,29 +13,29 @@
             $myInstructorUsername = null;
             
             // Show My Instructor (only name)
-            if ($instructorRequested['found'] == 'yes') {
-                echo "<h3>My Instructor</h3>";
-                while ($instructor = $instructorRequested['result']->fetch_assoc()) {
-                    $myInstructorUsername = $instructor['trainer_username']; // Save the username to skip later
+            // if ($instructorRequested['found'] == 'yes') {
+            //     echo "<h3>My Instructor</h3>";
+            //     while ($instructor = $instructorRequested['result']->fetch_assoc()) {
+            //         $myInstructorUsername = $instructor['trainer_username']; // Save the username to skip later
 
-                    // Display only the instructor's name
-                    echo "<div class='row2'>"; 
-                    echo "<div class='cell2'>
-                            <div class='details'>
-                                <h5>" . htmlspecialchars($instructor['trainer_name']) . "</h5>
-                            </div>
-                          </div>";
-                    echo "</div>"; 
-                }
-            } else {
-                echo "<p>You do not have a requested instructor yet.</p>";
-            }
+            //         // Display only the instructor's name
+            //         echo "<div class='row2'>"; 
+            //         echo "<div class='cell2'>
+            //                 <div class='details'>
+            //                     <h5>" . htmlspecialchars($instructor['trainer_name']) . "</h5>
+            //                 </div>
+            //               </div>";
+            //         echo "</div>"; 
+            //     }
+            // } else {
+            //     echo "<p>You do not have a requested instructor yet.</p>";
+            // }
 
             // Show all other instructors (full profile)
             $instructorAvailable = $user->request_Instructor($username);
 
             if ($instructorAvailable['found'] == 'yes') {
-                echo "<h3>All Available Instructors</h3>";
+                // echo "<h3>All Available Instructors</h3>";
                 while ($instructor = $instructorAvailable['result']->fetch_assoc()) {
 
                     // Skip if this is the already requested instructor
