@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2025 at 06:30 PM
+-- Generation Time: Apr 22, 2025 at 06:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -539,8 +539,8 @@ INSERT INTO `user` (`username`, `password`, `name`, `email`, `age`, `gender`, `c
 ('123', '123', 'loki', 'wolverine@gmail.com', 21, 'male', '+94712345671', 'sadasddas', 'Strength', 'full', 'yes', 'no', 'hq720.jpg', NULL),
 ('davejohnson89', 'david123', 'David Johnson', 'david.johnson@gmail.com', 45, 'male', '2147483647', 'Orr\'s Hill,Trincomalee', 'Physic', 'full', 'no', NULL, '674d41311fda6.jpg', NULL),
 ('emmat92', 'emmat92', 'Emma Thompson', 'emma.thompson@gmail.com', 32, 'male', '1234567890', 'Wellawatte,Colombo', 'Endurance', 'part', '', 'no', '674d41cd6133e.jpg', NULL),
-('te', '141', 'asd', 'check@gmail.com', 24, 'female', '777777777', 'sadasd', 'strength', 'full', 'no', 'no', '67827d7756557.webp', 'build muscle'),
-('us1234', 'user1234', 'HomeLander', 'farmers@gmail.com', 22, 'male', '+94712345677', 'Chicago', 'Strength', 'full', 'no', NULL, 'default.jpg', 'Build Muscle');
+('Saneesha', '141', 'asd', 'check@gmail.com', 24, 'female', '777777777', 'sadasd', 'strength', 'full', 'no', 'no', '67827d7756557.webp', 'build muscle'),
+('us1234', 'user1234', 'HomeLander', 'lokiaj141@gmail.com', 22, 'male', '+94712345677', 'Chicago', 'Strength', 'full', 'no', NULL, 'default.jpg', 'Build Muscle');
 
 -- --------------------------------------------------------
 
@@ -620,7 +620,7 @@ CREATE TABLE `workout_schedule` (
 INSERT INTO `workout_schedule` (`id`, `username`, `day`, `exercise`, `sets`, `reps`, `done`) VALUES
 (74, 'Saneesha', 'Monday', 'squats', 12, 4, 1),
 (75, 'Saneesha', 'Monday', 'push', 12, 3, 1),
-(76, 'Saneesha', 'Monday', 'throw', 12, 3, 0),
+(76, 'Saneesha', 'Monday', 'throw', 12, 3, 1),
 (77, 'Saneesha', 'Tuesday', 'run', 30, 12, 0),
 (78, 'Saneesha', 'Wednesday', 'fast', 23, 4, 0),
 (79, 'Saneesha', 'Friday', 'pull', 12, 3, 0),
