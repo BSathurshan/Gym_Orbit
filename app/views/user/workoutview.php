@@ -16,10 +16,11 @@
             </div>
         </div>
 
-        <div>
-            <h2>My Workout Plan</h2>
-        </div>
+        
         <div class="wv-progress-table-content">
+        <div>
+            <h2 style="text-align: center; color: teal;">My Workout Plan</h2><br>
+        </div>
             <div class="wv-user-container">
                 <?php 
                 $user = new User(); 
