@@ -1,12 +1,16 @@
+<div class="in-content">
+
 <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workoutview.css"> 
-<div style="display:flex; flex-direction:column; width:100%; margin-left: 270px; margin-top:20px;">
-    <div class="header" style="width:90%">
+    
+    <div class="header" >
         <div>
             <h2>MY Progress</h2>
         </div>
     </div>
 
-    <div class="wv-in-in-content">
+    <div class="in-in-content">
+
+    <!-- <div class="wv-in-in-content"> -->
 
         <div class="wv-progress-container">
             <div class="wv-progress-title">Workout Progress</div>
@@ -72,8 +76,9 @@
                 <?php endif; ?>
             </div>
         </div>
-    </div>
 </div>
+</div>
+
 
 <!-- JS to update progress and save checkbox states -->
 <script>
@@ -120,7 +125,6 @@
         });
     });
 </script>
-
 
 
 
