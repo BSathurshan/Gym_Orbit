@@ -32,9 +32,9 @@ body {
     display: flex;
     justify-content: space-around;
     /*background: linear-gradient(to bottom, #1a2a1a, #0a1a0a); Dark base with subtle green tint*/
-    /* background: linear-gradient(to bottom, #1a2a23,#1f2523, #163a18 ); */
+    background: linear-gradient(to bottom, #3a5a72,#4f7184, #182850 );
 
-    background: linear-gradient(to bottom, rgba(26, 42, 26,0.9) , rgba(10, 26, 10,1) );
+    /* background: linear-gradient(to bottom, rgba(49, 95, 49, 0.9) , rgba(10, 26, 10,1) ); */
 }
 /* Descriptor Panel */
 .descriptor {

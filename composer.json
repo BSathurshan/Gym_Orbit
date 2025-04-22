@@ -1,0 +1,7 @@
+{
+    "name": "gym_orbit/mvc-sathurshan",
+    "description": "gym_orbit/mvc-sathurshan",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

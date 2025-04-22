@@ -15,8 +15,8 @@
 <body>
 
     <div class=main>
-    <H1> LOGIN </H1>
-    <FORM method="POST" action="<?= ROOT ?>/login/authenticate">
+    <H1> Enter Your Email & Username </H1>
+    <FORM method="POST" action="<?= ROOT ?>/forgot/check">
 
                 <div class="field">
                   
@@ -26,32 +26,29 @@
                 </div>
 
                 <div class="field"> 
-                <label> Password </label>
-                  <div class="password_field">
-                    <input type="password" name="password" id="password" required>
-                    <img src="<?= ROOT ?>/assets/images/login/eye.png" id="eyeIcon">
-                  </div>
+                <input type="text" name="email" required>
+                  <label> Email </label>
                   
                 </div>
 
                 <?php if (!empty($errorMessage)): ?>
-                    <div class="error-message"><?= htmlspecialchars($errorMessage) ?></div>
+                    <div class="forgot-message"><?= htmlspecialchars($errorMessage) ?></div>
                 <?php endif; ?>
                 
-            <input type="submit" name="send" value="Login" >
+            <input type="submit" name="check" value="Check" >
 
        
          
               <div class="forgotpass" >
-                  <a href="<?= ROOT ?>/forgot">
-                    Forgot Password ? 
+                  <a href="<?= ROOT ?>">
+                    Back to Home ? 
                   </a>
               </div>
      
             
             <div class="signup_link">
               
-                Not a member?       <a href="../signup/signup.html"> Signup </a>
+                Back to login?       <a href="<?= ROOT ?>/login"> Login </a>
             
             </div>
 
