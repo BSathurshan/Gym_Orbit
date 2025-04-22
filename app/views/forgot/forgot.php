@@ -32,7 +32,7 @@
                 </div>
 
                 <?php if (!empty($errorMessage)): ?>
-                    <div class="error-message"><?= htmlspecialchars($errorMessage) ?></div>
+                    <div class="forgot-message"><?= htmlspecialchars($errorMessage) ?></div>
                 <?php endif; ?>
                 
             <input type="submit" name="check" value="Check" >
