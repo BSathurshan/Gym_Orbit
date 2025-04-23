@@ -1029,7 +1029,43 @@ class Admin
 
             }
             
-         }
+    }
+
+         
+    public function dbBackup(){
+
+        $username = $_POST['username'];
+        $password=$_POST['password'];
+
+        if (!isset($_SESSION['userDetails']['password'])) {
+            header('Content-Type: application/json');
+            echo json_encode(["success" => false, "error" => "User not logged in"]);
+            return;
+        }
+
+        $correctPassword=$_SESSION['userDetails']['password'];
+        
+        if($correctPassword==$password){
+            $model = $this->model('backup','backup');
+            $result = $model->getBackup();
+            
+            if ($result) {
+    
+                    $this->view('admin', 'admin');
+                echo "<script>alert('Database backup success !');</script>";
+    
+                }else{
+                    $this->view('admin', 'admin');
+                echo "<script>alert('Database backup failed !');</script>";
+    
+                }
+        }else{
+            $this->view('admin', 'admin');
+            echo "<script>alert('Password mismatch !');</script>";
+
+        }
+            
+    }
         
 }
     
