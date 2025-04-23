@@ -52,8 +52,8 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/tables.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/tables.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/buttons.css"> 
 
 
 
@@ -135,7 +135,7 @@ else{
    
     <div class="descriptor" value="3">
     <?php
-                require 'Gym.php';
+                require 'gyms.php';
                
 
     ?>

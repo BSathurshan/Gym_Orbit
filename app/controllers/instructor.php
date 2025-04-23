@@ -168,6 +168,24 @@ class Instructor
     //     }
     //     return ['found' => 'no'];
     // }
+
+    public function getGyms($gym_username)
+    {
+        $model = $this->model('instructor', 'gyms');
+    
+        if (!$model) {
+            die("Failed to load model.");
+        }
+    
+        $result = $model->get_GymDetails($gym_username);
+    
+        if ( $result->num_rows > 0) {
+            $gym_details = $result->fetch_assoc();
+            return ['found' => 'yes', 'result' => $gym_details];
+        } else {
+            return ['found' => 'no', 'message' => 'No gym details found!'];
+        }
+    }
     
     
     

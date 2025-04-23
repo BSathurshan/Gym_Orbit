@@ -46,5 +46,6 @@
 
 <!-- JavaScript Files -->
 <script src="<?= ROOT ?>/assets/js/home/main.js"></script>
+<script src="<?= ROOT ?>/assets/js/home/menu.js"></script>
 </body>
 </html> 
