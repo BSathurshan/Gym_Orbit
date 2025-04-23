@@ -17,10 +17,11 @@ class joinGym
             $check=$stmt->get_result();
 
         if($check->num_rows == 0){
-
-            $sql2 = " INSERT INTO connects_gym (username,gym_username,user_Name,gym_Name) VALUES(?,?,?,?) ";
+            
+            $type='normal';
+            $sql2 = " INSERT INTO connects_gym (username,gym_username,user_Name,gym_Name,type) VALUES(?,?,?,?,?) ";
             $stmt2 = $conn->prepare($sql2);
-            $stmt2->bind_param("ssss",$username, $gym_username ,$name,$gym_name ); 
+            $stmt2->bind_param("sssss",$username, $gym_username ,$name,$gym_name,$type); 
 
             if ($stmt2->execute()) {
 

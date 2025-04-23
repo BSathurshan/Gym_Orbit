@@ -6,7 +6,14 @@ class Support
 
         $conn = $this->getConnection();  
 
-        $sql = "INSERT INTO support (username, issue, message ,role , email) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO support (username, issue, message, role, email) 
+        VALUES (?, ?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE 
+            issue = VALUES(issue),
+            message = VALUES(message),
+            role = VALUES(role),
+            email = VALUES(email)";
+
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssss", $username, $issue, $message , $role ,$email);
         

@@ -113,8 +113,6 @@ function editProfile(name,contact,age,address) {
     document.getElementById('editUserFormModal').style.display = 'block';
 }
 
-
-
 let isVisible = false;
 
 function toggleNotifications() {
@@ -131,39 +129,66 @@ function toggleNotifications() {
 }
 
 function fetchNotifications() {
-    fetch('${ROOT}/user/get_notification', {
-        method: 'POST'
+    console.log("ROOT URL:", ROOT);
+    console.log("Fetching URL:", `${ROOT}/user/get_notification`);
+    fetch(`${ROOT}/user/get_notification`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log("Response status:", response.status, response.statusText);
+        if (!response.ok) {
+            return response.text().then(text => {
+                throw new Error(`HTTP error: ${response.status} ${response.statusText}, Response: ${text}`);
+            });
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log("Response data:", data);
         const box = document.getElementById("notification-box");
-        box.innerHTML = "";
+        box.innerHTML = `
+            <button id="close-notifications" aria-label="Close notifications">❌</button>
+            <div class="notification-content"></div>
+        `;
+        const content = box.querySelector(".notification-content");
 
         if (data.found === 'yes') {
             data.result.forEach(item => {
                 const div = document.createElement("div");
-                div.style.padding = "8px";
-                div.style.marginBottom = "10px";
-                div.style.borderBottom = "1px solid #eee";
-                div.style.background = "#111";
-                div.style.color = "#fff";
-                div.style.borderRadius = "5px";
-
+                div.className = "notification-item";
                 div.innerHTML = `
                     <em>Issue: ${item.issue}</em><br>
                     ${item.message}<br>
                     <small>${item.time}</small>
                 `;
-
-                box.appendChild(div);
+                content.appendChild(div);
             });
+        } else if (data.error === 'Not logged in') {
+            content.innerHTML = "<p class='notification-message'>Please log in to view notifications.</p>";
         } else {
-            box.innerHTML = "<p style='color:white;'>No notifications found.</p>";
+            content.innerHTML = "<p class='notification-message'>No notifications found.</p>";
         }
+
+        // Add event listener for close button
+        document.getElementById("close-notifications").addEventListener("click", closeNotifications);
     })
     .catch(err => {
-        console.error("Error fetching notifications:", err);
-        document.getElementById("notification-box").innerHTML = "<p style='color:white;'>Error loading notifications.</p>";
+        console.error("Error fetching notifications:", err.message);
+        document.getElementById("notification-box").innerHTML = `
+            <button id="close-notifications" aria-label="Close notifications">❌</button>
+            <p class="notification-message">Error loading notifications: ${err.message}</p>
+        `;
+        // Add event listener for close button in error case
+        document.getElementById("close-notifications").addEventListener("click", closeNotifications);
     });
 }
 
+function closeNotifications() {
+    const box = document.getElementById("notification-box");
+    box.style.display = "none";
+    isVisible = false;
+}

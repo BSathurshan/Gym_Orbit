@@ -1,5 +1,7 @@
 <?php 
   require_once '../app/controllers/admin.php';
+  require_once '../app/controllers/email.php';
+
 
 class Owner
 {
