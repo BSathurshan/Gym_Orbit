@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2025 at 06:10 AM
+-- Generation Time: Apr 23, 2025 at 04:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -87,6 +87,7 @@ INSERT INTO `bookings` (`username`, `gym_username`, `trainer_username`, `date`, 
 ('123', '01', NULL, '2025-04-19', '08:00-09:00', '2025-04-17 18:14:39'),
 ('123', '01', 'ggmicha', '2025-04-20', '10:00-11:00', '2025-04-19 00:10:54'),
 ('123', '01', NULL, '2025-04-21', '11:00-12:00', '2025-04-19 10:24:20'),
+('123', '01', NULL, '2025-04-30', '13:00-14:00', '2025-04-22 08:02:51'),
 ('141', '01', 'ss', '2025-02-09', '07:00-10:00', '2025-02-09 14:26:05'),
 ('141', '01', 'ss', '2025-02-11', '07:00-10:00', '2025-02-09 14:29:07'),
 ('141', '01', 'No Instructor', '2025-02-17', '18:00-19:00', '2025-02-05 03:26:48'),
@@ -115,19 +116,20 @@ CREATE TABLE `connects_gym` (
   `username` varchar(255) NOT NULL,
   `gym_username` varchar(255) NOT NULL,
   `user_Name` varchar(255) NOT NULL,
-  `gym_Name` varchar(255) NOT NULL
+  `gym_Name` varchar(255) NOT NULL,
+  `type` enum('normal','premium') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `connects_gym`
 --
 
-INSERT INTO `connects_gym` (`username`, `gym_username`, `user_Name`, `gym_Name`) VALUES
-('123', '01', 'loki', 'meme'),
-('123', 'fitlifejohn', 'loki', 'FitLife Gym'),
-('123', 'ironsarah', 'loki', 'Iron Paradise Gym'),
-('alexmo123', 'fitlifejohn', 'Alex Morgan', 'FitLife Gym'),
-('alexmo123', 'ironsarah', 'Alex Morgan', 'Iron Paradise Gym');
+INSERT INTO `connects_gym` (`username`, `gym_username`, `user_Name`, `gym_Name`, `type`) VALUES
+('123', '01', 'loki', 'meme', 'premium'),
+('123', 'fitlifejohn', 'loki', 'FitLife Gym', 'premium'),
+('123', 'ironsarah', 'loki', 'Iron Paradise Gym', 'normal'),
+('alexmo123', 'fitlifejohn', 'Alex Morgan', 'FitLife Gym', NULL),
+('alexmo123', 'ironsarah', 'Alex Morgan', 'Iron Paradise Gym', NULL);
 
 -- --------------------------------------------------------
 
@@ -207,7 +209,8 @@ CREATE TABLE `gym_notes` (
 INSERT INTO `gym_notes` (`gym_username`, `note_id`, `content`, `date`, `time`) VALUES
 ('01', '1744215433987', 'checking 2', '4/9/2025, 9:46:20 PM', '2025-04-09 16:17:13'),
 ('01', '1745017453033', 'checking 1', '4/19/2025, 4:34:03 AM', '2025-04-18 23:04:13'),
-('fitlifejohn', '1745053281065', 'save 123', '4/19/2025, 2:30:44 PM', '2025-04-19 09:01:21');
+('fitlifejohn', '1745053281065', 'save 123', '4/19/2025, 2:30:44 PM', '2025-04-19 09:01:21'),
+('01', '1745304012715', 'ghgghjg', '4/22/2025, 12:09:07 PM', '2025-04-22 06:40:12');
 
 -- --------------------------------------------------------
 
@@ -399,7 +402,7 @@ CREATE TABLE `machines` (
 --
 
 INSERT INTO `machines` (`gym_username`, `name`, `file`, `total`, `available`) VALUES
-('01', 'mach1', '67409af2aae2c.jpg', '7', '3'),
+('01', 'mach1', '67409af2aae2c.jpg', '7', '2'),
 ('01', 'machine 2', 'b.png', '5', '1'),
 ('fitlifejohn', 'dumbell', '674d4c23d65bc.jpeg', '3', '3');
 
@@ -471,6 +474,34 @@ INSERT INTO `posts` (`gym_username`, `id`, `gym_name`, `title`, `file`, `details
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reply`
+--
+
+CREATE TABLE `reply` (
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` text NOT NULL,
+  `issue` text NOT NULL,
+  `message` text NOT NULL,
+  `time` datetime NOT NULL,
+  `reply` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reply`
+--
+
+INSERT INTO `reply` (`username`, `email`, `role`, `issue`, `message`, `time`, `reply`) VALUES
+('', '', 'admin', '34234', 'Re: werewrewr', '2025-04-17 15:29:41', NULL),
+('01', 'abc@', 'admin', 'check123', 'check123', '2025-04-23 09:27:32', 'jgjgjhgj'),
+('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 09:36:11', 'checking the reply'),
+('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 10:16:03', 'checking the reply'),
+('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 10:17:39', 'checking the reply'),
+('us1234', 'lokiaj141@gmail.com', 'admin', 'checking function', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2025-04-23 11:48:07', 'hey hi iam solving');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `schedule_user_gym_instructor`
 --
 
@@ -495,18 +526,42 @@ CREATE TABLE `support` (
   `role` varchar(255) NOT NULL,
   `issue` text NOT NULL,
   `message` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` enum('solved','unsolved') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `support`
 --
 
-INSERT INTO `support` (`username`, `email`, `role`, `issue`, `message`, `time`) VALUES
-('01', '', '', '34234', 'fggrt', '2025-01-11 14:47:48'),
-('1', '', '', 'trrere', 'werewrewr', '2024-12-02 00:03:29'),
-('123', '', '', 'test', 'testtesttest', '2024-12-01 23:51:49'),
-('sarahbbbb', 'sarah.bennett@gmail.com', 'instructor', 'test', 'gfgf', '2024-12-18 11:45:22');
+INSERT INTO `support` (`username`, `email`, `role`, `issue`, `message`, `time`, `status`) VALUES
+('01', 'abc@', 'owner', 'check123', 'check123', '2025-04-22 11:52:07', NULL),
+('1', 'fdgkdg@kdsgks', '', 'trrere', 'werewrewr', '2025-04-23 06:37:56', NULL),
+('sarahbbbb', 'sarah.bennett@gmail.com', 'instructor', 'test', 'gfgf', '2024-12-18 11:45:22', NULL),
+('us1234', 'lokiaj141@gmail.com', 'user', 'checking function', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2025-04-23 09:48:07', 'solved');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system`
+--
+
+CREATE TABLE `system` (
+  `id` varchar(255) NOT NULL,
+  `admin_username` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `title` text NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `system`
+--
+
+INSERT INTO `system` (`id`, `admin_username`, `category`, `title`, `createdAt`, `start`, `end`) VALUES
+('6808f222ec4a6', '3', 'system-maintenence', 'system maintenence', '2025-04-23 13:58:58', '2025-04-23 11:30:00', '2025-04-25 09:27:00');
 
 -- --------------------------------------------------------
 
@@ -540,7 +595,7 @@ INSERT INTO `user` (`username`, `password`, `name`, `email`, `age`, `gender`, `c
 ('davejohnson89', 'david123', 'David Johnson', 'david.johnson@gmail.com', 45, 'male', '2147483647', 'Orr\'s Hill,Trincomalee', 'Physic', 'full', 'no', NULL, '674d41311fda6.jpg', NULL),
 ('emmat92', 'emmat92', 'Emma Thompson', 'emma.thompson@gmail.com', 32, 'male', '1234567890', 'Wellawatte,Colombo', 'Endurance', 'part', '', 'no', '674d41cd6133e.jpg', NULL),
 ('Saneesha', '141', 'asd', 'check@gmail.com', 24, 'female', '777777777', 'sadasd', 'strength', 'full', 'no', 'no', '67827d7756557.webp', 'build muscle'),
-('us1234', 'user1234', 'HomeLander', 'lokiaj141@gmail.com', 22, 'male', '+94712345677', 'Chicago', 'Strength', 'full', 'no', NULL, 'default.jpg', 'Build Muscle');
+('us1234', '141', 'HomeLander', 'lokiaj141@gmail.com', 22, 'male', '+94712345677', 'Chicago', 'Strength', 'full', 'no', NULL, 'default.jpg', 'Build Muscle');
 
 -- --------------------------------------------------------
 
@@ -618,10 +673,10 @@ CREATE TABLE `workout_schedule` (
 --
 
 INSERT INTO `workout_schedule` (`id`, `username`, `day`, `exercise`, `sets`, `reps`, `done`) VALUES
-(74, 'Saneesha', 'Monday', 'squats', 12, 4, 1),
+(74, 'Saneesha', 'Monday', 'squats', 12, 4, 0),
 (75, 'Saneesha', 'Monday', 'push', 12, 3, 1),
 (76, 'Saneesha', 'Monday', 'throw', 12, 3, 1),
-(77, 'Saneesha', 'Tuesday', 'run', 30, 12, 0),
+(77, 'Saneesha', 'Tuesday', 'run', 30, 12, 1),
 (78, 'Saneesha', 'Wednesday', 'fast', 23, 4, 0),
 (79, 'Saneesha', 'Friday', 'pull', 12, 3, 0),
 (80, 'Saneesha', 'Friday', 'push', 12, 4, 0);
@@ -739,6 +794,12 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`gym_username`,`id`);
 
 --
+-- Indexes for table `reply`
+--
+ALTER TABLE `reply`
+  ADD PRIMARY KEY (`username`,`email`,`time`);
+
+--
 -- Indexes for table `schedule_user_gym_instructor`
 --
 ALTER TABLE `schedule_user_gym_instructor`
@@ -749,6 +810,12 @@ ALTER TABLE `schedule_user_gym_instructor`
 --
 ALTER TABLE `support`
   ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `system`
+--
+ALTER TABLE `system`
+  ADD PRIMARY KEY (`id`,`admin_username`);
 
 --
 -- Indexes for table `user`
