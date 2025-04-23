@@ -6,7 +6,7 @@
          <h2>Machines</h2>
 
         </div>
-
+        <button class='addBtn' onclick='machineAdd()'> Add </button>
     </div>
 
     <div class="in-in-content">
@@ -42,7 +42,7 @@
                                 echo "<p>No Machines found , add one!</p>";
                                 }
                         
-                            echo "<button class='addBtn' onclick='machineAdd()'> Add </button>";
+                            
 
                         ?>  
                     </div> 
