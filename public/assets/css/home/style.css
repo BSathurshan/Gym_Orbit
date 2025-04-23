@@ -380,26 +380,6 @@ body {
     border-top: 1px solid #333;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .join-section {
-        grid-template-columns: 1fr;
-        background: var(--primary-red);
-    }
-
-    .nav-pages {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    .stats-section {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Animations */
 @keyframes fadeUp {
     from {
@@ -722,3 +702,147 @@ body {
     line-height: 1.6;
     color: #ccc; /* Muted white for history text */
 }
+
+.mobile-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px; /* adjust based on your nav height */
+    left: 10px;
+    background-color: #1e1e1e; /* dark theme like VS Code */
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 10px 0;
+    z-index: 1000;
+    width: 120px;
+}
+
+.mobile-dropdown.show-dropdown {
+    display: block;
+}
+
+.mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-nav-list li {
+    padding: 10px 20px;
+    color: #ccc;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.mobile-nav-list li:hover {
+    background-color: #333;
+}
+
+.mobile-nav-list a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+}
+
+.blur {
+    filter: blur(10px);
+    transition: filter 0.1s ease;
+}
+
+#mobileBar {
+    display: none;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .navbar {
+        width:100%;
+    }
+
+    .join-section {
+        grid-template-columns: 1fr;
+        background: var(--primary-red);
+    }
+
+    .nav-pages {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (min-width: 601px) {
+    .navbar {
+        width:100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        width:100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        width: 100%;
+    }
+    
+    .nav-pages {
+        display: none;
+    }
+    .logo-container img {
+        display: none;
+    
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1000; /* Ensure it's on top */
+        cursor: pointer;
+        color:white;
+        font-size: 2rem;
+        
+    }
+    .join-btn, 
+    .login-btn {
+       padding: 0.50rem 1rem;
+
+  }
+  .auth-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+}
+}
+
+  @media (min-width: 1025px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+    .mobile-menu-btn,
+    .mobile-dropdown {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
