@@ -1,0 +1,116 @@
+.message-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.message-card {
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+
+}
+
+.message-card:hover {
+    transform: translateY(-5px);
+}
+
+.child {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 6px;
+}
+
+/* .child.top {
+    font-weight: bold;
+    color: #e3dfdf;
+} */
+
+.child.mid {
+    font-weight: bold;
+    color: #e3dfdf;
+}
+
+.child.bottom {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: auto; /* pushes it to the bottom */
+}
+
+
+.reply-card {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    background-color: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 15px;
+    z-index: 1000;
+    transition: 0.3s ease;
+}
+
+.reply-card .editBtn {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.message-card {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+  
+  .status-icons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .status-icons span {
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: white;
+  }
+  
+  #reply-replyMessage {
+    width: 100%;
+    height: 70px;
+    resize: vertical; /* or none, both, horizontal */
+}
+
+#reply-message{
+    width: 100%;
+    height: 50px;
+    resize: vertical; /* or none, both, horizontal */
+}
+
+  
+

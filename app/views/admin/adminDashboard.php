@@ -91,8 +91,8 @@
                     datasets: [{
                         label: 'Total Payments',
                         data: paymentsAmounts,
-                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(255, 238, 0, 1)',
+                        borderColor: 'rgb(255, 251, 0)',
                         borderWidth: 1
                     }]
                 };

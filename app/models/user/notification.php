@@ -16,12 +16,12 @@ class Notification
 
         if ($result->num_rows > 0) {
 
-            return $result;
+            return ['found'=>'yes','result'=>$result];
 
             }
         else 
         {
-            return false;
+            return ['found'=>'no'];
         }
     }
 }
