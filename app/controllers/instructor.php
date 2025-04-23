@@ -1,12 +1,11 @@
-<?php 
-class instructor
+<?php
+class Instructor
 {
     use Controller;
     use Database;
 
     public function index()
     {
-
         $this->view('instructor', 'instructor');
     }
 
@@ -17,16 +16,13 @@ class instructor
         if (!$model) {
             die("Failed to load model.");
         }
+
         $result = $model->get_Contacts($username);
 
         if ($result) {
-
-            return  ['found'=>'yes','result'=>$result];
-          
-        } else 
-        {
-            return ['found' => 'no' , 'message' => 'No members found for you.'];
-
+            return ['found' => 'yes', 'result' => $result];
+        } else {
+            return ['found' => 'no', 'message' => 'No members found for you.'];
         }
     }
 
@@ -37,19 +33,15 @@ class instructor
         if (!$model) {
             die("Failed to load model.");
         }
+
         $result = $model->get_Reminders($username);
 
         if ($result) {
-
-            return  ['found'=>'yes','result'=>$result];
-          
-        } else 
-        {
-            return ['found' => 'no' , 'message' => 'No reminders !.'];
-
+            return ['found' => 'yes', 'result' => $result];
+        } else {
+            return ['found' => 'no', 'message' => 'No reminders!.'];
         }
     }
-
 
     public function getMaterials($gym_username)
     {
@@ -58,75 +50,106 @@ class instructor
         if (!$model) {
             die("Failed to load model.");
         }
+
         $result = $model->get_Materials($gym_username);
 
         if ($result) {
-
-            return  ['found'=>'yes','result'=>$result];
-          
-        } else 
-        {
-            return ['found' => 'no' , 'message' => 'No materials found !.'];
-
+            return ['found' => 'yes', 'result' => $result];
+        } else {
+            return ['found' => 'no', 'message' => 'No materials found!.'];
         }
     }
-    public function showClients($instructor_id) {
+
+    public function showClients($instructor_id)
+    {
         $model = $this->model('instructor', 'membership');
         $result = $model->getAcceptedClients($instructor_id);
 
-        
-        if ($result) {
-
-            return  ['found'=>'yes','result'=>$result];
-          
-        } else 
-        {
-            return ['found' => 'no' , 'message' => 'No accepted Users Yet!'];
-
+        if ($result['found'] === 'yes') {
+            return ['found' => 'yes', 'result' => $result['result']];
+        } else {
+            return ['found' => 'no', 'message' => $result['message']];
         }
     }
 
     public function getSupport()
     {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-            
             if (isset($_POST['trainer_username']) && isset($_POST['email'])) {
-                $username = $_POST['trainer_username'];  
-                $email= $_POST['email']; 
+                $username = $_POST['trainer_username'];
+                $email = $_POST['email'];
                 $role = $_POST['role'];
 
                 $issue = htmlspecialchars($_POST['issue']);
                 $message = htmlspecialchars($_POST['details']);
-                    
-                $model = $this->model('support','support'); 
-          
 
-                    if (!$model) {
-                        die("Failed to load model.");
-                    }
+                $model = $this->model('support', 'support');
 
-                    $result = $model->submit($issue,$message,$username,$role); 
-
-                    if ($result) {
-
-                        $this->view('instructor','instructor');
-                        echo "<script>alert('Your issue has been sent !');</script>";
-
-                    
-                    } else 
-                    {
-                        $this->view('instructor','instructor');
-                        echo "<script>alert('Failed to sent the message!');</script>";
-                    }
+                if (!$model) {
+                    die("Failed to load model.");
                 }
-                else{
-                    $this->view('instructor','instructor');
-                    echo "<script>alert('Missing param (get_Support).');</script>";
-                }   
-      }
-    
+
+                $result = $model->submit($issue, $message, $username, $role);
+
+                $this->view('instructor', 'instructor');
+
+                if ($result) {
+                    echo "<script>alert('Your issue has been sent !');</script>";
+                } else {
+                    echo "<script>alert('Failed to send the message!');</script>";
+                }
+            } else {
+                $this->view('instructor', 'instructor');
+                echo "<script>alert('Missing param (get_Support).');</script>";
+            }
+        }
     }
+
+    public function get_requests($username)
+    {
+        if (!empty($username)) {
+            $model = $this->model('instructor', 'Requests');
+            $result = $model->get($username);
+
+            if ($result['found'] === 'yes') {
+                return ['found' => 'yes', 'result' => $result['result']];
+            } else {
+                return ['found' => 'no'];
+            }
+        }
+    }
+
+    public function acceptRequest($id)
+    {
+        $model = $this->model('instructor', 'Requests');
+        $result = $model->accept($id);
+        header("Location: " . ROOT . "/owner/owner");
+        exit;
+    }
+
+    public function rejectRequest($id)
+    {
+        $model = $this->model('instructor', 'Requests');
+        $result = $model->reject($id);
+        header("Location: " . ROOT . "/owner/owner");
+        exit;
+    }
+
+    public function processRequest($id, $action)
+    {
+        $model = $this->model('instructor', 'requests');
+        $result = $model->processRequest($id, $action);
+
+        if ($result) {
+            echo "<script>alert('Request successfully {$action}ed.');</script>";
+        } else {
+            echo "<script>alert('Failed to process the request.');</script>";
+        }
+
+        $this->view('instructor', 'requests');
+    }
+
     // public function assign_schedule($username) {
     //     $workouts = $this->get_workouts($username);
     //     $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
@@ -150,3 +173,4 @@ class instructor
     
 
 }
+?>

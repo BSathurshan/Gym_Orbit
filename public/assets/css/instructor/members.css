@@ -1,0 +1,80 @@
+
+.im-user-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.im-client-card {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.im-client-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.im-client-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.im-client-details {
+    flex: 1;
+}
+
+.im-client-details h3 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #333;
+}
+
+.im-client-details p {
+    margin: 5px 0;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.im-client-details a {
+    text-decoration: none;
+    font-weight: 500;
+    color:rgb(255, 255, 255);
+}
+
+.im-client-details a:hover {
+    text-decoration: underline;
+}
+
+.im-workout-plan-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.im-workout-plan-btn:hover {
+    background-color: #0056b3;
+}
+
+.im-no-clients-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+}

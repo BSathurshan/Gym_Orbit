@@ -92,47 +92,38 @@ class User
   public function request_Instructor($username)
   {
     if (!empty($username)) {
+        $model = $this->model('user', 'instructor');
+        $result = $model->request($username);
 
-      $model = $this->model('user', 'instructor');
-      $result = $model->request($username);
-
-      if ($result) {
-
-        return ['found' => 'yes', 'result' => $result];
-      } else {
-
-        return ['found' => 'no', 'message' => 'Please join a gym to request instructors'];
-      }
+        if ($result) {
+            return $result; // Return categorized instructors
+        } else {
+            return ['myInstructors' => [], 'otherInstructors' => [], 'message' => 'Please join a gym to request instructors'];
+        }
     } else {
-
-      echo "<script>alert('Missing username (request_Instructor).');</script>";
+        echo "<script>alert('Missing username (request_Instructor).');</script>";
     }
   }
 
 
   public function sendRequest()
   {
+    if (isset($_GET['gym_username'], $_GET['trainer_username'], $_GET['trainer_name'], $_GET['username'])) {
+        $gym_username = $_GET['gym_username'];
+        $trainer_username = $_GET['trainer_username'];
+        $trainer_name = $_GET['trainer_name'];
+        $username = $_GET['username'];
 
-    if (isset($_GET['gym_username'], $_GET['trainer_username'], $_GET['trainer_name'], $_GET['name'], $_GET['username'])) {
+        $model = $this->model('user', 'instructor');
+        $result = $model->send($username, $trainer_name, $trainer_username, $gym_username);
 
-      $gym_username = $_GET['gym_username'];
-      $trainer_username = $_GET['trainer_username'];
-      $trainer_name = $_GET['trainer_name'];
-      $name = $_GET['name'];
-      $username = $_GET['username'];
-
-      $model = $this->model('user', 'instructor');
-      $result = $model->send($username, $name, $trainer_name, $trainer_username, $gym_username);
-
-      if ($result) {
-
-        $this->view('user', 'user');
-        echo "<script>alert('Request send successfully');</script>";
-      } else {
+        if ($result) {
+            echo "<script>alert('Request sent successfully');</script>";
+        } else {
+            echo "<script>alert('Request already pending');</script>";
+        }
 
         $this->view('user', 'user');
-        echo "<script>alert('Already request pending');</script>";
-      }
     }
   }
 
@@ -601,6 +592,40 @@ public function getAppointments()
 
     return ['found' => 'no'];
   }
+}
+
+public function saveGoal() {
+    if (isset($_GET['goal']) && isset($_SESSION['username'])) {
+        $goal = $_GET['goal'];
+        $username = $_SESSION['username'];
+
+        $model = $this->model('user', 'mealModel');
+        $success = $model->saveUserGoal($username, $goal);
+
+        echo json_encode(['success' => $success]);
+    }
+}
+
+public function getUserGoal() {
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+
+        $model = $this->model('user', 'mealModel');
+        $goal = $model->getUserGoal($username);
+
+        echo json_encode(['goal' => $goal]);
+    }
+}
+
+public function getMealPlans() {
+    if (isset($_GET['goal'])) {
+        $goal = $_GET['goal'];
+
+        $model = $this->model('user', 'mealModel');
+        $mealPlans = $model->getMealPlansByGoal($goal);
+
+        echo json_encode(['mealPlans' => $mealPlans]);
+    }
 }
   
 }

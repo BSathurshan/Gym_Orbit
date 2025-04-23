@@ -198,7 +198,7 @@ else{
             
             <div class="descriptor" value="9">
                 <?php
-                require 'MealPlan.php';
+                require 'Mealview.php';
                 ?>
             </div>
 

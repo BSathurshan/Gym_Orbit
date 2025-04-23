@@ -1,6 +1,6 @@
 <div class="in-content">
 
-<link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workoutview.css"> 
+<link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workoutview.css">
     
     <div class="header" >
         <div>
