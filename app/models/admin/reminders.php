@@ -27,5 +27,30 @@ class Reminders
                 return ['found'=>'no'];   
             }
  }
+
+
+ 
+ public function update( $username ,$category,$title,$start,$end)
+ {
+
+         $conn = $this->getConnection(); 
+         $id=uniqid();
+         $sql = "INSERT INTO system (id,admin_username,category,title,start,end) VALUES (?, ?, ?, ?, ?, ?)";
+         $stmt = $conn->prepare($sql);
+         $stmt->bind_param("ssssss",$id,$username ,$category,$title,$start,$end);
+
+
+         if ($stmt->execute()) {
+
+             $stmt->close();
+             return true ;   
+
+             }
+         else 
+         {
+             $stmt->close();
+             return false;   
+         }
+}
 }    
 ?>

@@ -1,5 +1,8 @@
 <div class="searchGym-container">
     <?php
+    $name = $_SESSION["userDetails"]["name"] ?? null;
+    $username = $_SESSION["username"] ?? null;
+    
     if ($result->num_rows > 0) {
         while ($owner = $result->fetch_assoc()) {
             echo "<div class='gym-container'>";

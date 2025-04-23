@@ -9,7 +9,8 @@
 
     <?php 
             $user = new User(); 
-            $gymDetails = $user->joinedGyms($username); 
+            $gymDetails = $user->joinedGyms_premium($username); 
+            $nonPremGymDetails = $user->joinedGyms_normal($username); 
 
             echo "<div class='gym-table'>"; 
             if ($gymDetails['found'] == 'yes') {
@@ -33,7 +34,43 @@
             ?>
             
     </div>
+
+    <?php
+        if ($nonPremGymDetails['found'] == 'yes') {
+            echo '<br>';
+
+            echo '<div class="header">
+                    <div>
+                        <h2>Want to go Premium ?</h2>
+                    </div>
+                </div>';
+
+            echo '<div class="in-in-content">';
+            echo "<div class='gym-table'>";
+
+            while ($rowRequested = $nonPremGymDetails['result']->fetch_assoc()) {
+                echo "<div class='cell' style='display: none;'><p>" . htmlspecialchars($rowRequested['gym_username'], ENT_QUOTES, 'UTF-8') . "</p></div>";
+
+                echo "<div class='row'>";
+                echo "<div class='cell'>
+                        <div class='image'>
+                            <img src='" . ROOT . "/assets/images/owner/profile/images/" . htmlspecialchars($rowRequested['file'], ENT_QUOTES, 'UTF-8') . "' alt='Profile Image'>
+                        </div>
+                    </div>";
+
+                echo "<div class='cell'><p>" . htmlspecialchars($rowRequested['gym_name'], ENT_QUOTES, 'UTF-8') . "</p></div>";
+                echo "<div class='cell'><button onclick=\"viewGymSchedule('" . htmlspecialchars($rowRequested['gym_username'], ENT_QUOTES, 'UTF-8') . "')\">Join</button></div>";
+                echo "</div>"; // close .row
+            }
+
+            echo "</div>"; // close .gym-table
+            echo "</div>"; // close .in-in-content
+        }
+    ?>
+
+
 </div>
+
 
 <div id="booking-modal" class="booking-modal">
     <div class="booking-modal-content">

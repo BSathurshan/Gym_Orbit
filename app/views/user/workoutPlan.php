@@ -39,7 +39,26 @@
             </div>
 
             <div id="wp_workout-container">
-                <!-- Dynamic day sections will be added here -->
+                <!-- Display existing workout plans -->
+                <?php if (!empty($workouts['workouts'])): ?>
+                    <?php foreach ($workouts['workouts'] as $day => $exercises): ?>
+                        <div class="wp_day-block" id="container-<?= htmlspecialchars($day) ?>">
+                            <h4><?= htmlspecialchars($day) ?></h4>
+                            <div class="wp_exercise-container" id="exercise-container-<?= htmlspecialchars($day) ?>">
+                                <?php foreach ($exercises as $exercise): ?>
+                                    <div class="wp_exercise-row">
+                                        <input type="text" name="exercises[<?= htmlspecialchars($day) ?>][]" value="<?= htmlspecialchars($exercise['exercise']) ?>" placeholder="Exercise">
+                                        <input type="number" name="sets[<?= htmlspecialchars($day) ?>][]" value="<?= htmlspecialchars($exercise['sets']) ?>" min="0" placeholder="Sets">
+                                        <input type="number" name="reps[<?= htmlspecialchars($day) ?>][]" value="<?= htmlspecialchars($exercise['reps']) ?>" min="0" placeholder="Reps">
+                                        <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <button type="button" onclick="addExerciseRow('<?= htmlspecialchars($day) ?>')">Add Exercise Row</button>
+                            <button type="button" onclick="removeDay('<?= htmlspecialchars($day) ?>')">Remove Day</button>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
 
             <div class="wp_workout-controls">
