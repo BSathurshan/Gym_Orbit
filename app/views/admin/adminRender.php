@@ -3,21 +3,21 @@ if ($result->num_rows > 0) {
     while ($admin = $result->fetch_assoc()) {
         $ban = $admin['ban'];
 
-        echo "<div class='admin-card'>";
+        echo "<div class='user-card'>";
         
         echo "<h4><u>" . htmlspecialchars($admin['admin_name']) . "</u></h4>";
 
-        echo "<div class='admin-image'>";
+        echo "<div class='user-image'>";
         echo "<img src='" . ROOT . "/assets/images/Admin/profile/images/" . htmlspecialchars($admin["file"]) . "' width='150'>";
         echo "</div>";
 
-        echo "<div class='admin-details'>";
+        echo "<div class='user-details'>";
         echo "<h5>" . htmlspecialchars($admin['admin_username']) . "</h5>";
         echo "<h5>" . htmlspecialchars($admin['email']) . "</h5>";
         echo "<p>" . htmlspecialchars($admin['admin_username']) . "</p>";
         echo "</div>";
 
-        echo "<div class='admin-buttons'>";
+        echo "<div class='user-buttons'>";
         echo "<button class='deleteBtn' onclick='adminDelete(\"{$admin['admin_username']}\",\"{$admin['email']}\",\"{$admin['file']}\")'>Delete</button>";
         
         // Uncomment if you implement edit functionality later

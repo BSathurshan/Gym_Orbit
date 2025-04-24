@@ -1,6 +1,16 @@
 {
-    "name": "gym_orbit/mvc-sathurshan",
-    "description": "gym_orbit/mvc-sathurshan",
+    "name": "mathulan/mvc",
+    "autoload": {
+        "psr-4": {
+            "Mathulan\\Mvc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "S.Mathulan (Mathulan29)",
+            "email": "srimathulan@gmail.com"
+        }
+    ],
     "require": {
         "phpmailer/phpmailer": "^6.9"
     }

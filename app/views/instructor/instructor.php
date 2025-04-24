@@ -52,13 +52,16 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/tables.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/buttons.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/tables.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/buttons.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/calendar.css"> 
 
 
 
-    <script src="<?= ROOT ?>/assets/js/user/user_1.js" defer></script>
-    <script src="<?= ROOT ?>/assets/js/user/user_2.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/instructor/instructor_1.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/instructor/instructor_2.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/instructor/calendar.js" defer></script>
+
 
 </head> 
 <body>
@@ -82,11 +85,13 @@ else{
                        
                         <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Member Profiles</a></li>
                         <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
+
+                        <li class="tabs" value="9"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
                         
                         <li class="tabs" value="6"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
                         <li class="tabs" value="8"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
                         <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Support</a></li>
-                        <li class="tabs" value="9"><a><i class="bi bi-gear-fill"></i>User requests</a></li>
+                        <li class="tabs" value="10"><a><i class="bi bi-gear-fill"></i>User requests</a></li>
 
 
                     </div>
@@ -135,7 +140,7 @@ else{
    
     <div class="descriptor" value="3">
     <?php
-                require 'Gym.php';
+                require 'gyms.php';
                
 
     ?>
@@ -151,7 +156,7 @@ else{
 
     <div class="descriptor" value="5">
     <?php
-                require 'schedule.php';
+                require 'appointments.php';
     ?>
     </div>
 
@@ -172,13 +177,21 @@ else{
                 require 'materials.php';
     ?>
     </div>
+  
+     <div class="descriptor" value="9">
+    <?php
+                require 'schedule.php';
+    ?>
+    </div>
 
-    <div class="descriptor" value="9">
-        <?php
+    <div class="descriptor" value="10">
+    <?php
              require 'requests.php';
-        ?>
+     ?>
     </div>
     
+
+
 
     
 

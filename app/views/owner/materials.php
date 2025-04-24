@@ -3,7 +3,9 @@
     <div class="header">
         <div>
         <h2>Materials</h2>
+        
     </div>
+      <button class='addBtn' onclick='materialAdd()'> Add </button>
     </div>
 
 <div class="in-in-content">
@@ -11,21 +13,23 @@
 
                     $owner = new Owner(); 
                     $materials = $owner->get_materials($username); 
+                    
+                    echo "<div class='materials-container'>";
 
                     if (isset($materials['found'])&&$materials['found']=='yes') {
                         while ($rowRequested = $materials['result']->fetch_assoc()) {
+                            
 
+                            echo "<div class='materials'>";
                             echo "<table>";
 
                               
-                                    echo "<tr><td><h6>{$rowRequested['type']}</h6></td></tr>";
+                                    echo "<tr><td><h4>{$rowRequested['type']}</h4></td></tr>";
 
-                                    
-                                    echo "<tr><td><h6>{$rowRequested["title"]}</h6></td></tr>";
-
+                                    echo "<div class='matimage'>";
                                     echo "<tr><td><img src='" . ROOT . "/assets/images/materials/images/" . $rowRequested["file"] . "' width='200' title='" . $rowRequested['file'] . "'></td></tr>";
                                     echo "<tr><td><div style='width: 100%; white-space: pre-wrap; word-wrap: break-word;'>{$rowRequested['details']}</div></td></tr>";
-                        
+                                    echo "</div>";
 
                                     
                                     
@@ -33,16 +37,17 @@
                                     echo "<button class='deleteBtn' onclick='materialDelete(\"{$rowRequested['id']}\", \"{$rowRequested['gym_username']}\",\"{$rowRequested['file']}\",\"owner\")'>Delete</button> </td>";
 
                                     echo "</table>";
-                                    echo "<br>";    
+                                    echo "<br>";
+                                    echo "</div>";  
+                                      
 
                         }
                         }
                          elseif (isset($materials['found'])&&$materials['found']=='no') {
                             echo "<p>No Materials found , add one!</p>";
                             }
-
-                        echo "<button class='addBtn' onclick='materialAdd()'> Add </button>";
-
+                        
+                        echo "</div>";
                     ?>   
 
 

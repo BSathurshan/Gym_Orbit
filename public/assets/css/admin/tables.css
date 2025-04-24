@@ -81,70 +81,154 @@
 
 .materials-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
 }
-
 .materials {
-    text-align: center;
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+}
+.materials h4{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 700; /* Bold for emphasis */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 800; 
+
+}
+.materials h5{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 500; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+
+}
+.materials p{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+
+}
+.materials .editBtn, .materials .deleteBtn{
+    display: inline-flex; /* Use inline-flex to keep buttons inline and in a row */
+    flex-direction: row;
+    justify-content: center; /* Centers buttons horizontally */
+    align-items: center;
 }
 
 .matimage {
-    width: 350px;
-    height: 300px;
+    border-radius: 25px;
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    box-sizing: border-box; 
 }
 
-.matimage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures images fit nicely */
+.matieBtn{
+    display: inline-flex; /* Use inline-flex to keep buttons inline and in a row */
+    flex-direction: row;
+    justify-content: center; /* Centers buttons horizontally */
+    align-items: center; /* Centers buttons vertically */
+    gap: 10px;
 }
+
 
 
 /* //////////////////////////////////////////////////////// */
 
-
 .posts-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
+    
 }
 
 .posts {
-    text-align: center;
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
 }
 
 .postimage {
-    width: 350px;
-    height: 300px;
+    border-radius: 25px;
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    box-sizing: border-box; /* Ensures the border is included in the total width and height */
 }
 
-.postimage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image fits well */
+.posts img {
+    max-width:200px ;
+    max-height: 170px;
+
+    min-width: 200px;
+    min-height: 170px;
+    object-fit: cover; /* 'cover' ensures the image is contained and may be cropped */
+}
+
+.posts h4{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 700; /* Bold for emphasis */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 800; /* Consistent spacing */
+
+}
+
+
+.posts h5{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;/
+}
+.posts p{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 300; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0; 
+}
+
+.postBtn{
+    display: inline-flex; /* Use inline-flex to keep buttons inline and in a row */
+    flex-direction: row;
+    justify-content: center; /* Centers buttons horizontally */
+    align-items: center; /* Centers buttons vertically */
+    gap: 10px;
 }
 
 
@@ -295,9 +379,64 @@ input[type="submit"] {
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
+    
+
+}
+.user-card{
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 105%;
+    border-radius: 25px;
 
 }
 
+.user-image{
+    border-radius: 25px;
+    margin-bottom: 20px; /* Space between rows */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+
+}
+
+.user-image img{
+    max-width:170px ;
+    max-height: 190px;
+    min-width: 170px;
+    min-height: 190px;
+}
+.user-card h4{
+    color: #aaa;
+    font-size: 1.4rem; /* Smaller but clear */
+    font-weight: 700; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;/
+}
+
+.user-details h5{
+    color: #aaa;
+    font-size: 1.2rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;/
+}
+.user-details p{
+    color: #aaa;
+    font-size: 1.2rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;/
+}
 .adminResults-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 items per row */

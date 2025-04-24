@@ -21,6 +21,7 @@
                     while ($materials = $material['result']->fetch_assoc()) {
                     
                         echo "<div class='materials'>";
+                        
                         echo "<h4> <u>" . htmlspecialchars($materials['gym_name']) . "</u> </h5>";
                         echo "<tr><td>". htmlspecialchars($materials['type']) ." </td></tr>";
                         echo "<h5>" . htmlspecialchars($materials['title']) . "</h5>";
@@ -30,9 +31,10 @@
                         </div>"; 
                         echo "<p>" . htmlspecialchars($materials['details']) . "</p>";
                                
-                
+                        echo "<div class='matiBtn'>";
                         echo "<td><button class='editBtn' onclick='materialEdit(\"{$materials['type']}\",\"{$materials['title']}\",\"{$materials['file']}\",\"{$materials['details']}\",\"{$materials['gym_username']}\",\"{$materials['id']}\")'> Edit </button>";
                         echo "<button class='deleteBtn' onclick='materialDelete(\"{$materials['id']}\", \"{$materials['gym_username']}\", \"{$materials['file']}\", \"admin\")'>Delete</button> </td>";
+                        echo "</div>";
 
                         echo "</div>";
                        

@@ -1,4 +1,6 @@
 <?php
+  require_once '../app/controllers/email.php';
+
 class User
 {
   use Controller;
@@ -16,6 +18,38 @@ class User
       die("Failed to load model.");
     }
     $result = $model->joined($username);
+
+    if ($result['found'] == 'yes') {
+
+      return ['found' => 'yes', 'result' => $result['result']];
+    } elseif ($result['found'] == 'no') {
+      return ['found' => 'no','message' => 'Please join a gym !.'];
+    }
+  }
+  public function joinedGyms_premium($username)
+  {
+    $model = $this->model('user', 'retrieveGyms');
+
+    if (!$model) {
+      die("Failed to load model.");
+    }
+    $result = $model->joined_premium($username);
+
+    if ($result['found'] == 'yes') {
+
+      return ['found' => 'yes', 'result' => $result['result']];
+    } elseif ($result['found'] == 'no') {
+      return ['found' => 'no','message' => 'Please join a gym !.'];
+    }
+  }
+  public function joinedGyms_normal($username)
+  {
+    $model = $this->model('user', 'retrieveGyms');
+
+    if (!$model) {
+      die("Failed to load model.");
+    }
+    $result = $model->joined_normal($username);
 
     if ($result['found'] == 'yes') {
 
@@ -258,7 +292,6 @@ public function save_workout($username) {
 
   public function joinGym()
   {
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Get values from the form
       $gym_username = $_POST['gym_username'];
@@ -339,8 +372,19 @@ public function save_workout($username) {
 
     if ($result['found'] == 'yes') {
 
+      $userEmail=$email ;
+      $emailMessage="Dear $username,<br><br>Our support team will reply you soon!.";
+      $subject='We got your Ticket';
+
+      $emailService = new Email();
+      $response = $emailService->send($userEmail, $emailMessage, $subject);
+
       $this->view('user', 'user');
-      echo "<script>alert('Supoort ticket has been submitted !');</script>";
+      if($response){
+        echo "<script>alert('Support ticket has been submitted !');</script>";
+      }else{
+        echo "<script>alert('Fail to send email message !');</script>";
+      }
     } elseif ($result['found'] == 'no') {
 
       $this->view('user', 'user');
@@ -374,30 +418,36 @@ public function save_workout($username) {
   }
 
   public function get_notification()
-{
-    session_start();
-
-    if (!isset($_SESSION['username'])) {
-        echo json_encode(['found' => 'no', 'error' => 'Not logged in']);
-        return;
-    }
-
-    $username = $_SESSION['username'];
-
-    $model = $this->model('user', 'notification');
-    $result = $model->get($username);
-
-    if ($result && $result->num_rows > 0) {
-        $notifications = [];
-        while ($row = $result->fetch_assoc()) {
-            $notifications[] = $row;
-        }
-
-        echo json_encode(['found' => 'yes', 'result' => $notifications]);
-    } else {
-        echo json_encode(['found' => 'no']);
-    }
-}
+  {
+      // Only start session if not already active
+      if (session_status() === PHP_SESSION_NONE) {
+          session_start();
+      }
+  
+      if (!isset($_SESSION['username'])) {
+          error_log("Controller: Not logged in, returning 'Not logged in' response");
+          echo json_encode(['found' => 'no', 'error' => 'Not logged in']);
+          return;
+      }
+  
+      $username = $_SESSION['username'];
+      error_log("Controller: Username = $username");
+  
+      $model = $this->model('user', 'notification');
+      $result = $model->get($username);
+  
+      if ($result['found'] == 'yes') {
+          error_log("Controller: Found notifications for $username");
+          $notifications = [];
+          while ($row = $result['result']->fetch_assoc()) {
+              $notifications[] = $row;
+          }
+          echo json_encode(['found' => 'yes', 'result' => $notifications]);
+      } elseif ($result['found'] == 'no') {
+          error_log("Controller: No notifications found for $username");
+          echo json_encode(['found' => 'no']);
+      }
+  }
 
  
 
@@ -628,4 +678,43 @@ public function getMealPlans() {
     }
 }
   
+
+public function saveAddress() {
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+      
+  }
+  
+  $address=$_POST['address'];
+  $lat=$_POST['lat'];
+  $lang=$_POST['lang'];
+  $username = $_SESSION['username'];
+  $role ='user';
+
+  $model = $this->model('owner', 'address');
+  $result = $model->updateAddress($username,$address,$lat,$lang,$role);
+
+  if($result){
+      $this->view('user', 'user');
+      echo "<script>alert('Address changed !');</script>";
+  }else{
+      $this->view('user', 'user');
+      echo "<script>alert('Failed to  change address !');</script>";
+  }
+
+}
+
+
+public function getGymLocations() {
+  $model = $this->model('owner', 'address');
+  $gyms = $model->getGymLocations(); 
+
+  echo json_encode($gyms); 
+}
+
 }

@@ -12,7 +12,8 @@
                         </div>
 
                         <div id="notification-box" style="display:none; position:absolute; right:10px; top:50px; background:black; border:1px solid #ccc; padding:10px; width:300px; max-height:300px; overflow-y:auto; box-shadow:0 2px 6px rgba(0,0,0,0.2); z-index:100;">
-                                <!-- Notification content will be loaded here -->
+                            <button id="close-notifications">❌</button>        
+                            <!-- Notification content will be loaded here -->
                         </div>
                 </div>
         <div class="in-in-content">

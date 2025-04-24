@@ -6,12 +6,11 @@
         <h2>Instructors</h2>
 
         </div>
+        <button class="addBtn" type="button" onclick="addInstructor()">Add</button>
         </div>
 
         <div class="in-in-content">
-                <!-- <div class="fav"> -->
-
-               <button type="button" onclick="addInstructor()">Add</button>  
+                <!-- <div class="fav"> -->  
 
 
                     <?php

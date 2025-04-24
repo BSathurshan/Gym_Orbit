@@ -227,3 +227,36 @@
     pointer-events: none;
     background-color: transparent;
 }
+
+/* Container for the profile image and title */
+.profile-image-container {
+    display: flex;
+    flex-direction: column; /* Stack title and image vertically */
+    align-items: center; /* Center content horizontally */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    right: 350px; /* Space from the right edge */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+}
+
+/* Style for the profile title */
+.profile-title {
+    font-size: 24px; /* Adjust font size as needed */
+    font-weight: bold;
+    color: #aaa; /* Adjust color as needed */
+    margin-bottom: 10px; /* Space between title and image */
+    text-align: center;
+}
+
+/* Style for the image container */
+.profile-image {
+    max-width: 300px; /* Adjust image size as needed */
+}
+
+/* Style for the image itself */
+.gym-profile-img {
+    width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 30px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+}

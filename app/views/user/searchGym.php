@@ -29,4 +29,18 @@
 
 
                 </div>
+                <br>
+
+                <div class="header">
+                <div>
+                <h2>Google Map</h2>
+                </div>
+                </div>
+
+                <div class="in-in-content">
+
+                <div id="allGymsMap" style="width: 100%; height: 500px;"></div>
+
+                
+                </div>
 </div>  

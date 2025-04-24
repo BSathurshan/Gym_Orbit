@@ -42,9 +42,11 @@
                 <div class="title">Gender</div>
                 <div class="data"> <?php echo $gender; ?> </div>
             </div>
-            <div class="row">
+            <div class="row" >
                 <div class="title">Address</div>
                 <div class="data"> <?php echo $location; ?> </div>
+                <div class="location-googleMap" id="location-googleMap"><i class="fa-solid fa-location-dot fa-2x" style="color:rgb(255, 0, 0);"></i>
+                </div>
             </div>
             <div class="row">
                 <div class="title">Since</div>
@@ -135,3 +137,24 @@
                             </form>
                         </div>
                     </div>
+
+
+        <!-- Map Modal -->
+        <div id="inlineMapContainer" class="map-modal" style="display:none;">
+            <div id="map-modal-content" >
+            <h3>Pick your address !</h3>
+                <div id="map"></div>
+                <form id="timeForm" action="<?= ROOT ?>/owner/saveAddress" method="POST">
+                <div class="map-controls">
+                    <input type="text" id="gymAddress" name="address" placeholder="Selected Address" readonly />
+                    <input type="text" id="gymLat" name="lat"/>
+                    <input type="text" id="gymLng" name="lang"/>
+                </div>
+                <div class="map-buttons">
+                    <button class="save" type="submit">Save</button>
+                    <button class="cancel" type="button" onclick="cancelMapEdit()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+

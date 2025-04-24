@@ -1,5 +1,6 @@
 <?php 
   require_once '../app/controllers/signup.php';
+  require_once '../app/controllers/email.php';
   
 class Admin 
 {
@@ -938,22 +939,65 @@ class Admin
 
     public function replyMessage()
     {
+        $email = htmlspecialchars($_POST['email']);
+        $username = htmlspecialchars($_POST['username']);
+
         $issue = htmlspecialchars($_POST['issue']);
         $message = htmlspecialchars($_POST['message']);
-        $username = htmlspecialchars($_POST['username']);
-        $email = htmlspecialchars($_POST['email']);
+        $reply = htmlspecialchars($_POST['replyMessage']);
         $role = 'admin';
     
         // Load model from admin/messages.php
         $model = $this->model('admin', 'messages'); // <--- correct reference
-        $result = $model->reply($issue, $message, $username, $role, $email);
+        $result = $model->reply($username, $email ,$issue,$message ,$reply ,$role);
     
         $this->view('admin', 'admin');
     
         if ($result['found'] == 'yes') {
-            echo "<script>alert('Support reply has been submitted!');</script>";
+
+            $userEmail=$email;
+            $subject='Your ticket has been updated';
+            $message = "Hi $username,<br><br>$reply";
+            $files = [ ];           
+            foreach ($files as $f) {
+                if (!file_exists($f)) {
+                    $jsLog = "console.log('File not found: " . addslashes($f) . "');";
+                    echo "<script>$jsLog</script>";
+                }
+            }
+            $emailService = new Email();
+            $response = $emailService->send($userEmail, $message, $subject,$files);
+
+            if ($response) 
+            {
+                echo "<script>alert('Reply sent to $userEmail');</script>";
+            } 
+            else 
+            {
+                echo "<script>alert('Mailer Error: Failed to send email');</script>";
+            }
+
+        }elseif($result['found'] == 'alert'){
+            echo "<script>alert('Support status update failed');</script>";
         } else {
             echo "<script>alert('Error while sending reply');</script>";
+        }
+    }
+
+    public function closeSupport()
+    {
+        $username = $_GET['username'];        
+        $time = $_GET['time']; 
+    
+        $model = $this->model('admin', 'messages'); 
+        $result = $model->closeSupport($username,$time); 
+        
+        if ($result) {
+            $this->view('admin', 'admin');
+            echo "<script>alert('The Support has been closed!');</script>";
+        } else {
+            $this->view('admin', 'admin');
+            echo "<script>alert('Error while clsong support');</script>";
         }
     }
 
@@ -962,6 +1006,68 @@ class Admin
         $users = $model->recentUsers();
         return $users;
     }
+
+    public function reminderUpdate(){
+        $username = $_POST['username'];
+        $category=$_POST['category'];
+        $title = $_POST['title'];
+        $start = $_POST['start'];
+        $end = $_POST['end'];
+
+
+        $model = $this->model('admin','reminders');
+        $result = $model->update( $username ,$category,$title,$start,$end);
+        
+        if ($result) {
+
+                $this->view('admin', 'admin');
+            echo "<script>alert('Reminder updated !');</script>";
+
+            }else{
+                $this->view('admin', 'admin');
+            echo "<script>alert('Reminder addition failed !');</script>";
+
+            }
+            
+    }
+
+         
+    public function dbBackup(){
+
+        $username = $_POST['username'];
+        $password=$_POST['password'];
+
+        if (!isset($_SESSION['userDetails']['password'])) {
+            header('Content-Type: application/json');
+            echo json_encode(["success" => false, "error" => "User not logged in"]);
+            return;
+        }
+
+        $correctPassword=$_SESSION['userDetails']['password'];
+        
+        if($correctPassword==$password){
+            $model = $this->model('backup','backup');
+            $result = $model->getBackup();
+            
+            if ($result) {
+    
+                    $this->view('admin', 'admin');
+                echo "<script>alert('Database backup success !');</script>";
+    
+                }else{
+                    $this->view('admin', 'admin');
+                echo "<script>alert('Database backup failed !');</script>";
+    
+                }
+        }else{
+            $this->view('admin', 'admin');
+            echo "<script>alert('Password mismatch !');</script>";
+
+        }
+            
+    }
+        
+}
     
     // public function getPending_Gyms(){
     //     $model = $this->model('admin','nof');
@@ -980,4 +1086,3 @@ class Admin
     
 
     
-}
