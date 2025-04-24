@@ -30,85 +30,78 @@ class Instructor
 
     public function request($username)
     {
-        $conn = $this->getConnection();
+        $conn = $this->getConnection();  
+        
+       
+        $queryRequested2 = "SELECT * FROM connects_gym WHERE username = ?";
 
-        // Fetch gyms the user has joined
-        $queryGyms = "SELECT gym_username FROM connects_gym WHERE username = ?";
-        $stmtGyms = $conn->prepare($queryGyms);
-        $stmtGyms->bind_param("s", $username);
-        $stmtGyms->execute();
-        $resultGyms = $stmtGyms->get_result();
+        $stmt2 = $conn->prepare($queryRequested2);
+        $stmt2->bind_param("s", $username);
+        $stmt2->execute();
+        $resultRequested2 = $stmt2->get_result();
 
-        $gymUsernames = [];
-        while ($row = $resultGyms->fetch_assoc()) {
-            $gymUsernames[] = $row['gym_username'];
+        if ($resultRequested2->num_rows > 0) {
+            $gymUsernames = [];
+            while ($row = $resultRequested2->fetch_assoc()) {
+                $gymUsernames[] = $row['gym_username'];
+            }
         }
-        $stmtGyms->close();
 
         if (!empty($gymUsernames)) {
-            // Fetch instructors from the gyms the user has joined
             $placeholders = implode(',', array_fill(0, count($gymUsernames), '?'));
-            $queryInstructors = "
-                SELECT i.gym_username, i.trainer_username, i.trainer_name, i.age, i.gender, i.experience, i.email, i.file AS profile_image, 
-                       ir.status
-                FROM instructors i
-                LEFT JOIN instructor_request ir 
-                ON i.trainer_username = ir.trainer_username AND ir.username = ?
-                WHERE i.gym_username IN ($placeholders)";
-            $stmtInstructors = $conn->prepare($queryInstructors);
+            $query2 = "SELECT * FROM instructors WHERE gym_username IN ($placeholders)";
+            $stmt3 = $conn->prepare($query2);
 
-            $types = str_repeat('s', count($gymUsernames) + 1);
-            $stmtInstructors->bind_param($types, $username, ...$gymUsernames);
-            $stmtInstructors->execute();
-            $resultInstructors = $stmtInstructors->get_result();
+            $types = str_repeat('s', count($gymUsernames));
+            $stmt3->bind_param($types, ...$gymUsernames);
 
-            $myInstructors = [];
-            $otherInstructors = [];
-            while ($row = $resultInstructors->fetch_assoc()) {
-                if ($row['status'] === 'accepted') {
-                    $myInstructors[] = $row;
-                } else {
-                    $otherInstructors[] = $row;
-                }
+            $stmt3->execute();
+            $result = $stmt3->get_result();
+            
+            
+            $stmt2->close();
+            $stmt3->close();
+            return $result;
+            } 
+            else 
+            {
+            $stmt2->close();
+            return false;
             }
-            $stmtInstructors->close();
+  
 
-            return [
-                'myInstructors' => $myInstructors,
-                'otherInstructors' => $otherInstructors
-            ];
-        }
-
-        return ['myInstructors' => [], 'otherInstructors' => []];
     }
 
-    public function send($username, $trainer_name, $trainer_username, $gym_username)
+    public function send($username,$name,$trainer_name, $trainer_username,$gym_username)
     {
-        $conn = $this->getConnection();
-
-        $sql = "INSERT INTO instructor_request (gym_username, trainer_username, trainer_name, username, name) 
-                VALUES (?, ?, ?, ?, ?)";
+        $conn = $this->getConnection();  
+        
+       
+        $sql = "INSERT INTO instructor_request (gym_username,trainer_username,trainer_name,username,name) 
+            VALUES (?,?,?,?,?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $gym_username, $trainer_username, $trainer_name, $username, $username);
+        $stmt->bind_param("sssss",  $gym_username, $trainer_username,$trainer_name,$username,$name); 
 
-        $sqlCheck = "SELECT * FROM instructor_request WHERE gym_username = ? AND trainer_username = ? AND username = ?";
-        $stmtCheck = $conn->prepare($sqlCheck);
-        $stmtCheck->bind_param("sss", $gym_username, $trainer_username, $username);
-        $stmtCheck->execute();
-        $resultCheck = $stmtCheck->get_result();
+        $sql2 = "SELECT * FROM instructor_request WHERE gym_username=? AND trainer_username=? AND username=?" ;
+        $stmt2 = $conn->prepare($sql2);
+        $stmt2->bind_param("sss",  $gym_username, $trainer_username,$username);     
+        $stmt2->execute();
+        $checking=$stmt2->get_result();
 
-        if ($resultCheck->num_rows === 0) {
+        if($checking->num_rows == 0){
             $stmt->execute();
+
             $stmt->close();
-            $stmtCheck->close();
+            $stmt2->close();
             return true;
         }
+        else{
 
-        $stmt->close();
-        $stmtCheck->close();
-        return false;
+            $stmt->close();
+            $stmt2->close();
+            return false;
+        }
     }
-
     public function workout_details($username)
     {
         $conn = $this->getConnection();  
