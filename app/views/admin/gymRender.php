@@ -3,21 +3,21 @@ if ($result->num_rows > 0) {
     while ($owner = $result->fetch_assoc()) {
         $ban = $owner['ban'];
 
-        echo "<div class='owner-card'>";
+        echo "<div class='user-card'>";
 
         echo "<h4><u>" . htmlspecialchars($owner['gym_name']) . "</u></h4>";
 
-        echo "<div class='owner-image'>";
+        echo "<div class='user-image'>";
         echo "<img src='" . ROOT . "/assets/images/Owner/profile/images/" . htmlspecialchars($owner["file"]) . "' width='150'>";
         echo "</div>";
 
-        echo "<div class='owner-details'>";
+        echo "<div class='user-details'>";
         echo "<h5>Username: " . htmlspecialchars($owner['gym_username']) . "</h5>";
         echo "<h5>Owner: " . htmlspecialchars($owner['owner_name']) . "</h5>";
         echo "<p>Email: " . htmlspecialchars($owner['email']) . "</p>";
         echo "</div>";
 
-        echo "<div class='owner-buttons'>";
+        echo "<div class='user-buttons'>";
         echo "<button class='deleteBtn' onclick='ownerDelete(\"{$owner['gym_username']}\",\"{$owner['email']}\",\"{$owner['file']}\")'>Delete</button>";
 
         echo "<button class='editBtn' onclick='editOwner(

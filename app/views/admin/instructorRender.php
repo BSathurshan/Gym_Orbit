@@ -3,21 +3,21 @@ if ($result->num_rows > 0) {
     while ($instructor = $result->fetch_assoc()) {
         $ban = $instructor['ban'];
 
-        echo "<div class='instructor-card'>";
+        echo "<div class='user-card'>";
 
         echo "<h4><u>" . htmlspecialchars($instructor['trainer_name']) . "</u></h4>";
 
-        echo "<div class='instructor-image'>";
+        echo "<div class='user-image'>";
         echo "<img src='" . ROOT . "/assets/images/Instructor/profile/images/" . htmlspecialchars($instructor["file"]) . "' width='150'>";
         echo "</div>";
 
-        echo "<div class='instructor-details'>";
+        echo "<div class='user-details'>";
         echo "<h5>" . htmlspecialchars($instructor['trainer_username']) . "</h5>";
         echo "<h5>" . htmlspecialchars($instructor['email']) . "</h5>";
         echo "<p>Gym Username: " . htmlspecialchars($instructor['gym_username']) . "</p>";
         echo "</div>";
 
-        echo "<div class='instructor-buttons'>";
+        echo "<div class='user-buttons'>";
         echo "<button class='deleteBtn' onclick='instructorDelete(\"{$instructor['trainer_username']}\",\"{$instructor['email']}\",\"{$instructor['file']}\",\"admin\")'>Delete</button>";
 
         echo "<button class='editBtn' onclick='instructorEdit(
