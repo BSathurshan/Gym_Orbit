@@ -641,11 +641,7 @@ class Owner
                 ]);
             }
             
-            
-            
-            
-            
-            
+
             public function getSavedColors() {
                     if (session_status() == PHP_SESSION_NONE) {
                         session_start(); // Start session only if it's not already started
@@ -737,5 +733,38 @@ class Owner
                         header('Content-Type: application/json');
                         echo json_encode($notes);
             }
+
+
+/* ////////////////////////////////////////////////////////////////////////////    */
+
+public function saveAddress() {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (!isset($_SESSION['username'])) {
+        header('Content-Type: application/json');
+        echo json_encode(["success" => false, "error" => "User not logged in"]);
+        return;
+        
+    }
+    
+    $address=$_POST['address'];
+    $lat=$_POST['lat'];
+    $lang=$_POST['lang'];
+    $username = $_SESSION['username'];
+    $role ='gym';
+
+    $model = $this->model('owner', 'address');
+    $result = $model->updateAddress($username,$address,$lat,$lang,$role);
+
+    if($result){
+        $this->view('owner', 'owner');
+        echo "<script>alert('Address changed !');</script>";
+    }else{
+        $this->view('owner', 'owner');
+        echo "<script>alert('Failed to  change address !');</script>";
+    }
+
+}
 }
 ?>
