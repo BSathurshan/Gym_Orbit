@@ -170,12 +170,12 @@ class User
     }
   }
 
-  public function get_materials($username)
+  public function get_free_materials($username)
   {
     if (!empty($username)) {
 
       $model = $this->model('user', 'materials');
-      $result = $model->get($username);
+      $result = $model->getFreeMaterials($username);
 
 
       if ($result['found'] == 'yes') {
@@ -190,9 +190,34 @@ class User
       }
     } else {
 
-      echo "<script>alert('Missing username (get_materials).');</script>";
+      echo "<script>alert('Missing username (get_free_materials).');</script>";
     }
   }
+
+  public function get_premium_materials($username)
+  {
+    if (!empty($username)) {
+
+      $model = $this->model('user', 'materials');
+      $result = $model->getPremiumMaterials($username);
+
+
+      if ($result['found'] == 'yes') {
+
+        return ['found' => 'yes', 'result' => $result['result']];
+      } elseif ($result['found'] == 'no') {
+
+        return ['found' => 'no'];
+      } elseif ($result['found'] == 'alert') {
+
+        return ['found' => 'alert'];
+      }
+    } else {
+
+      echo "<script>alert('Missing username (get_padi_materials).');</script>";
+    }
+  }
+
   public function get_workouts($username) {
     $model = $this->model('user', 'instructor');
     $result = $model->workout_details($username);
