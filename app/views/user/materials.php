@@ -1,9 +1,43 @@
 <div class="in-content">
 
+
+<?php
+$user = new User(); 
+$result4 = $user->get_premium_materials($username);
+if ($result4['found'] == 'yes'):
+?>
+    <div class="header">
+        <div>
+            <h2>Paid Materials</h2>
+        </div>
+    </div>
+
+    <div class="in-in-content">
+        <div class='materials-container'>
+            <?php while ($materials = $result4['result']->fetch_assoc()): ?>
+                <div class='materials'>
+                    <h4><u><?= htmlspecialchars($materials['gym_name']) ?></u></h4>
+                    <h5><?= htmlspecialchars($materials['title']) ?></h5>
+
+                    <div class='matimage'>
+                        <img src='<?= ROOT ?>/assets/images/materials/images/<?= htmlspecialchars($materials['file'], ENT_QUOTES, 'UTF-8') ?>' class='zoomable' alt='Material Image'>
+                    </div>
+
+                    <p><?= htmlspecialchars($materials['details']) ?></p>
+                </div>
+            <?php endwhile; ?>
+        </div>
+    </div>
+    <br>
+<?php
+endif;
+?>
+
+
 <div class="header">
         <div>
 
-        <h2>Materials</h2>
+        <h2>Free Materials</h2>
 
 
         </div>
@@ -12,7 +46,7 @@
 
         <?php                
         $user = new User(); 
-        $result3 = $user->get_materials($username);
+        $result3 = $user->get_free_materials($username);
 
 
         echo "<div class='materials-container'>";
