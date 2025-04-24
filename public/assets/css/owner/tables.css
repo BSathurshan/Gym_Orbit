@@ -38,6 +38,7 @@
 
 /* //////////////////////////////////////////////////////// */
 
+
 .instructor-table {
     width: 100%;
     display: grid;
@@ -55,10 +56,23 @@
     padding: 10px;
     text-align: center;
 }
+.instructor-table .row2 .editBtn,
+.instructor-table .row2  .deleteBtn {
+    display: inline-block; /* ensures both buttons are inline */
+    margin-right: 10px;     /* spacing between the buttons */
+    vertical-align: middle; /* optional: aligns vertically in line */
+}
 
 .instructor-table  .cell2 {
     margin: 5px 0;
+    color: #aaa;
+    font-size: 1.2rem; /* Smaller but clear */
+    font-weight: 1000; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
 }
+
 
 .instructor-table .image {
     width: 150px;
@@ -80,25 +94,60 @@
 /* //////////////////////////////////////////////////////// */
 
 .materials-container {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(4, 1fr); /* 2 items per row */
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
+    height: 300px; /* Reduced height for a rectangular box */
+    overflow: auto; /* Optional: adds scroll if content overflows */
 }
 
 .materials {
-    text-align: center;
+    background-color: rgba(42, 42, 42, 0.8);
+    color: #aaa;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 25px;
+    height: 300px; /* Adjust height for individual material boxes */
+}
+.materials h4{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 700; /* Bold for emphasis */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 800; 
+
+}
+.materials h5{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 500;
+
+}
+.materials p{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 500;
+
 }
 
 .matimage {
-    border-radius: 30px;
-    width: 250px;
-    height: 200px;
+    width: 190px;
+    height: 150px;
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
@@ -106,11 +155,85 @@
     overflow: hidden;
 }
 
-.matimage img {
+/*///////////////////////////////////////////*/
+.request-container {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures images fit nicely */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 2 items per row */
+    gap: 50px; /* Space between items */
+    justify-content: center;
+    align-items: start;
+    height: 300px; /* Reduced height for a rectangular box */
+    overflow: auto; /* Optional: adds scroll if content overflows */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Modern, clean font stack */
 }
+
+.request {
+    background-color: rgba(42, 42, 42, 0.8);
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: flex-start; /* Aligns content to the top */
+    border-radius: 25px;
+    height: 300px; /* Adjust height for individual material boxes */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Consistent font family */
+    padding-top: 20px; /* Adds padding at the top for consistent text starting point */
+}
+
+.request h4 {
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 500; /* Minimal spacing */
+}
+
+/* //////////////////////////////////////////////////////// */
+
+.members-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 2 items per row */
+    gap: 50px; /* Space between items */
+    justify-content: center;
+    align-items: start;
+    height: 500px; /* Reduced height for a rectangular box */
+    overflow: auto; /* Optional: adds scroll if content overflows */
+}
+
+.members {
+    background-color: rgba(42, 42, 42, 0.8);
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    height: 400px; /* Adjust height for individual material boxes */
+}
+.members h4{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 700; /* Bold for emphasis */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 800; /* Consistent spacing */
+}
+.members h5{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 400; /
+
+}
+
 
 
 /* //////////////////////////////////////////////////////// */
@@ -122,30 +245,60 @@
     gap: 50px; /* Space between items */
     justify-content: center;
     align-items: start;
+    
 }
 
 .posts {
-    text-align: center;
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
+    color: #aaa;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
 }
 
 .postimage {
-    width: 350px;
-    height: 300px;
+    border-radius: 25px;
+
     margin-bottom: 20px; /* Space between rows */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    box-sizing: border-box; /* Ensures the border is included in the total width and height */
 }
 
-.postimage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image fits well */
+.posts img {
+    max-width:200px ;
+    max-height: 170px;
+
+    min-width: 200px;
+    min-height: 170px;
+    object-fit: cover; /* 'cover' ensures the image is contained and may be cropped */
+}
+
+.posts h5{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 700; /* Bold for emphasis */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 800; /* Consistent spacing */
+
+}
+
+.posts p{
+    color: #aaa;
+    font-size: 1.1rem; /* Smaller but clear */
+    font-weight: 400; /* Lighter weight for hierarchy */
+    letter-spacing: 0.01em; /* Slight spacing for clarity */
+    line-height: 1.4; /* Balanced line height */
+    margin: 0.3rem 0;
+    font-weight: 400; /
 }
 
 .in-in-content .addBtn{
