@@ -1,9 +1,10 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    font-size: 20px;
-    background-color: #010e03;
+    font-size: 18px;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
 .wp_back-container {
@@ -11,19 +12,28 @@ body {
 }
 
 .wp_back-btn {
-    background-color: #555;
-    color: #d3f5f8;
+    background-color: #007bff;
+    color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.wp_back-btn:hover {
+    background-color: #0056b3;
 }
 
 .wp_in-content {
-    max-width: 1100px;
+    max-width: 900px;
     margin: auto;
     padding: 20px;
-    font-size: 22px; /* Increased font size for content */
+    font-size: 18px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .wp_header {
@@ -32,13 +42,8 @@ body {
 }
 
 .wp_header h1 {
-    font-size: 32px;
-    color: #ffffff;
-}
-
-.wp_header h2 {
-    font-size: 26px;
-    color: #ffffff;
+    font-size: 28px;
+    color: #333;
     margin-bottom: 10px;
 }
 
@@ -46,10 +51,11 @@ body {
 .wp_error-message {
     margin: 15px auto;
     padding: 12px;
-    width: 80%;
+    width: 100%;
     border-radius: 6px;
     text-align: center;
     font-weight: bold;
+    font-size: 16px;
 }
 
 .wp_success-message {
@@ -62,71 +68,96 @@ body {
     color: #721c24;
 }
 
-.wp_workout-table-container {
+.wp_day-selector {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-    margin-bottom: 30px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* Container for each workout day block */
+.wp_day-selector select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 200px;
+}
+
+.wp_day-selector button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.wp_day-selector button:hover {
+    background-color: #218838;
+}
+
 .wp_day-block {
-    margin: 20px auto;
+    margin-bottom: 20px;
     padding: 20px;
-    background-color: #c3bebb;
+    background-color: #f9f9f9;
     border-radius: 12px;
+    border: 1px solid #ddd;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 900px; /* Centered max width */
-    font-size: 22px; /* Increased font size for day block content */
 }
 
 .wp_day-block h4 {
-    color: #2d3748;
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.wp_exercise-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 10px;
 }
 
-/* Exercise row layout */
-.wp_exercise-row {
-    font-size: 22px; /* Increased font size for exercise rows */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 12px;
-}
-
-/* Inputs inside each row */
 .wp_exercise-row input {
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
     flex: 1;
-    min-width: 0; /* Prevent overflowing */
-    font-size: 18px; /* Increased font size inside input fields */
+    font-size: 16px;
 }
 
-/* Remove button */
 .wp_exercise-row button {
-    background-color: #c01c1c;
-    color: white;
+    background-color: #dc3545;
+    color: #fff;
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
     cursor: pointer;
-    white-space: nowrap;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-/* Button inside day block */
+.wp_exercise-row button:hover {
+    background-color: #c82333;
+}
+
 .wp_day-block > button {
-    background-color: #084f92;
-    color: white;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 20px;
     border-radius: 6px;
-    margin-top: 5px;
     cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.wp_day-block > button:hover {
+    background-color: #0056b3;
 }
 
 .wp_workout-controls {
@@ -136,70 +167,31 @@ body {
 
 .wp_save-btn,
 .wp_reset-btn {
-    background-color: #38a169;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
     border: none;
-    margin: 0 10px;
-    font-weight: bold;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.wp_save-btn {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.wp_save-btn:hover {
+    background-color: #218838;
 }
 
 .wp_reset-btn {
-    background-color: #ed8936;
+    background-color: #ffc107;
+    color: #333;
 }
 
-.wp_meal-title {
-    text-align: center;
-    color: #ffffff;
-    margin-top: 40px;
-    font-size: 24px; /* Increased font size for title */
-}
-
-.wp_meal-form {
-    background-color: #fff;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto 50px auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-size: 20px; /* Increased font size for meal form */
-}
-
-.wp_meal-form label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.wp_meal-form input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 18px; /* Increased font size inside input fields */
-}
-
-.wp_meal-form button[type="button"] {
-    background-color: #4299e1;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 5px;
-}
-
-.wp_meal-form input[type="submit"] {
-    background-color: #38a169;
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
+.wp_reset-btn:hover {
+    background-color: #e0a800;
 }
 
 

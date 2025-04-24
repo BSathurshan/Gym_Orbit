@@ -1,34 +1,45 @@
+<link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/members.css">
 <div class="in-content">
-
     <div class="header">
         <h2>My Clients</h2>
-    </div> <!-- Close header div -->
+    </div>
 
     <div class="in-in-content">
-        <div class="user-container">
+        <div class="im-user-container">
             <?php 
             $instructor = new Instructor(); 
-            $clients = $instructor->showClients($username); 
+            $clients = $instructor->showClients($trainer_username);
 
-            if ($clients['found'] == 'yes'): // Check if clients were found
-                foreach ($clients['result'] as $result): // Loop through each client in the result array
+            if ($clients['found'] === 'yes'): 
+                foreach ($clients['result'] as $client): 
                 ?>
-                   <div class="users">
-    <h3 style="color: white;">
-        <a href="<?=ROOT?>/user/workoutPlan/<?= urlencode($result['username']) ?>" style="color: white; text-decoration: underline;">
-            <?= htmlspecialchars($result['username']) ?>
-        </a>
-    </h3>
-</div>
-
-
-
+                    <div class="im-client-card">
+                        <div class="im-client-image">
+                            <img src="<?= ROOT ?>/assets/images/user/profile/images/<?= htmlspecialchars($client['profile_image'] ?? 'default-profile.png') ?>" alt="Profile Image">
+                        </div>
+                        <div class="im-client-details">
+                            <h3><?= htmlspecialchars($client['name']) ?></h3>
+                            <p><strong>Age:</strong> <?= htmlspecialchars($client['age']) ?></p>
+                            <p><strong>Gender:</strong> <?= htmlspecialchars($client['gender']) ?></p>
+                            <p><strong>Email:</strong> <?= htmlspecialchars($client['email']) ?></p>
+                                <a href="mailto:<?= htmlspecialchars($client['email']) ?>">
+                                    <?= htmlspecialchars($client['email']) ?>
+                                </a>
+                            </p>
+                            <a href="<?= ROOT ?>/user/workoutplan/<?= htmlspecialchars($client['username']) ?>" class="im-workout-plan-btn">
+                                View Plans
+                            </a>
+                        </div>
+                    </div>
                 <?php
                 endforeach;
             else:
                 ?>
-                <p><?= htmlspecialchars($clients['message']) ?></p>
+                <p class="im-no-clients-message"><?= htmlspecialchars($clients['message']) ?></p>
             <?php endif; ?>
         </div>
-    </div> <!-- Close in-in-content div -->
-</div> <!-- Close in-content div -->
+    </div>
+</div>
+
+
+

@@ -1,6 +1,6 @@
 <div class="in-content">
 
-<link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workoutview.css"> 
+<link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/workoutview.css">
     
     <div class="header" >
         <div>
@@ -20,10 +20,11 @@
             </div>
         </div>
 
-        <div>
-            <h2>My Workout Plan</h2>
-        </div>
+        
         <div class="wv-progress-table-content">
+        <div>
+            <h2 style="text-align: center; color: teal;">My Workout Plan</h2><br>
+        </div>
             <div class="wv-user-container">
                 <?php 
                 $user = new User(); 
