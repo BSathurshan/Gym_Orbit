@@ -36,6 +36,8 @@ else{
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://kit.fontawesome.com/1c1508aefb.js" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfv4lmZSL1VDsmFSr7jh0KkSVDkgWqxgk&libraries=places"></script>
+
     <title>|Gym|</title>
 
      <!-- Favicon -->
@@ -55,12 +57,14 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/buttons.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/calendar.css"> 
-
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/map.css"> 
 
 
     <script src="<?= ROOT ?>/assets/js/owner/1.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/owner/loader.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/owner/calendar.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/owner/map.js" defer></script>
+
 
 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/schedule.css">

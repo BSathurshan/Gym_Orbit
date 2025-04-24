@@ -653,4 +653,43 @@ public function getAppointments()
   }
 }
   
+
+public function saveAddress() {
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+      
+  }
+  
+  $address=$_POST['address'];
+  $lat=$_POST['lat'];
+  $lang=$_POST['lang'];
+  $username = $_SESSION['username'];
+  $role ='user';
+
+  $model = $this->model('owner', 'address');
+  $result = $model->updateAddress($username,$address,$lat,$lang,$role);
+
+  if($result){
+      $this->view('user', 'user');
+      echo "<script>alert('Address changed !');</script>";
+  }else{
+      $this->view('user', 'user');
+      echo "<script>alert('Failed to  change address !');</script>";
+  }
+
+}
+
+
+public function getGymLocations() {
+  $model = $this->model('owner', 'address');
+  $gyms = $model->getGymLocations(); 
+
+  echo json_encode($gyms); 
+}
+
 }
