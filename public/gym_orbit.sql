@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2025 at 04:17 PM
+-- Generation Time: Apr 24, 2025 at 06:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -207,10 +207,8 @@ CREATE TABLE `gym_notes` (
 --
 
 INSERT INTO `gym_notes` (`gym_username`, `note_id`, `content`, `date`, `time`) VALUES
-('01', '1744215433987', 'checking 2', '4/9/2025, 9:46:20 PM', '2025-04-09 16:17:13'),
-('01', '1745017453033', 'checking 1', '4/19/2025, 4:34:03 AM', '2025-04-18 23:04:13'),
 ('fitlifejohn', '1745053281065', 'save 123', '4/19/2025, 2:30:44 PM', '2025-04-19 09:01:21'),
-('01', '1745304012715', 'ghgghjg', '4/22/2025, 12:09:07 PM', '2025-04-22 06:40:12');
+('01', '1745469078197', 'lol', '4/24/2025, 10:01:03 AM', '2025-04-24 04:31:18');
 
 -- --------------------------------------------------------
 
@@ -234,6 +232,7 @@ INSERT INTO `gym_schedule` (`gym_username`, `date`, `color`) VALUES
 ('01', '2025-04-24', 'rgb(0, 128, 0)'),
 ('01', '2025-04-25', 'rgb(0, 128, 0)'),
 ('01', '2025-04-26', 'rgb(255, 0, 0)'),
+('01', '2025-04-28', 'rgb(0, 128, 0)'),
 ('01', '2025-04-30', 'rgb(255, 255, 0)'),
 ('01', '2025-05-09', 'rgb(255, 255, 0)'),
 ('fitlifejohn', '2025-04-24', 'rgb(255, 0, 0)'),
@@ -296,7 +295,7 @@ INSERT INTO `instructors` (`gym_username`, `trainer_username`, `email`, `passwor
 ('01', 'ggmicha', 'mic@gmail.com', 'mic141', 'mic', 22, 'female', '+94712345673', 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '67f66dfeebffd.png', NULL),
 ('ironsarah', 'sarahbbbb', 'sarah.bennett@gmail.com', '123', 'Sarah Bennett', 32, 'male', '2147483647', 'https://sociallinks.io/', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '674d46d404b94.jpg', NULL),
 ('01', 'sarahbbbbdds', 'lokiajsd22@gmail.com', '141', 'Sarah Bennett', 22, 'male', '777777777', 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 24, 'sadasd', 'weekends', 'ss', 'athlete1', 'default.jpg', NULL),
-('01', 'ss', 'lokiajsd@gmail.com', '141', 'uuu', 24, 'male', '777777777', 'https://dribbble.com/tags/gym-website', 0, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete1', '6795cf02ceae6.jpg', NULL);
+('01', 'ss', 'srimathulan@gmail.com', '141', 'uuu', 24, 'male', '777777777', 'https://dribbble.com/tags/gym-website', 0, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete1', '6795cf02ceae6.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -402,7 +401,7 @@ CREATE TABLE `machines` (
 --
 
 INSERT INTO `machines` (`gym_username`, `name`, `file`, `total`, `available`) VALUES
-('01', 'mach1', '67409af2aae2c.jpg', '7', '2'),
+('01', 'mach1', '67409af2aae2c.jpg', '7', '3'),
 ('01', 'machine 2', 'b.png', '5', '1'),
 ('fitlifejohn', 'dumbell', '674d4c23d65bc.jpeg', '3', '3');
 
@@ -538,6 +537,7 @@ INSERT INTO `support` (`username`, `email`, `role`, `issue`, `message`, `time`, 
 ('01', 'abc@', 'owner', 'check123', 'check123', '2025-04-22 11:52:07', NULL),
 ('1', 'fdgkdg@kdsgks', '', 'trrere', 'werewrewr', '2025-04-23 06:37:56', NULL),
 ('sarahbbbb', 'sarah.bennett@gmail.com', 'instructor', 'test', 'gfgf', '2024-12-18 11:45:22', NULL),
+('ss', 'srimathulan@gmail.com', 'instructor', 'issueing', 'checking', '2025-04-24 04:55:00', NULL),
 ('us1234', 'lokiaj141@gmail.com', 'user', 'checking function', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2025-04-23 09:48:07', 'solved');
 
 -- --------------------------------------------------------
