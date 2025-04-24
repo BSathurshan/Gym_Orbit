@@ -7,6 +7,7 @@
 
 
         </div>
+        <button type="button" class="add" onclick="addAdmin()">Add</button>
         </div>
 
 <div class="in-in-content">
@@ -18,8 +19,6 @@
     <div id="adminResults" class="adminResults-container">
         <!-- admin data will be displayed here -->
     </div>
-
-    <button type="button" class="add" onclick="addAdmin()">Add</button>
 
     <!-- Hidden Add Form (Modal) -->
     <div id="addAdminFormModal" class="modal" style="display: none;">

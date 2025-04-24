@@ -7,6 +7,7 @@
 
 
         </div>
+        <button type="button" class="add" onclick="addOwner()">Add</button>
         </div>
 
 <div class="in-in-content">
@@ -19,7 +20,7 @@
                         <!-- This is using gymRendered.php ( auto load ) -->
                 </div>
 
-                <button type="button" class="add" onclick="addOwner()">Add</button>
+                
 
 
                  <!-- Hidden Add Form (Modal) -->

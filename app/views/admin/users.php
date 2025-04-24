@@ -7,6 +7,7 @@
 
 
         </div>
+        <button type="button" class="add" onclick="addUser()">Add</button>
         </div>
 
 <div class="in-in-content">
@@ -19,7 +20,6 @@
                 <!-- This is using userRenderer.php ( aduto load ) -->
         </div>
 
-                <button type="button" class="add" onclick="addUser()">Add</button>
 
                             <!-- Hidden Edit Form (Modal) -->
                             <div id="editUserFormModal" class="modal" style="display: none;">

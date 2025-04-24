@@ -30,8 +30,12 @@
                     echo "</div>";
 
                     echo "<p>" . htmlspecialchars($post['details']) . "</p>";
+                    
+                    echo "<div class='postBtn'>";
                     echo "<td><button class='editBtn' onclick='postEdit(\"{$post['title']}\",\"{$post['file']}\",\"{$post['details']}\",\"{$post['gym_username']}\", \"{$post['id']}\")'> Edit </button>";
                     echo "<button class='deleteBtn' onclick='postDelete(\"{$post['id']}\",\"{$post['gym_username']}\",\"{$post['file']}\", \"admin\")'>Delete</button> </td>";
+                    echo "</div>";
+
                     echo "</table>";
                     echo "<br>"; 
                     echo "</div>";   

@@ -7,6 +7,7 @@
 
 
         </div>
+        <button type="button" class="add" onclick="addInstructor()">Add</button>
         </div>
 
 <div class="in-in-content">
@@ -18,8 +19,6 @@
                     <div id="instructorResults" class="instructorResults-container">
                         <!-- This is using instructorRenderer.php (auto load ) -->
                 </div>
-
-                <button type="button" class="add" onclick="addInstructor()">Add</button>
 
                     <!-- Hidden Add Form (Modal) -->
                     <div id="addInstructorFormModal" class="modal" style="display: none;">
