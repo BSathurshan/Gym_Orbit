@@ -101,17 +101,18 @@ else{
                 <ul>
                     <div class="grps">
                     <li class="tabs activetab" value="1"><a><i class="fa fa-home"></i>Home</a></li>
-                    <li class="tabs" value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
                     <li class="tabs" value="3"><a><i class="bi bi-chat-left-quote-fill"></i>Messages</a></li>        
                     <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
+                    <li class="tabs" value="11"><a><i class="bi bi-book-fill"></i>Reports</a></li>
                     <!-- <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li> -->
                     <li class="tabs" value="6"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
                     <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Posts</a></li>
                     <li class="tabs" value="8"><a><i class="fas fa-users"></i>Users</a></li>
                     <li class="tabs" value="9"><a><i class="fas fa-users"></i>Owners</a></li>
                     <li class="tabs" value="10"><a><i class="fas fa-users"></i>Instructors</a></li>
-                    <li class="tabs" value="11"><a><i class="bi bi-book-fill"></i>Reports</a></li>
                     <li class="tabs" value="12"><a><i class="fas fa-users"></i>otherAdmins</a></li>
+                    <li class="tabs" value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
+
                    
                     </div>
 
