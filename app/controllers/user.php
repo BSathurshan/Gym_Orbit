@@ -70,15 +70,23 @@ class User
       $paymentForm = $model->pay($gym_username, $username, $option);
 
       if ($paymentForm) {
+
+         $this->joinGymPremium($gym_username, $username );
+      
         $this->view('user', 'user');
+        echo "<script>alert('Payment is succesfull.');</script>";
+        
       } else {
         $this->view('user', 'user');
+        echo "<script>alert('Payment un successfull.');</script>";
+
       }
     } else {
       echo "<script>alert('Missing parameters (payGym).');</script>";
     }
   }
 
+ 
   public function leaveGym()
   {
     if (isset($_GET['gym_username']) && isset($_GET['username'])) {
@@ -352,6 +360,20 @@ public function save_workout($username) {
         echo "<script>alert('You have already joined $gym_name the gym');</script>";
       }
     }
+  }
+
+  public function joinGymPremium($gym_username, $username )
+  {
+      $model = $this->model('user', 'joinGym');
+      $result = $model->joinPremium($gym_username, $username);
+
+        if ($result) {
+                  return true;
+        } else {
+
+          return false;
+        }
+  
   }
 
   //auto runs this function and start from js

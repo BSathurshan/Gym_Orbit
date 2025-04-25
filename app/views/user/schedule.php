@@ -59,7 +59,7 @@
                     </div>";
 
                 echo "<div class='cell'><p>" . htmlspecialchars($rowRequested['gym_name'], ENT_QUOTES, 'UTF-8') . "</p></div>";
-                echo "<div class='cell'><button onclick=\"viewGymSchedule('" . htmlspecialchars($rowRequested['gym_username'], ENT_QUOTES, 'UTF-8') . "')\">Join</button></div>";
+                echo "<div class='cell'><button onclick=\"viewPaymentPage()\">Pay</button></div>";
                 echo "</div>"; // close .row
             }
 

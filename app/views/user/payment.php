@@ -8,6 +8,7 @@
 
   <div class="in-in-content">
     <?php
+    $username=$_SESSION["username"];
     $user = new User();
     $gymDetails = $user->joinedGyms($username);
     ?>

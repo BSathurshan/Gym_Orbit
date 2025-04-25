@@ -192,3 +192,19 @@ function closeNotifications() {
     box.style.display = "none";
     isVisible = false;
 }
+
+function viewPaymentPage() {
+    const tab = document.getElementById("payment-page-tab"); 
+    const tabPage = document.getElementById("payment-page-tab-page");
+
+    const scheduleTab = document.getElementById("schedule-page-tab");
+    const scheduleTabPage = document.getElementById("schedule-page-tab-page"); 
+
+    if (tab && tabPage && scheduleTab && scheduleTabPage) {
+        tab.className = "tabs activetab";
+        scheduleTab.className = "tabs";
+
+        tabPage.className = "descriptor active";
+        scheduleTabPage.className = "descriptor";
+    }
+}

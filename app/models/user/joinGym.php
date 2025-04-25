@@ -41,5 +41,31 @@ class joinGym
 
         }
  }
+
+ public function joinPremium($gym_username,$username)
+ {
+
+         $conn = $this->getConnection();          
+         $type='premium';
+         $sql2 = "UPDATE connects_gym 
+         SET  type = ?
+         WHERE username = ? AND gym_username = ?";
+
+         $stmt2 = $conn->prepare($sql2);
+         $stmt2->bind_param("sss",$type ,$username ,$gym_username ); 
+
+         if ($stmt2->execute()) {
+
+             return true;
+
+             }
+         else 
+         {
+             return false;
+         }
+     
+     
+
+}
 }    
 ?>
