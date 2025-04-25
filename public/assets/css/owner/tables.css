@@ -94,27 +94,31 @@
 /* //////////////////////////////////////////////////////// */
 
 .materials-container {
+    height:100%;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 2 items per row */
-    gap: 50px; /* Space between items */
+    gap: 20px; /* Space between items */
     justify-content: center;
     align-items: start;
-    height: 300px; /* Reduced height for a rectangular box */
-    overflow: auto; /* Optional: adds scroll if content overflows */
 }
 
 .materials {
-    background-color: rgba(42, 42, 42, 0.8);
+    background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
     color: #aaa;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 25px;
-    height: 300px; /* Adjust height for individual material boxes */
+    height:60%;
+    width:100%;
+
+
 }
 .materials h4{
+    
     color: #aaa;
     font-size: 1.1rem; /* Smaller but clear */
     font-weight: 700; /* Bold for emphasis */
