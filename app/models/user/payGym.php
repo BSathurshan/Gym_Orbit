@@ -90,7 +90,7 @@ class PayGym
       </form>
       <script>document.getElementById("payhere_form").submit();</script>
     ';
-      exit;
+    return true;
     } else {
       $stmt->close();
       return false;
