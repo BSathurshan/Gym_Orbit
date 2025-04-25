@@ -757,4 +757,58 @@ public function getGymLocations() {
   echo json_encode($gyms); 
 }
 
+
+
+/*validaitons*/
+public function changeName()
+{
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+  }
+  $username=$_SESSION['username'];
+  $newName = $_GET['newName'];
+
+    $model = $this->model('user', 'editDetails');
+    $result = $model->name($username ,$newName);
+
+      if ($result) {
+        $this->view('user', 'user');
+        echo "<script>alert('Name changed !');</script>";
+      } else {
+        $this->view('user', 'user');
+        echo "<script>alert('Name changing failed !');</script>";
+      }
+
+}
+
+public function changeAge()
+{
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+  }
+  $username=$_SESSION['username'];
+  $newAge = $_GET['newAge'];
+
+    $model = $this->model('user', 'editDetails');
+    $result = $model->age($username ,$newAge);
+
+      if ($result) {
+        $this->view('user', 'user');
+        echo "<script>alert('Age changed !');</script>";
+      } else {
+        $this->view('user', 'user');
+        echo "<script>alert('Age changing failed !');</script>";
+      }
+
+}
 }

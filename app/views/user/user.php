@@ -58,7 +58,7 @@ else{
     <script src="<?= ROOT ?>/assets/js/user/calendar.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/user/zoom.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/user/map.js" defer></script>
-
+    <script src="<?= ROOT ?>/assets/js/user/validation.js" defer></script>
 
 </head>
 <body>
