@@ -49,7 +49,7 @@
                                 <div class="indicators">
                                         <button class="color-button" style="background-color: blue;" data-text="Opening soon" data-color="blue"></button>
                                         <button class="color-button" style="background-color: green;" data-text="Available" data-color="green"> </button>
-                                        <button class="color-button" style="background-color: yellow;" data-text="Crowded" data-color="yellow"> </button>
+                                        <button class="color-button" style="background-color: goldenrod;" data-text="Crowded" data-color="yellow"> </button>
                                         <button class="color-button" style="background-color: red;" data-text="Full" data-color="red">          </button>
                                         <button class="color-button" style="background-color: black;" data-text="Holiday" data-color="black">   </button>
                                 </div>
@@ -63,8 +63,9 @@
                                         if (isset( $machines['found'])&& $machines['found']=='yes') {
                                                 while ($row = $machines['result']->fetch_assoc()) {
                                                         echo '<div class="machine-row">';
-                                                        echo '<div><label class="label">' . $row["name"] . ':</label></div>';
-                                                        echo '<div><img src="' . ROOT . '/assets/images/machines/' . $row["file"] . '" width="150" title="' . $row['file'] . '">';
+                                                        echo '<div id="schedule-machine-label"><label class="label">' . $row["name"] . ':</label></div>';
+                                                        echo '<div id="schedule-machine-image"><img src="' . ROOT . '/assets/images/machines/' . $row["file"] . '" width="150" title="' . $row['file'] . '">';
+                                                        echo '<br>';
                                                         echo '<input type="number" name="'. $row["name"] .'" min="0" max="' . $row["total"] . '" value="' . $row["available"] . '" 
                                                         step="1" required oninput="this.value = Math.min(this.max, Math.max(this.min, this.value))">';
                                                         echo '</div>';
