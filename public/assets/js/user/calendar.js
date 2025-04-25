@@ -405,12 +405,14 @@ function fetchAvailabilityFromDatabase() {
                     row.setAttribute('data-name', machine.name);
 
                     let labelDiv = document.createElement('div');
+                    labelDiv.id = 'schedule-machine-label';
                     let label = document.createElement('label');
                     label.className = 'label';
                     label.textContent = machine.name + ':';
                     labelDiv.appendChild(label);
 
                     let contentDiv = document.createElement('div');
+                    contentDiv.id = 'schedule-machine-image';
                     let img = document.createElement('img');
                     img.src = `${ROOT}/assets/images/machines/${machine.file}`;
                     img.width = 150;

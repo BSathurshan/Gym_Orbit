@@ -70,6 +70,8 @@ class User
       $paymentForm = $model->pay($gym_username, $username, $option);
 
       if ($paymentForm) {
+        $this->joinGymPremium($gym_username,$username);
+
         $this->view('user', 'user');
       } else {
         $this->view('user', 'paymentFailed');
@@ -386,10 +388,12 @@ public function save_workout($username) {
       $result = $model->joinPremium($gym_username, $username);
 
         if ($result) {
-                  return true;
+          $this->view('user', 'user');
+          echo "<script>alert('You can access premium features for - $gym_username');</script>";
         } else {
 
-          return false;
+          $this->view('user', 'user');
+          echo "<script>alert(' Failed to add premuim features ');</script>";
         }
   
   }
