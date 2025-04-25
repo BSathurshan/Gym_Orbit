@@ -377,3 +377,221 @@ function closeReplyMessageModal() {
     document.getElementById('replyMessageFormModal').style.display = 'none';
 }
 
+
+function renderGenderChart(genderData) {
+    console.log(genderData);
+    const ctx = document.getElementById('member-gender-chart').getContext('2d');
+    const maleCount = Number(genderData[0]?.male_count) || 0;
+    const femaleCount = Number(genderData[0]?.female_count) || 0;
+    const total = maleCount + femaleCount;
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Male', 'Female'],
+            datasets: [{
+                label: 'Gender Distribution',
+                data: [maleCount, femaleCount],
+                backgroundColor: [
+                    'rgba(56, 189, 248, 0.7)',  // Blue
+                    'rgba(219, 39, 119, 0.7)', // Pink
+                ],
+                borderColor: [
+                    'rgba(56, 189, 248, 1)',
+                    'rgba(219, 39, 119, 1)',
+                ],
+                borderWidth: 1,
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14,
+                        },
+                        generateLabels: function (chart) {
+                            const data = chart.data;
+                            if (data.labels.length && data.datasets.length) {
+                                return data.labels.map((label, i) => {
+                                    const count = data.datasets[0].data[i];
+                                    let percentage;
+                                    if(count == 0 && total == 0){
+                                        percentage = 0;
+                                    }else{
+                                        percentage = ((count / total) * 100).toFixed(1);
+                                    }
+                                    return {
+                                        text: `${label} - ${count} (${percentage}%)`,
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        strokeStyle: data.datasets[0].borderColor[i],
+                                        lineWidth: 1,
+                                        hidden: isNaN(data.datasets[0].data[i]),
+                                        index: i
+                                    };
+                                });
+                            }
+                            return [];
+                        }
+                    }
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: {
+                        weight: 'bold',
+                        size: 14,
+                    },
+                    formatter: (value, ctx) => {
+                        return `${value}`;
+                    }
+                },
+            },
+        },
+        plugins: [ChartDataLabels]
+    });
+}
+
+
+function renderRevenueChart(revenueData) {
+    const ctx = document.getElementById('revenue-chart').getContext('2d');
+    const gymNames = revenueData.map(item => item.gym_username);
+    const revenues = revenueData.map(item => Number(item.total_revenue) || 0);
+
+    const backgroundColors = [
+        'rgba(255, 99, 132, 0.7)',
+        'rgba(54, 162, 235, 0.7)',
+        'rgba(255, 206, 86, 0.7)',
+        'rgba(75, 192, 192, 0.7)',
+        'rgba(153, 102, 255, 0.7)',
+        'rgba(255, 159, 64, 0.7)',
+        'rgba(255, 0, 0, 0.7)',
+        'rgba(0, 255, 0, 0.7)',
+        'rgba(0, 0, 255, 0.7)',
+        'rgba(128, 128, 0, 0.7)'
+    ];
+    const borderColors = backgroundColors.map(c => c.replace('0.7', '1'));
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: gymNames,
+            datasets: [{
+                label: 'Revenue by Gym',
+                data: revenues,
+                backgroundColor: backgroundColors.slice(0, gymNames.length),
+                borderColor: borderColors.slice(0, gymNames.length),
+                borderWidth: 1,
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                datalabels: {
+                    color: '#000',
+                    formatter: (value) => `Rs:${value.toLocaleString()}`,
+                    font: {
+                        weight: 'bold',
+                        size: 12
+                    }
+                }
+            },
+        },
+        plugins: [ChartDataLabels],
+    });
+}
+
+
+function renderIncomeChart(incomeData) {
+    const ctx = document.getElementById('income-chart').getContext('2d');
+    const months = incomeData.map(item => item.month);
+    const incomeValues = incomeData.map(item => item.monthly_income);
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Monthly Income',
+                data: incomeValues,
+                backgroundColor: 'rgba(52, 211, 153, 0.7)', // Teal
+                borderColor: 'rgba(52, 211, 153, 1)',
+                borderWidth: 1,
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            },
+        },
+    });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+    // Call the rendering functions
+    renderGenderChart(reportData.activeMemberGenderCounts);
+    renderRevenueChart(reportData.revenueByGym);
+    renderIncomeChart(reportData.monthlyIncome);
+
+
+    document.getElementById('download-report-pdf').addEventListener('click', () => {
+        const original = document.getElementById('pdf-report-section');
+        const clone = original.cloneNode(true);
+        clone.style.margin = 'auto auto';
+        clone.style.padding = '0px';
+
+        // Remove the download button from the clone
+        const downloadBtn = clone.querySelector('#download-report-pdf');
+        if (downloadBtn) downloadBtn.remove();
+
+        // Replace each canvas in the clone with an image
+        const canvases = original.querySelectorAll('canvas');
+        const clonedCanvases = clone.querySelectorAll('canvas');
+
+        canvases.forEach((canvas, i) => {
+            const img = new Image();
+            img.src = canvas.toDataURL('image/png');
+            img.style.width = canvas.style.width;
+            img.style.height = canvas.style.height;
+            clonedCanvases[i].replaceWith(img);
+        });
+
+        // Change heading colors to black inside the clone
+        clone.querySelectorAll('h2, h3, h4').forEach(heading => {
+            heading.style.color = 'black';
+        });
+
+
+        const container = document.createElement('div');
+        container.appendChild(clone);
+        document.body.appendChild(container);
+
+        const opt = {
+            margin: 0.5,
+            filename: 'Gym_Report.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+        };
+
+        html2pdf().set(opt).from(clone).save().then(() => {
+            document.body.removeChild(container); // Clean up after download
+        });
+    });
+
+});

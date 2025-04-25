@@ -62,5 +62,30 @@ class LoginModel
 
         $stmt->close();
     }
+
+    public function isSubscriptionActive($username)
+    {
+        $conn = $this->getConnection();
+        $today = date('Y-m-d H:i:s');
+
+        $stmt = $conn->prepare("SELECT end FROM user_payments WHERE username = ? AND status = 'Complete' ORDER BY end DESC LIMIT 1");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+
+        if ($result->num_rows === 0) {
+            return false; // No completed payments found
+        }
+
+        $row = $result->fetch_assoc();
+        $endDate = $row['end'];
+
+        if ($endDate > $today) {
+            return true; // Latest completed payment's end date is in the future
+        } else {
+            return false; // Latest completed payment's end date is in the past
+        }
+    }
 }
 

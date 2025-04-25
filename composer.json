@@ -1,14 +1,14 @@
 {
-    "name": "mathulan/mvc",
+    "name": "teshinisawindya/mvc",
     "autoload": {
         "psr-4": {
-            "Mathulan\\Mvc\\": "src/"
+            "Teshinisawindya\\Mvc\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "S.Mathulan (Mathulan29)",
-            "email": "srimathulan@gmail.com"
+            "name": "Teshini",
+            "email": "teshinisawidya@gmail.com"
         }
     ],
     "require": {

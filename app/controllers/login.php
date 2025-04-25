@@ -37,6 +37,11 @@ class Login
                 $_SESSION["userDetails"] = $result['details'];
                 $type = $result['type'];
 
+                if($type == 'user'){
+                    $subscriptionStatus = $model->isSubscriptionActive($username);
+                    $_SESSION["subscriptionStatus"] = $subscriptionStatus;
+                }
+
                 // Redirect based on user type
                 header("Location: http://localhost:8080/mvc/public/{$type}/{$type}");
                // $this->view($type,$type);

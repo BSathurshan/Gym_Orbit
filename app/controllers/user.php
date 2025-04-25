@@ -70,19 +70,37 @@ class User
       $paymentForm = $model->pay($gym_username, $username, $option);
 
       if ($paymentForm) {
-
-         $this->joinGymPremium($gym_username, $username );
-      
         $this->view('user', 'user');
-        echo "<script>alert('Payment is succesfull.');</script>";
-        
       } else {
-        $this->view('user', 'user');
-        echo "<script>alert('Payment un successfull.');</script>";
-
+        $this->view('user', 'paymentFailed');
       }
     } else {
       echo "<script>alert('Missing parameters (payGym).');</script>";
+    }
+  }
+
+  public function paymentResult()
+  {
+    if (isset($_GET['order_id'])) {
+      $order_id = $_GET['order_id'];
+      $payment_id = null;
+      if (preg_match('/ORDER_(\d+)_/', $order_id, $matches)) {
+        $payment_id = $matches[1];
+
+        $model = $this->model('user', 'paymentStatus');
+        $updateStatus = $model->updateStatus($payment_id);
+
+        if($updateStatus){
+          $this->view('user', 'paymentSuccess');
+          $_SESSION["subscriptionStatus"] = true;
+        }else{
+          $this->view('user', 'paymentFailed');
+        }
+      } else {
+        $this->view('user', 'paymentFailed');
+      }
+    } else {
+      $this->view('user', 'paymentFailed');
     }
   }
 
