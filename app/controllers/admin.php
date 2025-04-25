@@ -24,6 +24,21 @@ class Admin
         }
     }
 
+    public function get_report_data(){
+        $model = $this->model('admin', 'report');
+        $reportData = [];
+
+        $reportData['expiredMemberCount'] = $model->getExpiredMemberCount();
+        $reportData['activeMemberGenderCounts'] = $model->getActiveMemberGenderCounts();
+        $reportData['totalInstructorCount'] = $model->getTotalInstructorCount();
+        $reportData['activeInstructorCount'] = $model->getActiveInstructorCount();
+        $reportData['revenueByGym'] = $model->getRevenueByGym();
+        $reportData['monthlyIncome'] = $model->getMonthlyIncome();
+
+        return $reportData;
+
+    }
+
     public function get_payment_records(){
         $model = $this->model('admin', 'paymentRecords');
         $result = $model->get();

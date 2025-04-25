@@ -17,7 +17,9 @@
                             
                             <div class="row">
                                 <div class="title">        Name               </div >
-                                <div class="data">   <?php echo $name; ?>     </div >
+                                <div class="data">   <?php echo $name; ?>     
+                                <span class="edit-pin" id="name-edit-pin">🖊️</span> 
+                                </div >
                             </div >
 
                               <div class="row">
@@ -38,11 +40,15 @@
                             <div class="row">
                                 <div class="title">      Address            </div>
                                 <div class="data">  <?php echo $address; ?>   </div>
+                                <div class="location-googleMap" id="location-googleMap"><i class="fa-solid fa-location-dot fa-2x" style="color:rgb(255, 0, 0);"></i>
+                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="title">     Age                 </div>
-                                <div class="data">  <?php echo $age; ?>     </div>
+                                <div class="data">  <?php echo $age; ?>     
+                                <span class="edit-pin" id="age-edit-pin">🖊️</span> 
+                                </div>
                             </div>
 
                             <div class="row">
@@ -123,3 +129,57 @@
                                     </form>
                                 </div>
                             </div>
+
+
+
+        <!-- Map Modal -->
+        <div id="inlineMapContainer" class="map-modal" style="display:none;">
+            <div id="map-modal-content" >
+            <h3>Pick your address !</h3>
+                <div id="map"></div>
+                <form id="timeForm" action="<?= ROOT ?>/user/saveAddress" method="POST">
+                <div class="map-controls">
+                    <input type="text" id="gymAddress" name="address" placeholder="Selected Address" readonly />
+                    <input type="text" id="gymLat" name="lat"/>
+                    <input type="text" id="gymLng" name="lang"/>
+                </div>
+                <div class="map-buttons">
+                    <button class="save" type="submit">Save</button>
+                    <button class="cancel" type="button" onclick="cancelMapEdit()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+<!-- Edit Modal -->
+<div id="Change-Name" class="modal" style="display:none;">
+    <div id="modal-content" class="modal-content">
+        <h3>Change your name!</h3>
+        <form id="change-name-form">
+            <div>
+            <input type="text" id="new-name-input" name="new_name" value="<?= htmlspecialchars($name) ?>" />
+            </div>
+            <div class="buttons">
+                <button class="save" id="save-name" type="button">Save</button>
+                <button class="cancel" type="button" onclick="cancelNameEdit()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="Change-age" class="modal" style="display:none;">
+    <div id="modal-content" class="modal-content">
+        <h3>Change your age!</h3>
+        <form id="change-age-form">
+            <div>
+            <input type="text" id="new-age-input" name="new_age" value="<?= htmlspecialchars($age) ?>" />
+            </div>
+            <div class="buttons">
+                <button class="save" id="save-age" type="button">Save</button>
+                <button class="cancel" type="button" onclick="cancelAgeEdit()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+

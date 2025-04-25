@@ -29,6 +29,9 @@ else{
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://kit.fontawesome.com/1c1508aefb.js" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfv4lmZSL1VDsmFSr7jh0KkSVDkgWqxgk&libraries=places"></script>
+    
+
     <title>| User |</title>    
     <!-- <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/main.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/custom.css">
@@ -46,15 +49,16 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/calendar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/bookings.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/home.css">
-    
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/user/map.css"> 
+
 
 
     <script src="<?= ROOT ?>/assets/js/user/user_1.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/user/user_2.js" defer></script> 
     <script src="<?= ROOT ?>/assets/js/user/calendar.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/user/zoom.js" defer></script>
-
-
+    <script src="<?= ROOT ?>/assets/js/user/map.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/user/validation.js" defer></script>
 
 </head>
 <body>
@@ -88,13 +92,15 @@ else{
                                 <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gyms</a></li>
                                 
                                 <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Instructors</a></li>
-                                <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
+                                <li class="tabs" value="5" id="schedule-page-tab"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
                                 <li class="tabs" value="10"><a><i class="bi bi-stack-overflow"></i>Materials</a></li> 
                                 <li class="tabs" value="11"><a><i class="bi bi-chat-left-heart-fill"></i>Posts</a></li>
 
                                 <li class="tabs" value="6"><a><i class="bi bi-gear-fill"></i>   progress Tracker</a></li>
-                                <li class="tabs" value="7"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
+                                <li class="tabs" value="7" id="payment-page-tab"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
                                 <li class="tabs" value="8"><a><i class="bi bi-chat-heart-fill"></i>Support</a></li>
+                                <li class="tabs" value="20"><a><i class="bi bi-chat-heart-fill"></i>Community</a></li>
+
 
 
                             </div>
@@ -154,7 +160,7 @@ else{
                ?>
             </div>
 
-            <div class="descriptor" value="5">
+            <div class="descriptor" id="schedule-page-tab-page" value="5">
             <?php
                         require 'schedule.php';
             ?>
@@ -168,7 +174,7 @@ else{
             ?>
             </div> 
 
-            <div class="descriptor" value="7">
+            <div class="descriptor" id="payment-page-tab-page" value="7">
             <?php
                         require 'payment.php';
             ?>
@@ -190,6 +196,12 @@ else{
             <div class="descriptor" value="10">
             <?php
                         require 'materials.php';
+            ?>
+            </div> 
+
+            <div class="descriptor" value="20">
+            <?php
+                        require 'community.php';
             ?>
             </div> 
 

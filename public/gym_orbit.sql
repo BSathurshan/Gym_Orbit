@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2025 at 06:56 AM
+-- Generation Time: Apr 25, 2025 at 06:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -109,6 +109,21 @@ CREATE TABLE `calendar_event_master` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `community`
+--
+
+CREATE TABLE `community` (
+  `id` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `gym_username` varchar(255) NOT NULL,
+  `instructor_username` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `connects_gym`
 --
 
@@ -183,10 +198,10 @@ CREATE TABLE `gym` (
 --
 
 INSERT INTO `gym` (`gym_username`, `gym_name`, `password`, `owner_name`, `email`, `age`, `gender`, `location`, `gym_contact`, `owner_contact`, `start_year`, `joined`, `experience`, `web`, `social`, `ban`, `file`) VALUES
-('01', 'meme', '141', 'assa', 'abc@', 21, 'male', 'dasdasd', '14440', '+94712345679', '2024-11-01', '2025-04-19 03:09:10', 45, 'asdsa', 'sad', 'no', '677cb115669eb.png'),
-('asdasd123', 'sdasdasd', 'dasdasd', 'John Smith', 'farmer@gmail.com', 66, 'female', 'Chicago', '+94712345676', '+94712345672', '2025-04-18', '2025-04-21 02:54:18', 20, 'https://dribbble.com/tags/gym-website', 'https://dribbble.com/tags/gym-website', NULL, 'default.jpg'),
-('fitlifejohn', 'FitLife Gym', 'fitlifejohn', 'John Smith', 'ohn.smith@gmail.com', 35, 'male', 'Wellawattee,Colombo -06', '2147483647', '2147483647', '2024-07-11', '2024-12-02 05:19:27', 12, 'https://www.goldsgym.com/', '', NULL, '674d435f238b3.jpg'),
-('ironsarah', 'Iron Paradise Gym', 'ironsarah', 'Sarah Johnson', 'sarah.johnson@gmail.com', 56, 'male', 'Orr\'sHill,Trincomalee', '740077777', '2147483647', '2021-06-12', '2024-12-02 05:23:35', 23, 'https://www.equinox.com/', '', NULL, '674d445758234.jpg');
+('01', 'meme', '141', 'assa', 'abc@', 21, 'male', 'WVG6+RFQ, Colombo 01000, Sri Lanka', '14440', '+94712345679', '2024-11-01', '2025-04-24 12:07:03', 45, 'asdsa', 'sad', 'no', '677cb115669eb.png'),
+('asdasd123', 'sdasdasd', 'asdasd123', 'John Smith', 'farmer@gmail.com', 66, 'female', '70 Hyde Park Corner, Colombo 00200, Sri Lanka', '+94712345676', '+94712345672', '2025-04-18', '2025-04-24 16:27:07', 20, 'https://dribbble.com/tags/gym-website', 'https://dribbble.com/tags/gym-website', NULL, 'default.jpg'),
+('fitlifejohn', 'FitLife Gym', 'fitlifejohn', 'John Smith', 'ohn.smith@gmail.com', 35, 'male', '77F Manning Pl, Colombo 00600, Sri Lanka', '2147483647', '2147483647', '2024-07-11', '2025-04-24 14:28:28', 12, 'https://www.goldsgym.com/', '', NULL, '674d435f238b3.jpg'),
+('ironsarah', 'Iron Paradise Gym', 'ironsarah', 'Sarah Johnson', 'sarah.johnson@gmail.com', 56, 'male', '15 Rheinland Pl, Colombo 00300, Sri Lanka', '740077777', '2147483647', '2021-06-12', '2025-04-24 16:26:28', 23, 'https://www.equinox.com/', '', NULL, '674d445758234.jpg');
 
 -- --------------------------------------------------------
 
@@ -208,7 +223,8 @@ CREATE TABLE `gym_notes` (
 
 INSERT INTO `gym_notes` (`gym_username`, `note_id`, `content`, `date`, `time`) VALUES
 ('fitlifejohn', '1745053281065', 'save 123', '4/19/2025, 2:30:44 PM', '2025-04-19 09:01:21'),
-('01', '1745469078197', 'lol', '4/24/2025, 10:01:03 AM', '2025-04-24 04:31:18');
+('01', '1745469078197', 'lol', '4/24/2025, 10:01:03 AM', '2025-04-24 04:31:18'),
+('fitlifejohn', '1745475346097', 'gfghf', '4/24/2025, 11:45:03 AM', '2025-04-24 06:15:46');
 
 -- --------------------------------------------------------
 
@@ -260,7 +276,7 @@ CREATE TABLE `gym_time` (
 --
 
 INSERT INTO `gym_time` (`gym_username`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) VALUES
-('01', '', '', '', '08:00-09:00,10:00-11:00,11:00-12:00,13:00-14:00', '13:00-14:00,14:00-15:00', '', '10:00-11:00,11:00-12:00,13:00-14:00');
+('01', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -293,7 +309,7 @@ CREATE TABLE `instructors` (
 
 INSERT INTO `instructors` (`gym_username`, `trainer_username`, `email`, `password`, `trainer_name`, `age`, `gender`, `contact`, `social`, `experience`, `location`, `availiblity`, `qualify`, `special`, `file`, `ban`) VALUES
 ('01', 'ggmicha', 'mic@gmail.com', 'mic141', 'mic', 22, 'female', '+94712345673', 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '67f66dfeebffd.png', NULL),
-('ironsarah', 'sarahbbbb', 'sarah.bennett@gmail.com', '123', 'Sarah Bennett', 32, 'male', '2147483647', 'https://sociallinks.io/', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '674d46d404b94.jpg', NULL),
+('ironsarah', 'sarahbbbb', 'sarah.bennett@gmail.com', '123', 'Sarah Bennett', 32, 'male', '2147483647', 'https://sociallinks.io/', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '674d46d404b94.jpg', 'yes'),
 ('01', 'sarahbbbbdds', 'lokiajsd22@gmail.com', '141', 'Sarah Bennett', 22, 'male', '777777777', 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 24, 'sadasd', 'weekends', 'ss', 'athlete1', 'default.jpg', NULL),
 ('01', 'ss', 'srimathulan@gmail.com', '141', 'uuu', 24, 'male', '777777777', 'https://dribbble.com/tags/gym-website', 0, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete1', '6795cf02ceae6.jpg', NULL);
 
@@ -408,6 +424,32 @@ INSERT INTO `machines` (`gym_username`, `name`, `file`, `total`, `available`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `map`
+--
+
+CREATE TABLE `map` (
+  `username` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `location` text NOT NULL,
+  `lat` varchar(255) NOT NULL,
+  `lang` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `map`
+--
+
+INSERT INTO `map` (`username`, `role`, `location`, `lat`, `lang`) VALUES
+('01', 'gym', 'WVG6+RFQ, Colombo 01000, Sri Lanka', '6.9271', '79.8612'),
+('123', 'user', 'H6JG+2CV, Trincomalee, Sri Lanka', '8.580060916023255', '81.22589660390479'),
+('asdasd123', 'gym', '70 Hyde Park Corner, Colombo 00200, Sri Lanka', '6.916971712651847', '79.85969084216214'),
+('fitlifejohn', 'gym', '77F Manning Pl, Colombo 00600, Sri Lanka', '6.87506136165818', '79.86304180029627'),
+('ironsarah', 'gym', '15 Rheinland Pl, Colombo 00300, Sri Lanka', '6.90199864565137', '79.85179030887195'),
+('us1234', 'user', 'WV25+JWF, Colombo 00700, Sri Lanka', '6.901207999923599', '79.85957597019993');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `materials`
 --
 
@@ -427,9 +469,10 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`gym_username`, `id`, `gym_name`, `type`, `title`, `file`, `details`, `createdAt`) VALUES
-('01', '6742216a04fb3', 'meme', 'Premium', 'Tool', '6742216a04fb8.png', 'Tool', '2025-04-20 01:50:14'),
-('fitlifejohn', '674d4c0c9cd2b', 'FitLife Gym', 'Premium', 'free meel planner', '674d4c0c9cd38.jpg', 'free meel planner', '2025-04-20 01:50:36'),
-('ironsarah', '674221209fbcb', 'meme', 'Premium', 'lets gooo!', '674221209fbd1.png', 'use this benefits', '2025-04-20 01:49:44');
+('01', '6742216a04fb3', 'meme', 'Premium', 'Tool', '6742216a04fb8.png', 'Tool', '2025-04-24 18:20:39'),
+('01', '680a76081d725', 'meme', 'Free', 'free', '680a76081e105.webp', 'Tool2', '2025-04-24 18:07:30'),
+('fitlifejohn', '674d4c0c9cd2b', 'FitLife Gym', 'Free', 'free meel planner', '674d4c0c9cd38.jpg', 'free meel planner', '2025-04-24 18:07:22'),
+('ironsarah', '674221209fbcb', 'meme', 'Free', 'lets gooo!', '674221209fbd1.png', 'use this benefits', '2025-04-24 18:20:02');
 
 -- --------------------------------------------------------
 
@@ -496,7 +539,8 @@ INSERT INTO `reply` (`username`, `email`, `role`, `issue`, `message`, `time`, `r
 ('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 09:36:11', 'checking the reply'),
 ('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 10:16:03', 'checking the reply'),
 ('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 10:17:39', 'checking the reply'),
-('us1234', 'lokiaj141@gmail.com', 'admin', 'checking function', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2025-04-23 11:48:07', 'hey hi iam solving');
+('us1234', 'lokiaj141@gmail.com', 'admin', 'checking function', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2025-04-23 11:48:07', 'hey hi iam solving'),
+('us1234', 'lokiaj141@gmail.com', 'admin', 'hmbghjgkjh', 'bjkjbkjgjk', '2025-04-24 08:22:39', 'vccnncnbnv');
 
 -- --------------------------------------------------------
 
@@ -538,7 +582,7 @@ INSERT INTO `support` (`username`, `email`, `role`, `issue`, `message`, `time`, 
 ('1', 'fdgkdg@kdsgks', '', 'trrere', 'werewrewr', '2025-04-23 06:37:56', NULL),
 ('sarahbbbb', 'sarah.bennett@gmail.com', 'instructor', 'test', 'gfgf', '2024-12-18 11:45:22', NULL),
 ('ss', 'srimathulan@gmail.com', 'instructor', 'issueing', 'checking', '2025-04-24 04:55:00', NULL),
-('us1234', 'lokiaj141@gmail.com', 'user', 'checking function', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2025-04-23 09:48:07', 'solved');
+('us1234', 'lokiaj141@gmail.com', 'user', 'hmbghjgkjh', 'bjkjbkjgjk', '2025-04-24 06:22:39', 'solved');
 
 -- --------------------------------------------------------
 
@@ -591,11 +635,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `name`, `email`, `age`, `gender`, `contact`, `location`, `goals`, `active`, `health`, `ban`, `file`, `achieve`) VALUES
-('123', '123', 'loki', 'wolverine@gmail.com', 21, 'male', '+94712345671', 'sadasddas', 'Strength', 'full', 'yes', 'no', 'hq720.jpg', NULL),
+('123', '123', 'loki', 'wolverine@gmail.com', 22, 'male', '94712345671', 'H6JG+2CV, Trincomalee, Sri Lanka', 'Strength', 'full', 'yes', 'no', 'hq720.jpg', NULL),
 ('davejohnson89', 'david123', 'David Johnson', 'david.johnson@gmail.com', 45, 'male', '2147483647', 'Orr\'s Hill,Trincomalee', 'Physic', 'full', 'no', NULL, '674d41311fda6.jpg', NULL),
 ('emmat92', 'emmat92', 'Emma Thompson', 'emma.thompson@gmail.com', 32, 'male', '1234567890', 'Wellawatte,Colombo', 'Endurance', 'part', '', 'no', '674d41cd6133e.jpg', NULL),
 ('Saneesha', '141', 'asd', 'check@gmail.com', 24, 'female', '777777777', 'sadasd', 'strength', 'full', 'no', 'no', '67827d7756557.webp', 'build muscle'),
-('us1234', '141', 'HomeLander', 'lokiaj141@gmail.com', 22, 'male', '+94712345677', 'Chicago', 'Strength', 'full', 'no', NULL, 'default.jpg', 'Build Muscle');
+('us1234', '141', 'HomeLander', 'lokiaj141@gmail.com', 25, 'male', '94712345677', 'WV25+JWF, Colombo 00700, Sri Lanka', 'Strength', 'full', 'no', NULL, 'default.jpg', 'Build Muscle');
 
 -- --------------------------------------------------------
 
@@ -622,7 +666,16 @@ INSERT INTO `user_payments` (`payment_id`, `username`, `gym_username`, `package`
 (50, '123', '01', '1_MONTH', 8000, '2025-02-18 20:43:45', NULL, NULL),
 (51, '123', 'fitlifejohn', '1_MONTH', 8000, '2025-02-18 21:31:20', NULL, NULL),
 (52, '123', 'fitlifejohn', '1_MONTH', 8000, '2025-02-19 06:58:52', NULL, NULL),
-(59, '123', '01', '1_MONTH', 8000, '2025-04-21 21:43:58', '2025-04-21 18:13:58', '2025-05-21 18:13:58');
+(59, '123', '01', '1_MONTH', 8000, '2025-04-21 21:43:58', '2025-04-21 18:13:58', '2025-05-21 18:13:58'),
+(60, '123', '01', '1_MONTH', 8000, '2025-04-25 08:05:52', '2025-04-25 04:35:52', '2025-05-25 04:35:52'),
+(61, '123', '01', '1_MONTH', 8000, '2025-04-25 08:09:41', '2025-04-25 04:39:41', '2025-05-25 04:39:41'),
+(62, '123', '01', '1_MONTH', 8000, '2025-04-25 08:38:50', '2025-04-25 05:08:50', '2025-05-25 05:08:50'),
+(63, '123', '01', '1_MONTH', 8000, '2025-04-25 08:47:31', '2025-04-25 05:17:31', '2025-05-25 05:17:31'),
+(64, '123', '01', '1_MONTH', 8000, '2025-04-25 08:51:32', '2025-04-25 05:21:32', '2025-05-25 05:21:32'),
+(65, '123', '01', '1_MONTH', 8000, '2025-04-25 08:51:39', '2025-04-25 05:21:39', '2025-05-25 05:21:39'),
+(66, '123', '01', '1_MONTH', 8000, '2025-04-25 08:51:54', '2025-04-25 05:21:54', '2025-05-25 05:21:54'),
+(67, '123', '01', '1_MONTH', 8000, '2025-04-25 08:52:07', '2025-04-25 05:22:07', '2025-05-25 05:22:07'),
+(68, '123', '01', '1_MONTH', 8000, '2025-04-25 08:52:30', '2025-04-25 05:22:30', '2025-05-25 05:22:30');
 
 -- --------------------------------------------------------
 
@@ -710,6 +763,12 @@ ALTER TABLE `calendar_event_master`
   ADD PRIMARY KEY (`event_id`);
 
 --
+-- Indexes for table `community`
+--
+ALTER TABLE `community`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `connects_gym`
 --
 ALTER TABLE `connects_gym`
@@ -774,6 +833,12 @@ ALTER TABLE `instructor_time`
 --
 ALTER TABLE `machines`
   ADD PRIMARY KEY (`gym_username`,`name`);
+
+--
+-- Indexes for table `map`
+--
+ALTER TABLE `map`
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Indexes for table `materials`
@@ -862,7 +927,7 @@ ALTER TABLE `calendar_event_master`
 -- AUTO_INCREMENT for table `user_payments`
 --
 ALTER TABLE `user_payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `workout_progress`

@@ -88,7 +88,7 @@ else{
 
                         <li class="tabs" value="9"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
                         
-                        <li class="tabs" value="6"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
+                        
                         <li class="tabs" value="8"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
                         <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Support</a></li>
 
@@ -159,11 +159,7 @@ else{
     ?>
     </div>
 
-    <div class="descriptor" value="6">
-    <?php
-                require 'payment.php';
-    ?>
-    </div> 
+    
 
     <div class="descriptor" value="7">
     <?php

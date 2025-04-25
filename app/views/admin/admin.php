@@ -21,6 +21,8 @@ else{
     $password=$userDetails["password"];
 
 
+    $admin = new Admin();
+    $dashboardData = $admin->get_report_data();
 }
 ?>
 <!DOCTYPE html>
@@ -40,6 +42,7 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/adminDashboard.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/messages.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/reminders.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/report.css">
 
 
 
@@ -50,6 +53,14 @@ else{
     <script src="<?= ROOT ?>/assets/js/admin/loader.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/admin/message.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/admin/reminder.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+    <script>
+        const reportData = <?php echo json_encode($dashboardData); ?>;
+    </script>
 
 
 </head>
@@ -93,13 +104,14 @@ else{
                     <li class="tabs" value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
                     <li class="tabs" value="3"><a><i class="bi bi-chat-left-quote-fill"></i>Messages</a></li>        
                     <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
-                    <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
+                    <!-- <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li> -->
                     <li class="tabs" value="6"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
                     <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Posts</a></li>
                     <li class="tabs" value="8"><a><i class="fas fa-users"></i>Users</a></li>
                     <li class="tabs" value="9"><a><i class="fas fa-users"></i>Owners</a></li>
                     <li class="tabs" value="10"><a><i class="fas fa-users"></i>Instructors</a></li>
-                    <li class="tabs" value="11"><a><i class="fas fa-users"></i>otherAdmins</a></li>
+                    <li class="tabs" value="11"><a><i class="bi bi-book-fill"></i>Reports</a></li>
+                    <li class="tabs" value="12"><a><i class="fas fa-users"></i>otherAdmins</a></li>
                    
                     </div>
 
@@ -147,12 +159,9 @@ else{
             </div> 
 
             
-            <div class="descriptor" value="5">
-            <?php
-                        require 'schedule.php';
-            ?> 
-            
-            </div> 
+            <!-- <div class="descriptor" value="5">
+                        // require 'schedule.php';
+            </div>  -->
 
 
             <div class="descriptor" value="6">
@@ -195,6 +204,12 @@ else{
 
 
             <div class="descriptor" value="11">
+            <?php
+                require 'report.php';
+            ?> 
+            </div>
+
+            <div class="descriptor" value="12">
             <?php
                 require 'otherAdmins.php';
             ?> 

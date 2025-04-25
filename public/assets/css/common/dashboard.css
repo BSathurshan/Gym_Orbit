@@ -184,6 +184,11 @@ form#profileForm {
 }
 
 
+.table .row .data .edit-pin {
+
+    cursor:pointer;
+}
+
 .table .row .data:read-only {
     /*background-color: #ff2e2e; Darker background for readonly fields */
     background-color:transparent;

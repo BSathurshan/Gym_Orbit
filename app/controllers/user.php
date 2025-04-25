@@ -72,13 +72,39 @@ class User
       if ($paymentForm) {
         $this->view('user', 'user');
       } else {
-        $this->view('user', 'user');
+        $this->view('user', 'paymentFailed');
       }
     } else {
       echo "<script>alert('Missing parameters (payGym).');</script>";
     }
   }
 
+  public function paymentResult()
+  {
+    if (isset($_GET['order_id'])) {
+      $order_id = $_GET['order_id'];
+      $payment_id = null;
+      if (preg_match('/ORDER_(\d+)_/', $order_id, $matches)) {
+        $payment_id = $matches[1];
+
+        $model = $this->model('user', 'paymentStatus');
+        $updateStatus = $model->updateStatus($payment_id);
+
+        if($updateStatus){
+          $this->view('user', 'paymentSuccess');
+          $_SESSION["subscriptionStatus"] = true;
+        }else{
+          $this->view('user', 'paymentFailed');
+        }
+      } else {
+        $this->view('user', 'paymentFailed');
+      }
+    } else {
+      $this->view('user', 'paymentFailed');
+    }
+  }
+
+ 
   public function leaveGym()
   {
     if (isset($_GET['gym_username']) && isset($_GET['username'])) {
@@ -170,12 +196,12 @@ class User
     }
   }
 
-  public function get_materials($username)
+  public function get_free_materials($username)
   {
     if (!empty($username)) {
 
       $model = $this->model('user', 'materials');
-      $result = $model->get($username);
+      $result = $model->getFreeMaterials($username);
 
 
       if ($result['found'] == 'yes') {
@@ -190,9 +216,34 @@ class User
       }
     } else {
 
-      echo "<script>alert('Missing username (get_materials).');</script>";
+      echo "<script>alert('Missing username (get_free_materials).');</script>";
     }
   }
+
+  public function get_premium_materials($username)
+  {
+    if (!empty($username)) {
+
+      $model = $this->model('user', 'materials');
+      $result = $model->getPremiumMaterials($username);
+
+
+      if ($result['found'] == 'yes') {
+
+        return ['found' => 'yes', 'result' => $result['result']];
+      } elseif ($result['found'] == 'no') {
+
+        return ['found' => 'no'];
+      } elseif ($result['found'] == 'alert') {
+
+        return ['found' => 'alert'];
+      }
+    } else {
+
+      echo "<script>alert('Missing username (get_padi_materials).');</script>";
+    }
+  }
+
   public function get_workouts($username) {
     $model = $this->model('user', 'instructor');
     $result = $model->workout_details($username);
@@ -327,6 +378,20 @@ public function save_workout($username) {
         echo "<script>alert('You have already joined $gym_name the gym');</script>";
       }
     }
+  }
+
+  public function joinGymPremium($gym_username, $username )
+  {
+      $model = $this->model('user', 'joinGym');
+      $result = $model->joinPremium($gym_username, $username);
+
+        if ($result) {
+                  return true;
+        } else {
+
+          return false;
+        }
+  
   }
 
   //auto runs this function and start from js
@@ -653,4 +718,97 @@ public function getAppointments()
   }
 }
   
+
+public function saveAddress() {
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+      
+  }
+  
+  $address=$_POST['address'];
+  $lat=$_POST['lat'];
+  $lang=$_POST['lang'];
+  $username = $_SESSION['username'];
+  $role ='user';
+
+  $model = $this->model('owner', 'address');
+  $result = $model->updateAddress($username,$address,$lat,$lang,$role);
+
+  if($result){
+      $this->view('user', 'user');
+      echo "<script>alert('Address changed !');</script>";
+  }else{
+      $this->view('user', 'user');
+      echo "<script>alert('Failed to  change address !');</script>";
+  }
+
+}
+
+
+public function getGymLocations() {
+  $model = $this->model('owner', 'address');
+  $gyms = $model->getGymLocations(); 
+
+  echo json_encode($gyms); 
+}
+
+
+
+/*validaitons*/
+public function changeName()
+{
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+  }
+  $username=$_SESSION['username'];
+  $newName = $_GET['newName'];
+
+    $model = $this->model('user', 'editDetails');
+    $result = $model->name($username ,$newName);
+
+      if ($result) {
+        $this->view('user', 'user');
+        echo "<script>alert('Name changed !');</script>";
+      } else {
+        $this->view('user', 'user');
+        echo "<script>alert('Name changing failed !');</script>";
+      }
+
+}
+
+public function changeAge()
+{
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
+  if (!isset($_SESSION['username'])) {
+      header('Content-Type: application/json');
+      echo json_encode(["success" => false, "error" => "User not logged in"]);
+      return;
+  }
+  $username=$_SESSION['username'];
+  $newAge = $_GET['newAge'];
+
+    $model = $this->model('user', 'editDetails');
+    $result = $model->age($username ,$newAge);
+
+      if ($result) {
+        $this->view('user', 'user');
+        echo "<script>alert('Age changed !');</script>";
+      } else {
+        $this->view('user', 'user');
+        echo "<script>alert('Age changing failed !');</script>";
+      }
+
+}
 }
