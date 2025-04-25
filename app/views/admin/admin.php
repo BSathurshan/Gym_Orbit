@@ -93,7 +93,7 @@ else{
                     <li class="tabs" value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
                     <li class="tabs" value="3"><a><i class="bi bi-chat-left-quote-fill"></i>Messages</a></li>        
                     <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
-                    <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
+                    <!-- <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li> -->
                     <li class="tabs" value="6"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
                     <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Posts</a></li>
                     <li class="tabs" value="8"><a><i class="fas fa-users"></i>Users</a></li>
@@ -147,12 +147,9 @@ else{
             </div> 
 
             
-            <div class="descriptor" value="5">
-            <?php
-                        require 'schedule.php';
-            ?> 
-            
-            </div> 
+            <!-- <div class="descriptor" value="5">
+                        // require 'schedule.php';
+            </div>  -->
 
 
             <div class="descriptor" value="6">

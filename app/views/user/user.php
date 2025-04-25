@@ -92,12 +92,12 @@ else{
                                 <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gyms</a></li>
                                 
                                 <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Instructors</a></li>
-                                <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
+                                <li class="tabs" value="5" id="schedule-page-tab"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
                                 <li class="tabs" value="10"><a><i class="bi bi-stack-overflow"></i>Materials</a></li> 
                                 <li class="tabs" value="11"><a><i class="bi bi-chat-left-heart-fill"></i>Posts</a></li>
 
                                 <li class="tabs" value="6"><a><i class="bi bi-gear-fill"></i>   progress Tracker</a></li>
-                                <li class="tabs" value="7"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
+                                <li class="tabs" value="7" id="payment-page-tab"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
                                 <li class="tabs" value="8"><a><i class="bi bi-chat-heart-fill"></i>Support</a></li>
                                 <li class="tabs" value="20"><a><i class="bi bi-chat-heart-fill"></i>Community</a></li>
 
@@ -160,7 +160,7 @@ else{
                ?>
             </div>
 
-            <div class="descriptor" value="5">
+            <div class="descriptor" id="schedule-page-tab-page" value="5">
             <?php
                         require 'schedule.php';
             ?>
@@ -174,7 +174,7 @@ else{
             ?>
             </div> 
 
-            <div class="descriptor" value="7">
+            <div class="descriptor" id="payment-page-tab-page" value="7">
             <?php
                         require 'payment.php';
             ?>

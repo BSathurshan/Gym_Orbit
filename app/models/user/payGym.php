@@ -85,7 +85,7 @@ class PayGym
     if ($stmt->execute()) {
       $stmt->close();
       header("Location: $current_link");
-      exit;
+      return true;
     } else {
       $stmt->close();
       return false;
