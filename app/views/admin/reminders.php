@@ -43,7 +43,7 @@
   <div class="reminder-category">
     <h3>💾 Data Management</h3>
     <div class="reminder-row">
-      <div class="reminder-card">💾 Database Backup</div>
+      <div class="reminder-card" id="database-backup">💾 Database Backup</div>
       <div class="reminder-card">🧹 Clean Old Database Entries</div>
       <div class="reminder-card">🧹 Log Cleanup</div>
       <div class="reminder-card">🧹 Logging</div>
@@ -79,3 +79,19 @@
     </div>
 </div>
 
+
+<!-- Hidden Form (DataBase Backup) -->
+<div id="dbBackup-form" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h3>Edit Post</h3>
+        <form method="POST" action="<?= ROOT ?>/admin/dbBackup" enctype="multipart/form-data">
+            <input type="hidden" name="username" value="<?= $username ?>">
+
+            <label for="password">Enter your password:</label>
+            <input type="text" name="password" required><br>
+
+            <input type="submit" value="Backup">
+            <button type="button" onclick="closeDbBackup()">Cancel</button>
+        </form>
+    </div>
+</div>

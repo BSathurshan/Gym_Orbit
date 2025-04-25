@@ -17,15 +17,17 @@
 $owner = new Owner(); 
 $requests = $owner->get_requests($username); 
 
+echo "<div class='request-container'>";
 if (isset($requests['found']) && $requests['found'] == 'yes') {
     while ($rowRequested = $requests['result']->fetch_assoc()) {
         
+        echo "<div class='request'>";
         echo "<table>";
         
-        echo "<tr><td><h6>{$rowRequested['name']}</h6></td></tr>";
-        echo "<tr><td><h6>{$rowRequested['username']}</h6></td></tr>";
-        echo "<tr><td><h6>{$rowRequested['trainer_name']}</h6></td></tr>";
-        echo "<tr><td><h6>{$rowRequested['trainer_username']}</h6></td></tr>";
+        echo "<tr><td><h4>{$rowRequested['name']}</h4></td></tr>";
+        echo "<tr><td><h4>{$rowRequested['username']}</h4></td></tr>";
+        echo "<tr><td><h4>{$rowRequested['trainer_name']}</h4></td></tr>";
+        echo "<tr><td><h4>{$rowRequested['trainer_username']}</h4></td></tr>";
 
         echo "<tr><td>
                 <button class='editBtn' onclick='accept(\"{$username}\", \"{$rowRequested['name']}\", \"{$rowRequested['username']}\", \"{$rowRequested['trainer_name']}\", \"{$rowRequested['trainer_username']}\", \"accept\")'> Accept </button>
@@ -33,12 +35,14 @@ if (isset($requests['found']) && $requests['found'] == 'yes') {
               </td></tr>";
 
         echo "</table>";
-        echo "<br>";    
+        echo "<br>"; 
+        echo "</div>";   
 
     }
 } elseif (isset($requests['found']) && $requests['found'] == 'no') {
     echo "<p>No instructors were requested</p>";
 }
+echo "</div>";
 
 ?>
 

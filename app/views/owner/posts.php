@@ -3,11 +3,10 @@
 <div class="header">
 <div>
 
-
 <h2>Posts</h2>
 
-
 </div>
+     <button class='addBtn' onclick='postAdd()'> Add </button>
 </div>
 
 
@@ -15,8 +14,6 @@
 
 
                 <?php          
-
-                    echo "<button class='addBtn' onclick='postAdd()'> Add </button>";
 
                     echo "<div class='posts-container'>";
 
