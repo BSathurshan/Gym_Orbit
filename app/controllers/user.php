@@ -183,8 +183,8 @@ class User
       $name = $_GET['name'];
       $username = $_GET['username'];
 
-      $model = $this->model('user', 'instructor');
-      $result = $model->send($username, $name, $trainer_name, $trainer_username, $gym_username);
+      $model = $this->model('user', 'mealPlan');
+      $result = $model->sendRequest($username, $name, $trainer_name, $trainer_username, $gym_username);
 
       if ($result) {
 
@@ -260,6 +260,7 @@ class User
     
     return ['found' => 'no'];
 }
+
 public function save_workout($username) {
   $model = $this->model('user', 'instructor');
   $delete = $model->workout_delete($username);

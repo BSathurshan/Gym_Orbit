@@ -46,11 +46,15 @@ class LoginModel
             $userDetails = $result->fetch_assoc();
             
 
-            if ($userDetails['ban'] != "yes") 
+            if ($userDetails['ban'] != "yes" && ($userDetails['verify'] == "yes" || $userDetails['verify'] === null))
             {
-                return ['found'=>'yes','ban'=>'no','details'=>$userDetails ,'type'=>$type]; 
+                return ['found'=>'yes','ban'=>'no','details'=>$userDetails ,'type'=>$type,'verified'=>'yes']; 
             } 
             
+            elseif($userDetails['ban'] != "yes" && $userDetails['verify'] == "no"){
+                return ['found'=>'yes','ban'=>'no','verified'=>'no']; 
+            }
+
             elseif($userDetails['ban'] == "yes")
             {
                 return ['found'=>'yes','ban'=>'yes']; 

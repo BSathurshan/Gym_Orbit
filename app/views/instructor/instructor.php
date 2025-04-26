@@ -54,13 +54,17 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/tables.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/buttons.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/calendar.css"> 
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/calendar.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/workoutplan.css"> 
+
 
 
 
     <script src="<?= ROOT ?>/assets/js/instructor/instructor_1.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/instructor/instructor_2.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/instructor/calendar.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/instructor/workoutPlan.js" defer></script>
+
 
 
 </head> 
@@ -84,7 +88,7 @@ else{
                         <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gym</a></li>
                        
                         <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Member Profiles</a></li>
-                        <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
+                        <li class="tabs" value="20"><a><i class="bi bi-calendar2-check-fill"></i>Meal Plans</a></li>
 
                         <li class="tabs" value="9"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
                         
@@ -179,6 +183,12 @@ else{
     ?>
     </div>
     
+
+    <div class="descriptor" value="20">
+    <?php
+                require 'user_mealPlans.php';
+    ?>
+    </div>
 
    
 </div>       
