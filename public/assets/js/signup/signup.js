@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function validateAge(age) {
         const ageNum = parseInt(age, 10);
-        return !isNaN(ageNum) && ageNum >= 0 && ageNum <= 100;
+        return !isNaN(ageNum) && ageNum >= 12 && ageNum <= 65;
     }
 
     function validateContact(contact) {
@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ageFeedback.textContent = '';
 
         if (!validateAge(age)) {
-            ageFeedback.textContent = 'Age must be between 0 and 100.';
+            ageFeedback.textContent = 'Age must be between 12 and 65.';
             ageFeedback.className = 'feedback error';
             isAgeValid = false;
         } else {

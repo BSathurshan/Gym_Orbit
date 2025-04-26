@@ -207,3 +207,16 @@ body::-webkit-scrollbar {
     transition: 0.7s;
 }
 
+.tabs.activetab {
+    background-color: #ffffff; /* example: blue background */
+    color:#000000
+
+  }
+  .tabs.activetab a{
+    color:#000000
+
+  }
+  .tabs.activetab i{
+    color:#000000
+
+  }
