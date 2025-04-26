@@ -59,7 +59,7 @@
 <!-- Hidden Form (System Maintenance) -->
 <div id="system-maintenence-form" class="modal" style="display: none;">
     <div class="modal-content">
-        <h3>Edit Post</h3>
+        <h3>Invoke system maintenence</h3>
         <form method="POST" action="<?= ROOT ?>/admin/reminderUpdate" enctype="multipart/form-data">
             <input type="hidden" name="username" value="<?= $username ?>">
             <input type="hidden" name="category" value="system-maintenence">
@@ -83,7 +83,7 @@
 <!-- Hidden Form (DataBase Backup) -->
 <div id="dbBackup-form" class="modal" style="display: none;">
     <div class="modal-content">
-        <h3>Edit Post</h3>
+        <h3>Database backup</h3>
         <form method="POST" action="<?= ROOT ?>/admin/dbBackup" enctype="multipart/form-data">
             <input type="hidden" name="username" value="<?= $username ?>">
 
