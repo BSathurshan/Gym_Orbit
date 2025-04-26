@@ -30,7 +30,7 @@ class Login
                 $result = $model->authenticateUser($username, $password);
                 $errorMessage = null;
 
-            if ($result['found']=='yes'&&$result['ban']=='no') {
+            if ($result['found']=='yes'&&$result['ban']=='no'&&$result['verified']=='yes') {
 
                 // Store user session
                 $_SESSION["username"] = $username;
@@ -47,11 +47,18 @@ class Login
                // $this->view($type,$type);
                 exit();
 
-            }elseif($result['found']=='yes'&&$result['ban']=='yes') {
+            }
+            elseif($result['found']=='yes'&&$result['ban']=='no'&&$result['verified']=='no') {
+
+                $errorMessage = "Please verify your account.";
+    
+            }
+            elseif($result['found']=='yes'&&$result['ban']=='yes') {
 
                 $errorMessage = "Client account has been banned.";
     
-            }elseif($result['found']=='no'){
+            }
+            elseif($result['found']=='no'){
 
                 $errorMessage = "Invalid username or password.";
 

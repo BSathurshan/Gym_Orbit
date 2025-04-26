@@ -123,24 +123,7 @@ class instructor
       
     
     }
-    // public function assign_schedule($username) {
-    //     $workouts = $this->get_workouts($username);
-    //     $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
-    // }
-    // public function get_workouts($username) {
-        
-    //     $query = "SELECT * FROM workout_schedule WHERE username = ? ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'), id";
-    //     $result = $this->read($query, [$username]); // ✅ Use trait method
-        
-    //     if($result) {
-    //         $workouts = [];
-    //         foreach($result as $row) {
-    //             $workouts[$row->day][] = $row;
-    //         }
-    //         return ['found' => 'yes', 'workouts' => $workouts];
-    //     }
-    //     return ['found' => 'no'];
-    // }
+
 
     public function getGyms($gym_username)
     {
@@ -356,4 +339,106 @@ class instructor
     }
     
 
+    // public function assign_schedule($username) {
+    //     $workouts = $this->get_workouts($username);
+    //     $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
+    // }
+    
+    public function get_workouts($username) {
+                
+
+        $model = $this->model('instructor', 'mealPlan');
+        $result = $model->get_MealPlans($username);
+
+        if($result['found']=='yes') {
+            $workouts = [];
+            foreach($result['result'] as $row) {
+                $workouts[$row->day][] = $row;
+            }
+            return ['found' => 'yes', 'workouts' => $workouts];
+        }else{
+            return ['found' => 'no'];
+
+        }
+    }
+
+
+    public function getMealplanRequests($trainerusername) {
+                
+
+        $model = $this->model('instructor', 'mealPlan');
+        $requests = $model->get_Requests($trainerusername);
+
+        if($requests['found']=='yes') {
+            
+            return ['found' => 'yes', 'result' => $requests['result']];
+        }else{
+            return ['found' => 'no'];
+
+        }
+    }
+
+    public function assignMealplans($trainerusername,$username) {
+                
+
+        $model = $this->model('instructor', 'mealPlan');
+        $requests = $model->assign($trainerusername,$username);
+
+        if($requests['found']=='yes') {
+            
+            return ['found' => 'yes', 'result' => $requests['result']];
+        }else{
+            return ['found' => 'no'];
+
+        }
+    }
+
+    public function save_workout() {
+        $username=$_POST['assigned_user'];
+        $model = $this->model('instructor', 'mealPlan');
+        $delete = $model->workout_delete($username);
+      
+        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        $success = true;
+      
+        foreach ($days as $day) {
+            // Fetch arrays of exercises, sets, and reps for each day
+            $exercises = $_POST['exercises'][$day] ?? [];
+            $sets = $_POST['sets'][$day] ?? [];
+            $reps = $_POST['reps'][$day] ?? [];
+      
+            // Iterate through each exercise for that day
+            for ($i = 0; $i < count($exercises); $i++) {
+                $exercise = trim($exercises[$i]);
+                $set = trim($sets[$i] ?? '');
+                $rep = trim($reps[$i] ?? '');
+      
+                // Skip empty entries (safety check)
+                if ($exercise === '' || $set === '' || $rep === '') {
+                    continue;
+                }
+      
+                // Debug output
+                // echo "Saving for $day: $exercise - $set sets x $rep reps<br>";
+                
+                $result = $model->workout_save($username, $day, $exercise, $set, $rep);
+      
+                if (!$result) {
+                    $success = false;
+                }
+            }
+        }
+      
+        // Redirect or message
+        if ($success) {
+            $this->view('instructor', 'instructor');
+            echo "<script>alert('Workout saved.');</script>";
+
+        } else {
+            $this->view('instructor', 'instructor');
+            echo "<script>alert('Failed to save workout.');</script>";
+
+        }
+      
+      }
 }

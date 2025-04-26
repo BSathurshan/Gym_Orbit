@@ -1,4 +1,7 @@
 <?php 
+
+require_once '../app/controllers/EmailVerify.php';
+
 class Signup
 {
 	use Controller;
@@ -136,9 +139,13 @@ class Signup
            
 				if ($result) {
 
+					$role='user';
+					$verify=new EmailVerify();
+					$verify->sendVerify($role,$username,$email);
+
 				$this->view('login','login');
 
-				echo "<script>alert('Account created successfully , Login now !.');</script>";
+				echo "<script>alert('Please check your email to verify account !.');</script>";
     
             } else {
                
@@ -219,9 +226,13 @@ class Signup
            
 				if ($result) {
 
+					$role='owner';
+					$verify=new EmailVerify();
+					$verify->sendVerify($role,$username,$email);
+
 				$this->view('login','login');
 
-				echo "<script>alert('Account created successfully , Login now !.');</script>";
+				echo "<script>alert('Please verify your account !.');</script>";
     
             } else {
                

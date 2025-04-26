@@ -1,0 +1,196 @@
+.mealplan-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    max-width: 800px;
+    margin: auto;
+    color: black;
+}
+
+.mealplanRequest {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease;
+}
+
+.mealplanRequest:hover {
+    transform: translateY(-5px);
+}
+
+.workoutplan_userimage img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #4CAF50;
+}
+
+.mealplanRequest h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.mealplanRequest h5, .mealplanRequest p {
+    margin: 2px 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.assign-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: center;
+    transition: background-color 0.3s ease;
+}
+
+.assign-button:hover {
+    background-color: #45a049;
+}
+
+  /* Modal Styling */
+  #workoutModal {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black; /* Make text black */
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 80%;
+    max-width: 600px;
+    z-index: 999;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Overlay background */
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+  }
+
+  /* Headings inside Modal */
+  #workoutModal h2 {
+    margin-top: 0;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  #daysContainer {
+    margin-top: 20px;
+  }
+
+  #daysContainer h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+  }
+
+  #daysContainer button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #daysContainer button:hover {
+    background: #0056b3;
+  }
+
+  /* Exercise rows */
+  #daysContainer div > div {
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  /* Form buttons */
+  #workoutForm button[type="submit"],
+  #workoutForm button[type="button"] {
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  #workoutForm button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+  }
+
+  #workoutForm button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  #workoutForm button[type="submit"]:hover {
+    background-color: #218838;
+  }
+
+  #workoutForm button[type="button"]:hover {
+    background-color: #c82333;
+  }
+
+  select, input[type="text"], input[type="number"] {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+
+  #workoutModal {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px;
+    border: 2px solid black;
+    z-index: 999;
+    max-height: 80vh;       /* Limit height to 80% of viewport */
+    overflow-y: auto;        /* Scroll inside if needed */
+    scrollbar-width: none;   /* Hide scrollbar (Firefox) */
+    -ms-overflow-style: none; /* Hide scrollbar (IE/Edge) */
+  }
+  
+  /* Hide scrollbar (Chrome, Safari) */
+  #workoutModal::-webkit-scrollbar {
+    display: none;
+  }
+  
