@@ -20,12 +20,12 @@ class User
     $result = $model->joined($username);
 
     if ($result['found'] == 'yes') {
+
       return ['found' => 'yes', 'result' => $result['result']];
     } elseif ($result['found'] == 'no') {
-      return ['found' => 'no', 'message' => 'Please join a gym !.'];
+      return ['found' => 'no','message' => 'Please join a gym !.'];
     }
   }
-
   public function joinedGyms_premium($username)
   {
     $model = $this->model('user', 'retrieveGyms');
@@ -36,12 +36,12 @@ class User
     $result = $model->joined_premium($username);
 
     if ($result['found'] == 'yes') {
+
       return ['found' => 'yes', 'result' => $result['result']];
     } elseif ($result['found'] == 'no') {
-      return ['found' => 'no', 'message' => 'Please join a gym !.'];
+      return ['found' => 'no','message' => 'Please join a gym !.'];
     }
   }
-
   public function joinedGyms_normal($username)
   {
     $model = $this->model('user', 'retrieveGyms');
@@ -52,9 +52,10 @@ class User
     $result = $model->joined_normal($username);
 
     if ($result['found'] == 'yes') {
+
       return ['found' => 'yes', 'result' => $result['result']];
     } elseif ($result['found'] == 'no') {
-      return ['found' => 'no', 'message' => 'Please join a gym !.'];
+      return ['found' => 'no','message' => 'Please join a gym !.'];
     }
   }
 
@@ -69,17 +70,14 @@ class User
       $paymentForm = $model->pay($gym_username, $username, $option);
 
       if ($paymentForm) {
-        $this->joinGymPremium($gym_username, $username);
+        $this->joinGymPremium($gym_username,$username);
+
         $this->view('user', 'user');
       } else {
-        $status = "error";
-        $message = "Payment failed.";
-        $this->view('user', 'paymentFailed', ['message' => $message, 'status' => $status]);
+        $this->view('user', 'paymentFailed');
       }
     } else {
-      $status = "error";
-      $message = "Missing parameters (payGym).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+      echo "<script>alert('Missing parameters (payGym).');</script>";
     }
   }
 
@@ -94,28 +92,21 @@ class User
         $model = $this->model('user', 'paymentStatus');
         $updateStatus = $model->updateStatus($payment_id);
 
-        if ($updateStatus) {
-          $status = "success";
-          $message = "Payment successful.";
-          $this->view('user', 'paymentSuccess', ['message' => $message, 'status' => $status]);
+        if($updateStatus){
+          $this->view('user', 'paymentSuccess');
           $_SESSION["subscriptionStatus"] = true;
-        } else {
-          $status = "error";
-          $message = "Payment failed.";
-          $this->view('user', 'paymentFailed', ['message' => $message, 'status' => $status]);
+        }else{
+          $this->view('user', 'paymentFailed');
         }
       } else {
-        $status = "error";
-        $message = "Invalid order ID.";
-        $this->view('user', 'paymentFailed', ['message' => $message, 'status' => $status]);
+        $this->view('user', 'paymentFailed');
       }
     } else {
-      $status = "error";
-      $message = "Missing order ID.";
-      $this->view('user', 'paymentFailed', ['message' => $message, 'status' => $status]);
+      $this->view('user', 'paymentFailed');
     }
   }
 
+ 
   public function leaveGym()
   {
     if (isset($_GET['gym_username']) && isset($_GET['username'])) {
@@ -126,60 +117,66 @@ class User
       $result = $model->leave($gym_username, $username);
 
       if ($result) {
-        $status = "success";
-        $message = "You have successfully left the gym.";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+        $this->view('user', 'user');
+        echo "<script>alert('You have successfully left the gym.');</script>";
       } else {
-        $status = "error";
-        $message = "Failed to leave.";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+        $this->view('user', 'user');
+        echo "<script>alert('Failed to leave.');</script>";
       }
     } else {
-      $status = "error";
-      $message = "Missing parameters (leaveGym).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Missing parameters (leaveGym).');</script>";
     }
   }
 
   public function instructor_Check($username)
   {
     if (!empty($username)) {
+
       $model = $this->model('user', 'instructor');
       $result = $model->instructor_Details($username);
 
       if ($result) {
+
         return ['found' => 'yes', 'result' => $result];
       } else {
+
         return ['found' => 'no'];
       }
     } else {
-      $status = "error";
-      $message = "Missing username (instructors_Check).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Missing username (instructors_Check).');</script>";
     }
   }
 
   public function request_Instructor($username)
   {
     if (!empty($username)) {
+
       $model = $this->model('user', 'instructor');
       $result = $model->request($username);
 
       if ($result) {
+
         return ['found' => 'yes', 'result' => $result];
       } else {
+
         return ['found' => 'no', 'message' => 'Please join a gym to request instructors'];
       }
     } else {
-      $status = "error";
-      $message = "Missing username (request_Instructor).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Missing username (request_Instructor).');</script>";
     }
   }
 
+
   public function sendRequest()
   {
+
     if (isset($_GET['gym_username'], $_GET['trainer_username'], $_GET['trainer_name'], $_GET['name'], $_GET['username'])) {
+
       $gym_username = $_GET['gym_username'];
       $trainer_username = $_GET['trainer_username'];
       $trainer_name = $_GET['trainer_name'];
@@ -190,13 +187,13 @@ class User
       $result = $model->sendRequest($username, $name, $trainer_name, $trainer_username, $gym_username);
 
       if ($result) {
-        $status = "success";
-        $message = "Request sent successfully.";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+        $this->view('user', 'user');
+        echo "<script>alert('Request send successfully');</script>";
       } else {
-        $status = "error";
-        $message = "Already request pending.";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+        $this->view('user', 'user');
+        echo "<script>alert('Already request pending');</script>";
       }
     }
   }
@@ -204,40 +201,48 @@ class User
   public function get_free_materials($username)
   {
     if (!empty($username)) {
+
       $model = $this->model('user', 'materials');
       $result = $model->getFreeMaterials($username);
 
+
       if ($result['found'] == 'yes') {
+
         return ['found' => 'yes', 'result' => $result['result']];
       } elseif ($result['found'] == 'no') {
+
         return ['found' => 'no'];
       } elseif ($result['found'] == 'alert') {
+
         return ['found' => 'alert'];
       }
     } else {
-      $status = "error";
-      $message = "Missing username (get_free_materials).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Missing username (get_free_materials).');</script>";
     }
   }
 
   public function get_premium_materials($username)
   {
     if (!empty($username)) {
+
       $model = $this->model('user', 'materials');
       $result = $model->getPremiumMaterials($username);
 
+
       if ($result['found'] == 'yes') {
+
         return ['found' => 'yes', 'result' => $result['result']];
       } elseif ($result['found'] == 'no') {
+
         return ['found' => 'no'];
       } elseif ($result['found'] == 'alert') {
+
         return ['found' => 'alert'];
       }
     } else {
-      $status = "error";
-      $message = "Missing username (get_premium_materials).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Missing username (get_padi_materials).');</script>";
     }
   }
 
@@ -264,15 +269,18 @@ public function save_workout($username) {
   $success = true;
 
   foreach ($days as $day) {
+      // Fetch arrays of exercises, sets, and reps for each day
       $exercises = $_POST['exercises'][$day] ?? [];
       $sets = $_POST['sets'][$day] ?? [];
       $reps = $_POST['reps'][$day] ?? [];
 
+      // Iterate through each exercise for that day
       for ($i = 0; $i < count($exercises); $i++) {
           $exercise = trim($exercises[$i]);
           $set = trim($sets[$i] ?? '');
           $rep = trim($reps[$i] ?? '');
 
+          // Skip empty entries (safety check)
           if ($exercise === '' || $set === '' || $rep === '') {
               continue;
           }
@@ -288,61 +296,67 @@ public function save_workout($username) {
       }
   }
 
+  // Redirect or message
   if ($success) {
-      $status = "success";
-      $message = "Workout plan saved successfully!";
-      $_SESSION['message'] = $message;
+      $_SESSION['message'] = 'Workout plan saved successfully!';
   } else {
-      $status = "error";
-      $message = "Failed to save some workouts. Please try again.";
-      $_SESSION['message'] = $message;
+      $_SESSION['message'] = 'Failed to save some workouts. Please try again.';
   }
 
   header("Location: " . ROOT . "/instructor/workout_schedule/{$username}");
   exit();
 }
 
+
+
+
   public function get_reminders($username)
   {
     if (!empty($username)) {
+
       $model = $this->model('user', 'reminders');
       $result = $model->get($username);
 
       if ($result) {
+
         return ['found' => 'yes', 'result' => $result];
       } else {
         return ['found' => 'no'];
       }
     } else {
-      $status = "error";
-      $message = "Missing username (get_reminders).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Missing username (get_reminders).');</script>";
     }
   }
 
   public function get_posts($username)
   {
     if (!empty($username)) {
+
       $model = $this->model('user', 'posts');
       $result = $model->get($username);
 
       if ($result['found'] == 'yes') {
+
         return ['found' => 'yes', 'result' => $result['result']];
       } elseif ($result['found'] == 'no') {
+
         return ['found' => 'no'];
       } elseif ($result['found'] == 'alert') {
+
         return ['found' => 'alert'];
       }
     } else {
-      $status = "error";
-      $message = "Missing username (get_posts).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Missing username (get_posts).');</script>";
     }
   }
+
 
   public function joinGym()
   {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      // Get values from the form
       $gym_username = $_POST['gym_username'];
       $gym_name = $_POST['gym_name'];
       $name = $_POST['name'];
@@ -353,41 +367,44 @@ public function save_workout($username) {
 
       if (!isset($result['duplicate'])) {
         if ($result) {
-          $status = "success";
-          $message = "You have joined $gym_name the gym.";
-          $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+          $this->view('user', 'user');
+          echo "<script>alert('You have joined $gym_name the gym');</script>";
         } else {
-          $status = "error";
-          $message = "Failed to join $gym_name the gym.";
-          $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+          $this->view('user', 'user');
+          echo "<script>alert('Failed to joined $gym_name the gym');</script>";
         }
       } else {
-        $status = "error";
-        $message = "You have already joined $gym_name the gym.";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+        $message='You have already joined '.$gym_name.' the gym';
+        $this->view('user', 'user', ['message' => $message]);
+        // echo "<script>alert('You have already joined $gym_name the gym');</script>";
       }
     }
   }
 
-  public function joinGymPremium($gym_username, $username)
+  public function joinGymPremium($gym_username, $username )
   {
-    $model = $this->model('user', 'joinGym');
-    $result = $model->joinPremium($gym_username, $username);
+      $model = $this->model('user', 'joinGym');
+      $result = $model->joinPremium($gym_username, $username);
 
-    if ($result) {
-      $status = "success";
-      $message = "You can access premium features for - $gym_username.";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
-    } else {
-      $status = "error";
-      $message = "Failed to add premium features.";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
-    }
+        if ($result) {
+          $this->view('user', 'user');
+          echo "<script>alert('You can access premium features for - $gym_username');</script>";
+        } else {
+
+          $this->view('user', 'user');
+          echo "<script>alert(' Failed to add premuim features ');</script>";
+        }
+  
   }
 
   //auto runs this function and start from js
   public function searchGym()
   {
+
+
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     $username = isset($_GET['username']) ? $_GET['username'] : '';
     $name = isset($_GET['name']) ? $_GET['name'] : '';
@@ -395,32 +412,35 @@ public function save_workout($username) {
     $model = $this->model('user', 'searchGym');
     $result = $model->search($username, $name, $search);
 
+
     if (!defined('PATH')) {
       define('PATH', $_SERVER['DOCUMENT_ROOT'] . '/mvc/app/views/user/');
     }
     include_once PATH . 'render.php';
   }
-
   public function request_workoutplan($username)
   {
     if (!empty($username)) {
+
       $model = $this->model('user', 'instructor');
       $result = $model->workout_details($username);
 
       if ($result) {
         return ['found' => 'yes', 'result' => $result];
+        
       } else {
+
         return ['found' => 'no', 'message' => 'Please join a gym to request instructors'];
       }
     } else {
-      $status = "error";
-      $message = "Missing username (request_Instructor).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Missing username (request_Instructor).');</script>";
     }
   }
 
   public function getSupport()
   {
+
     $issue = htmlspecialchars($_POST['issue']);
     $message = htmlspecialchars($_POST['details']);
     $username = htmlspecialchars($_POST['username']);
@@ -431,30 +451,30 @@ public function save_workout($username) {
     $result = $model->submit($issue, $message, $username, $role, $email);
 
     if ($result['found'] == 'yes') {
-      $userEmail = $email;
-      $emailMessage = "Dear $username,<br><br>Our support team will reply you soon!.";
-      $subject = 'We got your Ticket';
+
+      $userEmail=$email ;
+      $emailMessage="Dear $username,<br><br>Our support team will reply you soon!.";
+      $subject='We got your Ticket';
 
       $emailService = new Email();
       $response = $emailService->send($userEmail, $emailMessage, $subject);
 
-      if ($response) {
-        $status = "success";
-        $message = "Support ticket has been submitted!";
-      } else {
-        $status = "error";
-        $message = "Failed to send email message!";
+      $this->view('user', 'user');
+      if($response){
+        echo "<script>alert('Support ticket has been submitted !');</script>";
+      }else{
+        echo "<script>alert('Fail to send email message !');</script>";
       }
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
-    } else {
-      $status = "error";
-      $message = "Error while getting support.";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+    } elseif ($result['found'] == 'no') {
+
+      $this->view('user', 'user');
+      echo "<script>alert('Error while getting support');</script>";
     }
   }
 
   public function editProfile()
   {
+
     $email = $_POST['email'];
     $username = $_POST['username'];
     $name = $_POST['name'];
@@ -464,16 +484,16 @@ public function save_workout($username) {
     $gender = $_POST['gender'];
 
     $model = $this->model('user', 'editProfile');
-    $result = $model->edit($email, $username, $name, $contact, $location, $age, $gender);
+    $result = $model->edit($email, $username, $name, $contact, $location, $age,  $gender);
 
     if ($result['found'] == 'yes') {
-      $status = "success";
-      $message = "Your details have been edited!";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      echo "<script>alert('Your details has been Edited !');</script>";
+      $this->view('user', 'user');
     } else {
-      $status = "error";
-      $message = "Error while editing the details.";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+
+      $this->view('user', 'user');
+      echo "<script>alert('Error while Editing the details');</script>";
     }
   }
 
@@ -509,10 +529,12 @@ public function save_workout($username) {
       }
   }
 
-  /*calendar*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+
+/*calendar*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   public function getSavedColors() {
-    $gym_username = $_GET['gym_username'] ?? '01';
+    $gym_username = $_GET['gym_username'] ?? '01'; // Default to '01'
     $model = $this->model('user', 'calendar');
     $colors = $model->getSavedColors($gym_username);
     header('Content-Type: application/json');
@@ -534,8 +556,8 @@ public function getAvailability() {
     header('Content-Type: application/json');
     echo json_encode($availability);
 }
-
 public function workoutplan($username) {
+
   $workouts = $this->get_workouts($username);
   $this->view('user', 'workoutPlan', ['username' => $username, 'workouts' => $workouts]);
 }
@@ -557,6 +579,13 @@ public function updateDone() {
   }
 }
 
+
+
+
+
+// controllers/WorkoutController.php
+
+
   // Meal Plan Methods
 
   public function get_mealplans($username)
@@ -573,9 +602,7 @@ public function updateDone() {
         return ['found' => 'alert'];
       }
     } else {
-      $status = "error";
-      $message = "Missing username (get_mealplans).";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+      echo "<script>alert('Missing username (get_mealplans).');</script>";
     }
   }
 
@@ -604,13 +631,9 @@ public function updateDone() {
       }
 
       if ($success) {
-        $status = "success";
-        $message = "Meal plan saved successfully!";
-        $_SESSION['message'] = $message;
+        $_SESSION['message'] = 'Meal plan saved successfully!';
       } else {
-        $status = "error";
-        $message = "Failed to save some meals. Please try again.";
-        $_SESSION['message'] = $message;
+        $_SESSION['message'] = 'Failed to save some meals. Please try again.';
       }
 
       header("Location: " . ROOT . "/user/mealplan/{$username}");
@@ -624,7 +647,14 @@ public function updateDone() {
     $this->view('user', 'mealPlan', ['username' => $username, 'meals' => $meals]);
   }
 
+
+// controllers/WorkoutController.php
+
+
   // Meal Plan Methods
+
+
+
 
 public function getGymTimes() {
   $gym_username = $_GET['gym_username'] ?? '01';
@@ -645,6 +675,7 @@ public function getInstructorTimes() {
 public function saveBooking() {
   $data = json_decode(file_get_contents("php://input"), true);
   
+  // Fetch username from session
   $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
   $gym_username = $data['gym_username'] ?? '01';
   $trainer_username = $data['trainer_username'] ?? null;
@@ -684,11 +715,15 @@ public function getAppointments()
   $result = $model->get($username);
 
   if ($result['found'] == 'yes') {
+
     return ['found' => 'yes', 'result' => $result['result']];
+
   } elseif ($result['found'] == 'no') {
+
     return ['found' => 'no'];
   }
 }
+  
 
 public function saveAddress() {
   if (session_status() == PHP_SESSION_NONE) {
@@ -698,6 +733,7 @@ public function saveAddress() {
       header('Content-Type: application/json');
       echo json_encode(["success" => false, "error" => "User not logged in"]);
       return;
+      
   }
   
   $address=$_POST['address'];
@@ -710,21 +746,24 @@ public function saveAddress() {
   $result = $model->updateAddress($username,$address,$lat,$lang,$role);
 
   if($result){
-      $status = "success";
-      $message = "Address changed!";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+      $this->view('user', 'user');
+      echo "<script>alert('Address changed !');</script>";
   }else{
-      $status = "error";
-      $message = "Failed to change address!";
-      $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+      $this->view('user', 'user');
+      echo "<script>alert('Failed to  change address !');</script>";
   }
+
 }
+
 
 public function getGymLocations() {
   $model = $this->model('owner', 'address');
   $gyms = $model->getGymLocations(); 
+
   echo json_encode($gyms); 
 }
+
+
 
 /*validaitons*/
 public function changeName()
@@ -744,14 +783,13 @@ public function changeName()
     $result = $model->name($username ,$newName);
 
       if ($result) {
-        $status = "success";
-        $message = "Name changed!";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+        $this->view('user', 'user');
+        echo "<script>alert('Name changed !');</script>";
       } else {
-        $status = "error";
-        $message = "Name changing failed!";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+        $this->view('user', 'user');
+        echo "<script>alert('Name changing failed !');</script>";
       }
+
 }
 
 public function changeAge()
@@ -771,13 +809,12 @@ public function changeAge()
     $result = $model->age($username ,$newAge);
 
       if ($result) {
-        $status = "success";
-        $message = "Age changed!";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+        $this->view('user', 'user');
+        echo "<script>alert('Age changed !');</script>";
       } else {
-        $status = "error";
-        $message = "Age changing failed!";
-        $this->view('user', 'user', ['message' => $message, 'status' => $status]);
+        $this->view('user', 'user');
+        echo "<script>alert('Age changing failed !');</script>";
       }
+
 }
 }

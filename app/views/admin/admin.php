@@ -53,6 +53,8 @@ else{
     <script src="<?= ROOT ?>/assets/js/admin/loader.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/admin/message.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/admin/reminder.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/common/alert.js" defer></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -79,12 +81,25 @@ else{
     </header> -->
     <!-- End of Header -->
 
-    <?php if (!empty($errorMessage)): ?>
-    <script>
-        alert('<?php echo addslashes($errorMessage); ?>');
-        $errorMessage = ""; 
-    </script>
+<?php if (!empty($errorMessage)): ?>
+<script>
+    alert('<?php echo addslashes($errorMessage); ?>');
+    $errorMessage = ""; 
+</script>
 <?php endif; ?>
+
+<?php if (!empty($data['message'])): ?>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        showAlert("<?php echo $data['message']; ?>", "<?php echo $data['status']; ?>");
+    });
+</script>
+<?php endif; ?>
+
+
+<div id="customAlert" style="display:none; position:fixed; top:-100px; left:50%; transform:translateX(-50%); background:#333; color:white; padding:15px 30px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:10000; font-size:16px; transition: top 0.5s ease, opacity 0.5s ease;">
+    <span id="customAlertMessage"></span>
+</div>
                         
 
     <!-- Container -->
@@ -105,8 +120,8 @@ else{
                     <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
                     <li class="tabs" value="11"><a><i class="bi bi-book-fill"></i>Reports</a></li>
                     <!-- <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li> -->
-                    <li class="tabs" value="6"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
-                    <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Posts</a></li>
+                    <!-- <li class="tabs" value="6"><a><i class="bi bi-stack-overflow"></i>Materials</a></li> -->
+                    <!-- <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Posts</a></li> -->
                     <li class="tabs" value="8"><a><i class="fas fa-users"></i>Users</a></li>
                     <li class="tabs" value="9"><a><i class="fas fa-users"></i>Owners</a></li>
                     <li class="tabs" value="10"><a><i class="fas fa-users"></i>Instructors</a></li>

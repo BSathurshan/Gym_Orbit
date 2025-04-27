@@ -59,6 +59,8 @@ else{
     <script src="<?= ROOT ?>/assets/js/user/zoom.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/user/map.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/user/validation.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/common/alert.js" defer></script>
+
 
 </head>
 <body>
@@ -72,6 +74,18 @@ else{
         </nav>
     </header> 
      -->
+<?php if (!empty($data['message'])): ?>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        showAlert("<?php echo $data['message']; ?>", "<?php echo $data['status']; ?>");
+    });
+</script>
+<?php endif; ?>
+
+
+<div id="customAlert" style="display:none; position:fixed; top:-100px; left:50%; transform:translateX(-50%); background:#333; color:white; padding:15px 30px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:10000; font-size:16px; transition: top 0.5s ease, opacity 0.5s ease;">
+    <span id="customAlertMessage"></span>
+</div>
 
  <div class="main-container">
 
