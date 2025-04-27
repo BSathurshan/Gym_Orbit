@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2025 at 06:18 PM
+-- Generation Time: Apr 27, 2025 at 05:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,7 +47,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`type`, `admin_username`, `password`, `admin_name`, `email`, `age`, `gender`, `location`, `contact`, `file`, `ban`) VALUES
 ('super', '3', '141', 'Loki', 'loki@@', 21, 'male', 'jasdgsajd', '+94712345678', 'default.jpg', 'no'),
-('super', 'admin', 'admin', 'admin', 'sathu@gmail.com', 31, 'female', 'Wellawatte,Colombo', '2147483647', '674d5b6602aa7.jpg', NULL),
+('super', 'admin', 'admin', 'admin', 'sathu@gmail.com', 31, 'female', 'Wellawatte,Colombo', '2147483647', '674d5b6602aa7.jpg', 'no'),
 ('normal', 'jj', 'jj', 'jj', 'brusleepatimaraja@gmail.com', 21, 'male', 'Chicago', '777777777', '674c2a812e99c.png', 'no');
 
 -- --------------------------------------------------------
@@ -141,7 +141,7 @@ CREATE TABLE `connects_gym` (
 --
 
 INSERT INTO `connects_gym` (`username`, `gym_username`, `user_Name`, `gym_Name`, `type`, `date`) VALUES
-('123', '01', 'loki', 'meme', 'normal', '2025-04-26 10:30:38'),
+('123', '01', 'loki', 'meme', 'premium', '2025-04-27 01:00:51'),
 ('123', 'fitlifejohn', 'loki', 'FitLife Gym', 'premium', '2025-04-25 06:21:16'),
 ('123', 'ironsarah', 'loki', 'Iron Paradise Gym', 'normal', '2025-04-25 06:21:16'),
 ('123', 'luna07', 'loki', 'BodyBuilding Gym', 'premium', '2025-04-25 21:35:05'),
@@ -236,7 +236,6 @@ CREATE TABLE `gym_notes` (
 
 INSERT INTO `gym_notes` (`gym_username`, `note_id`, `content`, `date`, `time`) VALUES
 ('fitlifejohn', '1745053281065', 'save 123', '4/19/2025, 2:30:44 PM', '2025-04-19 09:01:21'),
-('01', '1745469078197', 'lol', '4/24/2025, 10:01:03 AM', '2025-04-24 04:31:18'),
 ('fitlifejohn', '1745475346097', 'gfghf', '4/24/2025, 11:45:03 AM', '2025-04-24 06:15:46');
 
 -- --------------------------------------------------------
@@ -256,16 +255,9 @@ CREATE TABLE `gym_schedule` (
 --
 
 INSERT INTO `gym_schedule` (`gym_username`, `date`, `color`) VALUES
-('01', '2025-04-19', 'rgb(0, 128, 0)'),
-('01', '2025-04-23', 'rgb(0, 0, 255)'),
-('01', '2025-04-24', 'rgb(0, 128, 0)'),
-('01', '2025-04-25', 'rgb(0, 128, 0)'),
-('01', '2025-04-26', 'rgb(255, 0, 0)'),
 ('01', '2025-04-28', 'rgb(0, 128, 0)'),
 ('01', '2025-04-30', 'rgb(218, 165, 32)'),
-('01', '2025-05-09', 'rgb(218, 165, 32)'),
-('fitlifejohn', '2025-04-24', 'rgb(255, 0, 0)'),
-('fitlifejohn', '2025-04-25', 'rgb(0, 128, 0)');
+('01', '2025-05-09', 'rgb(218, 165, 32)');
 
 -- --------------------------------------------------------
 
@@ -431,7 +423,7 @@ CREATE TABLE `machines` (
 
 INSERT INTO `machines` (`gym_username`, `name`, `file`, `total`, `available`) VALUES
 ('01', 'Cable Machine', '680b40ff02795.jpeg', '7', '3'),
-('01', 'Leg Curl Machine', '680b41527410c.jpeg', '4', '2'),
+('01', 'Leg Curl Machine', '680b41527410c.jpeg', '4', '1'),
 ('01', 'Leg Rower Machine', '680b418ce603e.jpeg', '6', '2'),
 ('01', 'Treadmill', '680b40c03886e.jpeg', '5', '5'),
 ('fitlifejohn', 'dumbell', '674d4c23d65bc.jpeg', '3', '3');
@@ -579,9 +571,13 @@ CREATE TABLE `reply` (
 INSERT INTO `reply` (`username`, `email`, `role`, `issue`, `message`, `time`, `reply`) VALUES
 ('', '', 'admin', '34234', 'Re: werewrewr', '2025-04-17 15:29:41', NULL),
 ('01', 'abc@', 'admin', 'check123', 'check123', '2025-04-23 09:27:32', 'jgjgjhgj'),
+('01', 'abc@', 'admin', 'check123', 'check123', '2025-04-27 05:33:04', 'checkign is this an email'),
 ('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 09:36:11', 'checking the reply'),
 ('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 10:16:03', 'checking the reply'),
 ('123', 'lokiaj141@gmail.com', 'admin', 'test', 'test1234', '2025-04-23 10:17:39', 'checking the reply'),
+('123', 'lokiaj141@gmail.com', 'admin', 'check123', 'pop up check', '2025-04-27 05:16:07', 'done '),
+('ss', 'srimathulan@gmail.com', 'admin', 'issueing', 'checking', '2025-04-27 05:33:26', 'mathulan email'),
+('ss', 'srimathulan@gmail.com', 'admin', 'issueing', 'checking', '2025-04-27 05:34:34', 'mathulan email'),
 ('us1234', 'lokiaj141@gmail.com', 'admin', 'checking function', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2025-04-23 11:48:07', 'hey hi iam solving'),
 ('us1234', 'lokiaj141@gmail.com', 'admin', 'hmbghjgkjh', 'bjkjbkjgjk', '2025-04-24 08:22:39', 'vccnncnbnv');
 
@@ -621,10 +617,10 @@ CREATE TABLE `support` (
 --
 
 INSERT INTO `support` (`username`, `email`, `role`, `issue`, `message`, `time`, `status`) VALUES
-('01', 'abc@', 'owner', 'check123', 'check123', '2025-04-22 11:52:07', NULL),
+('01', 'abc@', 'owner', 'check123', 'check123', '2025-04-27 03:33:04', 'solved'),
 ('1', 'fdgkdg@kdsgks', '', 'trrere', 'werewrewr', '2025-04-23 06:37:56', NULL),
 ('sarahbbbb', 'sarah.bennett@gmail.com', 'instructor', 'test', 'gfgf', '2024-12-18 11:45:22', NULL),
-('ss', 'srimathulan@gmail.com', 'instructor', 'issueing', 'checking', '2025-04-24 04:55:00', NULL),
+('ss', 'srimathulan@gmail.com', 'instructor', 'issueing', 'checking', '2025-04-27 03:33:26', 'solved'),
 ('us1234', 'lokiaj141@gmail.com', 'user', 'hmbghjgkjh', 'bjkjbkjgjk', '2025-04-24 06:22:39', 'solved');
 
 -- --------------------------------------------------------
@@ -680,7 +676,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `name`, `email`, `age`, `gender`, `contact`, `location`, `goals`, `active`, `health`, `ban`, `file`, `achieve`, `verification_code`, `verify`) VALUES
-('123', '123', 'loki', 'lokiaj11141@gmail.com', 23, 'male', '94712345671', 'Trincomale', 'Strength', NULL, NULL, NULL, 'hq720.jpg', 'NULL', '271041fce8a3d6046077df18bf54660a', 'yes'),
+('123', '123', 'lokis', 'lokiaj141@gmail.com', 21, 'male', '94712345671', 'Trincomale', 'Strength', NULL, NULL, NULL, 'hq720.jpg', 'NULL', '271041fce8a3d6046077df18bf54660a', 'yes'),
 ('davejohnson89', 'david123', 'David Johnson', 'david.johnson@gmail.com', 45, 'male', '2147483647', 'Orr\'s Hill,Trincomalee', 'Physic', 'full', 'no', NULL, '674d41311fda6.jpg', NULL, NULL, NULL),
 ('emmat92', 'emmat92', 'Emma Thompson', 'emma.thompson@gmail.com', 32, 'male', '1234567890', 'Wellawatte,Colombo', 'Endurance', 'part', '', 'no', '674d41cd6133e.jpg', NULL, NULL, NULL),
 ('jett03', 'jett03', 'Jett Cross', 'Jett@gmail.com', 34, 'male', '+94215658481', 'Colombo', 'Strength', 'part', '', 'no', '680b3b9b34a1e.jpeg', 'Lose Weight', NULL, 'no'),
@@ -746,7 +742,8 @@ INSERT INTO `user_payments` (`payment_id`, `username`, `gym_username`, `package`
 (89, '123', 'luna07', '1_MONTH', 8000, '2025-04-26 02:54:22', '2025-04-25 23:24:22', '2025-05-25 23:24:22', 'Complete'),
 (90, '123', 'luna07', '1_MONTH', 8000, '2025-04-26 02:55:51', '2025-04-25 23:25:51', '2025-05-25 23:25:51', 'Complete'),
 (91, '123', 'luna07', '1_MONTH', 8000, '2025-04-26 03:01:33', '2025-04-25 23:31:33', '2025-05-25 23:31:33', 'Complete'),
-(92, '123', 'luna07', '1_MONTH', 8000, '2025-04-26 03:05:05', '2025-04-25 23:35:05', '2025-05-25 23:35:05', 'Complete');
+(92, '123', 'luna07', '1_MONTH', 8000, '2025-04-26 03:05:05', '2025-04-25 23:35:05', '2025-05-25 23:35:05', 'Complete'),
+(93, '123', '01', '1_MONTH', 8000, '2025-04-27 06:30:51', '2025-04-27 03:00:51', '2025-05-27 03:00:51', 'Complete');
 
 -- --------------------------------------------------------
 
@@ -789,11 +786,14 @@ CREATE TABLE `workout_schedule` (
 --
 
 INSERT INTO `workout_schedule` (`id`, `username`, `day`, `exercise`, `sets`, `reps`, `done`) VALUES
-(96, '123', 'Monday', 'Plank', 2, 12, 0),
-(97, '123', 'Wednesday', 'Deadlift', 4, 5, 0),
-(98, '123', 'Friday', 'Deadlift', 5, 5, 0),
 (99, 'ryder01', 'Monday', 'Bench Press', 3, 2, 1),
-(100, 'ryder01', 'Tuesday', 'Push-ups', 33, 3, 1);
+(100, 'ryder01', 'Tuesday', 'Push-ups', 33, 3, 1),
+(103, '123', 'Monday', 'Deadlift', 3, 12, 1),
+(104, '123', 'Tuesday', 'Deadlift', 2, 3, 1),
+(105, '123', 'Wednesday', 'Plank', 4, 12, 0),
+(106, '123', 'Thursday', 'Pull-ups', 3, 12, 0),
+(107, '123', 'Saturday', 'Pull-ups', 3, 3, 0),
+(108, '123', 'Sunday', 'Plank', 4, 10, 1);
 
 --
 -- Indexes for dumped tables
@@ -987,13 +987,13 @@ ALTER TABLE `calendar_event_master`
 -- AUTO_INCREMENT for table `user_payments`
 --
 ALTER TABLE `user_payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `workout_schedule`
 --
 ALTER TABLE `workout_schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
