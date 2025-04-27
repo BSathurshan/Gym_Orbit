@@ -125,7 +125,12 @@ else{
                     <li class="tabs" value="8"><a><i class="fas fa-users"></i>Users</a></li>
                     <li class="tabs" value="9"><a><i class="fas fa-users"></i>Owners</a></li>
                     <li class="tabs" value="10"><a><i class="fas fa-users"></i>Instructors</a></li>
-                    <li class="tabs" value="12"><a><i class="fas fa-users"></i>otherAdmins</a></li>
+                    <?php if($type=='super'){
+                            echo '<li class="tabs" value="12">
+                            <a><i class="fas fa-users"></i>otherAdmins</a>
+                            </li>';
+                    }
+                    ?>
                     <li class="tabs" value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
 
                    

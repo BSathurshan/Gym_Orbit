@@ -683,5 +683,43 @@ class Owner
             $this->view('owner', 'owner', ['message' => $message, 'status' => $status]);
         }
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////
+
+    public function getBookings() {
+        // Clear any output buffers to prevent stray output
+        if (ob_get_length()) {
+            ob_end_clean();
+        }
+
+        // Set the correct content-type header
+        header("Content-Type: application/json");
+
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['username'])) {
+            echo json_encode(["success" => false, "error" => "User not logged in"]);
+            return;
+        }
+
+        $gym_username = $_SESSION['username'];
+        $date = isset($_GET['date']) ? $_GET['date'] : null;
+
+        if (!$date) {
+            echo json_encode(["success" => false, "error" => "Date missing"]);
+            return;
+        }
+
+        $model = $this->model('owner', 'calendar');
+        if (!$model) {
+            echo json_encode(["success" => false, "error" => "Failed to load model"]);
+            return;
+        }
+
+        $bookings = $model->getBookings($gym_username, $date);
+        echo json_encode($bookings);
+    }
 }
 ?>

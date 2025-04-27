@@ -95,7 +95,20 @@
                                 </div>
                         </div>
 
+
                 </div><!-- app container -->
+
+                <div class="booking-container">
+                                <div class="booking-header">
+                                        <h2>Bookings</h2>
+                                </div>
+                                  <div id="booking-list">
+                                        <!-- bookings will be filled by JavaScript -->
+                                        </div>
+                        </div>
+
+
+
         </div><!-- in in container -->
 </div> <!-- in container -->                             
 
