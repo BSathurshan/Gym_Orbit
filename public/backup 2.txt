@@ -3,6 +3,7 @@ commmon
     login
     logout
     edit profile ( need to do )
+    email verification
 *****************************************************************
 user can
 

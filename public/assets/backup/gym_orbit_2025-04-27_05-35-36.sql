@@ -1,0 +1,897 @@
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+--
+-- Host: localhost    Database: gym_orbit
+-- ------------------------------------------------------
+-- Server version	10.4.32-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin` (
+  `type` enum('super','normal') NOT NULL DEFAULT 'normal',
+  `admin_username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `admin_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `age` int(11) NOT NULL,
+  `gender` enum('male','female','prefer not to say') NOT NULL,
+  `location` text NOT NULL,
+  `contact` varchar(13) NOT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `ban` enum('yes','no') DEFAULT NULL,
+  PRIMARY KEY (`admin_username`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES ('super','3','141','Loki','loki@@',21,'male','jasdgsajd','+94712345678','default.jpg','no'),('super','admin','admin','admin','sathu@gmail.com',31,'female','Wellawatte,Colombo','2147483647','674d5b6602aa7.jpg',NULL),('normal','jj','jj','jj','brusleepatimaraja@gmail.com',21,'male','Chicago','777777777','674c2a812e99c.png','no');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `admin_reminders`
+--
+
+DROP TABLE IF EXISTS `admin_reminders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin_reminders` (
+  `id` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `time` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin_reminders`
+--
+
+LOCK TABLES `admin_reminders` WRITE;
+/*!40000 ALTER TABLE `admin_reminders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admin_reminders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bookings`
+--
+
+DROP TABLE IF EXISTS `bookings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bookings` (
+  `username` varchar(255) NOT NULL,
+  `gym_username` varchar(255) NOT NULL,
+  `trainer_username` varchar(255) DEFAULT NULL,
+  `date` varchar(255) NOT NULL,
+  `time` text NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`username`,`gym_username`,`date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bookings`
+--
+
+LOCK TABLES `bookings` WRITE;
+/*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
+INSERT INTO `bookings` VALUES ('123','01','ggmicha','2025-04-17','08:00-09:00','2025-04-17 17:39:37'),('123','01',NULL,'2025-04-19','08:00-09:00','2025-04-17 18:14:39'),('123','01','ggmicha','2025-04-20','10:00-11:00','2025-04-19 00:10:54'),('123','01',NULL,'2025-04-21','11:00-12:00','2025-04-19 10:24:20'),('123','01',NULL,'2025-04-30','13:00-14:00','2025-04-22 08:02:51'),('141','01','ss','2025-02-09','07:00-10:00','2025-02-09 14:26:05'),('141','01','ss','2025-02-11','07:00-10:00','2025-02-09 14:29:07'),('141','01','No Instructor','2025-02-17','18:00-19:00','2025-02-05 03:26:48'),('141','01','ss','2025-02-24','07:00-09:00','2025-02-06 10:50:51');
+/*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `calendar_event_master`
+--
+
+DROP TABLE IF EXISTS `calendar_event_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `calendar_event_master` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_name` varchar(255) DEFAULT NULL,
+  `event_start_date` date DEFAULT NULL,
+  `event_end_date` date DEFAULT NULL,
+  PRIMARY KEY (`event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `calendar_event_master`
+--
+
+LOCK TABLES `calendar_event_master` WRITE;
+/*!40000 ALTER TABLE `calendar_event_master` DISABLE KEYS */;
+/*!40000 ALTER TABLE `calendar_event_master` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `community`
+--
+
+DROP TABLE IF EXISTS `community`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `community` (
+  `id` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `gym_username` varchar(255) NOT NULL,
+  `instructor_username` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `community`
+--
+
+LOCK TABLES `community` WRITE;
+/*!40000 ALTER TABLE `community` DISABLE KEYS */;
+/*!40000 ALTER TABLE `community` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `connects_gym`
+--
+
+DROP TABLE IF EXISTS `connects_gym`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `connects_gym` (
+  `username` varchar(255) NOT NULL,
+  `gym_username` varchar(255) NOT NULL,
+  `user_Name` varchar(255) NOT NULL,
+  `gym_Name` varchar(255) NOT NULL,
+  `type` enum('normal','premium') DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`username`,`gym_username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `connects_gym`
+--
+
+LOCK TABLES `connects_gym` WRITE;
+/*!40000 ALTER TABLE `connects_gym` DISABLE KEYS */;
+INSERT INTO `connects_gym` VALUES ('123','01','loki','meme','premium','2025-04-27 01:00:51'),('123','fitlifejohn','loki','FitLife Gym','premium','2025-04-25 06:21:16'),('123','ironsarah','loki','Iron Paradise Gym','normal','2025-04-25 06:21:16'),('123','luna07','loki','BodyBuilding Gym','premium','2025-04-25 21:35:05'),('123','steve09','loki','Fitness Sports Center','normal','2025-04-25 10:24:21'),('alexmo123','fitlifejohn','Alex Morgan','FitLife Gym',NULL,'2025-04-25 06:21:16'),('alexmo123','ironsarah','Alex Morgan','Iron Paradise Gym',NULL,'2025-04-25 06:21:16'),('davejohnson89','ironsarah','David Johnson','Iron Paradise Gym','normal','2025-04-25 06:42:40'),('ryder01','01','Ryder Knox','meme','normal','2025-04-26 11:20:28'),('Saneesha','ironsarah','asd','Iron Paradise Gym','normal','2025-04-25 09:25:48');
+/*!40000 ALTER TABLE `connects_gym` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `connects_instructors`
+--
+
+DROP TABLE IF EXISTS `connects_instructors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `connects_instructors` (
+  `gym_username` varchar(255) NOT NULL,
+  `trainer_username` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `trainer_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`gym_username`,`trainer_username`,`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `connects_instructors`
+--
+
+LOCK TABLES `connects_instructors` WRITE;
+/*!40000 ALTER TABLE `connects_instructors` DISABLE KEYS */;
+INSERT INTO `connects_instructors` VALUES ('01','sarahbbbb','alexmo123 ','loki','0'),('01','sarahbbbbdds','123','loki','Sarah Bennett');
+/*!40000 ALTER TABLE `connects_instructors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gym`
+--
+
+DROP TABLE IF EXISTS `gym`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gym` (
+  `gym_username` varchar(255) NOT NULL,
+  `gym_name` varchar(255) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `owner_name` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `age` int(11) NOT NULL,
+  `gender` enum('male','female','prefer not to say') NOT NULL,
+  `location` text NOT NULL,
+  `gym_contact` varchar(13) NOT NULL,
+  `owner_contact` varchar(13) NOT NULL,
+  `start_year` date NOT NULL,
+  `joined` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `experience` int(11) NOT NULL,
+  `web` text NOT NULL,
+  `social` text NOT NULL,
+  `ban` enum('yes','no') DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `verification_code` text DEFAULT NULL,
+  `verify` enum('yes','no') DEFAULT NULL,
+  PRIMARY KEY (`gym_username`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gym`
+--
+
+LOCK TABLES `gym` WRITE;
+/*!40000 ALTER TABLE `gym` DISABLE KEYS */;
+INSERT INTO `gym` VALUES ('01','meme','141','assa','abc@',21,'male','163 Kirulapone Ave, Colombo 00500, Sri Lanka','14440','+94712345679','2024-11-01','2025-04-25 14:54:28',45,'asdsa','sad','no','677cb115669eb.png',NULL,NULL),('company1','Gym003','company1','John Smith','lokiaj141@gmail.com',31,'male','Chicago3','+94712345663','+94712345666','2025-04-09','2025-04-26 13:35:32',23,'https://dribbble.com/tags/gym-website','https://dribbble.com/tags/gym-website1',NULL,'default.jpg','3216a69d3f8655aaa3a4b606686e7dc4','yes'),('fitlifejohn','FitLife Gym','fitlifejohn','John Smith','gym@gmail.com',66,'female','Chicago','+94712345676','+94712345672','2025-04-18','2025-04-25 10:23:53',20,'https://dribbble.com/tags/gym-website','https://dribbble.com/tags/gym-website',NULL,'default.jpg',NULL,NULL),('ironsarah','Iron Paradise Gym','ironsarah','Sarah Johnson','sarah.johnson@gmail.com',56,'male','Orr\'sHill,Trincomalee','740077777','2147483647','2021-06-12','2024-12-02 05:23:35',23,'https://www.equinox.com/','',NULL,'674d445758234.jpg',NULL,NULL),('jaxon08','BarbelKing Gym','jaxon08','Jaxon Storm','jaxonstorm@gmail.com',32,'male','Bambalabitiya,Colombo','+94655885468','+94468494468','2010-09-24','2025-04-25 07:25:00',15,'https://osmofitness.com/','https://osmofitness.com',NULL,'680b38cc1916c.jpeg',NULL,NULL),('luna07','BodyBuilding Gym','luna07','Luna Sterling','luna.sterling@gmail.com',35,'male','dehiwala,Colombo','+94655885469','+94561484815','2010-05-23','2025-04-25 07:21:55',15,'https://www.powerworldgyms.com/','https://lunasterlin.com',NULL,'680b3813c3050.jpeg',NULL,NULL),('steve09','Fitness Sports Center','steve09','Steve Rogers','steverogers@gmail.com',43,'male','kollupittiya','+94655885464','+94468494462','2012-12-31','2025-04-25 07:27:52',13,'https://www.fitzky.com/','https://fitsky.com',NULL,'680b3978cdf46.jpeg',NULL,NULL),('tony06','FitnessGym','tony06','Tony Stark','tonystark@gmail.com',40,'male','Wellawatta,Colombo','+94456494791','+94468494464','2019-07-08','2025-04-25 07:17:28',6,'https://www.lifetimefitness.lk/','https://tonystark.com',NULL,'680b37080b363.jpeg',NULL,NULL);
+/*!40000 ALTER TABLE `gym` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gym_notes`
+--
+
+DROP TABLE IF EXISTS `gym_notes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gym_notes` (
+  `gym_username` varchar(255) NOT NULL,
+  `note_id` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`note_id`,`gym_username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gym_notes`
+--
+
+LOCK TABLES `gym_notes` WRITE;
+/*!40000 ALTER TABLE `gym_notes` DISABLE KEYS */;
+INSERT INTO `gym_notes` VALUES ('fitlifejohn','1745053281065','save 123','4/19/2025, 2:30:44 PM','2025-04-19 09:01:21'),('fitlifejohn','1745475346097','gfghf','4/24/2025, 11:45:03 AM','2025-04-24 06:15:46');
+/*!40000 ALTER TABLE `gym_notes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gym_schedule`
+--
+
+DROP TABLE IF EXISTS `gym_schedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gym_schedule` (
+  `gym_username` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `color` varchar(255) NOT NULL,
+  PRIMARY KEY (`gym_username`,`date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gym_schedule`
+--
+
+LOCK TABLES `gym_schedule` WRITE;
+/*!40000 ALTER TABLE `gym_schedule` DISABLE KEYS */;
+INSERT INTO `gym_schedule` VALUES ('01','2025-04-28','rgb(0, 128, 0)'),('01','2025-04-30','rgb(218, 165, 32)'),('01','2025-05-09','rgb(218, 165, 32)');
+/*!40000 ALTER TABLE `gym_schedule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gym_time`
+--
+
+DROP TABLE IF EXISTS `gym_time`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gym_time` (
+  `gym_username` varchar(255) NOT NULL,
+  `Monday` text DEFAULT NULL,
+  `Tuesday` text DEFAULT NULL,
+  `Wednesday` text DEFAULT NULL,
+  `Thursday` text DEFAULT NULL,
+  `Friday` text DEFAULT NULL,
+  `Saturday` text DEFAULT NULL,
+  `Sunday` text DEFAULT NULL,
+  PRIMARY KEY (`gym_username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gym_time`
+--
+
+LOCK TABLES `gym_time` WRITE;
+/*!40000 ALTER TABLE `gym_time` DISABLE KEYS */;
+INSERT INTO `gym_time` VALUES ('01','08:00-09:00,10:00-11:00','10:00-11:00,13:00-14:00','10:00-11:00,11:00-12:00','10:00-11:00,13:00-14:00','08:00-09:00,09:00-10:00,10:00-11:00','08:00-09:00,09:00-10:00','08:00-09:00,11:00-12:00');
+/*!40000 ALTER TABLE `gym_time` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `instructor_request`
+--
+
+DROP TABLE IF EXISTS `instructor_request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `instructor_request` (
+  `gym_username` varchar(255) NOT NULL,
+  `trainer_username` varchar(255) NOT NULL,
+  `trainer_name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`gym_username`,`trainer_username`,`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `instructor_request`
+--
+
+LOCK TABLES `instructor_request` WRITE;
+/*!40000 ALTER TABLE `instructor_request` DISABLE KEYS */;
+INSERT INTO `instructor_request` VALUES ('ironsarah','sarahbbbb','Sarah Bennett','123','loki','2024-12-16 13:21:51');
+/*!40000 ALTER TABLE `instructor_request` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `instructor_time`
+--
+
+DROP TABLE IF EXISTS `instructor_time`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `instructor_time` (
+  `trainer_username` varchar(255) NOT NULL,
+  `gym_username` varchar(255) NOT NULL,
+  `Monday` text DEFAULT NULL,
+  `Tuesday` text DEFAULT NULL,
+  `Wednesday` text DEFAULT NULL,
+  `Thursday` text DEFAULT NULL,
+  `Friday` text DEFAULT NULL,
+  `Saturday` text DEFAULT NULL,
+  `Sunday` text DEFAULT NULL,
+  `trainer_name` varchar(255) DEFAULT NULL,
+  `age` varchar(255) DEFAULT NULL,
+  `gender` text DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`trainer_username`,`gym_username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `instructor_time`
+--
+
+LOCK TABLES `instructor_time` WRITE;
+/*!40000 ALTER TABLE `instructor_time` DISABLE KEYS */;
+INSERT INTO `instructor_time` VALUES ('ggmicha','01','08:00-09:00,09:00-10:00','08:00-09:00,10:00-11:00','08:00-09:00,11:00-12:00','08:00-09:00,09:00-10:00,10:00-11:00','08:00-09:00,09:00-10:00,10:00-11:00,11:00-12:00','08:00-09:00,10:00-11:00,13:00-14:00','08:00-09:00,09:00-10:00','mic','22','male','67f66dfeebffd.png'),('sarahbbbbdds','01','08:00-09:00','08:00-09:00,09:00-10:00','08:00-09:00,09:00-10:00','08:00-09:00,09:00-10:00','10:00-11:00,11:00-12:00','08:00-09:00,09:00-10:00,13:00-14:00','08:00-09:00,09:00-10:00,10:00-11:00',NULL,NULL,NULL,NULL),('ss','01','08:00-09:00,09:00-10:00','08:00-09:00,09:00-10:00,10:00-11:00','09:00-10:00','09:00-10:00,10:00-11:00','08:00-09:00,09:00-10:00','08:00-09:00,13:00-14:00','09:00-10:00','uuu','22','male','6795cf02ceae6.jpg');
+/*!40000 ALTER TABLE `instructor_time` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `instructors`
+--
+
+DROP TABLE IF EXISTS `instructors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `instructors` (
+  `gym_username` varchar(50) NOT NULL,
+  `trainer_username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `trainer_name` varchar(50) NOT NULL,
+  `age` int(11) NOT NULL,
+  `gender` enum('male','female','prefer not to say') NOT NULL,
+  `contact` varchar(13) DEFAULT NULL,
+  `social` text NOT NULL,
+  `experience` int(11) NOT NULL,
+  `location` text NOT NULL,
+  `availiblity` text DEFAULT NULL,
+  `qualify` text DEFAULT NULL,
+  `special` text DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `ban` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`trainer_username`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `instructors`
+--
+
+LOCK TABLES `instructors` WRITE;
+/*!40000 ALTER TABLE `instructors` DISABLE KEYS */;
+INSERT INTO `instructors` VALUES ('01','ggmicha','mic@gmail.com','mic141','mic',22,'female','+94712345673','https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01',12,'Wellawatte,Colombo','weekends','medalist','athlete','67f66dfeebffd.png',NULL),('ironsarah','sarahbbbb','sarah.bennett@gmail.com','123','Sarah Bennett',32,'male','2147483647','https://sociallinks.io/',12,'Wellawatte,Colombo','weekends','medalist','athlete','674d46d404b94.jpg','yes'),('01','sarahbbbbdds','lokiajsd22@gmail.com','141','Sarah Bennett',22,'male','777777777','https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01',24,'sadasd','weekends','ss','athlete1','default.jpg',NULL),('01','ss','srimathulan@gmail.com','141','uuu',24,'male','777777777','https://dribbble.com/tags/gym-website',0,'Wellawatte,Colombo','weekends','medalist','athlete1','6795cf02ceae6.jpg',NULL);
+/*!40000 ALTER TABLE `instructors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `instructors_client_history`
+--
+
+DROP TABLE IF EXISTS `instructors_client_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `instructors_client_history` (
+  `trainer_username` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `rating` enum('1','2','3','4','5') NOT NULL,
+  PRIMARY KEY (`trainer_username`,`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `instructors_client_history`
+--
+
+LOCK TABLES `instructors_client_history` WRITE;
+/*!40000 ALTER TABLE `instructors_client_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `instructors_client_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `instructors_reminders`
+--
+
+DROP TABLE IF EXISTS `instructors_reminders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `instructors_reminders` (
+  `id` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `instructors_reminders`
+--
+
+LOCK TABLES `instructors_reminders` WRITE;
+/*!40000 ALTER TABLE `instructors_reminders` DISABLE KEYS */;
+INSERT INTO `instructors_reminders` VALUES ('sarahbbbb','sarahbbbb@gmail.com','reminder checking :}','2024-12-17 18:45:50');
+/*!40000 ALTER TABLE `instructors_reminders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `machines`
+--
+
+DROP TABLE IF EXISTS `machines`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `machines` (
+  `gym_username` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `total` varchar(12) DEFAULT NULL,
+  `available` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`gym_username`,`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `machines`
+--
+
+LOCK TABLES `machines` WRITE;
+/*!40000 ALTER TABLE `machines` DISABLE KEYS */;
+INSERT INTO `machines` VALUES ('01','Cable Machine','680b40ff02795.jpeg','7','3'),('01','Leg Curl Machine','680b41527410c.jpeg','4','1'),('01','Leg Rower Machine','680b418ce603e.jpeg','6','2'),('01','Treadmill','680b40c03886e.jpeg','5','5'),('fitlifejohn','dumbell','674d4c23d65bc.jpeg','3','3');
+/*!40000 ALTER TABLE `machines` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `map`
+--
+
+DROP TABLE IF EXISTS `map`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `map` (
+  `username` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `location` text NOT NULL,
+  `lat` varchar(255) NOT NULL,
+  `lang` varchar(255) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `map`
+--
+
+LOCK TABLES `map` WRITE;
+/*!40000 ALTER TABLE `map` DISABLE KEYS */;
+INSERT INTO `map` VALUES ('01','gym','163 Kirulapone Ave, Colombo 00500, Sri Lanka','6.886200233487424','79.87630620117187'),('123','user','H6JG+2CV, Trincomalee, Sri Lanka','8.580060916023255','81.22589660390479'),('asdasd123','gym','70 Hyde Park Corner, Colombo 00200, Sri Lanka','6.916971712651847','79.85969084216214'),('fitlifejohn','gym','77F Manning Pl, Colombo 00600, Sri Lanka','6.87506136165818','79.86304180029627'),('ironsarah','gym','15 Rheinland Pl, Colombo 00300, Sri Lanka','6.90199864565137','79.85179030887195'),('us1234','user','WV25+JWF, Colombo 00700, Sri Lanka','6.901207999923599','79.85957597019993');
+/*!40000 ALTER TABLE `map` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `materials`
+--
+
+DROP TABLE IF EXISTS `materials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `materials` (
+  `gym_username` varchar(255) NOT NULL,
+  `id` varchar(255) NOT NULL,
+  `gym_name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `details` text NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`gym_username`,`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `materials`
+--
+
+LOCK TABLES `materials` WRITE;
+/*!40000 ALTER TABLE `materials` DISABLE KEYS */;
+INSERT INTO `materials` VALUES ('01','680b428e2cd90','meme','Free','BMI Chart','680b428e2d813.jpeg','Calculate your BMI','2025-04-25 08:06:38'),('01','680b42c21fdf2','meme','Free','Nutrion plan','680b42d0566e8.jpeg','Select your foods healthy','2025-04-25 10:25:55'),('01','680b4337b95b2','meme','Free','Healthy Food','680b4337ba35f.jpeg','Nutrions of your foods.','2025-04-25 09:15:44'),('01','680b43dff1155','meme','Premium','Meal Planner','680b43e003ec5.jpeg','Get your Meals','2025-04-25 10:25:14'),('fitlifejohn','674d4c0c9cd2b','FitLife Gym','Premium','free meel planner','674d4c0c9cd38.jpg','free meel planner','2025-04-20 01:50:36'),('ironsarah','674221209fbcb','meme','Premium','lets gooo!','674221209fbd1.png','use this benefits','2025-04-20 01:49:44');
+/*!40000 ALTER TABLE `materials` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mealplan_request`
+--
+
+DROP TABLE IF EXISTS `mealplan_request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mealplan_request` (
+  `gym_username` varchar(255) NOT NULL,
+  `trainer_username` varchar(255) NOT NULL,
+  `trainer_name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`gym_username`,`trainer_username`,`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mealplan_request`
+--
+
+LOCK TABLES `mealplan_request` WRITE;
+/*!40000 ALTER TABLE `mealplan_request` DISABLE KEYS */;
+INSERT INTO `mealplan_request` VALUES ('01','sarahbbbbdds','Sarah Bennett','ryder01','Ryder Knox','2025-04-26 11:20:55'),('01','ss','mic','123','loki','2025-04-26 08:09:17');
+/*!40000 ALTER TABLE `mealplan_request` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `owner_reminders`
+--
+
+DROP TABLE IF EXISTS `owner_reminders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `owner_reminders` (
+  `id` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `time` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `owner_reminders`
+--
+
+LOCK TABLES `owner_reminders` WRITE;
+/*!40000 ALTER TABLE `owner_reminders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `owner_reminders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posts` (
+  `gym_username` varchar(255) NOT NULL,
+  `id` varchar(255) NOT NULL,
+  `gym_name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `file` text DEFAULT NULL,
+  `details` text NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`gym_username`,`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posts`
+--
+
+LOCK TABLES `posts` WRITE;
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES ('01','680b574691b4d','meme','PUSH YOUR LIMITS','680b574697a9a.jpeg','\"When you feel like quitting, remember why you started.\"\r\n\r\n','2025-04-25 09:35:02'),('01','680b5779930e6','meme','NO PAIN, NO GAIN','680b577997db2.jpeg','\"The body achieves what the mind believes.\"\r\n\r\n','2025-04-25 09:35:53'),('01','680b57addf037','meme','🏋️ STAY STRONG','680b57addf8ad.jpeg','\"Strength doesn’t come from what you can do. It comes from overcoming the things you once thought you couldn’t.\"','2025-04-25 09:36:45'),('01','680b57e3d5dbe','meme','⏱️ ONE MORE REP','680b57e3d66b4.jpeg','\"Success starts with self-discipline.\"\r\n\r\n','2025-04-25 09:37:39'),('fitlifejohn','674d4b6e0f65e','FitLife Gym','\"Your only limit is you.\"','674d4b6e0f665.jpeg','Numbered List of 20 Catchy Fitness Slogan Ideas. \"Fit is the New Cool\" \"Sweat it Out, Make it Count\" \"Get Fit, Stay Fit\" \"Strong Body, Strong Mind\"\r\n','2025-04-20 01:38:16'),('fitlifejohn','6759244926f15','FitLife Gym','“Pain is temporary, but pride is forever.” ','6759244926f1f.jpeg','You\'re really complimenting her hard work when you do this.\r\n\"You\'re working so hard.\"\r\n\"I\'m so impressed by your dedication.\"\r\n\"I can see your progress.\"','2025-04-20 01:31:16'),('ironsarah','674d4a0a6b4a9','Iron Paradise Gym','\"Sweat now, shine later.\"','674d4a0a6b4b1.avif','Here are some more of our favourite motivational quotes to help you on your fitness journey.','2025-04-20 01:37:16');
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reply`
+--
+
+DROP TABLE IF EXISTS `reply`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reply` (
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` text NOT NULL,
+  `issue` text NOT NULL,
+  `message` text NOT NULL,
+  `time` datetime NOT NULL,
+  `reply` text DEFAULT NULL,
+  PRIMARY KEY (`username`,`email`,`time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reply`
+--
+
+LOCK TABLES `reply` WRITE;
+/*!40000 ALTER TABLE `reply` DISABLE KEYS */;
+INSERT INTO `reply` VALUES ('','','admin','34234','Re: werewrewr','2025-04-17 15:29:41',NULL),('01','abc@','admin','check123','check123','2025-04-23 09:27:32','jgjgjhgj'),('01','abc@','admin','check123','check123','2025-04-27 05:33:04','checkign is this an email'),('123','lokiaj141@gmail.com','admin','test','test1234','2025-04-23 09:36:11','checking the reply'),('123','lokiaj141@gmail.com','admin','test','test1234','2025-04-23 10:16:03','checking the reply'),('123','lokiaj141@gmail.com','admin','test','test1234','2025-04-23 10:17:39','checking the reply'),('123','lokiaj141@gmail.com','admin','check123','pop up check','2025-04-27 05:16:07','done '),('ss','srimathulan@gmail.com','admin','issueing','checking','2025-04-27 05:33:26','mathulan email'),('ss','srimathulan@gmail.com','admin','issueing','checking','2025-04-27 05:34:34','mathulan email'),('us1234','lokiaj141@gmail.com','admin','checking function','What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.','2025-04-23 11:48:07','hey hi iam solving'),('us1234','lokiaj141@gmail.com','admin','hmbghjgkjh','bjkjbkjgjk','2025-04-24 08:22:39','vccnncnbnv');
+/*!40000 ALTER TABLE `reply` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schedule_user_gym_instructor`
+--
+
+DROP TABLE IF EXISTS `schedule_user_gym_instructor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schedule_user_gym_instructor` (
+  `gym_username` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `instructor_username` varchar(255) DEFAULT NULL,
+  `date` date NOT NULL,
+  `time` text NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`gym_username`,`username`,`date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schedule_user_gym_instructor`
+--
+
+LOCK TABLES `schedule_user_gym_instructor` WRITE;
+/*!40000 ALTER TABLE `schedule_user_gym_instructor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `schedule_user_gym_instructor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `support`
+--
+
+DROP TABLE IF EXISTS `support`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `support` (
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `issue` text NOT NULL,
+  `message` text NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` enum('solved','unsolved') DEFAULT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `support`
+--
+
+LOCK TABLES `support` WRITE;
+/*!40000 ALTER TABLE `support` DISABLE KEYS */;
+INSERT INTO `support` VALUES ('01','abc@','owner','check123','check123','2025-04-27 03:33:04','solved'),('1','fdgkdg@kdsgks','','trrere','werewrewr','2025-04-23 06:37:56',NULL),('sarahbbbb','sarah.bennett@gmail.com','instructor','test','gfgf','2024-12-18 11:45:22',NULL),('ss','srimathulan@gmail.com','instructor','issueing','checking','2025-04-27 03:33:26','solved'),('us1234','lokiaj141@gmail.com','user','hmbghjgkjh','bjkjbkjgjk','2025-04-24 06:22:39','solved');
+/*!40000 ALTER TABLE `support` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `system`
+--
+
+DROP TABLE IF EXISTS `system`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `system` (
+  `id` varchar(255) NOT NULL,
+  `admin_username` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `title` text NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`,`admin_username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `system`
+--
+
+LOCK TABLES `system` WRITE;
+/*!40000 ALTER TABLE `system` DISABLE KEYS */;
+INSERT INTO `system` VALUES ('6808f222ec4a6','3','system-maintenence','system maintenence','2025-04-23 13:58:58','2025-04-23 11:30:00','2025-04-25 09:27:00');
+/*!40000 ALTER TABLE `system` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `username` varchar(70) NOT NULL,
+  `password` varchar(25) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `age` int(11) NOT NULL,
+  `gender` enum('male','female','prefer not to say') DEFAULT NULL,
+  `contact` varchar(13) NOT NULL,
+  `location` text DEFAULT NULL,
+  `goals` text DEFAULT NULL,
+  `active` enum('full','part','temporary','not sure') DEFAULT NULL,
+  `health` enum('yes','no') DEFAULT NULL,
+  `ban` enum('yes','no') DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `achieve` varchar(255) DEFAULT NULL,
+  `verification_code` text DEFAULT NULL,
+  `verify` enum('yes','no') DEFAULT NULL,
+  PRIMARY KEY (`username`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('123','123','lokis','lokiaj141@gmail.com',21,'male','94712345671','Trincomale','Strength',NULL,NULL,NULL,'hq720.jpg','NULL','271041fce8a3d6046077df18bf54660a','yes'),('davejohnson89','david123','David Johnson','david.johnson@gmail.com',45,'male','2147483647','Orr\'s Hill,Trincomalee','Physic','full','no',NULL,'674d41311fda6.jpg',NULL,NULL,NULL),('emmat92','emmat92','Emma Thompson','emma.thompson@gmail.com',32,'male','1234567890','Wellawatte,Colombo','Endurance','part','','no','674d41cd6133e.jpg',NULL,NULL,NULL),('jett03','jett03','Jett Cross','Jett@gmail.com',34,'male','+94215658481','Colombo','Strength','part','','no','680b3b9b34a1e.jpeg','Lose Weight',NULL,'no'),('ryder01','ryder01','Ryder Knox','ryder@gmail.com',22,'male','+94155448154','Colombo','Physic','full','',NULL,'680b3aa6d8612.jpeg','Build Muscle',NULL,NULL),('user123','user123','cgfgchc','lokiaj11141@gmail.com',21,'male','+94712345677','hjhhkhhhiuhik','Strength','full','',NULL,'default.jpg','Build Muscle','bb0b61e11d0f5e07ef92f27918ecb566','yes');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_payments`
+--
+
+DROP TABLE IF EXISTS `user_payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_payments` (
+  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(70) NOT NULL,
+  `gym_username` varchar(255) NOT NULL,
+  `package` varchar(24) NOT NULL,
+  `amount` float NOT NULL,
+  `payment_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`payment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_payments`
+--
+
+LOCK TABLES `user_payments` WRITE;
+/*!40000 ALTER TABLE `user_payments` DISABLE KEYS */;
+INSERT INTO `user_payments` VALUES (50,'123','01','1_MONTH',8000,'2025-02-18 20:43:45',NULL,NULL,'Pending'),(51,'123','fitlifejohn','1_MONTH',8000,'2025-02-18 21:31:20',NULL,NULL,'Pending'),(52,'123','fitlifejohn','1_MONTH',8000,'2025-02-19 06:58:52',NULL,NULL,'Pending'),(59,'123','01','1_MONTH',8000,'2025-04-21 21:43:58','2025-04-21 18:13:58','2025-05-21 18:13:58','Pending'),(60,'123','01','1_MONTH',8000,'2025-04-25 08:05:52','2025-04-25 04:35:52','2025-05-25 04:35:52','Pending'),(61,'123','01','1_MONTH',8000,'2025-04-25 08:09:41','2025-04-25 04:39:41','2025-05-25 04:39:41','Pending'),(62,'123','01','1_MONTH',8000,'2025-04-25 08:38:50','2025-04-25 05:08:50','2025-05-25 05:08:50','Pending'),(63,'123','01','1_MONTH',8000,'2025-04-25 08:47:31','2025-04-25 05:17:31','2025-05-25 05:17:31','Pending'),(64,'123','01','1_MONTH',8000,'2025-04-25 08:51:32','2025-04-25 05:21:32','2025-05-25 05:21:32','Pending'),(65,'123','01','1_MONTH',8000,'2025-04-25 08:51:39','2025-04-25 05:21:39','2025-05-25 05:21:39','Complete'),(66,'123','01','1_MONTH',8000,'2025-04-25 08:51:54','2025-04-25 05:21:54','2025-05-25 05:21:54','Complete'),(67,'123','01','1_MONTH',8000,'2025-04-25 08:52:07','2025-04-25 05:22:07','2025-05-25 05:22:07','Complete'),(68,'123','01','1_MONTH',8000,'2025-04-25 08:52:30','2025-04-25 05:22:30','2025-05-25 05:22:30','Complete'),(69,'davejohnson89','ironsarah','1_MONTH',8000,'2025-04-25 12:12:51','2025-04-25 08:42:51','2025-05-25 08:42:51','Pending'),(70,'davejohnson89','ironsarah','1_MONTH',8000,'2025-04-25 13:06:16','2025-04-25 09:36:16','2025-05-25 09:36:16','Complete'),(71,'123','luna07','1_MONTH',8000,'2025-04-25 22:45:28','2025-04-25 19:15:28','2025-05-25 19:15:28','Pending'),(72,'123','luna07','1_MONTH',8000,'2025-04-25 22:45:59','2025-04-25 19:15:59','2025-05-25 19:15:59','Complete'),(73,'123','luna07','1_MONTH',8000,'2025-04-25 22:47:20','2025-04-25 19:17:20','2025-05-25 19:17:20','Complete'),(74,'123','luna07','1_MONTH',8000,'2025-04-25 22:49:15','2025-04-25 19:19:15','2025-05-25 19:19:15','Complete'),(75,'123','luna07','1_MONTH',8000,'2025-04-26 00:58:32','2025-04-25 21:28:32','2025-05-25 21:28:32','Complete'),(76,'123','luna07','1_MONTH',8000,'2025-04-26 01:01:04','2025-04-25 21:31:04','2025-05-25 21:31:04','Complete'),(77,'123','luna07','1_MONTH',8000,'2025-04-26 01:05:42','2025-04-25 21:35:42','2025-05-25 21:35:42','Complete'),(78,'123','luna07','1_MONTH',8000,'2025-04-26 01:07:13','2025-04-25 21:37:13','2025-05-25 21:37:13','Complete'),(79,'123','luna07','1_MONTH',8000,'2025-04-26 01:20:51','2025-04-25 21:50:51','2025-05-25 21:50:51','Complete'),(80,'123','luna07','1_MONTH',8000,'2025-04-26 01:35:00','2025-04-25 22:05:00','2025-05-25 22:05:00','Complete'),(81,'123','luna07','1_MONTH',8000,'2025-04-26 01:35:51','2025-04-25 22:05:51','2025-05-25 22:05:51','Complete'),(82,'123','luna07','1_MONTH',8000,'2025-04-26 01:54:25','2025-04-25 22:24:25','2025-05-25 22:24:25','Complete'),(83,'123','luna07','1_MONTH',8000,'2025-04-26 01:55:23','2025-04-25 22:25:23','2025-05-25 22:25:23','Complete'),(84,'123','01','1_MONTH',8000,'2025-04-26 02:25:56','2025-04-25 22:55:56','2025-05-25 22:55:56','Complete'),(85,'123','luna07','1_MONTH',8000,'2025-04-26 02:34:41','2025-04-25 23:04:41','2025-05-25 23:04:41','Complete'),(86,'123','luna07','1_MONTH',8000,'2025-04-26 02:35:57','2025-04-25 23:05:57','2025-05-25 23:05:57','Complete'),(87,'123','luna07','1_MONTH',8000,'2025-04-26 02:39:51','2025-04-25 23:09:51','2025-05-25 23:09:51','Complete'),(88,'123','01','1_MONTH',8000,'2025-04-26 02:44:33','2025-04-25 23:14:33','2025-05-25 23:14:33','Complete'),(89,'123','luna07','1_MONTH',8000,'2025-04-26 02:54:22','2025-04-25 23:24:22','2025-05-25 23:24:22','Complete'),(90,'123','luna07','1_MONTH',8000,'2025-04-26 02:55:51','2025-04-25 23:25:51','2025-05-25 23:25:51','Complete'),(91,'123','luna07','1_MONTH',8000,'2025-04-26 03:01:33','2025-04-25 23:31:33','2025-05-25 23:31:33','Complete'),(92,'123','luna07','1_MONTH',8000,'2025-04-26 03:05:05','2025-04-25 23:35:05','2025-05-25 23:35:05','Complete'),(93,'123','01','1_MONTH',8000,'2025-04-27 06:30:51','2025-04-27 03:00:51','2025-05-27 03:00:51','Complete');
+/*!40000 ALTER TABLE `user_payments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_reminders`
+--
+
+DROP TABLE IF EXISTS `user_reminders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_reminders` (
+  `id` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `time` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_reminders`
+--
+
+LOCK TABLES `user_reminders` WRITE;
+/*!40000 ALTER TABLE `user_reminders` DISABLE KEYS */;
+INSERT INTO `user_reminders` VALUES ('680c782a2a14e','123','Your instructor [ Sarah Bennett (sarahbbbbdds) ] request has been accepted by the gym.','2025-04-26 11:37:38');
+/*!40000 ALTER TABLE `user_reminders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `workout_schedule`
+--
+
+DROP TABLE IF EXISTS `workout_schedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `workout_schedule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL,
+  `day` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') NOT NULL,
+  `exercise` varchar(255) NOT NULL,
+  `sets` int(11) DEFAULT 0,
+  `reps` int(11) DEFAULT 0,
+  `done` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `workout_schedule`
+--
+
+LOCK TABLES `workout_schedule` WRITE;
+/*!40000 ALTER TABLE `workout_schedule` DISABLE KEYS */;
+INSERT INTO `workout_schedule` VALUES (99,'ryder01','Monday','Bench Press',3,2,1),(100,'ryder01','Tuesday','Push-ups',33,3,1),(101,'123','Monday','Squats',4,12,1),(102,'123','Tuesday','pull-ups',8,3,0);
+/*!40000 ALTER TABLE `workout_schedule` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-04-27  9:05:36

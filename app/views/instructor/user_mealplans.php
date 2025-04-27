@@ -3,7 +3,7 @@
         <div class="header">
         <div>
 
-        <h2>Assign meal Plans</h2>
+        <h2>Assign Work-Out Plans</h2>
 
         </div>
         </div>

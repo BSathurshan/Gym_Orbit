@@ -64,11 +64,27 @@ else{
     <script src="<?= ROOT ?>/assets/js/instructor/instructor_2.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/instructor/calendar.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/instructor/workoutPlan.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/common/alert.js" defer></script>
+
 
 
 
 </head> 
 <body>
+
+<?php if (!empty($data['message'])): ?>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        showAlert("<?php echo $data['message']; ?>", "<?php echo $data['status']; ?>");
+    });
+</script>
+<?php endif; ?>
+
+
+<div id="customAlert" style="display:none; position:fixed; top:-100px; left:50%; transform:translateX(-50%); background:#333; color:white; padding:15px 30px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:10000; font-size:16px; transition: top 0.5s ease, opacity 0.5s ease;">
+    <span id="customAlertMessage"></span>
+</div>
+
 <div class="main-container">
 
 
@@ -88,7 +104,7 @@ else{
                         <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gym</a></li>
                        
                         <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Member Profiles</a></li>
-                        <li class="tabs" value="20"><a><i class="bi bi-calendar2-check-fill"></i>Meal Plans</a></li>
+                        <li class="tabs" value="20"><a><i class="bi bi-calendar2-check-fill"></i>Work-Out Plans</a></li>
 
                         <li class="tabs" value="9"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
                         

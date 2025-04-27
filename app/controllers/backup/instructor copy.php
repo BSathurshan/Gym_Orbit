@@ -8,6 +8,7 @@ class instructor
 
     public function index()
     {
+
         $this->view('instructor', 'instructor');
     }
 
@@ -21,9 +22,13 @@ class instructor
         $result = $model->get_Contacts($username);
 
         if ($result) {
-            return ['found'=>'yes','result'=>$result];
-        } else {
+
+            return  ['found'=>'yes','result'=>$result];
+          
+        } else 
+        {
             return ['found' => 'no' , 'message' => 'No members found for you.'];
+
         }
     }
 
@@ -37,11 +42,16 @@ class instructor
         $result = $model->get_Reminders($username);
 
         if ($result) {
-            return ['found'=>'yes','result'=>$result];
-        } else {
+
+            return  ['found'=>'yes','result'=>$result];
+          
+        } else 
+        {
             return ['found' => 'no' , 'message' => 'No reminders !.'];
+
         }
     }
+
 
     public function getMaterials($gym_username)
     {
@@ -53,58 +63,67 @@ class instructor
         $result = $model->get_Materials($gym_username);
 
         if ($result) {
-            return ['found'=>'yes','result'=>$result];
-        } else {
+
+            return  ['found'=>'yes','result'=>$result];
+          
+        } else 
+        {
             return ['found' => 'no' , 'message' => 'No materials found !.'];
+
         }
     }
-
     public function showClients($instructor_id) {
         $model = $this->model('instructor', 'membership');
         $result = $model->getAcceptedClients($instructor_id);
 
+        
         if ($result) {
-            return ['found'=>'yes','result'=>$result];
-        } else {
+
+            return  ['found'=>'yes','result'=>$result];
+          
+        } else 
+        {
             return ['found' => 'no' , 'message' => 'No accepted Users Yet!'];
+
         }
     }
 
     public function getSupport()
     {
-        $username = $_POST['trainer_username'];  
-        $email= $_POST['email']; 
-        $role = 'instructor';
+            $username = $_POST['trainer_username'];  
+            $email= $_POST['email']; 
+            $role = 'instructor';
 
-        $issue = htmlspecialchars($_POST['issue']);
-        $message = htmlspecialchars($_POST['details']);
+            $issue = htmlspecialchars($_POST['issue']);
+            $message = htmlspecialchars($_POST['details']);
 
-        $model = $this->model('support', 'support');
-        $result = $model->submit($issue, $message, $username, $role, $email);
+            $model = $this->model('support', 'support');
+            $result = $model->submit($issue, $message, $username, $role, $email);
         
-        if ($result['found'] == 'yes') {
-            $userEmail=$email ;
-            $emailMessage="Dear $username,<br><br>Our support team will reply you soon!.";
-            $subject='We got your Ticket';
+            if ($result['found'] == 'yes') {
         
-            $emailService = new Email();
-            $response = $emailService->send($userEmail, $emailMessage, $subject);
+                $userEmail=$email ;
+                $emailMessage="Dear $username,<br><br>Our support team will reply you soon!.";
+                $subject='We got your Ticket';
         
-            if($response){
-                $status = "success";
-                $message = "Support ticket has been submitted!";
-                $this->view('instructor', 'instructor', ['message' => $message, 'status' => $status]);
-            }else{
-                $status = "error";
-                $message = "Fail to send email message!";
-                $this->view('instructor', 'instructor', ['message' => $message, 'status' => $status]);
-            }
-        } elseif ($result['found'] == 'no') {
-            $status = "error";
-            $message = "Error while getting support.";
-            $this->view('instructor', 'instructor', ['message' => $message, 'status' => $status]);
-        }  
+                $emailService = new Email();
+                $response = $emailService->send($userEmail, $emailMessage, $subject);
+        
+                $this->view('instructor', 'instructor');
+                if($response){
+                echo "<script>alert('Support ticket has been submitted !');</script>";
+                }else{
+                echo "<script>alert('Fail to send email message !');</script>";
+                }
+            } elseif ($result['found'] == 'no') {
+        
+                $this->view('instructor', 'instructor');
+                echo "<script>alert('Error while getting support');</script>";
+            }  
+      
+    
     }
+
 
     public function getGyms($gym_username)
     {
@@ -116,7 +135,7 @@ class instructor
     
         $result = $model->get_GymDetails($gym_username);
     
-        if ($result->num_rows > 0) {
+        if ( $result->num_rows > 0) {
             $gym_details = $result->fetch_assoc();
             return ['found' => 'yes', 'result' => $gym_details];
         } else {
@@ -127,25 +146,31 @@ class instructor
     public function get_machines($username)
     {
         if (!empty($username)) {
+
             $model = $this->model('owner','machines'); 
             $result = $model->get($username); 
             
             if ($result['found']=='yes') {
+
                 return ['found' => 'yes' ,'result' => $result['result']];
+
             }
             elseif($result['found']=='no'){
+
                 return ['found' => 'no'];
+
             }
         } else {
-            $status = "error";
-            $message = "Missing gym's username (get_machines).";
-            $this->view('instructor', 'instructor', ['message' => $message, 'status' => $status]);
+
+            echo "<script>alert('Missing gym's username (get_machines).');</script>";
         }
+
     }
     
     /*calendar*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function updateAvailability() {
+
         if (session_status() == PHP_SESSION_NONE) {
             session_start(); // Start session only if it's not already started
         }
@@ -159,7 +184,7 @@ class instructor
         $jsonData = file_get_contents("php://input");
         $data = json_decode($jsonData, true);
 
-        $username = $_SESSION['userDetails']['gym_username'];
+       $username = $_SESSION['userDetails']['gym_username'];
 
         if (!isset($data['availability'])) {
             echo json_encode(["success" => false, "error" => "Invalid data"]);
@@ -177,7 +202,9 @@ class instructor
         }
     }
 
+
     public function updateTodayColor() {
+
         if (session_status() == PHP_SESSION_NONE) {
             session_start(); // Start session only if it's not already started
         }
@@ -201,6 +228,7 @@ class instructor
         $selectedColor = $data['color'];
         $username = $_SESSION['userDetails']['gym_username'];
 
+
         if (!isset($data['date'])) {
             echo json_encode(["success" => false, "error" => "Date not setted"]);
             return;
@@ -217,96 +245,99 @@ class instructor
         }
     }
 
+    
     public function getSavedColors() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start(); // Start session only if it's not already started
-        }
-    
-        if (!isset($_SESSION['userDetails']['gym_username'])) {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start(); // Start session only if it's not already started
+            }
+        
+            if (!isset($_SESSION['userDetails']['gym_username'])) {
+                header('Content-Type: application/json');
+                echo json_encode(["success" => false, "error" => "User not logged in"]);
+                return;
+            }
+        
+            $username = $_SESSION['userDetails']['gym_username'];
+            $model = $this->model('owner', 'calendar');
+        
+            // Get the result from the model and output it
+            $colors = $model->getSavedColors($username);
+        
             header('Content-Type: application/json');
-            echo json_encode(["success" => false, "error" => "User not logged in"]);
-            return;
-        }
-    
-        $username = $_SESSION['userDetails']['gym_username'];
-        $model = $this->model('owner', 'calendar');
-    
-        // Get the result from the model and output it
-        $colors = $model->getSavedColors($username);
-    
-        header('Content-Type: application/json');
-        echo json_encode($colors);
+            echo json_encode($colors);
     }
 
+
     public function saveNote() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        if (!isset($_SESSION['userDetails']['gym_username'])) {
-            header('Content-Type: application/json');
-            echo json_encode(["success" => false, "error" => "User not logged in"]);
-            return;
-        }
-    
-        $jsonData = file_get_contents("php://input");
-        $data = json_decode($jsonData, true);
-        if (!isset($data['id']) || !isset($data['content']) || !isset($data['date'])) {
-            header('Content-Type: application/json');
-            echo json_encode(["success" => false, "error" => "Missing note data"]);
-            return;
-        }
-    
-        $username = $_SESSION['userDetails']['gym_username'];
-        $model = $this->model('owner', 'calendar');
-        $result = $model->saveNote($data['id'], $data['content'], $data['date'], $username);
-    
-        header('Content-Type: application/json');
-        echo json_encode($result ? ["success" => true] : ["success" => false, "error" => "Failed to save note"]);
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                if (!isset($_SESSION['userDetails']['gym_username'])) {
+                    header('Content-Type: application/json');
+                    echo json_encode(["success" => false, "error" => "User not logged in"]);
+                    return;
+                }
+            
+                $jsonData = file_get_contents("php://input");
+                $data = json_decode($jsonData, true);
+                if (!isset($data['id']) || !isset($data['content']) || !isset($data['date'])) {
+                    header('Content-Type: application/json');
+                    echo json_encode(["success" => false, "error" => "Missing note data"]);
+                    return;
+                }
+            
+                $username = $_SESSION['userDetails']['gym_username'];
+                $model = $this->model('owner', 'calendar');
+                $result = $model->saveNote($data['id'], $data['content'], $data['date'], $username);
+            
+                header('Content-Type: application/json');
+                echo json_encode($result ? ["success" => true] : ["success" => false, "error" => "Failed to save note"]);
     }
     
     public function deleteNote() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        if (!isset($_SESSION['userDetails']['gym_username'])) {
-            header('Content-Type: application/json');
-            echo json_encode(["success" => false, "error" => "User not logged in"]);
-            return;
-        }
-    
-        $jsonData = file_get_contents("php://input");
-        $data = json_decode($jsonData, true);
-        if (!isset($data['id'])) {
-            header('Content-Type: application/json');
-            echo json_encode(["success" => false, "error" => "Missing note ID"]);
-            return;
-        }
-    
-        $username = $_SESSION['userDetails']['gym_username'];
-        $model = $this->model('owner', 'calendar');
-        $result = $model->deleteNote($data['id'], $username);
-    
-        header('Content-Type: application/json');
-        echo json_encode($result ? ["success" => true] : ["success" => false, "error" => "Failed to delete note"]);
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                if (!isset($_SESSION['userDetails']['gym_username'])) {
+                    header('Content-Type: application/json');
+                    echo json_encode(["success" => false, "error" => "User not logged in"]);
+                    return;
+                }
+            
+                $jsonData = file_get_contents("php://input");
+                $data = json_decode($jsonData, true);
+                if (!isset($data['id'])) {
+                    header('Content-Type: application/json');
+                    echo json_encode(["success" => false, "error" => "Missing note ID"]);
+                    return;
+                }
+            
+                $username = $_SESSION['userDetails']['gym_username'];
+                $model = $this->model('owner', 'calendar');
+                $result = $model->deleteNote($data['id'], $username);
+            
+                header('Content-Type: application/json');
+                echo json_encode($result ? ["success" => true] : ["success" => false, "error" => "Failed to delete note"]);
     }
     
     public function getNotes() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        if (!isset($_SESSION['userDetails']['gym_username'])) {
-            header('Content-Type: application/json');
-            echo json_encode(["success" => false, "error" => "User not logged in"]);
-            return;
-        }
-    
-        $username = $_SESSION['userDetails']['gym_username'];
-        $model = $this->model('owner', 'calendar');
-        $notes = $model->getNotes($username);
-    
-        header('Content-Type: application/json');
-        echo json_encode($notes);
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                if (!isset($_SESSION['userDetails']['gym_username'])) {
+                    header('Content-Type: application/json');
+                    echo json_encode(["success" => false, "error" => "User not logged in"]);
+                    return;
+                }
+            
+                $username = $_SESSION['userDetails']['gym_username'];
+                $model = $this->model('owner', 'calendar');
+                $notes = $model->getNotes($username);
+            
+                header('Content-Type: application/json');
+                echo json_encode($notes);
     }
+    
 
     // public function assign_schedule($username) {
     //     $workouts = $this->get_workouts($username);
@@ -314,6 +345,8 @@ class instructor
     // }
     
     public function get_workouts($username) {
+                
+
         $model = $this->model('instructor', 'mealPlan');
         $result = $model->get_MealPlans($username);
 
@@ -325,28 +358,38 @@ class instructor
             return ['found' => 'yes', 'workouts' => $workouts];
         }else{
             return ['found' => 'no'];
+
         }
     }
 
+
     public function getMealplanRequests($trainerusername) {
+                
+
         $model = $this->model('instructor', 'mealPlan');
         $requests = $model->get_Requests($trainerusername);
 
         if($requests['found']=='yes') {
+            
             return ['found' => 'yes', 'result' => $requests['result']];
         }else{
             return ['found' => 'no'];
+
         }
     }
 
     public function assignMealplans($trainerusername,$username) {
+                
+
         $model = $this->model('instructor', 'mealPlan');
         $requests = $model->assign($trainerusername,$username);
 
         if($requests['found']=='yes') {
+            
             return ['found' => 'yes', 'result' => $requests['result']];
         }else{
             return ['found' => 'no'];
+
         }
     }
 
@@ -388,13 +431,14 @@ class instructor
       
         // Redirect or message
         if ($success) {
-            $status = "success";
-            $message = "Workout saved.";
-            $this->view('instructor', 'instructor', ['message' => $message, 'status' => $status]);
+            $this->view('instructor', 'instructor');
+            echo "<script>alert('Workout saved.');</script>";
+
         } else {
-            $status = "error";
-            $message = "Failed to save workout.";
-            $this->view('instructor', 'instructor', ['message' => $message, 'status' => $status]);
+            $this->view('instructor', 'instructor');
+            echo "<script>alert('Failed to save workout.');</script>";
+
         }
-    }
+      
+      }
 }
