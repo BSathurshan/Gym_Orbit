@@ -145,24 +145,22 @@ function selectDate(date) {
     elements.bookingStep2.style.display = 'none';
     elements.bookingStep3.style.display = 'none';
 
-    // Fetch gym times and populate the time slots as clickable divs
-    fetchGymTimes().then(() => {
-        const timeSlotsContainer = elements.bookingTimeSlots;
-        timeSlotsContainer.innerHTML = '';
-        const times = state.gymTimes[weekday] || '';
-        if (times) {
-            const timeSlots = times.split(','); // Split "08:00-09:00,09:00-10:00"
-            timeSlots.forEach(slot => {
-                const slotDiv = document.createElement('div');
-                slotDiv.className = 'time-slot';
-                slotDiv.textContent = slot;
-                slotDiv.dataset.time = slot;
-                timeSlotsContainer.appendChild(slotDiv);
-            });
-        } else {
-            timeSlotsContainer.innerHTML = '<p>No available times for this day.</p>';
-        }
-    });
+    // Fetch gym times (already done in viewGymSchedule, so no need to fetch again here)
+    const timeSlotsContainer = elements.bookingTimeSlots;
+    timeSlotsContainer.innerHTML = '';
+    const times = state.gymTimes[weekday] || '';
+    if (times) {
+        const timeSlots = times.split(','); // Split "08:00-09:00,09:00-10:00"
+        timeSlots.forEach(slot => {
+            const slotDiv = document.createElement('div');
+            slotDiv.className = 'time-slot';
+            slotDiv.textContent = slot;
+            slotDiv.dataset.time = slot;
+            timeSlotsContainer.appendChild(slotDiv);
+        });
+    } else {
+        timeSlotsContainer.innerHTML = '<p>No available times for this day.</p>';
+    }
 }
 
 // Event Functions
@@ -186,6 +184,22 @@ function setupEventListeners() {
 
     // Booking Yes/No buttons
     elements.bookingYes.addEventListener('click', () => {
+        // Get the weekday for the selected date
+        const weekdayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        const weekday = weekdayNames[state.selectedDate.getDay()];
+        
+        // Check if there are available gym times for the selected day
+        const times = state.gymTimes[weekday] || '';
+        
+        if (!times) {
+            // No available times, show message and close the modal
+            alert("Sorry, gym is unavailable on this day.");
+            elements.bookingModal.style.display = 'none';
+            state.selectedInstructor = null; // Reset on close
+            return;
+        }
+
+        // If times are available, proceed to step 2
         elements.bookingStep1.style.display = 'none';
         elements.bookingStep2.style.display = 'block';
     });
@@ -278,6 +292,8 @@ function setupEventListeners() {
 
     // Confirm/Cancel buttons
     elements.confirmBooking.addEventListener('click', () => {
+
+
         // If instructors are available but none selected, prompt user
         const hasInstructors = elements.instructorAvailability.textContent.includes("Available instructors");
         if (hasInstructors && !state.selectedInstructor) {

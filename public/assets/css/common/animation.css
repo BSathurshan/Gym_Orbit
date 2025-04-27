@@ -1,0 +1,37 @@
+.gym-table .row,
+.searchGym-container .gym-container,
+.row2,
+.materials,
+.posts,
+.card,
+.info-box,
+.progress-box,
+.stat-box,
+.section-title,
+.course-card,
+.plan-card,
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.gym-table .row:hover,
+.searchGym-container .gym-container:hover,
+.row2:hover,
+.materials:hover,
+.posts:hover,
+.card:hover 
+{
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.24);
+}
+
+.info-box:hover,
+.progress-box:hover,
+.stat-box:hover,
+.course-card:hover,
+.plan-card:hover,
+.service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(80, 255, 16, 0.546);
+}

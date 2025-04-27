@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         eventsList: document.getElementById('events-list'),
         notesArea: document.getElementById('notes-area'),
         saveNotesBtn: document.getElementById('save-notes-btn'),
-        notesList: document.getElementById('notes-list'),
-        bookingList: document.getElementById('booking-list') // Add booking-list element
+        notesList: document.getElementById('notes-list')
     };
 
     // State
@@ -26,8 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedDate: null,
         events: {},
         notes: [],
-        colors: {}, // New: Store date-color pairs from database
-        bookings: [] // Add bookings state
+        colors: {} // New: Store date-color pairs from database
     };
 
     // Single source of Sri Lanka time
@@ -61,10 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
             today.setTime(today.getTime() + (5.5 * 60 * 60 * 1000));
             state.selectedDate = today;
             generateCalendar(state.currentMonth, state.currentYear);
-            // Fetch bookings for the initially selected date (today)
-            fetchBookingsForDate(state.selectedDate.toISOString().split('T')[0]).then(() => {
-                displayBookings();
-            });
         });
     
         fetchNotesFromDatabase(); // Load notes from database instead of just displaying local
@@ -180,11 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedCell.classList.add('selected');
             console.log("Selected date:", date.toISOString().split('T')[0]);
         }
+        // Only regenerate calendar if needed (e.g., month change), not here
         displayEvents(date);
-        // Fetch and display bookings for the selected date
-        fetchBookingsForDate(date.toISOString().split('T')[0]).then(() => {
-            displayBookings();
-        });
     }
     /////////// End Calendar Functions ///////////
 
@@ -254,70 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return `${formattedHours}:${minutes} ${period}`;
     }
     /////////// End Event Functions ///////////
-
-    /////////// Booking Functions ///////////
-    function fetchBookingsForDate(date) {
-        return fetch(ROOT + "/owner/getBookings?date=" + date, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" }
-        })
-        .then(response => {
-            if (!response.ok) {
-                return response.text().then(text => {
-                    throw new Error('Network response was not ok: ' + text);
-                });
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (Array.isArray(data)) {
-                state.bookings = data;
-            } else {
-                console.error("Unexpected response format:", data);
-                state.bookings = [];
-            }
-            console.log("Loaded bookings for date", date, ":", state.bookings);
-        })
-        .catch(error => {
-            console.error("Error fetching bookings:", error);
-            state.bookings = [];
-        });
-    }
-
-    function displayBookings() {
-        elements.bookingList.innerHTML = '';
-        if (state.bookings.length === 0) {
-            elements.bookingList.innerHTML = '<p>No bookings for this date.</p>';
-            return;
-        }
-
-        const table = document.createElement('table');
-        table.className = 'booking-table';
-
-        // Create table header
-        const headerRow = document.createElement('tr');
-        headerRow.innerHTML = `
-            <th>Time</th>
-            <th>User</th>
-            <th>Instructor</th>
-        `;
-        table.appendChild(headerRow);
-
-        // Create table rows for each booking
-        state.bookings.forEach(booking => {
-            const row = document.createElement('tr');
-            row.className = 'booking-row';
-            row.innerHTML = `
-                <td>${booking.time}</td>
-                <td>${booking.username || 'Unknown'}</td>
-                <td>${booking.trainer_username || 'None'}</td>
-            `;
-            table.appendChild(row);
-        });
-
-        elements.bookingList.appendChild(table);
-    }
-    /////////// End Booking Functions ///////////
 
     /////////// Notes Functions ///////////
     function saveNote() {

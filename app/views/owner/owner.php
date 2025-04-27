@@ -65,12 +65,15 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/buttons.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/calendar.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/map.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/report.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/payments.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/tables.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/animation.css">
+
+
 
 
     <script src="<?= ROOT ?>/assets/js/owner/1.js" defer></script>
@@ -140,12 +143,12 @@ else{
                         <li class="tabs" value="2"><a><i class="bi bi-briefcase"></i>Posts</a></li>
                         <li class="tabs" value="3"><a><i class="fa-solid fa-dumbbell"></i>Machines</a></li>
                         <li class="tabs" value="4"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
-                        <li class="tabs" value="5"><a><i class="bi-person-arms-up"></i>Instructors</a></li>
                         <li class="tabs" value="6"><a><i class="fas fa-users"></i>Members</a></li>
-                        <li class="tabs" value="7"><a><i class="bi bi-sliders"></i>Requests</a></li>
+                        <li class="tabs" value="5"><a><i class="bi-person-arms-up"></i>Instructors</a></li>
+                        <!-- <li class="tabs" value="7"><a><i class="bi bi-sliders"></i>Requests</a></li> -->
                         <li class="tabs" value="8"><a><i class="bi bi-calendar2-check"></i>Schedule</a></li>
                         <li class="tabs" value="9"><a><i class="bi bi-book"></i>Reports</a></li>
-                        <li class="tabs" value="10"><a><i class="bi bi-alarm"></i>Reminders</a></li>
+                        <!-- <li class="tabs" value="10"><a><i class="bi bi-alarm"></i>Reminders</a></li> -->
                         <li class="tabs" value="11"><a><i class="bi bi-chat-heart"></i>Payments</a></li>
                         <li class="tabs" value="12"><a><i class="bi bi-chat-heart"></i>Support</a></li>
                     </div>

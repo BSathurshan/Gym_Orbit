@@ -94,5 +94,33 @@ class Calendar {
         }
         return $notes;
     }
+
+    
+    public function getBookings($gym_username, $date) {
+        $conn = $this->getConnection();
+        if (!$conn) {
+            error_log("Database connection failed in getBookings");
+            return [];
+        }
+
+        $query = "SELECT * FROM bookings WHERE gym_username = ? AND date = ? ORDER BY time ASC";
+        $stmt = $conn->prepare($query);
+        if (!$stmt) {
+            error_log("Prepare failed: " . $conn->error);
+            return [];
+        }
+
+        $stmt->bind_param("ss", $gym_username, $date);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $bookings = [];
+        while ($row = $result->fetch_assoc()) {
+            $bookings[] = $row;
+        }
+
+        $stmt->close();
+        return $bookings;
+    }
 }
 ?>

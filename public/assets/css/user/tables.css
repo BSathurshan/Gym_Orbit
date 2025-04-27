@@ -194,7 +194,7 @@
 
 .posts {
     background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent dark background */
-    color: #aaa;
+    color: #ffffff;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -230,11 +230,11 @@
 
 }
 .posts h5{
-    color: #aaa;
+    color: #fff7f7;
 
 }
 .posts p{
-    color: #aaa;
+    color: #ffffff;
 
 }
 
