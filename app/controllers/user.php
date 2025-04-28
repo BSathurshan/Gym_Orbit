@@ -780,4 +780,37 @@ public function changeAge()
         $this->view('user', 'user', ['message' => $message, 'status' => $status]);
       }
 }
+
+
+public function bookingDetails()
+{
+    $username = $_SESSION['username'];
+    $model = $this->model('user', 'Booking');
+    $result = $model->details($username);
+
+    if($result['found'] == 'yes') {
+        return ['found' => 'yes', 'result' => $result['result']];
+    } else {
+        return ['found' => 'no'];
+    }
+}
+
+public function moreDetails($gym_username, $trainer_username)
+{
+    $model = $this->model('user', 'Booking');
+    $result = $model->moreDetails($gym_username, $trainer_username);
+
+    if($result['found'] == 'yes') {
+        return [
+            'found' => 'yes',
+            'gym_fileimage' => $result['gym_fileimage'],
+            'trainer_name' => $result['trainer_name'],
+            'trainer_image' => $result['trainer_image']
+        ];
+    } else {
+        return ['found' => 'no'];
+    }
+}
+
+
 }

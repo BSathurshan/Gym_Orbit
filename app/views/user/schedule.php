@@ -68,6 +68,49 @@
         }
     ?>
 
+    
+<?php
+$user = new User(); 
+$booking = $user->bookingDetails(); 
+
+if ($booking['found'] == 'yes') {
+?>
+<br>
+    <div class="header">
+        <div>
+            <h2>Schedule</h2>
+        </div>
+    </div>
+
+    <div class="in-in-content">
+        <?php while ($bookings = $booking['result']->fetch_assoc()) { ?>
+            <br>
+
+            <div class="bookings">
+
+            <p><?= htmlspecialchars($bookings['time']) ?></p>
+            <h5><?= htmlspecialchars($bookings['gym_name']) ?></h5>
+<?PHP
+            if($bookings['trainer_image']!=null){
+?>
+        <div id="image_xyz">
+            <img src="<?= ROOT ?>/assets/images/instructor/profile/images/<?php echo $bookings['trainer_image']; ?>" alt="logo" class="logo">
+            </div>
+
+            </div>
+
+<?PHP
+            }
+            ?>
+        <?php } ?>
+    </div>
+<?php
+} else {
+    echo "<p>No bookings found.</p>";
+}
+?>
+
+
 
 </div>
 
@@ -144,4 +187,5 @@
                         </div>
                     </div>
             </div>
+
 </div>

@@ -372,3 +372,22 @@
 .payment-row{
     width: 100% ;
 }
+
+
+#image_xyz {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#image_xyz img {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 0 10px white;
+    border-radius: 10px;
+}
