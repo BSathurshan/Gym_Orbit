@@ -36,13 +36,14 @@ else{
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/dashboard.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/modals.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/tables.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/buttons.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/adminDashboard.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/messages.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/reminders.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/admin/report.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css">
+
 
 
 
@@ -117,7 +118,7 @@ else{
                     <div class="grps">
                     <li class="tabs activetab" value="1"><a><i class="fa fa-home"></i>Home</a></li>
                     <li class="tabs" value="3"><a><i class="bi bi-chat-left-quote-fill"></i>Messages</a></li>        
-                    <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
+                    <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>System</a></li>
                     <li class="tabs" value="11"><a><i class="bi bi-book-fill"></i>Reports</a></li>
                     <!-- <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li> -->
                     <!-- <li class="tabs" value="6"><a><i class="bi bi-stack-overflow"></i>Materials</a></li> -->

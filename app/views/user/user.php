@@ -67,15 +67,6 @@ else{
 </head>
 <body>
     
-    <!-- 
-    <header class="header">
-        <nav class="navbar">
-        <a href="<?= ROOT ?>/login/logout" class="logout-btn">
-                <i class="fa-solid fa-right-from-bracket"></i>Logout
-            </a>
-        </nav>
-    </header> 
-     -->
 <?php if (!empty($data['message'])): ?>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -106,16 +97,19 @@ else{
                                 <li class="tabs activetab" value="1"><a><i class="fa fa-home"></i>Home</a></li>
                                 <li class="tabs " value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
                                 <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gyms</a></li>
-                                
-                                <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Instructors</a></li>
-                                <li class="tabs" value="5" id="schedule-page-tab"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
                                 <li class="tabs" value="10"><a><i class="bi bi-stack-overflow"></i>Materials</a></li> 
                                 <li class="tabs" value="11"><a><i class="bi bi-chat-left-heart-fill"></i>Posts</a></li>
 
-                                <li class="tabs" value="6"><a><i class="bi bi-gear-fill"></i>   progress Tracker</a></li>
                                 <li class="tabs" value="7" id="payment-page-tab"><a><i class="bi bi-credit-card-fill"></i>Payments</a></li>
+
+                                <li class="tabs" value="5" id="schedule-page-tab"><a><i class="bi bi-calendar2-check-fill"></i>Appoinments</a></li>
+
+
+                                <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Workout Plan</a></li>
+                                <li class="tabs" value="6"><a><i class="bi bi-gear-fill"></i>   progress Tracker</a></li>
+                                
                                 <li class="tabs" value="8"><a><i class="bi bi-chat-heart-fill"></i>Support</a></li>
-                                <li class="tabs" value="20"><a><i class="bi bi-chat-heart-fill"></i>Community</a></li>
+                                <!-- <li class="tabs" value="20"><a><i class="bi bi-chat-heart-fill"></i>Community</a></li> -->
 
 
 
