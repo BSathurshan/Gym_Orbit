@@ -3,7 +3,7 @@
 <div class="header">
         <div>
 
-        <h2>Reminders</h2>
+        <h2>System</h2>
 
 
         </div>
@@ -17,25 +17,8 @@
     <h3>🛠️ System Reminders</h3>
     <div class="reminder-row">
       <div class="reminder-card" id="system-maintenence">🛠️ System Maintenance</div>
-      <div class="reminder-card">🚀 Pending Feature Deployment</div>
-      <div class="reminder-card">📊 System Resource Usage</div>
-    </div>
-  </div>
-
-  <!-- SECURITY + COMMUNICATION (Shared Row) -->
-  <div class="reminder-category shared-row">
-    <div class="shared-block">
-      <h3>🔐 Security Reminders</h3>
-      <div class="reminder-row">
-        <div class="reminder-card">🔐 Security Alert</div>
-      </div>
-    </div>
-
-    <div class="shared-block">
-      <h3>📢 Communication</h3>
-      <div class="reminder-row">
-        <div class="reminder-card">📢 Broadcast Message</div>
-      </div>
+      <!-- <div class="reminder-card">🚀 Pending Feature Deployment</div>
+      <div class="reminder-card">📊 System Resource Usage</div> -->
     </div>
   </div>
 
@@ -44,9 +27,9 @@
     <h3>💾 Data Management</h3>
     <div class="reminder-row">
       <div class="reminder-card" id="database-backup">💾 Database Backup</div>
-      <div class="reminder-card">🧹 Clean Old Database Entries</div>
+      <!-- <div class="reminder-card">🧹 Clean Old Database Entries</div>
       <div class="reminder-card">🧹 Log Cleanup</div>
-      <div class="reminder-card">🧹 Logging</div>
+      <div class="reminder-card">🧹 Logging</div> -->
     </div>
   </div>
 

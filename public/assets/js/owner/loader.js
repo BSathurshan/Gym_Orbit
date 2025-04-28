@@ -25,19 +25,11 @@ function machineAdd() {
     document.getElementById('addFormModal').style.display = 'block';
 }
 
-//function postEdit(name, file, gymUsername)
-function postEdit(title,oldFilename,details,gymUsername,id) {
-
-    document.getElementById('editNewTitleE').value = title;
-    document.getElementById('editNewDetailsE').value = details; // Store the old name for database update
-    document.getElementById('gymUsernameE').value = gymUsername; // Populate the gym username (hidden field)
-    document.getElementById('idE').value = id; 
-    document.getElementById('oldFilenameE').value = oldFilename; 
- 
-   
-
-    // Show the modal
-    document.getElementById('editPostFormModal').style.display = 'block';
+function postEditing( oldFilename, gymUsername, id) {
+    document.getElementById('post-edit-gym-username').value = gymUsername;
+    document.getElementById('post-edit-id').value = id;
+    document.getElementById('post-edit-old-filename').value = oldFilename;
+    document.getElementById('post-edit-modal').style.display = 'block';
 }
 
 function postAdd() {
@@ -153,7 +145,7 @@ function instructorEdit(trainer_username,trainer_name,email,age,gender,contact,e
     function closeEditModal() {
         document.getElementById('editFormModal').style.display = 'none';
         document.getElementById('addFormModal').style.display = 'none';
-        document.getElementById('editPostFormModal').style.display = 'none';
+        document.getElementById('post-edit-modal').style.display = 'none';
         document.getElementById('addPostFormModal').style.display = 'none';
         document.getElementById('editMaterialFormModal').style.display = 'none';
         document.getElementById('addMaterialFormModal').style.display = 'none';

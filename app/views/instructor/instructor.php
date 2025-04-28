@@ -54,7 +54,7 @@ else{
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/common/modals.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/tables.css"> 
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/buttons.css"> 
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/calendar.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/owner/calendar.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/instructor/workoutplan.css"> 
 
 
@@ -99,19 +99,17 @@ else{
             <div class="nav-links">
                 <ul>
                     <div class="grps">
-                        <li class="tabs activetab" value="1"><a><i class="fa fa-home"></i>Home</a></li>
-                        <li class="tabs " value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
-                        <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gym</a></li>
+                        <!-- <li class="tabs " value="1"><a><i class="fa fa-home"></i>Home</a></li> -->
                        
-                        <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Member Profiles</a></li>
+                        <!-- <li class="tabs" value="4"><a><i class="bi-person-arms-up"></i>Requests</a></li> -->
+                        <li class="tabs activetab" value="9"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
                         <li class="tabs" value="20"><a><i class="bi bi-calendar2-check-fill"></i>Work-Out Plans</a></li>
-
-                        <li class="tabs" value="9"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li>
                         
                         
                         <li class="tabs" value="8"><a><i class="bi bi-stack-overflow"></i>Materials</a></li>
                         <li class="tabs" value="7"><a><i class="bi bi-chat-heart-fill"></i>Support</a></li>
-
+                        <li class="tabs" value="3"><a><i class="bi bi-stars"></i>Gym</a></li>
+                        <li class="tabs " value="2"><a><i class="bi bi-person-circle"></i>Profile</a></li>
 
                     </div>
 
@@ -143,7 +141,7 @@ else{
 
 <!-- Main Content -->
   
-<div class="descriptor active" value="1">
+<div class="descriptor " value="1">
     <?php
                 require 'home.php';
     ?>
@@ -193,14 +191,14 @@ else{
     ?>
     </div>
 
-    <div class="descriptor" value="9">
+    <div class="descriptor active" value="9">
     <?php
                 require 'schedule.php';
     ?>
     </div>
     
 
-    <div class="descriptor" value="20">
+    <div class="descriptor " value="20">
     <?php
                 require 'user_mealPlans.php';
     ?>

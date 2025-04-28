@@ -40,7 +40,7 @@
 
                 }
                  
-                elseif($mealplanRequest['found']=='no') 
+                else 
                 {
                     echo "<p> No requests for now !</p>";
                 }

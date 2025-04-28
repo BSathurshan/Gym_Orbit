@@ -103,7 +103,18 @@ class MealPlan
         $stmt1 = $conn->prepare($queryRequested);
             $stmt1->bind_param("sssss", $username, $day, $exercise, $sets, $reps);
 
-        return $stmt1->execute();
+        if($stmt1->execute()){
+            $trainer_username=$_SESSION['username'];
+            $sql2 = "DELETE FROM mealplan_request WHERE username=? AND trainer_username=? ";
+            $stmt2 = $conn->prepare($sql2);
+            $stmt2->bind_param("ss", $username, $trainer_username);
+            $stmt2->execute();
+
+            return true;
+
+        }else{
+            return false;
+        }
 
     }
 

@@ -75,9 +75,16 @@
 
                             </div>
 
-</div>
-</div>
 
+                <div class="profile-image-container">
+                <div class="profile-title">Profile</div>
+                <div class="profile-image">
+                    <img src="<?php echo htmlspecialchars(ROOT . '/assets/images/instructor/profile/images/' . $profile_image); ?>" alt="Instructor Image" class="gym-profile-img">
+                </div>
+                </div>
+</div>
+</div>
+s
 
 
 

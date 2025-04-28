@@ -2,7 +2,7 @@
 
   <div class="header">
     <div>
-      <h2>Payment</h2>
+      <h2>Payments</h2>
     </div>
   </div>
 
@@ -10,7 +10,7 @@
     <?php
     $username=$_SESSION["username"];
     $user = new User();
-    $gymDetails = $user->joinedGyms($username);
+    $gymDetails = $user->joinedGyms_normal($username);
     ?>
     <div class='payment-container'>
       <?php if ($gymDetails['found'] == 'yes'): ?>

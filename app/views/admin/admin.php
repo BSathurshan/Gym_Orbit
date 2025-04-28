@@ -117,7 +117,7 @@ else{
                     <div class="grps">
                     <li class="tabs activetab" value="1"><a><i class="fa fa-home"></i>Home</a></li>
                     <li class="tabs" value="3"><a><i class="bi bi-chat-left-quote-fill"></i>Messages</a></li>        
-                    <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>Reminder</a></li>
+                    <li class="tabs" value="4"><a><i class="bi bi-alarm-fill"></i>System</a></li>
                     <li class="tabs" value="11"><a><i class="bi bi-book-fill"></i>Reports</a></li>
                     <!-- <li class="tabs" value="5"><a><i class="bi bi-calendar2-check-fill"></i>Schedule</a></li> -->
                     <!-- <li class="tabs" value="6"><a><i class="bi bi-stack-overflow"></i>Materials</a></li> -->

@@ -77,10 +77,11 @@ else{
 
 
     <script src="<?= ROOT ?>/assets/js/owner/1.js" defer></script>
-    <script src="<?= ROOT ?>/assets/js/owner/loader.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/owner/calendar.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/owner/map.js" defer></script>
     <script src="<?= ROOT ?>/assets/js/common/alert.js" defer></script>
+    <script src="<?= ROOT ?>/assets/js/owner/loader.js" defer></script>
+
 
 
 
