@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2025 at 05:44 AM
+-- Generation Time: Apr 28, 2025 at 04:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -75,6 +75,8 @@ CREATE TABLE `bookings` (
   `trainer_username` varchar(255) DEFAULT NULL,
   `date` varchar(255) NOT NULL,
   `time` text NOT NULL,
+  `gym_name` varchar(255) NOT NULL,
+  `trainer_image` varchar(255) NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -82,16 +84,16 @@ CREATE TABLE `bookings` (
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`username`, `gym_username`, `trainer_username`, `date`, `time`, `created`) VALUES
-('123', '01', 'ggmicha', '2025-04-17', '08:00-09:00', '2025-04-17 17:39:37'),
-('123', '01', NULL, '2025-04-19', '08:00-09:00', '2025-04-17 18:14:39'),
-('123', '01', 'ggmicha', '2025-04-20', '10:00-11:00', '2025-04-19 00:10:54'),
-('123', '01', NULL, '2025-04-21', '11:00-12:00', '2025-04-19 10:24:20'),
-('123', '01', NULL, '2025-04-30', '13:00-14:00', '2025-04-22 08:02:51'),
-('141', '01', 'ss', '2025-02-09', '07:00-10:00', '2025-02-09 14:26:05'),
-('141', '01', 'ss', '2025-02-11', '07:00-10:00', '2025-02-09 14:29:07'),
-('141', '01', 'No Instructor', '2025-02-17', '18:00-19:00', '2025-02-05 03:26:48'),
-('141', '01', 'ss', '2025-02-24', '07:00-09:00', '2025-02-06 10:50:51');
+INSERT INTO `bookings` (`username`, `gym_username`, `trainer_username`, `date`, `time`, `gym_name`, `trainer_image`, `created`) VALUES
+('123', '01', 'ggmicha', '2025-04-17', '08:00-09:00', 'colombo gym', '67f66dfeebffd.png', '2025-04-28 01:57:01'),
+('123', '01', NULL, '2025-04-19', '08:00-09:00', 'colombo gym', '', '2025-04-28 01:51:09'),
+('123', '01', 'ggmicha', '2025-04-20', '10:00-11:00', 'colombo gym', '67f66dfeebffd.png', '2025-04-28 01:57:06'),
+('123', '01', 'ss', '2025-04-21', '11:00-12:00', 'colombo gym', '', '2025-04-28 01:51:19'),
+('123', '01', 'ss', '2025-04-30', '13:00-14:00', 'colombo gym', '', '2025-04-28 01:51:23'),
+('141', '01', 'ss', '2025-02-09', '07:00-10:00', 'FitnessGym', '', '2025-04-28 01:51:56'),
+('141', '01', 'ss', '2025-02-11', '07:00-10:00', 'FitnessGym', '', '2025-04-28 01:51:59'),
+('141', '01', 'No Instructor', '2025-02-17', '18:00-19:00', 'FitnessGym', '', '2025-04-28 01:52:05'),
+('141', '01', 'ss', '2025-02-24', '07:00-09:00', 'FitnessGym', '', '2025-04-28 01:52:09');
 
 -- --------------------------------------------------------
 
@@ -141,9 +143,10 @@ CREATE TABLE `connects_gym` (
 --
 
 INSERT INTO `connects_gym` (`username`, `gym_username`, `user_Name`, `gym_Name`, `type`, `date`) VALUES
-('123', '01', 'loki', 'meme', 'premium', '2025-04-27 01:00:51'),
+('123', '01', 'lokis', 'meme', 'normal', '2025-04-27 22:43:47'),
 ('123', 'fitlifejohn', 'loki', 'FitLife Gym', 'premium', '2025-04-25 06:21:16'),
-('123', 'ironsarah', 'loki', 'Iron Paradise Gym', 'normal', '2025-04-25 06:21:16'),
+('123', 'ironsarah', 'loki', 'Iron Paradise Gym', 'premium', '2025-04-27 22:43:53'),
+('123', 'jaxon08', 'lokis', 'BarbelKing Gym', 'normal', '2025-04-27 18:31:13'),
 ('123', 'luna07', 'loki', 'BodyBuilding Gym', 'premium', '2025-04-25 21:35:05'),
 ('123', 'steve09', 'loki', 'Fitness Sports Center', 'normal', '2025-04-25 10:24:21'),
 ('alexmo123', 'fitlifejohn', 'Alex Morgan', 'FitLife Gym', NULL, '2025-04-25 06:21:16'),
@@ -207,9 +210,9 @@ CREATE TABLE `gym` (
 --
 
 INSERT INTO `gym` (`gym_username`, `gym_name`, `password`, `owner_name`, `email`, `age`, `gender`, `location`, `gym_contact`, `owner_contact`, `start_year`, `joined`, `experience`, `web`, `social`, `ban`, `file`, `verification_code`, `verify`) VALUES
-('01', 'meme', '141', 'assa', 'abc@', 21, 'male', '163 Kirulapone Ave, Colombo 00500, Sri Lanka', '14440', '+94712345679', '2024-11-01', '2025-04-25 14:54:28', 45, 'asdsa', 'sad', 'no', '677cb115669eb.png', NULL, NULL),
 ('company1', 'Gym003', 'company1', 'John Smith', 'lokiaj141@gmail.com', 31, 'male', 'Chicago3', '+94712345663', '+94712345666', '2025-04-09', '2025-04-26 13:35:32', 23, 'https://dribbble.com/tags/gym-website', 'https://dribbble.com/tags/gym-website1', NULL, 'default.jpg', '3216a69d3f8655aaa3a4b606686e7dc4', 'yes'),
 ('fitlifejohn', 'FitLife Gym', 'fitlifejohn', 'John Smith', 'gym@gmail.com', 66, 'female', 'Chicago', '+94712345676', '+94712345672', '2025-04-18', '2025-04-25 10:23:53', 20, 'https://dribbble.com/tags/gym-website', 'https://dribbble.com/tags/gym-website', NULL, 'default.jpg', NULL, NULL),
+('gym', 'colombo gym', 'gym', 'assa', 'abc@', 21, 'male', '163 Kirulapone Ave, Colombo 00500, Sri Lanka', '14440', '+94712345679', '2024-11-01', '2025-04-28 01:50:46', 45, 'asdsa', 'sad', 'no', '677cb115669eb.png', NULL, NULL),
 ('ironsarah', 'Iron Paradise Gym', 'ironsarah', 'Sarah Johnson', 'sarah.johnson@gmail.com', 56, 'male', 'Orr\'sHill,Trincomalee', '740077777', '2147483647', '2021-06-12', '2024-12-02 05:23:35', 23, 'https://www.equinox.com/', '', NULL, '674d445758234.jpg', NULL, NULL),
 ('jaxon08', 'BarbelKing Gym', 'jaxon08', 'Jaxon Storm', 'jaxonstorm@gmail.com', 32, 'male', 'Bambalabitiya,Colombo', '+94655885468', '+94468494468', '2010-09-24', '2025-04-25 07:25:00', 15, 'https://osmofitness.com/', 'https://osmofitness.com', NULL, '680b38cc1916c.jpeg', NULL, NULL),
 ('luna07', 'BodyBuilding Gym', 'luna07', 'Luna Sterling', 'luna.sterling@gmail.com', 35, 'male', 'dehiwala,Colombo', '+94655885469', '+94561484815', '2010-05-23', '2025-04-25 07:21:55', 15, 'https://www.powerworldgyms.com/', 'https://lunasterlin.com', NULL, '680b3813c3050.jpeg', NULL, NULL),
@@ -314,7 +317,7 @@ CREATE TABLE `instructors` (
 
 INSERT INTO `instructors` (`gym_username`, `trainer_username`, `email`, `password`, `trainer_name`, `age`, `gender`, `contact`, `social`, `experience`, `location`, `availiblity`, `qualify`, `special`, `file`, `ban`) VALUES
 ('01', 'ggmicha', 'mic@gmail.com', 'mic141', 'mic', 22, 'female', '+94712345673', 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '67f66dfeebffd.png', NULL),
-('ironsarah', 'sarahbbbb', 'sarah.bennett@gmail.com', '123', 'Sarah Bennett', 32, 'male', '2147483647', 'https://sociallinks.io/', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '674d46d404b94.jpg', 'yes'),
+('fitlife', 'sarahbbbb', 'sarah.bennett@gmail.com', '123', 'Sarah Bennett', 32, 'male', '2147483647', 'https://sociallinks.io/', 12, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete', '674d46d404b94.jpg', 'yes'),
 ('01', 'sarahbbbbdds', 'lokiajsd22@gmail.com', '141', 'Sarah Bennett', 22, 'male', '777777777', 'https://fitgirl1-repacks.site/all-my-repacks-a-z/?lcp_page0=6#lcp_instance_01', 24, 'sadasd', 'weekends', 'ss', 'athlete1', 'default.jpg', NULL),
 ('01', 'ss', 'srimathulan@gmail.com', '141', 'uuu', 24, 'male', '777777777', 'https://dribbble.com/tags/gym-website', 0, 'Wellawatte,Colombo', 'weekends', 'medalist', 'athlete1', '6795cf02ceae6.jpg', NULL);
 
@@ -422,9 +425,9 @@ CREATE TABLE `machines` (
 --
 
 INSERT INTO `machines` (`gym_username`, `name`, `file`, `total`, `available`) VALUES
-('01', 'Cable Machine', '680b40ff02795.jpeg', '7', '3'),
+('01', 'Cable Machine', '680b40ff02795.jpeg', '7', '2'),
 ('01', 'Leg Curl Machine', '680b41527410c.jpeg', '4', '1'),
-('01', 'Leg Rower Machine', '680b418ce603e.jpeg', '6', '2'),
+('01', 'Leg Rower Machine', '680b418ce603e.jpeg', '6', '3'),
 ('01', 'Treadmill', '680b40c03886e.jpeg', '5', '5'),
 ('fitlifejohn', 'dumbell', '674d4c23d65bc.jpeg', '3', '3');
 
@@ -540,11 +543,10 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`gym_username`, `id`, `gym_name`, `title`, `file`, `details`, `createdAt`) VALUES
-('01', '680b574691b4d', 'meme', 'PUSH YOUR LIMITS', '680b574697a9a.jpeg', '\"When you feel like quitting, remember why you started.\"\r\n\r\n', '2025-04-25 09:35:02'),
 ('01', '680b5779930e6', 'meme', 'NO PAIN, NO GAIN', '680b577997db2.jpeg', '\"The body achieves what the mind believes.\"\r\n\r\n', '2025-04-25 09:35:53'),
 ('01', '680b57addf037', 'meme', '🏋️ STAY STRONG', '680b57addf8ad.jpeg', '\"Strength doesn’t come from what you can do. It comes from overcoming the things you once thought you couldn’t.\"', '2025-04-25 09:36:45'),
 ('01', '680b57e3d5dbe', 'meme', '⏱️ ONE MORE REP', '680b57e3d66b4.jpeg', '\"Success starts with self-discipline.\"\r\n\r\n', '2025-04-25 09:37:39'),
-('fitlifejohn', '674d4b6e0f65e', 'FitLife Gym', '\"Your only limit is you.\"', '674d4b6e0f665.jpeg', 'Numbered List of 20 Catchy Fitness Slogan Ideas. \"Fit is the New Cool\" \"Sweat it Out, Make it Count\" \"Get Fit, Stay Fit\" \"Strong Body, Strong Mind\"\r\n', '2025-04-20 01:38:16'),
+('fitlifejohn', '674d4b6e0f65e', 'FitLife Gym', '\"Your only limit is you\"', '674d4b6e0f665.jpeg', 'Numbered List of 20 Catchy Fitness Slogan Ideas. \"Fit is the New Cool\" \"Sweat it Out, Make it Count\" \"Get Fit, Stay Fit\" \"Strong Body, Strong Mind\"', '2025-04-28 00:01:37'),
 ('fitlifejohn', '6759244926f15', 'FitLife Gym', '“Pain is temporary, but pride is forever.” ', '6759244926f1f.jpeg', 'You\'re really complimenting her hard work when you do this.\r\n\"You\'re working so hard.\"\r\n\"I\'m so impressed by your dedication.\"\r\n\"I can see your progress.\"', '2025-04-20 01:31:16'),
 ('ironsarah', '674d4a0a6b4a9', 'Iron Paradise Gym', '\"Sweat now, shine later.\"', '674d4a0a6b4b1.avif', 'Here are some more of our favourite motivational quotes to help you on your fitness journey.', '2025-04-20 01:37:16');
 
@@ -743,7 +745,10 @@ INSERT INTO `user_payments` (`payment_id`, `username`, `gym_username`, `package`
 (90, '123', 'luna07', '1_MONTH', 8000, '2025-04-26 02:55:51', '2025-04-25 23:25:51', '2025-05-25 23:25:51', 'Complete'),
 (91, '123', 'luna07', '1_MONTH', 8000, '2025-04-26 03:01:33', '2025-04-25 23:31:33', '2025-05-25 23:31:33', 'Complete'),
 (92, '123', 'luna07', '1_MONTH', 8000, '2025-04-26 03:05:05', '2025-04-25 23:35:05', '2025-05-25 23:35:05', 'Complete'),
-(93, '123', '01', '1_MONTH', 8000, '2025-04-27 06:30:51', '2025-04-27 03:00:51', '2025-05-27 03:00:51', 'Complete');
+(93, '123', '01', '1_MONTH', 8000, '2025-04-27 06:30:51', '2025-04-27 03:00:51', '2025-05-27 03:00:51', 'Complete'),
+(94, '123', '01', '1_MONTH', 8000, '2025-04-27 21:13:25', '2025-04-27 17:43:25', '2025-05-27 17:43:25', 'Pending'),
+(95, '123', '01', '1_MONTH', 8000, '2025-04-27 21:13:46', '2025-04-27 17:43:46', '2025-05-27 17:43:46', 'Complete'),
+(96, '123', 'ironsarah', '1_MONTH', 8000, '2025-04-28 04:13:53', '2025-04-28 00:43:53', '2025-05-28 00:43:53', 'Complete');
 
 -- --------------------------------------------------------
 
@@ -788,12 +793,10 @@ CREATE TABLE `workout_schedule` (
 INSERT INTO `workout_schedule` (`id`, `username`, `day`, `exercise`, `sets`, `reps`, `done`) VALUES
 (99, 'ryder01', 'Monday', 'Bench Press', 3, 2, 1),
 (100, 'ryder01', 'Tuesday', 'Push-ups', 33, 3, 1),
-(103, '123', 'Monday', 'Deadlift', 3, 12, 1),
-(104, '123', 'Tuesday', 'Deadlift', 2, 3, 1),
-(105, '123', 'Wednesday', 'Plank', 4, 12, 0),
-(106, '123', 'Thursday', 'Pull-ups', 3, 12, 0),
-(107, '123', 'Saturday', 'Pull-ups', 3, 3, 0),
-(108, '123', 'Sunday', 'Plank', 4, 10, 1);
+(119, '123', 'Monday', 'Bench Press', 3, 3, 0),
+(120, '123', 'Wednesday', 'Deadlift', 3, 3, 0),
+(121, '123', 'Friday', 'Plank', 3, 23, 0),
+(122, '123', 'Sunday', 'Squats', 3, 3, 0);
 
 --
 -- Indexes for dumped tables
@@ -987,13 +990,13 @@ ALTER TABLE `calendar_event_master`
 -- AUTO_INCREMENT for table `user_payments`
 --
 ALTER TABLE `user_payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `workout_schedule`
 --
 ALTER TABLE `workout_schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

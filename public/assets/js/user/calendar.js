@@ -316,7 +316,7 @@ function setupEventListeners() {
             body: JSON.stringify(bookingData)
         })
         .then(response => {
-            if (!response.ok) throw new Error('Failed to save booking');
+            if (!response.ok) throw new Error('Already booked');
             return response.json();
         })
         .then(data => {
@@ -327,7 +327,7 @@ function setupEventListeners() {
         })
         .catch(error => {
             console.error("Error saving booking:", error);
-            alert("Failed to save booking. Please try again.");
+            alert("Already booked.");
         });
     });
 
